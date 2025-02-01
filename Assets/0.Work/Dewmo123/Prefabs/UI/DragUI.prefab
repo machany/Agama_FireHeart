@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemImage: {fileID: 1404000416903230197}
   _itemText: {fileID: 5834633458505249220}
-  _dragUI: {fileID: 0}
+  slotIndex: 0
   item:
     data: {fileID: 0}
     stackSize: 0
