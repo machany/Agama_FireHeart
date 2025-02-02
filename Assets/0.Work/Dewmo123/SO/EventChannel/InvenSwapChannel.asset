@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d783582f54ee2b34cbc8ea2273c7d84e, type: 3}
+  m_Script: {fileID: 11500000, guid: e5c14d347b11c9d4abc7b6fb9bf3885d, type: 3}
   m_Name: InvenSwapChannel
   m_EditorClassIdentifier: 
