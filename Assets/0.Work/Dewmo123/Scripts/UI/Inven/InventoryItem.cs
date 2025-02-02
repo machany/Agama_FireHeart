@@ -4,11 +4,10 @@ using System;
 namespace Scripts.UI.Inven
 {
     [Serializable]
-    public class InventoryItem : IComparable<InventoryItem>
+    public class InventoryItem
     {
         public ItemDataSO data;
         public int stackSize;
-        public int priority;
 
         public bool isFullStack => stackSize >= data.maxStack;
 
@@ -33,9 +32,5 @@ namespace Scripts.UI.Inven
             stackSize -= count;
         }
 
-        public int CompareTo(InventoryItem other)
-        {
-            return priority - other.priority;
-        }
     }
 }

@@ -65,8 +65,8 @@ MonoBehaviour:
   item:
     data: {fileID: 0}
     stackSize: 0
-    priority: 0
   origin: {fileID: 0}
+  _invenSwapEvent: {fileID: 11400000, guid: fc01aa0595809634cbe5bb0be79f96db, type: 2}
 --- !u!1 &7722442838862917033
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Agama.Scripts.Events;
+using Scripts.EventChannel;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,6 +11,7 @@ namespace Scripts.UI.Inven
     {
         public ItemSlotUI origin;
         private RectTransform rTransform;
+        [SerializeField] private EventChannelSO _invenSwapEvent;
 
         public void Init(ItemSlotUI origin, InventoryItem item)
         {
@@ -26,25 +29,27 @@ namespace Scripts.UI.Inven
 
             List<RaycastResult> results = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointerEventData, results);
-
             // 클릭된 오브젝트들이 results에 저장됨
             foreach (var result in results)
-            {
                 if (result.gameObject.TryGetComponent(out ItemSlotUI slot))
                 {
-                    InventoryItem another = slot.item;
-                    if (another != null)
-                    {
-                        if (another.data == item.data)
-                            item.stackSize += another.stackSize;//maxstack 초과 시 처리 구현
-                        else
-                            origin.UpdateSlot(another);
-                    }
-                    slot.UpdateSlot(item);
+                    InvokeSwapEvent(slot);
                     return;
                 }
-            }
             origin.UpdateSlot(item);
+        }
+
+        private void InvokeSwapEvent(ItemSlotUI slot)
+        {
+            InventoryItem another = slot.item;
+            var swapEvent = InvenEvents.SwapEvent;
+            if (another == null)
+                swapEvent.isSame = false;
+            else
+                swapEvent.isSame = another.data == item.data;
+            swapEvent.index1 = origin.slotIndex;
+            swapEvent.index2 = slot.slotIndex;
+            _invenSwapEvent.InvokeEvent(swapEvent);
         }
 
         public void OnDrop(PointerEventData eventData)
