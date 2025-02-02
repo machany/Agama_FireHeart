@@ -70,7 +70,6 @@ namespace Scripts.Player.Inven
         #region Equip Region
         private void InvenEquipHandler(InvenEquip t)
         {
-            Debug.Log(t.isUnEquip);
             if (t.isUnEquip)
                 UnEquip(t);
             else
@@ -94,7 +93,6 @@ namespace Scripts.Player.Inven
                     }
                     else
                     {
-                        Debug.Log(t.type);
                         _equipSlots.Add(t.type, item);
                         inventory[t.index1] = null;
                     }

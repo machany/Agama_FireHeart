@@ -33,9 +33,13 @@ namespace Scripts.UI.Inven
             foreach (var result in results)
                 if (result.gameObject.TryGetComponent(out ItemUI slot))
                 {
-                    if (slot is EquipSlotUI)
+                    bool isUnEquip = origin is EquipSlotUI;
+                    bool isEquip= slot is EquipSlotUI;
+                    if (isUnEquip && isEquip)
+                        break;
+                    if (isEquip)
                         InvokeEquipEvent(slot as EquipSlotUI);
-                    else if (origin is EquipSlotUI)
+                    else if (isUnEquip)
                         InvokeUnEquipEvent(slot);
                     else
                         InvokeSwapEvent(slot);
