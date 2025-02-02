@@ -52,13 +52,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9491b1562bd5ec4781afbee4802441d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotType: 1
   _itemImage: {fileID: 8406445416201231462}
   _itemText: {fileID: 6112222744493116872}
   slotIndex: 0
   item:
     data: {fileID: 0}
     stackSize: 0
-    priority: 0
   _dragUI: {fileID: 5297814987517447651, guid: 919c246f181d36c4ebe89ce764316223, type: 3}
 --- !u!222 &4373036013336170509
 CanvasRenderer:

@@ -9,7 +9,7 @@ namespace Scripts.UI.Inven
     //드래그 해서 놓았을때 그 위치의 인덱스로 교체해줘야함 원래거를
     public class DragItemUI : ItemUI, IDropHandler
     {
-        public ItemSlotUI origin;
+        public ItemUI origin;
         private RectTransform rTransform;
         [SerializeField] private EventChannelSO _invenSwapEvent;
 
@@ -31,22 +31,43 @@ namespace Scripts.UI.Inven
             EventSystem.current.RaycastAll(pointerEventData, results);
             // 클릭된 오브젝트들이 results에 저장됨
             foreach (var result in results)
-                if (result.gameObject.TryGetComponent(out ItemSlotUI slot))
+                if (result.gameObject.TryGetComponent(out ItemUI slot))
                 {
-                    InvokeSwapEvent(slot);
+                    if (slot is EquipSlotUI)
+                        InvokeEquipEvent(slot as EquipSlotUI);
+                    else if (origin is EquipSlotUI)
+                        InvokeUnEquipEvent(slot);
+                    else
+                        InvokeSwapEvent(slot);
                     return;
                 }
             origin.UpdateSlot(item);
         }
-
-        private void InvokeSwapEvent(ItemSlotUI slot)
+        private void InvokeEquipEvent(EquipSlotUI slot)
+        {
+            var equipEvent = InvenEvents.EquipEvent;
+            equipEvent.isUnEquip = false;
+            equipEvent.type = slot.equipType;
+            equipEvent.index1 = origin.slotIndex;
+            _invenSwapEvent.InvokeEvent(equipEvent);
+        }
+        private void InvokeUnEquipEvent(ItemUI slot)
+        {
+            var equipEvent = InvenEvents.EquipEvent;
+            var originSlot = origin as EquipSlotUI;
+            equipEvent.isUnEquip = true;
+            equipEvent.type = originSlot.equipType;
+            equipEvent.index1 = slot.slotIndex;
+            _invenSwapEvent.InvokeEvent(equipEvent);
+        }
+        private void InvokeSwapEvent(ItemUI slot)
         {
             InventoryItem another = slot.item;
             var swapEvent = InvenEvents.SwapEvent;
-            if (another == null)
+            if (another == null || another.data != item.data)
                 swapEvent.isSame = false;
             else
-                swapEvent.isSame = another.data == item.data;
+                swapEvent.isSame = true;
             swapEvent.index1 = origin.slotIndex;
             swapEvent.index2 = slot.slotIndex;
             _invenSwapEvent.InvokeEvent(swapEvent);

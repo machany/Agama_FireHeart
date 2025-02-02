@@ -3,7 +3,7 @@ using System;
 
 namespace Scripts.UI.Inven
 {
-    [Serializable]
+    [Serializable]//디버깅용 지워도됨
     public class InventoryItem
     {
         public ItemDataSO data;

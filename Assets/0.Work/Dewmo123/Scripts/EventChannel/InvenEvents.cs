@@ -1,14 +1,35 @@
 ﻿using Agama.Scripts.Events;
+using Scripts.Items;
+using Scripts.UI.Inven;
+using System.Collections.Generic;
 
 namespace Scripts.EventChannel
 {
     public static class InvenEvents
     {
-        public static readonly InvenSwapEvent SwapEvent = new InvenSwapEvent();
+        public static readonly InvenSwap SwapEvent = new InvenSwap();
+        public static readonly InvenEquip EquipEvent = new InvenEquip();
+        public static readonly InvenData DataEvent = new InvenData();
+        public static readonly RequestInvenData RequestDataEvent = new RequestInvenData();
     }
-    public class InvenSwapEvent : GameEvent
+    public class InvenData : GameEvent
+    {
+        public int slotCount;
+        public List<InventoryItem> items;
+        public Dictionary<EquipType, InventoryItem> equipments;
+    }
+    public class RequestInvenData : GameEvent
+    {
+    }
+    public class InvenSwap : GameEvent
     {
         public bool isSame;
         public int index1, index2;
+    }
+    public class InvenEquip : GameEvent
+    {
+        public bool isUnEquip;
+        public int index1;
+        public EquipType type;
     }
 }
