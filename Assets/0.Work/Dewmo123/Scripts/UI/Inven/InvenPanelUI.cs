@@ -13,10 +13,10 @@ namespace Scripts.UI.Inven
     public class InvenPanelUI : MonoBehaviour
     {
         [SerializeField] protected EventChannelSO _invenChannel;
-        public List<InventoryItem> inventory;
+        public List<InventoryItem> inventory,quickSlot;
         public Dictionary<EquipType, InventoryItem> equipments;
 
-        [SerializeField] protected Transform _slotParent, _equipSlotParent;
+        [SerializeField] protected Transform _slotParent, _equipSlotParent,_quickSlotParent;
         protected Dictionary<EquipType, EquipSlotUI> _equipSlots;
         protected ItemSlotUI[] _itemSlots;
 

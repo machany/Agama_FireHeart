@@ -11,6 +11,7 @@ namespace Scripts.EventChannel
         public static readonly InvenEquip EquipEvent = new InvenEquip();
         public static readonly InvenData DataEvent = new InvenData();
         public static readonly RequestInvenData RequestDataEvent = new RequestInvenData();
+        public static readonly SetQuickSlot SetQuickSlotEvent = new SetQuickSlot();
     }
     public class InvenData : GameEvent
     {
@@ -20,6 +21,11 @@ namespace Scripts.EventChannel
     }
     public class RequestInvenData : GameEvent
     {
+    }
+    public class SetQuickSlot : GameEvent
+    {
+        public bool isSame, isUnSet;
+        public int slotIndex, quickSlotIndex;
     }
     public class InvenSwap : GameEvent
     {

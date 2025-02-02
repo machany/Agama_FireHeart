@@ -4,6 +4,7 @@ using Scripts.EventChannel;
 using Scripts.InvenSystem;
 using Scripts.Items;
 using Scripts.UI.Inven;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,8 +14,10 @@ namespace Scripts.Player.Inven
     public class PlayerInvenData : InvenSystem.InvenData/*, IEntityComponent*/
     {
         [SerializeField] protected EventChannelSO _invenChannel;
-        [SerializeField] private int _maxSlotCount;
+        [SerializeField] private int _maxSlotCount;//UI 갯수랑 맞춰야함
+        [SerializeField] private int _quickSlotCount;//UI 갯수랑 맞춰야함
         private Dictionary<EquipType, InventoryItem> _equipSlots;
+        public List<InventoryItem> quickSlots;
 
         //private Player _player;
         #region Init Section
@@ -23,13 +26,19 @@ namespace Scripts.Player.Inven
             //_player = entity as Player;
             inventory = new List<InventoryItem>();
             _equipSlots = new Dictionary<EquipType, InventoryItem>();
+            quickSlots = new List<InventoryItem>();
+
             _invenChannel.AddListener<InvenSwap>(InvenSwapHandler);
             _invenChannel.AddListener<InvenEquip>(InvenEquipHandler);
             _invenChannel.AddListener<RequestInvenData>(HandleRequestInventoryData);
+            _invenChannel.AddListener<SetQuickSlot>(QuickSlotHandler);
 
             for (int i = 0; i < _maxSlotCount; i++)
                 inventory.Add(null);
         }
+
+
+
         private void Start()
         {
             UpdateInventoryUI();
@@ -45,11 +54,13 @@ namespace Scripts.Player.Inven
         }
         private void OnDestroy()
         {
+            _invenChannel.RemoveListener<SetQuickSlot>(QuickSlotHandler);
             _invenChannel.RemoveListener<RequestInvenData>(HandleRequestInventoryData);
             _invenChannel.RemoveListener<InvenSwap>(InvenSwapHandler);
             _invenChannel.AddListener<InvenEquip>(InvenEquipHandler);
         }
         #endregion
+        #region Handlers
         private void HandleRequestInventoryData(RequestInvenData obj)
         {
             UpdateInventoryUI();
@@ -58,8 +69,8 @@ namespace Scripts.Player.Inven
         {
             if (t.isSame)
             {
-                inventory[t.index2].AddStack(inventory[t.index1].stackSize); //꽉찼을때 판정 해줘야함
-                inventory.Remove(inventory[t.index1]);
+                AddItem(inventory[t.index2].data, inventory[t.index1].stackSize);
+                inventory[t.index1] = null;
             }
             else
             {
@@ -67,7 +78,10 @@ namespace Scripts.Player.Inven
             }
             UpdateInventoryUI();
         }
-        #region Equip Region
+        private void QuickSlotHandler(SetQuickSlot slot)
+        {
+
+        }
         private void InvenEquipHandler(InvenEquip t)
         {
             if (t.isUnEquip)
@@ -75,6 +89,9 @@ namespace Scripts.Player.Inven
             else
                 Equip(t);
         }
+        #endregion
+
+        #region Equip Region
 
         private void Equip(InvenEquip t)
         {
@@ -96,7 +113,7 @@ namespace Scripts.Player.Inven
                         _equipSlots.Add(t.type, item);
                         inventory[t.index1] = null;
                     }
-                //equipItemData.AddModifier(_statCompo);
+                    //equipItemData.AddModifier(_statCompo);
                 }
             }
             UpdateInventoryUI();
@@ -183,6 +200,10 @@ namespace Scripts.Player.Inven
             evt.slotCount = _maxSlotCount;
             evt.equipments = _equipSlots;
             _invenChannel.InvokeEvent(evt);
+        }
+        private void UpdateQuickSlot()
+        {
+
         }
     }
 }

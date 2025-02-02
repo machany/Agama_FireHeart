@@ -1,5 +1,6 @@
 ﻿using Agama.Scripts.Events;
 using Scripts.EventChannel;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -33,20 +34,41 @@ namespace Scripts.UI.Inven
             foreach (var result in results)
                 if (result.gameObject.TryGetComponent(out ItemUI slot))
                 {
-                    bool isUnEquip = origin is EquipSlotUI;
-                    bool isEquip= slot is EquipSlotUI;
-                    if (isUnEquip && isEquip)
-                        break;
-                    if (isEquip)
-                        InvokeEquipEvent(slot as EquipSlotUI);
-                    else if (isUnEquip)
-                        InvokeUnEquipEvent(slot);
-                    else
+                    if (!CheckEquip(slot) || !CheckQuick(slot))
                         InvokeSwapEvent(slot);
                     return;
                 }
             origin.UpdateSlot(item);
         }
+
+        private bool CheckQuick(ItemUI slot)
+        {
+            bool isUnEquip = origin is QuickSlotUI;
+            bool isEquip = slot is QuickSlotUI;
+            if (isUnEquip == isEquip)
+                return false;
+
+            if (isEquip)
+                InvokeEquipEvent(slot as EquipSlotUI);
+            else if (isUnEquip)
+                InvokeUnEquipEvent(slot);
+            return true;
+        }
+
+        private bool CheckEquip(ItemUI slot)
+        {
+            bool isUnEquip = origin is EquipSlotUI;
+            bool isEquip = slot is EquipSlotUI;
+            if (isUnEquip == isEquip)
+                return false;
+
+            if (isEquip)
+                InvokeEquipEvent(slot as EquipSlotUI);
+            else if (isUnEquip)
+                InvokeUnEquipEvent(slot);
+            return true;
+        }
+        #region Invoke Event
         private void InvokeEquipEvent(EquipSlotUI slot)
         {
             var equipEvent = InvenEvents.EquipEvent;
@@ -76,7 +98,7 @@ namespace Scripts.UI.Inven
             swapEvent.index2 = slot.slotIndex;
             _invenSwapEvent.InvokeEvent(swapEvent);
         }
-
+        #endregion
         public void OnDrop(PointerEventData eventData)
         {
             CheckUIUnderMouse();
