@@ -136,7 +136,13 @@ namespace Scripts.Player.Inven
                 }
             UpdateInventoryUI(true);
         }
-
+        public override InventoryItem GetItem(ItemDataSO itemData)
+        {
+            InventoryItem item = quickSlots.FirstOrDefault(inventoryItem => inventoryItem.data == itemData);
+            if (item == null)
+                item = base.GetItem(itemData);
+            return item;
+        }
         #region Equip Region
 
         private void Equip(InvenEquip t)
