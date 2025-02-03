@@ -59,7 +59,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e35402837492bf24890566fe3cf51bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotType: 3
   _itemImage: {fileID: 1404000416903230197}
   _itemText: {fileID: 5834633458505249220}
   slotIndex: 0
@@ -67,7 +66,7 @@ MonoBehaviour:
     data: {fileID: 0}
     stackSize: 0
   origin: {fileID: 0}
-  _invenSwapEvent: {fileID: 11400000, guid: fc01aa0595809634cbe5bb0be79f96db, type: 2}
+  _invenEvent: {fileID: 11400000, guid: fc01aa0595809634cbe5bb0be79f96db, type: 2}
 --- !u!1 &7722442838862917033
 GameObject:
   m_ObjectHideFlags: 0

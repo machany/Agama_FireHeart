@@ -82,12 +82,13 @@ namespace Scripts.Player.Inven
         }
         private void QuickSlotHandler(SetQuickSlot slot)
         {
-            if (slot.isUnSet)
+            if (slot.isSwap)
+                SwapQuickSlot(slot);
+            else if (slot.isUnSet)
                 UnSetQuickSlot(slot);
             else
                 SetQuickSlot(slot);
         }
-
 
         private void InvenEquipHandler(InvenEquip t)
         {
@@ -97,6 +98,11 @@ namespace Scripts.Player.Inven
                 Equip(t);
         }
         #endregion
+        private void SwapQuickSlot(SetQuickSlot slot)
+        {
+            (quickSlots[slot.quickSlotIndex], quickSlots[slot.quickSlotIndex2]) = (quickSlots[slot.quickSlotIndex2], quickSlots[slot.quickSlotIndex]);
+            UpdateQuickSlot();
+        }
         private void UnSetQuickSlot(SetQuickSlot t)
         {
             var quickSlot = quickSlots[t.quickSlotIndex];
@@ -111,7 +117,7 @@ namespace Scripts.Player.Inven
                 {
                     (quickSlots[t.quickSlotIndex], inventory[t.slotIndex]) = (inventory[t.slotIndex], quickSlots[t.quickSlotIndex]);
                 }
-            UpdateInventoryUI();
+            UpdateInventoryUI(true);
         }
 
         private void SetQuickSlot(SetQuickSlot t)
@@ -128,7 +134,7 @@ namespace Scripts.Player.Inven
                 {
                     (quickSlots[t.quickSlotIndex], inventory[t.slotIndex]) = (inventory[t.slotIndex], quickSlots[t.quickSlotIndex]);
                 }
-            UpdateInventoryUI();
+            UpdateInventoryUI(true);
         }
 
         #region Equip Region
@@ -208,7 +214,7 @@ namespace Scripts.Player.Inven
             int remain = quickSlot.AddStack(count);
             if (remain > 0)
                 CreateNewInventoryItem(quickSlot.data, remain);
-            UpdateInventoryUI();
+            UpdateInventoryUI(true);
         }
         private void CreateNewInventoryItem(ItemDataSO itemData, int count)
         {
@@ -239,18 +245,21 @@ namespace Scripts.Player.Inven
         }
         #endregion
 
-        private void UpdateInventoryUI()
+        private void UpdateInventoryUI(bool quickSlot = false)
         {
             var evt = InvenEvents.DataEvent;
             evt.items = inventory;
             evt.slotCount = _maxSlotCount;
             evt.equipments = _equipSlots;
-            evt.quickSlotItems = quickSlots;
             _invenChannel.InvokeEvent(evt);
+            if (quickSlot)
+                UpdateQuickSlot();
         }
         private void UpdateQuickSlot()
         {
-
+            var evt = InvenEvents.QuickSlotDataEvent;
+            evt.quickSlotItems = quickSlots;
+            _invenChannel.InvokeEvent(evt);
         }
     }
 }

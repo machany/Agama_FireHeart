@@ -4,13 +4,8 @@ using UnityEngine.UI;
 
 namespace Scripts.UI.Inven
 {
-    public enum SlotType
-    {
-        Quick, Inven, Equip, Drag
-    }
     public class ItemUI : MonoBehaviour
     {
-        public SlotType slotType;
         [SerializeField] protected Image _itemImage;
         [SerializeField] protected TextMeshProUGUI _itemText;
         public int slotIndex;

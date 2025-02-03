@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5c14d347b11c9d4abc7b6fb9bf3885d, type: 3}
-  m_Name: InvenSwapChannel
+  m_Name: InvenChannel
   m_EditorClassIdentifier: 
