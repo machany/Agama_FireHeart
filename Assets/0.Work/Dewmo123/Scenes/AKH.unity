@@ -370,6 +370,8 @@ MonoBehaviour:
   inventory: []
   _invenChannel: {fileID: 11400000, guid: fc01aa0595809634cbe5bb0be79f96db, type: 2}
   _maxSlotCount: 16
+  _quickSlotCount: 5
+  quickSlots: []
 --- !u!1 &297830222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2625,8 +2627,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _invenChannel: {fileID: 11400000, guid: fc01aa0595809634cbe5bb0be79f96db, type: 2}
   inventory: []
+  quickSlotItems: []
   _slotParent: {fileID: 1716605289}
   _equipSlotParent: {fileID: 297830223}
+  _quickSlotParent: {fileID: 476868204}
 --- !u!1001 &1928426315
 PrefabInstance:
   m_ObjectHideFlags: 0

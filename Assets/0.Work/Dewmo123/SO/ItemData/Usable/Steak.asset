@@ -16,4 +16,3 @@ MonoBehaviour:
   icon: {fileID: 7788930713404360589, guid: cc58bc22b60f7ed4d9efe74f21fb771c, type: 3}
   itemID: af9e97b8287e57741aec94b673a33e85
   maxStack: 99
-  dropChance: 32.5

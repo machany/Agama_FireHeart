@@ -6,7 +6,7 @@ namespace Scripts.UI.Inven
 {
     public enum SlotType
     {
-        Quick,Inven,Equip,Drag
+        Quick, Inven, Equip, Drag
     }
     public class ItemUI : MonoBehaviour
     {

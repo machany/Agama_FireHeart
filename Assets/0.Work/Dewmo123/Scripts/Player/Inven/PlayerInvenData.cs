@@ -35,6 +35,8 @@ namespace Scripts.Player.Inven
 
             for (int i = 0; i < _maxSlotCount; i++)
                 inventory.Add(null);
+            for (int i = 0; i < _quickSlotCount; i++)
+                quickSlots.Add(null);
         }
 
 
@@ -80,8 +82,13 @@ namespace Scripts.Player.Inven
         }
         private void QuickSlotHandler(SetQuickSlot slot)
         {
-
+            if (slot.isUnSet)
+                UnSetQuickSlot(slot);
+            else
+                SetQuickSlot(slot);
         }
+
+
         private void InvenEquipHandler(InvenEquip t)
         {
             if (t.isUnEquip)
@@ -90,6 +97,39 @@ namespace Scripts.Player.Inven
                 Equip(t);
         }
         #endregion
+        private void UnSetQuickSlot(SetQuickSlot t)
+        {
+            var quickSlot = quickSlots[t.quickSlotIndex];
+            var slot = inventory[t.slotIndex];
+            if (slot.data == null|| slot.data is UsableItemDataSO)
+                if (t.isSame)
+                {
+                    AddItem(slot.data, quickSlot.stackSize);
+                    quickSlots[t.quickSlotIndex] = null;
+                }
+                else
+                {
+                    (quickSlots[t.quickSlotIndex], inventory[t.slotIndex]) = (inventory[t.slotIndex], quickSlots[t.quickSlotIndex]);
+                }
+            UpdateInventoryUI();
+        }
+
+        private void SetQuickSlot(SetQuickSlot t)
+        {
+            var quickSlot = quickSlots[t.quickSlotIndex];
+            var slot = inventory[t.slotIndex];
+            if (slot.data is UsableItemDataSO)
+                if (t.isSame)
+                {
+                    AddQuickSlotItem(quickSlot, slot.stackSize);
+                    inventory[t.slotIndex] = null;
+                }
+                else
+                {
+                    (quickSlots[t.quickSlotIndex], inventory[t.slotIndex]) = (inventory[t.slotIndex], quickSlots[t.quickSlotIndex]);
+                }
+            UpdateInventoryUI();
+        }
 
         #region Equip Region
 
@@ -163,7 +203,13 @@ namespace Scripts.Player.Inven
 
             UpdateInventoryUI();
         }
-
+        public void AddQuickSlotItem(InventoryItem quickSlot, int count = 1)
+        {
+            int remain = quickSlot.AddStack(count);
+            if (remain > 0)
+                CreateNewInventoryItem(quickSlot.data, remain);
+            UpdateInventoryUI();
+        }
         private void CreateNewInventoryItem(ItemDataSO itemData, int count)
         {
             InventoryItem newItem = new InventoryItem(itemData, count);
@@ -199,6 +245,7 @@ namespace Scripts.Player.Inven
             evt.items = inventory;
             evt.slotCount = _maxSlotCount;
             evt.equipments = _equipSlots;
+            evt.quickSlotItems = quickSlots;
             _invenChannel.InvokeEvent(evt);
         }
         private void UpdateQuickSlot()

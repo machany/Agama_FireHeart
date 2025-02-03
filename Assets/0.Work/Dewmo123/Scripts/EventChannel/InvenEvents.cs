@@ -17,6 +17,7 @@ namespace Scripts.EventChannel
     {
         public int slotCount;
         public List<InventoryItem> items;
+        public List<InventoryItem> quickSlotItems;
         public Dictionary<EquipType, InventoryItem> equipments;
     }
     public class RequestInvenData : GameEvent

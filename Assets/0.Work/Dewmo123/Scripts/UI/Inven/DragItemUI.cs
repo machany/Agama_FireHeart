@@ -34,41 +34,57 @@ namespace Scripts.UI.Inven
             foreach (var result in results)
                 if (result.gameObject.TryGetComponent(out ItemUI slot))
                 {
-                    if (!CheckEquip(slot) || !CheckQuick(slot))
+                    if (!CheckOtherSlot<EquipSlotUI>(slot, InvokeEquipEvent, InvokeUnEquipEvent) && !CheckOtherSlot<QuickSlotUI>(slot, InvokeSetQuickEvent, InvokeUnsetQuickEvent))
                         InvokeSwapEvent(slot);
                     return;
                 }
             origin.UpdateSlot(item);
         }
-
-        private bool CheckQuick(ItemUI slot)
+        private bool CheckOtherSlot<T>(ItemUI slot, Action<T> equipAction, Action<ItemUI> unEquipActoin) where T : ItemSlotUI
         {
-            bool isUnEquip = origin is QuickSlotUI;
-            bool isEquip = slot is QuickSlotUI;
+            bool isUnEquip = origin is T;
+            bool isEquip = slot is T;
             if (isUnEquip == isEquip)
                 return false;
 
             if (isEquip)
-                InvokeEquipEvent(slot as EquipSlotUI);
+                equipAction(slot as T);
             else if (isUnEquip)
-                InvokeUnEquipEvent(slot);
+                unEquipActoin(slot);
             return true;
         }
 
-        private bool CheckEquip(ItemUI slot)
-        {
-            bool isUnEquip = origin is EquipSlotUI;
-            bool isEquip = slot is EquipSlotUI;
-            if (isUnEquip == isEquip)
-                return false;
 
-            if (isEquip)
-                InvokeEquipEvent(slot as EquipSlotUI);
-            else if (isUnEquip)
-                InvokeUnEquipEvent(slot);
-            return true;
-        }
+
+
         #region Invoke Event
+        private void InvokeSetQuickEvent(QuickSlotUI quickSlotUI)
+        {
+            var evt = InvenEvents.SetQuickSlotEvent;
+            evt.isUnSet = false;
+            evt.slotIndex = origin.slotIndex;
+            evt.quickSlotIndex = quickSlotUI.slotIndex;
+            if (quickSlotUI.item == null|| quickSlotUI.item.data == null)
+                evt.isSame = false;
+            else
+                evt.isSame = quickSlotUI.item.data == item.data;
+            _invenSwapEvent.InvokeEvent(evt);
+        }
+        private void InvokeUnsetQuickEvent(ItemUI slot)
+        {
+
+            var evt = InvenEvents.SetQuickSlotEvent;
+            var quickSlotUI = origin as QuickSlotUI;
+            evt.isUnSet = true;
+            evt.slotIndex = slot.slotIndex;
+            evt.quickSlotIndex = quickSlotUI.slotIndex;
+            if (slot.item == null)
+                evt.isSame = false;
+            else
+                evt.isSame = item.data == slot.item.data;
+            _invenSwapEvent.InvokeEvent(evt);
+            
+        }
         private void InvokeEquipEvent(EquipSlotUI slot)
         {
             var equipEvent = InvenEvents.EquipEvent;
