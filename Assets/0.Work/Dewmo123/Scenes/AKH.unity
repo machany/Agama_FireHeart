@@ -371,7 +371,9 @@ MonoBehaviour:
   _invenChannel: {fileID: 11400000, guid: fc01aa0595809634cbe5bb0be79f96db, type: 2}
   _maxSlotCount: 16
   _quickSlotCount: 5
+  _input: {fileID: 11400000, guid: e7933cf2312c95e41912b465f7e51188, type: 2}
   quickSlots: []
+  selectedSlotIndex: 0
 --- !u!1 &297830222
 GameObject:
   m_ObjectHideFlags: 0

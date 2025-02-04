@@ -1,4 +1,5 @@
-﻿using Agama.Scripts.Entities;
+﻿using Agama.Scripts.Core;
+using Agama.Scripts.Entities;
 using Agama.Scripts.Events;
 using Scripts.EventChannel;
 using Scripts.InvenSystem;
@@ -17,14 +18,14 @@ namespace Scripts.Player.Inven
 
         [SerializeField] private int _maxSlotCount;//UI 갯수랑 맞춰야함
         [SerializeField] private int _quickSlotCount;//UI 갯수랑 맞춰야함
-
+        [SerializeField] private PlayerInputSO _input;//IEntityCompo 넣으면 거서 가꼬옴 지금은 임시
         private Dictionary<EquipType, InventoryItem> _equipSlots;
 
         public List<InventoryItem> quickSlots;
 
-        public IUsable selectedItem;
+        public int selectedSlotIndex;
         //선택됨 퀵슬롯 추가해야함
-
+        public IUsable selectedItem => quickSlots[selectedSlotIndex] as IUsable;    
         //private Player _player;
         #region Init Section
         public void Awake()//Initialize로 변경
@@ -33,6 +34,8 @@ namespace Scripts.Player.Inven
             inventory = new List<InventoryItem>();
             _equipSlots = new Dictionary<EquipType, InventoryItem>();
             quickSlots = new List<InventoryItem>();
+
+            _input.OnScrollWheelEvent += ScrollWheelHandler;
 
             _invenChannel.AddListener<InvenSwap>(InvenSwapHandler);
             _invenChannel.AddListener<InvenEquip>(InvenEquipHandler);
@@ -60,14 +63,12 @@ namespace Scripts.Player.Inven
         {
             if (Input.GetKeyDown(KeyCode.P))
                 AddItem(inventory[0].data);
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                selectedItem = quickSlots[0] as IUsable;
-            }
         }
 
         private void OnDestroy()
         {
+            _input.OnScrollWheelEvent += ScrollWheelHandler;
+
             _invenChannel.RemoveListener<SetQuickSlot>(QuickSlotHandler);
             _invenChannel.RemoveListener<RequestInvenData>(HandleRequestInventoryData);
             _invenChannel.RemoveListener<InvenSwap>(InvenSwapHandler);
@@ -77,6 +78,10 @@ namespace Scripts.Player.Inven
         #endregion
 
         #region Handlers
+        private void ScrollWheelHandler(Vector2 vector)
+        {
+            selectedSlotIndex = (int)Mathf.Clamp(selectedSlotIndex - vector.y, 0, _quickSlotCount);
+        }
         private void CraftItemHandler(CraftItem item)
         {
             CraftingRecipeSO recipe = item.recipe;
