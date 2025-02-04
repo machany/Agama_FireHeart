@@ -4,6 +4,7 @@ using Scripts.EventChannel;
 using Scripts.InvenSystem;
 using Scripts.Items;
 using Scripts.UI.Inven;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,8 +14,16 @@ namespace Scripts.Player.Inven
     public class PlayerInvenData : InvenSystem.InvenData/*, IEntityComponent*/
     {
         [SerializeField] protected EventChannelSO _invenChannel;
-        [SerializeField] private int _maxSlotCount;
+
+        [SerializeField] private int _maxSlotCount;//UI 갯수랑 맞춰야함
+        [SerializeField] private int _quickSlotCount;//UI 갯수랑 맞춰야함
+
         private Dictionary<EquipType, InventoryItem> _equipSlots;
+
+        public List<InventoryItem> quickSlots;
+
+        public IUsable selectedItem;
+        //선택됨 퀵슬롯 추가해야함
 
         //private Player _player;
         #region Init Section
@@ -23,13 +32,22 @@ namespace Scripts.Player.Inven
             //_player = entity as Player;
             inventory = new List<InventoryItem>();
             _equipSlots = new Dictionary<EquipType, InventoryItem>();
+            quickSlots = new List<InventoryItem>();
+
             _invenChannel.AddListener<InvenSwap>(InvenSwapHandler);
             _invenChannel.AddListener<InvenEquip>(InvenEquipHandler);
             _invenChannel.AddListener<RequestInvenData>(HandleRequestInventoryData);
+            _invenChannel.AddListener<SetQuickSlot>(QuickSlotHandler);
+            _invenChannel.AddListener<CraftItem>(CraftItemHandler);
 
             for (int i = 0; i < _maxSlotCount; i++)
                 inventory.Add(null);
+            for (int i = 0; i < _quickSlotCount; i++)
+                quickSlots.Add(null);
         }
+
+
+
         private void Start()
         {
             UpdateInventoryUI();
@@ -42,14 +60,30 @@ namespace Scripts.Player.Inven
         {
             if (Input.GetKeyDown(KeyCode.P))
                 AddItem(inventory[0].data);
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                selectedItem = quickSlots[0] as IUsable;
+            }
         }
+
         private void OnDestroy()
         {
+            _invenChannel.RemoveListener<SetQuickSlot>(QuickSlotHandler);
             _invenChannel.RemoveListener<RequestInvenData>(HandleRequestInventoryData);
             _invenChannel.RemoveListener<InvenSwap>(InvenSwapHandler);
-            _invenChannel.AddListener<InvenEquip>(InvenEquipHandler);
+            _invenChannel.RemoveListener<InvenEquip>(InvenEquipHandler);
+            _invenChannel.RemoveListener<CraftItem>(CraftItemHandler);
         }
         #endregion
+
+        #region Handlers
+        private void CraftItemHandler(CraftItem item)
+        {
+            CraftingRecipeSO recipe = item.recipe;
+            if (recipe.MakeItem(this))
+                AddItem(recipe.product);
+            UpdateInventoryUI(true);
+        }
         private void HandleRequestInventoryData(RequestInvenData obj)
         {
             UpdateInventoryUI();
@@ -58,8 +92,8 @@ namespace Scripts.Player.Inven
         {
             if (t.isSame)
             {
-                inventory[t.index2].AddStack(inventory[t.index1].stackSize); //꽉찼을때 판정 해줘야함
-                inventory.Remove(inventory[t.index1]);
+                AddItem(inventory[t.index2].data, inventory[t.index1].stackSize);
+                inventory[t.index1] = null;
             }
             else
             {
@@ -67,15 +101,81 @@ namespace Scripts.Player.Inven
             }
             UpdateInventoryUI();
         }
-        #region Equip Region
+        private void QuickSlotHandler(SetQuickSlot slot)
+        {
+            if (slot.isSwap)
+                SwapQuickSlot(slot);
+            else if (slot.isUnSet)
+                UnSetQuickSlot(slot);
+            else
+                SetQuickSlot(slot);
+        }
+
         private void InvenEquipHandler(InvenEquip t)
         {
-            Debug.Log(t.isUnEquip);
             if (t.isUnEquip)
                 UnEquip(t);
             else
                 Equip(t);
         }
+        #endregion
+
+        #region QuickSlot Region
+        private void SwapQuickSlot(SetQuickSlot slot)
+        {
+            (quickSlots[slot.quickSlotIndex], quickSlots[slot.quickSlotIndex2]) = (quickSlots[slot.quickSlotIndex2], quickSlots[slot.quickSlotIndex]);
+            UpdateQuickSlot();
+        }
+        private void UnSetQuickSlot(SetQuickSlot t)
+        {
+            var quickSlot = quickSlots[t.quickSlotIndex];
+            var slot = inventory[t.slotIndex];
+            if (slot.data == null || slot.data is IUsable)
+                if (t.isSame)
+                {
+                    AddItem(slot.data, quickSlot.stackSize);
+                    quickSlots[t.quickSlotIndex] = null;
+                }
+                else
+                {
+                    (quickSlots[t.quickSlotIndex], inventory[t.slotIndex]) = (inventory[t.slotIndex], quickSlots[t.quickSlotIndex]);
+                }
+            UpdateInventoryUI(true);
+        }
+
+        private void SetQuickSlot(SetQuickSlot t)
+        {
+            var quickSlot = quickSlots[t.quickSlotIndex];
+            var slot = inventory[t.slotIndex];
+            if (slot.data is ConsumptionItemDataSO)
+                if (t.isSame)
+                {
+                    AddQuickSlotItem(quickSlot, slot.stackSize);
+                    inventory[t.slotIndex] = null;
+                }
+                else
+                {
+                    (quickSlots[t.quickSlotIndex], inventory[t.slotIndex]) = (inventory[t.slotIndex], quickSlots[t.quickSlotIndex]);
+                }
+            UpdateInventoryUI(true);
+        }
+        public override InventoryItem GetItem(ItemDataSO itemData)
+        {
+            InventoryItem item = quickSlots.FirstOrDefault(inventoryItem => inventoryItem.data == itemData);
+            if (item == null)
+                item = base.GetItem(itemData);
+            return item;
+        }
+        public override IEnumerable<InventoryItem> GetItems(ItemDataSO itemData)
+        {
+            var items = base.GetItems(itemData).ToList();
+            var quickSlotItems = quickSlots.Where(item => item.data == itemData).ToList();
+            quickSlotItems.ForEach(item => items.Add(item));
+            return items;
+        }
+        #endregion
+
+        #region Equip Region
 
         private void Equip(InvenEquip t)
         {
@@ -94,14 +194,13 @@ namespace Scripts.Player.Inven
                     }
                     else
                     {
-                        Debug.Log(t.type);
                         _equipSlots.Add(t.type, item);
                         inventory[t.index1] = null;
                     }
-                //equipItemData.AddModifier(_statCompo);
+                    //equipItemData.AddModifier(_statCompo);
                 }
             }
-            UpdateInventoryUI();
+            UpdateInventoryUI(true);
             //else
             //{
             //    _itemSlots[t.index1].UpdateSlot(item);
@@ -126,9 +225,10 @@ namespace Scripts.Player.Inven
                 inventory[t.index1] = _equipSlots[t.type];
                 _equipSlots[t.type] = item;
             }
-            UpdateInventoryUI();
+            UpdateInventoryUI(true);
         }
         #endregion
+
         #region Item Management
         public override void AddItem(ItemDataSO itemData, int count = 1)
         {
@@ -148,7 +248,13 @@ namespace Scripts.Player.Inven
 
             UpdateInventoryUI();
         }
-
+        public void AddQuickSlotItem(InventoryItem quickSlot, int count = 1)
+        {
+            int remain = quickSlot.AddStack(count);
+            if (remain > 0)
+                CreateNewInventoryItem(quickSlot.data, remain);
+            UpdateInventoryUI(true);
+        }
         private void CreateNewInventoryItem(ItemDataSO itemData, int count)
         {
             InventoryItem newItem = new InventoryItem(itemData, count);
@@ -162,6 +268,14 @@ namespace Scripts.Player.Inven
 
         public override void RemoveItem(ItemDataSO itemData, int count)
         {
+            var items = GetItems(itemData);
+            Debug.Log(GetAllItemStack(itemData));
+            if (count > GetAllItemStack(itemData))
+                return;
+            int remain = count;
+            foreach (var item in items)
+                if (remain > 0)
+                    remain = item.RemoveStack(remain);
             UpdateInventoryUI();
         }
 
@@ -178,12 +292,20 @@ namespace Scripts.Player.Inven
         }
         #endregion
 
-        private void UpdateInventoryUI()
+        private void UpdateInventoryUI(bool quickSlot = false)
         {
             var evt = InvenEvents.DataEvent;
             evt.items = inventory;
             evt.slotCount = _maxSlotCount;
             evt.equipments = _equipSlots;
+            _invenChannel.InvokeEvent(evt);
+            if (quickSlot)
+                UpdateQuickSlot();
+        }
+        private void UpdateQuickSlot()
+        {
+            var evt = InvenEvents.QuickSlotDataEvent;
+            evt.quickSlotItems = quickSlots;
             _invenChannel.InvokeEvent(evt);
         }
     }

@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Scripts.UI.Inven
 {
-    //여기서 인벤 관리중 플레이어에서 관리할거면 이벤트채널 받아서 리스트 수정한 후 여기에 보내주면 됨
+    //아마 오픈, 클로즈도 만들어야할
     public class InvenPanelUI : MonoBehaviour
     {
         [SerializeField] protected EventChannelSO _invenChannel;
@@ -31,9 +31,9 @@ namespace Scripts.UI.Inven
             _itemSlots = _slotParent.GetComponentsInChildren<ItemSlotUI>();
 
 
-
-            for(int i = 0; i < _itemSlots.Length; i++)
+            for (int i = 0; i < _itemSlots.Length; i++)
                 _itemSlots[i].slotIndex = i;
+
         }
         private void OnDestroy()
         {

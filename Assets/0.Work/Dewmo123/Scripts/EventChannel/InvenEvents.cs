@@ -11,6 +11,9 @@ namespace Scripts.EventChannel
         public static readonly InvenEquip EquipEvent = new InvenEquip();
         public static readonly InvenData DataEvent = new InvenData();
         public static readonly RequestInvenData RequestDataEvent = new RequestInvenData();
+        public static readonly SetQuickSlot SetQuickSlotEvent = new SetQuickSlot();
+        public static readonly QuickSlotData QuickSlotDataEvent = new QuickSlotData();
+        public static readonly CraftItem CraftItemEvent = new CraftItem();
     }
     public class InvenData : GameEvent
     {
@@ -18,8 +21,17 @@ namespace Scripts.EventChannel
         public List<InventoryItem> items;
         public Dictionary<EquipType, InventoryItem> equipments;
     }
+    public class QuickSlotData : GameEvent
+    {
+        public List<InventoryItem> quickSlotItems;
+    }
     public class RequestInvenData : GameEvent
     {
+    }
+    public class SetQuickSlot : GameEvent
+    {
+        public bool isSame, isUnSet,isSwap = false;
+        public int slotIndex, quickSlotIndex,quickSlotIndex2;
     }
     public class InvenSwap : GameEvent
     {
@@ -31,5 +43,9 @@ namespace Scripts.EventChannel
         public bool isUnEquip;
         public int index1;
         public EquipType type;
+    }
+    public class CraftItem : GameEvent
+    {
+        public CraftingRecipeSO recipe;
     }
 }

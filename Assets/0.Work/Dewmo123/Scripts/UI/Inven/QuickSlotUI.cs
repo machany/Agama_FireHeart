@@ -1,6 +1,6 @@
 ﻿namespace Scripts.UI.Inven
 {
-    public class QuickSlotUI : ItemUI
+    public class QuickSlotUI : ItemSlotUI
     {
 
     }
