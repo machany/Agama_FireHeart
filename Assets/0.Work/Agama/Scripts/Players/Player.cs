@@ -1,0 +1,82 @@
+using Agama.Scripts.Core;
+using Agama.Scripts.Entities;
+using Agama.Scripts.Entities.FSM;
+using UnityEngine;
+
+namespace Agama.Scripts.Players
+{
+    public class Player : Entity
+    {
+        [field: SerializeField] public PlayerInputSO InputSO { get; private set; }
+
+        [SerializeField] private EntityStateSOList stateList;
+
+        [Tooltip("<color=red>대기 상태</color>로 남아 있을 수 있는 최대 수입니다.\n에를 들어, 값이 3이라면 <color=green>(현재 진행중인 이벤트 스테이트) + (보관중인 이벤트 스테이트){최대 용량 3}</color>으로 4개의 이벤트를 처리하는 것으로 <color=red>보일 수 있습니다.</color>")]
+        [SerializeField] private int maxEventStateStorageCount = 3;
+
+        private EntityStateMachine _stateMachine;
+
+        public bool StateChangeLock { get; private set; }
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _stateMachine = new EntityStateMachine(this, stateList, maxEventStateStorageCount);
+
+            InputSO.OnItemUseKeyPressedEvent += TestEventState;
+            InputSO.OnMoveKeyPressedEvent += TestState;
+
+            StateChangeLock = false;
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            InputSO.OnItemUseKeyPressedEvent -= TestEventState;
+            InputSO.OnMoveKeyPressedEvent -= TestState;
+            _stateMachine.DestoryObject();
+        }
+
+        private void Update()
+        {
+            _stateMachine.UpdateState();
+        }
+
+        /// <summary>
+        /// 명명 규칙 : 반드시 스테이트 이름은 영문 소문자로 입력하며, 띄어쓰기의 기준은 다른 단어를 사용할 때를 기준으로 언더바(_)를 사용한다.
+        /// </summary>
+        /// <remarks>
+        /// 규격 : 해당 스테이트를 사용하는 (entity의 이름, &quot;첫 알파벳만 대문자&quot;)이 가장 먼저 앞으로 와야하며, 마지막에 (State_스테이트의 타입)을 붙인다. (event, default등) 단, default는 생략할 수 있다. [예 : &quot;P&quot;layer_use_item_&quot;S&quot;tate_event]
+        /// </remarks>
+        public void ChangeState(string stateName)
+        {
+            if (StateChangeLock)
+                return;
+
+            _stateMachine.ChangeState(stateName);
+        }
+
+        public void SetStateChangeLock(bool value)
+            => StateChangeLock = value;
+
+        private void TestEventState()
+        {
+            ChangeState("TestEventState");
+        }
+
+        private void TestState()
+        {
+            ChangeState("TestState");
+        }
+
+        protected override void HandleDeadEvent()
+        {
+            ChangeState("Player_death_State");
+        }
+
+        protected override void HandleHitEvent()
+        {
+            ChangeState("Player_hit_State_event");
+        }
+    }
+}
