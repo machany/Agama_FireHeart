@@ -13,6 +13,7 @@ namespace Scripts.EventChannel
         public static readonly RequestInvenData RequestDataEvent = new RequestInvenData();
         public static readonly SetQuickSlot SetQuickSlotEvent = new SetQuickSlot();
         public static readonly QuickSlotData QuickSlotDataEvent = new QuickSlotData();
+        public static readonly CraftItem CraftItemEvent = new CraftItem();
     }
     public class InvenData : GameEvent
     {
@@ -42,5 +43,9 @@ namespace Scripts.EventChannel
         public bool isUnEquip;
         public int index1;
         public EquipType type;
+    }
+    public class CraftItem : GameEvent
+    {
+        public CraftingRecipeSO recipe;
     }
 }

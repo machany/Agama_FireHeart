@@ -27,9 +27,15 @@ namespace Scripts.UI.Inven
             }
             return remainCount;
         }
-        public void RemoveStack(int count = 1)
+        public int RemoveStack(int count = 1)
         {
             stackSize -= count;
+            if (stackSize < 0)
+            {
+                data = null;
+                return -stackSize;
+            }
+            return 0;
         }
 
     }
