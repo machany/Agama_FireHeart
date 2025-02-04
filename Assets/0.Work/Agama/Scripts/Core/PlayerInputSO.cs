@@ -6,15 +6,15 @@ using UnityEngine.InputSystem;
 namespace Agama.Scripts.Core
 {
     [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "SO/Input/PlayerInput", order = 0)]
-    public class PlayerInputSO : ScriptableObject, Controlls.IPlayerActions, Controlls.IUIActions
+    public class PlayerInputSO : ScriptableObject, Controls.IPlayerActions, Controls.IUIActions
     {
-        private Controlls _controls;
+        private Controls _controls;
 
         private void OnEnable()
         {
             if (_controls == null)
             {
-                _controls = new Controlls();
+                _controls = new Controls();
                 _controls.Player.SetCallbacks(this);
                 _controls.UI.SetCallbacks(this);
             }
@@ -30,33 +30,35 @@ namespace Agama.Scripts.Core
 
         #region Player
 
-        public Action OnAttackPressedEvent;
-        public Action OnInteractPressedEvent;
-        public Action OnMoveEvent;
+        public Action OnItemUseKeyPressedEvent;
+        public Action OnInteractKeyPressedEvent;
+        public Action OnMoveKeyPressedEvent;
         /// <summary>
         /// true = Next(Right), false = Previous(Left)
         /// </summary>
+        public Action OnQuickSlotChangedEvent;
         public Action<bool> OnQuickSlotMoveEvent;
-        public Action<byte> OnQuickNumberChanged;
+        public Action<byte> OnQuickNumberKeyPressedEvent;
 
         public Vector2 MoveInputVector { get; private set; }
 
-        public void OnAttack(InputAction.CallbackContext context)
+        public void OnItemUse(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnAttackPressedEvent?.Invoke();
+                OnItemUseKeyPressedEvent?.Invoke();
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnInteractPressedEvent?.Invoke();
+                OnInteractKeyPressedEvent?.Invoke();
         }
 
         public void OnMove(InputAction.CallbackContext context)
         {
             MoveInputVector = context.ReadValue<Vector2>();
-            OnMoveEvent?.Invoke();
+            if (context.performed)
+                OnMoveKeyPressedEvent?.Invoke();
         }
 
         public void OnNext(InputAction.CallbackContext context)
@@ -74,31 +76,31 @@ namespace Agama.Scripts.Core
         public void OnQuickSlot1(InputAction.CallbackContext context)
         {
             if (!context.performed)
-                OnQuickNumberChanged?.Invoke(1);
+                OnQuickNumberKeyPressedEvent?.Invoke(1);
         }
 
         public void OnQuickSlot2(InputAction.CallbackContext context)
         {
             if (!context.performed)
-                OnQuickNumberChanged?.Invoke(2);
+                OnQuickNumberKeyPressedEvent?.Invoke(2);
         }
 
         public void OnQuickSlot3(InputAction.CallbackContext context)
         {
             if (!context.performed)
-                OnQuickNumberChanged?.Invoke(3);
+                OnQuickNumberKeyPressedEvent?.Invoke(3);
         }
 
         public void OnQuickSlot4(InputAction.CallbackContext context)
         {
             if (!context.performed)
-                OnQuickNumberChanged?.Invoke(4);
+                OnQuickNumberKeyPressedEvent?.Invoke(4);
         }
 
         public void OnQuickSlot5(InputAction.CallbackContext context)
         {
             if (!context.performed)
-                OnQuickNumberChanged?.Invoke(5);
+                OnQuickNumberKeyPressedEvent?.Invoke(5);
         }
 
 #endregion
