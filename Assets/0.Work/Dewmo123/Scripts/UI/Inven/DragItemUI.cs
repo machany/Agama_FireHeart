@@ -36,7 +36,7 @@ namespace Scripts.UI.Inven
                 {
                     if (!CheckOtherSlot<EquipSlotUI>(slot, InvokeEquipEvent, InvokeUnEquipEvent) &&
                         !CheckOtherSlot<QuickSlotUI>(slot, InvokeSetQuickEvent, InvokeUnsetQuickEvent, true, InvokeChangeQuickEvent))
-                        InvokeSwapEvent(slot);
+                            InvokeSwapEvent(slot);
                     return;
                 }
             origin.UpdateSlot(item);
@@ -116,6 +116,12 @@ namespace Scripts.UI.Inven
         }
         private void InvokeUnEquipEvent(ItemUI slot)
         {
+            if(slot is QuickSlotUI)
+            {
+                origin.UpdateSlot(item);
+                return;
+            }
+
             var equipEvent = InvenEvents.EquipEvent;
             var originSlot = origin as EquipSlotUI;
             equipEvent.isUnEquip = true;

@@ -21,6 +21,8 @@ namespace Scripts.Player.Inven
         private Dictionary<EquipType, InventoryItem> _equipSlots;
 
         public List<InventoryItem> quickSlots;
+
+        public IUsable selectedItem;
         //선택됨 퀵슬롯 추가해야함
 
         //private Player _player;
@@ -58,7 +60,12 @@ namespace Scripts.Player.Inven
         {
             if (Input.GetKeyDown(KeyCode.P))
                 AddItem(inventory[0].data);
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                selectedItem = quickSlots[0] as IUsable;
+            }
         }
+
         private void OnDestroy()
         {
             _invenChannel.RemoveListener<SetQuickSlot>(QuickSlotHandler);
@@ -66,7 +73,6 @@ namespace Scripts.Player.Inven
             _invenChannel.RemoveListener<InvenSwap>(InvenSwapHandler);
             _invenChannel.RemoveListener<InvenEquip>(InvenEquipHandler);
             _invenChannel.RemoveListener<CraftItem>(CraftItemHandler);
-
         }
         #endregion
 
@@ -124,7 +130,7 @@ namespace Scripts.Player.Inven
         {
             var quickSlot = quickSlots[t.quickSlotIndex];
             var slot = inventory[t.slotIndex];
-            if (slot.data == null || slot.data is UsableItemDataSO)
+            if (slot.data == null || slot.data is IUsable)
                 if (t.isSame)
                 {
                     AddItem(slot.data, quickSlot.stackSize);
@@ -141,7 +147,7 @@ namespace Scripts.Player.Inven
         {
             var quickSlot = quickSlots[t.quickSlotIndex];
             var slot = inventory[t.slotIndex];
-            if (slot.data is UsableItemDataSO)
+            if (slot.data is ConsumptionItemDataSO)
                 if (t.isSame)
                 {
                     AddQuickSlotItem(quickSlot, slot.stackSize);
@@ -194,7 +200,7 @@ namespace Scripts.Player.Inven
                     //equipItemData.AddModifier(_statCompo);
                 }
             }
-            UpdateInventoryUI();
+            UpdateInventoryUI(true);
             //else
             //{
             //    _itemSlots[t.index1].UpdateSlot(item);
@@ -219,7 +225,7 @@ namespace Scripts.Player.Inven
                 inventory[t.index1] = _equipSlots[t.type];
                 _equipSlots[t.type] = item;
             }
-            UpdateInventoryUI();
+            UpdateInventoryUI(true);
         }
         #endregion
 
