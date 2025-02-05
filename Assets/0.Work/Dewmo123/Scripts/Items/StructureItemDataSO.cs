@@ -7,7 +7,8 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
     [CreateAssetMenu(fileName = "StructureItemDataSO", menuName = "SO/Items/Usable/StructureItem")]
     public class StructureItemDataSO : ItemDataSO, IUsable
     {
-        public void UseItem<T>(T compo) where T : IEntityComponent
+
+        public void UseItem(Entity entity)
         {
         }
     }
