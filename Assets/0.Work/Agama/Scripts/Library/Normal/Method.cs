@@ -48,7 +48,7 @@ namespace Library
         /// <remarks>
         /// 이 메서드는 값이 중복된 경우 첫 번째로 발견된 키를 반환합니다.
         /// </remarks>
-        public static K? FindFirstKeyByValue<K, V>(this Dictionary<K, V> dict, V val)
+        public static K FindFirstKeyByValue<K, V>(this Dictionary<K, V> dict, V val)
             => dict.FirstOrDefault(entry => EqualityComparer<V>.Default.Equals(entry.Value, val)).Key;
 
         /// <summary>

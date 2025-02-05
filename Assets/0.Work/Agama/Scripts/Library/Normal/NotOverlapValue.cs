@@ -9,7 +9,7 @@ namespace Library
     /// </summary>
     public class NotOverlapValue<T>
     {
-        public event Action? OnReset;
+        public event Action OnReset;
 
         private Random _random;
 
@@ -18,14 +18,14 @@ namespace Library
 
         public NotOverlapValue(params T[] range) : this(range, null) { }
 
-        public NotOverlapValue(IEnumerable<T> range, Random? random = null)
+        public NotOverlapValue(IEnumerable<T> range, Random random = null)
         {
             _range.AddRange(range);
             _values.AddRange(range);
             _random = random ?? new Random();
         }
 
-        public NotOverlapValue(Random? random = null) : this(Enumerable.Empty<T>(), random) { }
+        public NotOverlapValue(Random random = null) : this(Enumerable.Empty<T>(), random) { }
 
         /// <summary>
         /// 초기화 시 기준이 될 범위의 수를 가져옵니다.
