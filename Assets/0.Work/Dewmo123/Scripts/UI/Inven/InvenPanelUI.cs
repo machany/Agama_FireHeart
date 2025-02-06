@@ -10,7 +10,7 @@ using UnityEngine;
 namespace Scripts.UI.Inven
 {
     //아마 오픈, 클로즈도 만들어야할
-    public class InvenPanelUI : MonoBehaviour
+    public class InvenPanelUI : MoveUI
     {
         [SerializeField] protected EventChannelSO _invenChannel;
         public List<InventoryItem> inventory;
@@ -19,9 +19,9 @@ namespace Scripts.UI.Inven
         [SerializeField] protected Transform _slotParent, _equipSlotParent;
         protected Dictionary<EquipType, EquipSlotUI> _equipSlots;
         protected ItemSlotUI[] _itemSlots;
-
-        protected virtual void Awake()
+        public override void Initialize()
         {
+            base.Initialize();
             _equipSlots = new Dictionary<EquipType, EquipSlotUI>();
             _invenChannel.AddListener<InvenData>(HandleDataRefresh);
             _equipSlotParent.GetComponentsInChildren<EquipSlotUI>().ToList().ForEach(slot =>
@@ -33,7 +33,6 @@ namespace Scripts.UI.Inven
 
             for (int i = 0; i < _itemSlots.Length; i++)
                 _itemSlots[i].slotIndex = i;
-
         }
         private void OnDestroy()
         {
