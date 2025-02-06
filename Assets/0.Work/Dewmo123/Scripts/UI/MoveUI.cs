@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Scripts.UI
 {
-    public abstract class MoveUI : MonoBehaviour
+    public class MoveUI : MonoBehaviour
     {
         [field: SerializeField] public UIType myType { get; protected set; }
         [SerializeField] protected float _parentHeight = 800f;

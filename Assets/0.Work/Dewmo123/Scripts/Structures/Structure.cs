@@ -1,12 +1,12 @@
-﻿using Scripts.EventChannel;
+﻿using Agama.Scripts.Entities;
+using Scripts.EventChannel;
 using UnityEngine;
 
 namespace Scripts.Structures
 {
-    public abstract class Structure : MonoBehaviour
+    public abstract class Structure : Entity
     {
         //HP 갖고있음
-        public UIType myType;
         public abstract void Activate();
     }
 }

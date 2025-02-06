@@ -10,24 +10,17 @@ using UnityEngine;
 namespace Scripts.UI.Inven
 {
     //아마 오픈, 클로즈도 만들어야할
-    public class InvenPanelUI : MoveUI
+    public class InvenPanelUI : MonoBehaviour
     {
         [SerializeField] protected EventChannelSO _invenChannel;
         public List<InventoryItem> inventory;
-        public Dictionary<EquipType, InventoryItem> equipments;
 
-        [SerializeField] protected Transform _slotParent, _equipSlotParent;
-        protected Dictionary<EquipType, EquipSlotUI> _equipSlots;
+        [SerializeField] protected Transform _slotParent;
         protected ItemSlotUI[] _itemSlots;
-        public override void Initialize()
+        public void Awake()
         {
-            base.Initialize();
-            _equipSlots = new Dictionary<EquipType, EquipSlotUI>();
             _invenChannel.AddListener<InvenData>(HandleDataRefresh);
-            _equipSlotParent.GetComponentsInChildren<EquipSlotUI>().ToList().ForEach(slot =>
-            {
-                _equipSlots.Add(slot.equipType, slot);
-            });
+
             _itemSlots = _slotParent.GetComponentsInChildren<ItemSlotUI>();
 
 
@@ -42,7 +35,6 @@ namespace Scripts.UI.Inven
         private void HandleDataRefresh(InvenData evt)//얘한테 줄때 현재 슬롯카운트 크기의 리스트로 줌
         {
             inventory = evt.items;
-            equipments = evt.equipments;
             UpdateSlotUI();
         }
         /// <summary>
@@ -60,16 +52,6 @@ namespace Scripts.UI.Inven
                 if (inventory[i].data != null)
                     _itemSlots[i].UpdateSlot(inventory[i]);
             }
-            foreach (var slot in _equipSlots.Values)
-            {
-                slot.CleanUpSlot();
-            }
-
-            foreach (var equipKVP in equipments)
-            {
-                _equipSlots[equipKVP.Key].UpdateSlot(equipKVP.Value);
-            }
-
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Agama.Scripts.Core;
 using Agama.Scripts.Entities;
 using Agama.Scripts.Events;
+using Agama.Scripts.Players;
 using Scripts.EventChannel;
 using Scripts.InvenSystem;
 using Scripts.Items;
@@ -10,9 +11,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Scripts.Player.Inven
+namespace Scripts.Players.Inven
 {
-    public class PlayerInvenData : InvenSystem.InvenData/*, IEntityComponent*/
+    public class PlayerInvenData : InvenSystem.InvenData, IEntityComponent
     {
         [SerializeField] protected EventChannelSO _invenChannel;
 
@@ -25,12 +26,14 @@ namespace Scripts.Player.Inven
 
         public int selectedSlotIndex;
         //선택됨 퀵슬롯 추가해야함
-        public IUsable selectedItem => quickSlots[selectedSlotIndex] as IUsable;    
-        //private Player _player;
+        public IUsable selectedItem => quickSlots[selectedSlotIndex] as IUsable;
+        private Player _player;
+        private EntityStat _statCompo;
         #region Init Section
-        public void Awake()//Initialize로 변경
+        public void Initialize(Entity entity)//Initialize로 변경
         {
-            //_player = entity as Player;
+            _player = entity as Player;
+            _statCompo = entity.GetComp<EntityStat>();
             inventory = new List<InventoryItem>();
             _equipSlots = new Dictionary<EquipType, InventoryItem>();
             quickSlots = new List<InventoryItem>();
@@ -194,22 +197,18 @@ namespace Scripts.Player.Inven
                     {
                         _equipSlots[t.type] = item;
                         inventory[t.index1] = beforeArmor;
-                        //EquipItemDataSO beforeEquipData = beforeEquipment.data as EquipItemDataSO;
-                        //beforeEquipData?.RemoveModifier(_statCompo);
+                        EquipItemDataSO beforeEquipData = beforeArmor.data as EquipItemDataSO;
+                        beforeEquipData?.RemoveModifier(_statCompo);
                     }
                     else
                     {
                         _equipSlots.Add(t.type, item);
                         inventory[t.index1] = null;
                     }
-                    //equipItemData.AddModifier(_statCompo);
+                    dataSO.AddModifier(_statCompo);
                 }
             }
             UpdateInventoryUI(true);
-            //else
-            //{
-            //    _itemSlots[t.index1].UpdateSlot(item);
-            //}
         }
 
         private void UnEquip(InvenEquip t)

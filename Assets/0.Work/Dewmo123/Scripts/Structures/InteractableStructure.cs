@@ -7,12 +7,22 @@ namespace Scripts.Structures
     public class InteractableStructure : Structure
     {
         [SerializeField] private EventChannelSO _uiChannel;
+        public UIType myType;
+
         [ContextMenu("OpenPanel")]
         public override void Activate()
         {
             var evt = UIEvents.OpenEvent;
             evt.type = myType;
             _uiChannel.InvokeEvent(evt);
+        }
+
+        protected override void HandleHitEvent()
+        {
+        }
+
+        protected override void HandleDeadEvent()
+        {
         }
     }
 }
