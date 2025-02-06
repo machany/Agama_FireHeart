@@ -26,6 +26,7 @@ namespace Agama.Scripts.Players.States
         {
             _player.InputSO.OnItemUseKeyPressedEvent -= HandleItemUseKeyPressedEvent;
             _player.InputSO.OnInteractKeyPressedEvent -= HandleInteractKeyPressedEvent;
+            base.Exit();
         }
 
         protected virtual void HandleQuickSlotItemChangedEvent()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 namespace Agama.Scripts.Entities.FSM
 {
@@ -28,9 +29,9 @@ namespace Agama.Scripts.Entities.FSM
                 _states.Add(state.stateName, entityState);
             }
 
-            _defaultState = _states.GetValueOrDefault(stateList.defaultState.stateName);
+            CurrentState = _defaultState = _states.GetValueOrDefault(stateList.defaultState.stateName);
             Debug.Assert(_defaultState != default(EntityState), $"{owner.name} : default state is null!");
-            CurrentState = _defaultState;
+            EnterState(CurrentState);
         }
 
         public void UpdateState()
@@ -38,22 +39,36 @@ namespace Agama.Scripts.Entities.FSM
             CurrentState.Update();
         }
 
+        #region State Change
+
         private void StateChange(EntityState newState)
         {
-            CurrentState.Exit();
-            IEventState previousEventState = CurrentState as IEventState;
-            if (previousEventState != null)
-            {
-                previousEventState.OnEventEndEvent -= HandleEventEndEvent;
-            }
+            ExitState(CurrentState);
+            EnterState(CurrentState = newState);
+        }
 
-            CurrentState = newState;
-            CurrentState.Enter();
-            IEventState newEventState = CurrentState as IEventState;
+        private void EnterState(EntityState state)
+        {
+            state.Enter();
+
+            IEventState newEventState = state as IEventState;
             if (newEventState != null)
             {
                 newEventState.OnEventEndEvent += HandleEventEndEvent;
             }
+            Debug.Log("ET : " + state.GetType());
+        }
+
+        private void ExitState(EntityState state)
+        {
+            state.Exit();
+
+            IEventState previousEventState = state as IEventState;
+            if (previousEventState != null)
+            {
+                previousEventState.OnEventEndEvent -= HandleEventEndEvent;
+            }
+            Debug.Log("EX : " + state.GetType());
         }
 
         public void ChangeState(string stateName)
@@ -61,21 +76,22 @@ namespace Agama.Scripts.Entities.FSM
             EntityState newState = _states.GetValueOrDefault(stateName);
             Debug.Assert(newState != null, "could not find state or state is not event state.");
 
-            IEventState eventState = newState as IEventState;
-            if (eventState != null)
+            if (newState is IEventState)
             {
-                if (_eventStates.Count >= _maxEventStateStorageCount) // 이벤트 용량 제한
+                if (_eventStates.Count >= _maxEventStateStorageCount) // 이벤트 용량 제한. 이벤트 스테이트인데 용량 초과 시 무시
                     return;
 
                 if (CurrentState is IEventState) // 현재 스테이트가 이벤트면 스테이트 체인지 (즉시 실행) 건너뜀
                 {
-                    _eventStates.Enqueue(eventState); // 그리고 이벤트에 추가 (이벤트를 대기상태로 만듬)
-                    return; // 현재 상태가 이벤트 스테이지가 아니면 스테이트를 해당 스테이트로 변경 (즉시 변경하기에 저장할 필요 X)
+                    _eventStates.Enqueue(newState as IEventState); // 그리고 이벤트에 추가 (이벤트를 대기상태로 만듬)
+                    return; // 현재 상태가 이벤트 스테이트가 아니면 스테이트를 해당 스테이트로 변경 (즉시 변경하기에 저장할 필요 X)
                 }
-            } // 이벤트 스테이지가 아니면 스테이트를 해당 스테이트로 변경
+            } // 이벤트 스테이트가 아니면 스테이트를 해당 스테이트로 변경
 
             StateChange(newState);
         }
+
+        #endregion
 
         private void HandleEventEndEvent()
             => StateChange(_eventStates.Count > 0 ? _eventStates.Dequeue() as EntityState : _defaultState);

@@ -9,7 +9,7 @@ namespace Agama.Scripts.Entities
 
         public bool CanMove { get; set; } = true;
 
-        private float _moveSpeedMultiplier;
+        private float _moveSpeedMultiplier = 1;
 
         private Vector2 _movementVector;
 
@@ -17,13 +17,14 @@ namespace Agama.Scripts.Entities
 
         public void Initialize(Entity owner)
         {
-            _ridComp = transform.GetOrSetComponent<Rigidbody2D>(rid =>
+            _ridComp = transform.parent.GetOrSetComponent<Rigidbody2D>(rid =>
             {
                 rid.freezeRotation = true;
                 rid.gravityScale = 0;
             });
             CanMove = true;
             _movementVector = Vector2.zero;
+            _moveSpeedMultiplier = 1;
         }
 
         public void SetMoveSpeedMultiplier(float value)

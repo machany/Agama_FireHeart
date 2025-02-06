@@ -35,7 +35,7 @@ namespace Agama.Scripts.Entities
         public void SetColor(Color color)
             => _spriteRenderer.color = color;
 
-        public void FlipEntity()
+        private void FlipEntity()
         {
             FacingDirection *= -1;
             _owner.transform.Rotate(0, 180f, 0);

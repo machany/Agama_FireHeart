@@ -16,9 +16,10 @@ namespace Agama.Scripts.Players.States
         public override void Update()
         {
             base.Update();
-            Vector2 inputValue = _player.InputSO.MoveInputVector.normalized;
+            Vector2 inputValue = _player.InputSO.MoveInputVector;
 
             _mover.SetMovement(inputValue);
+            _renderer.Flip(inputValue.x);
 
             if (inputValue.magnitude < Mathf.Epsilon)
                 _player.ChangeState("Player_idle_State");

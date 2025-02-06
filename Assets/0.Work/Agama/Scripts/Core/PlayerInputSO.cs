@@ -64,43 +64,64 @@ namespace Agama.Scripts.Core
         public void OnNext(InputAction.CallbackContext context)
         {
             if (context.performed)
-            OnQuickSlotMoveEvent?.Invoke(true);
+            {
+                OnQuickSlotChangedEvent?.Invoke();
+                OnQuickSlotMoveEvent?.Invoke(true);
+            }
         }
 
         public void OnPrevious(InputAction.CallbackContext context)
         {
             if (context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickSlotMoveEvent?.Invoke(false);
+            }
         }
 
         public void OnQuickSlot1(InputAction.CallbackContext context)
         {
             if (!context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickNumberKeyPressedEvent?.Invoke(1);
+            }
         }
 
         public void OnQuickSlot2(InputAction.CallbackContext context)
         {
             if (!context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickNumberKeyPressedEvent?.Invoke(2);
+            }
         }
 
         public void OnQuickSlot3(InputAction.CallbackContext context)
         {
             if (!context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickNumberKeyPressedEvent?.Invoke(3);
+            }
         }
 
         public void OnQuickSlot4(InputAction.CallbackContext context)
         {
             if (!context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickNumberKeyPressedEvent?.Invoke(4);
+            }
         }
 
         public void OnQuickSlot5(InputAction.CallbackContext context)
         {
             if (!context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickNumberKeyPressedEvent?.Invoke(5);
+            }
         }
 
 #endregion
