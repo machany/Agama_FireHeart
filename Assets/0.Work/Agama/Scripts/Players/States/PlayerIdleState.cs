@@ -14,7 +14,7 @@ namespace Agama.Scripts.Players.States
     {
         private EntityMover _mover;
 
-        public PlayerIdleState(Entity owner, AnimationParamitorSO animationParamitor) : base(owner, animationParamitor)
+        public PlayerIdleState(Entity owner, AnimationParamiterSO animationParamitor) : base(owner, animationParamitor)
         {
             _mover = owner.GetComp<EntityMover>();
         }

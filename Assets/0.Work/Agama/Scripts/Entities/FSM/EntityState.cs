@@ -10,12 +10,12 @@ namespace Agama.Scripts.Entities.FSM
 {
     public class EntityState
     {
-        protected AnimationParamitorSO _animParam;
+        protected AnimationParamiterSO _animParam;
 
         protected Entity _owner;
         protected EntityRenderer _renderer;
 
-        public EntityState(Entity owner, AnimationParamitorSO animationParamitor)
+        public EntityState(Entity owner, AnimationParamiterSO animationParamitor)
         {
             _owner = owner;
             _animParam = animationParamitor;

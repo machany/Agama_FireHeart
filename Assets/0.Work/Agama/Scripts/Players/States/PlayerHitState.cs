@@ -10,7 +10,7 @@ namespace Agama.Scripts.Players.States
     {
         public Action OnEventEndEvent { get; set; }
 
-        public PlayerHitState(Entity owner, AnimationParamitorSO animationParamitor) : base(owner, animationParamitor)
+        public PlayerHitState(Entity owner, AnimationParamiterSO animationParamitor) : base(owner, animationParamitor)
         {
         }
 

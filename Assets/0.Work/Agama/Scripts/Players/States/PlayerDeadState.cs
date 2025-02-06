@@ -11,7 +11,7 @@ namespace Agama.Scripts.Players.States
 {
     public class PlayerDeadState : EntityState, IEventState
     {
-        public PlayerDeadState(Entity owner, AnimationParamitorSO animationParamitor) : base(owner, animationParamitor)
+        public PlayerDeadState(Entity owner, AnimationParamiterSO animationParamitor) : base(owner, animationParamitor)
         {
         }
 

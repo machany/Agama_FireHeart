@@ -1,3 +1,4 @@
+using Agama.Scripts.Animators;
 using Agama.Scripts.Core;
 using Agama.Scripts.Entities;
 using Agama.Scripts.Entities.FSM;
@@ -8,6 +9,8 @@ namespace Agama.Scripts.Players
     public class Player : Entity
     {
         [field: SerializeField] public PlayerInputSO InputSO { get; private set; }
+        [field: SerializeField] public AnimationParamiterSO HoldBuildingParam { get; private set; }
+        [field: SerializeField] public AnimationParamiterSO ToolValueParam {get; private set;}
 
         [SerializeField] private EntityStateSOList stateList;
 
