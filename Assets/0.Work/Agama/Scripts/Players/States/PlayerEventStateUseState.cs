@@ -9,7 +9,7 @@ namespace Agama.Scripts.Players.States
     {
         protected Player _player;
 
-        public PlayerEventStateUseState(Entity owner, AnimationParamitorSO animationParamitor) : base(owner, animationParamitor)
+        public PlayerEventStateUseState(Entity owner, AnimationParamiterSO animationParamitor) : base(owner, animationParamitor)
         {
             _player = owner as Player;
             Debug.Assert(_player != null, $"{this.GetType()} : player is null");

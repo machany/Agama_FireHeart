@@ -11,6 +11,6 @@ namespace Agama.Scripts.Entities.FSM
         public string stateName;
         [Tooltip(" <color=red>명명 규칙</color> : (네임스페이스위치.클래스네임)이다.")]
         public string className;
-        public AnimationParamitorSO animParam;
+        public AnimationParamiterSO animParam;
     }
 }

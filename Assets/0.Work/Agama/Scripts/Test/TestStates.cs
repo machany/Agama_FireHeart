@@ -8,7 +8,7 @@ namespace Agama.Scripts.Test
 {
     public class TestEventState : EntityState, IEventState
     {
-        public TestEventState(Entity owner, AnimationParamitorSO animationParamitor) : base(owner, animationParamitor)
+        public TestEventState(Entity owner, AnimationParamiterSO animationParamitor) : base(owner, animationParamitor)
         {
         }
 
@@ -44,7 +44,7 @@ namespace Agama.Scripts.Test
 
     public class TestState : EntityState
     {
-        public TestState(Entity owner, AnimationParamitorSO animationParamitor) : base(owner, animationParamitor)
+        public TestState(Entity owner, AnimationParamiterSO animationParamitor) : base(owner, animationParamitor)
         {
         }
 
@@ -61,7 +61,7 @@ namespace Agama.Scripts.Test
 
     public class TestDefaultState : EntityState
     {
-        public TestDefaultState(Entity owner, AnimationParamitorSO animationParamitor) : base(owner, animationParamitor)
+        public TestDefaultState(Entity owner, AnimationParamiterSO animationParamitor) : base(owner, animationParamitor)
         {
         }
 
