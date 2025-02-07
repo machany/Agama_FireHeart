@@ -54,7 +54,10 @@ namespace Scripts.Structures
 
             AfterHitFeedbacks(knockBackPower);
         }
+        public void ApplyHeal(float heal)
+        {
 
+        }
         private void AfterHitFeedbacks(Vector2 knockBackPower)
         {
             _entity.OnHitEvent?.Invoke();

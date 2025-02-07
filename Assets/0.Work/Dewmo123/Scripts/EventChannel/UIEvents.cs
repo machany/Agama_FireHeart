@@ -7,7 +7,6 @@ namespace Scripts.EventChannel
         None,
         Inventory,
         CraftingTable,
-        Bonfire,
         Config
     }
     public static class UIEvents

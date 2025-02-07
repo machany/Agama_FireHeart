@@ -7,7 +7,7 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
     [CreateAssetMenu(fileName = "StructureItemDataSO", menuName = "SO/Items/Usable/StructureItem")]
     public class StructureItemDataSO : ItemDataSO, IUsable
     {
-
+        public GameObject structure;
         public void UseItem(Entity entity)
         {
         }

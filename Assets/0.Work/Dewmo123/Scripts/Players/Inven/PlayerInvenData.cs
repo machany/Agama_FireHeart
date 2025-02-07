@@ -26,7 +26,7 @@ namespace Scripts.Players.Inven
 
         public int selectedSlotIndex;
         //선택됨 퀵슬롯 추가해야함
-        public IUsable selectedItem => quickSlots[selectedSlotIndex] as IUsable;
+        public InventoryItem selectedItem => quickSlots[selectedSlotIndex];
         private Player _player;
         private EntityStat _statCompo;
         #region Init Section
@@ -83,14 +83,14 @@ namespace Scripts.Players.Inven
         #region Handlers
         private void ScrollWheelHandler(Vector2 vector)
         {
-            selectedSlotIndex = (int)Mathf.Clamp(selectedSlotIndex - vector.y, 0, _quickSlotCount);
+            selectedSlotIndex = (int)Mathf.Clamp(selectedSlotIndex - vector.y, 0, _quickSlotCount - 1);
         }
         private void CraftItemHandler(CraftItem item)
         {
             CraftingRecipeSO recipe = item.recipe;
             if (recipe.MakeItem(this))
                 AddItem(recipe.product);
-            UpdateInventoryUI(true);
+            UpdateInventoryUI();
         }
         private void HandleRequestInventoryData(RequestInvenData obj)
         {
@@ -148,14 +148,14 @@ namespace Scripts.Players.Inven
                 {
                     (quickSlots[t.quickSlotIndex], inventory[t.slotIndex]) = (inventory[t.slotIndex], quickSlots[t.quickSlotIndex]);
                 }
-            UpdateInventoryUI(true);
+            UpdateInventoryUI();
         }
 
         private void SetQuickSlot(SetQuickSlot t)
         {
             var quickSlot = quickSlots[t.quickSlotIndex];
             var slot = inventory[t.slotIndex];
-            if (slot.data is ConsumptionItemDataSO)
+            if (slot.data is IUsable)
                 if (t.isSame)
                 {
                     AddQuickSlotItem(quickSlot, slot.stackSize);
@@ -165,7 +165,7 @@ namespace Scripts.Players.Inven
                 {
                     (quickSlots[t.quickSlotIndex], inventory[t.slotIndex]) = (inventory[t.slotIndex], quickSlots[t.quickSlotIndex]);
                 }
-            UpdateInventoryUI(true);
+            UpdateInventoryUI();
         }
         public override InventoryItem GetItem(ItemDataSO itemData)
         {
@@ -208,7 +208,7 @@ namespace Scripts.Players.Inven
                     dataSO.AddModifier(_statCompo);
                 }
             }
-            UpdateInventoryUI(true);
+            UpdateInventoryUI();
         }
 
         private void UnEquip(InvenEquip t)
@@ -229,7 +229,7 @@ namespace Scripts.Players.Inven
                 inventory[t.index1] = _equipSlots[t.type];
                 _equipSlots[t.type] = item;
             }
-            UpdateInventoryUI(true);
+            UpdateInventoryUI();
         }
         #endregion
 
@@ -257,7 +257,7 @@ namespace Scripts.Players.Inven
             int remain = quickSlot.AddStack(count);
             if (remain > 0)
                 CreateNewInventoryItem(quickSlot.data, remain);
-            UpdateInventoryUI(true);
+            UpdateInventoryUI();
         }
         private void CreateNewInventoryItem(ItemDataSO itemData, int count)
         {
@@ -273,7 +273,6 @@ namespace Scripts.Players.Inven
         public override void RemoveItem(ItemDataSO itemData, int count)
         {
             var items = GetItems(itemData);
-            Debug.Log(GetAllItemStack(itemData));
             if (count > GetAllItemStack(itemData))
                 return;
             int remain = count;
@@ -296,15 +295,17 @@ namespace Scripts.Players.Inven
         }
         #endregion
 
-        private void UpdateInventoryUI(bool quickSlot = false)
+        private void UpdateInventoryUI()
         {
+            inventory.FindAll(item => item.data != null && item.stackSize == 0).ForEach(item => item.data = null);
+            quickSlots.FindAll(item => item.data != null && item.stackSize == 0).ForEach(item => item.data = null);
+
             var evt = InvenEvents.DataEvent;
             evt.items = inventory;
             evt.slotCount = _maxSlotCount;
             evt.equipments = _equipSlots;
             _invenChannel.InvokeEvent(evt);
-            if (quickSlot)
-                UpdateQuickSlot();
+            UpdateQuickSlot();
         }
         private void UpdateQuickSlot()
         {
