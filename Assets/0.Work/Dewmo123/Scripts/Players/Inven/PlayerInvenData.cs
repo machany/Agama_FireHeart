@@ -297,6 +297,7 @@ namespace Scripts.Players.Inven
 
         private void UpdateInventoryUI()
         {
+            Debug.Log(inventory);
             inventory.FindAll(item => item.data != null && item.stackSize == 0).ForEach(item => item.data = null);
             quickSlots.FindAll(item => item.data != null && item.stackSize == 0).ForEach(item => item.data = null);
 

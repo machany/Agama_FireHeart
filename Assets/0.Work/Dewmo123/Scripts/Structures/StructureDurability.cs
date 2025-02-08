@@ -19,11 +19,11 @@ namespace Scripts.Structures
         public void Initialize(Entity entity)
         {
             _entity = entity;
-            _statCompo = _entity.GetComp<EntityStat>();
         }
 
         public void AfterInitialize()
         {
+            _statCompo = _entity.GetComp<EntityStat>();
             _statCompo.GetStat(durabilityStat).OnValueChange += HandleDurabilityChange;
             _currentHealth = maxHealth = _statCompo.GetStat(durabilityStat).Value;
             //_entity.OnDamage += ApplyDamage;
