@@ -47,16 +47,13 @@ namespace Scripts.Players.Inven
             _invenChannel.AddListener<CraftItem>(CraftItemHandler);
 
             for (int i = 0; i < _maxSlotCount; i++)
-                inventory.Add(null);
+                inventory.Add(new InventoryItem(null,0));
             for (int i = 0; i < _quickSlotCount; i++)
-                quickSlots.Add(null);
+                quickSlots.Add(new InventoryItem(null, 0));
+            UpdateInventoryUI();
         }
-
-
-
         private void Start()
         {
-            UpdateInventoryUI();
         }
 
         public void AfterInit()
