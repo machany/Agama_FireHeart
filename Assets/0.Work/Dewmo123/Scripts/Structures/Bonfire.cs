@@ -16,12 +16,10 @@ namespace Scripts.Structures
 
         protected override void HandleDeadEvent()
         {
-            throw new System.NotImplementedException();
         }
 
         protected override void HandleHitEvent()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Agama.Scripts.Core;
 using Agama.Scripts.Entities;
+using Scripts.Core;
 using System;
 using UnityEngine;
 
@@ -9,7 +10,9 @@ namespace Scripts.Structures
     {
         [SerializeField] private StatSO durabilityStat;
         public float maxHealth;
-        private float _currentHealth;
+
+        public NotifyValue<float> currentDurability = new NotifyValue<float>();
+        public float HealthPercent => currentDurability.Value / maxHealth;
 
         private Entity _entity;
         private EntityStat _statCompo;
@@ -25,7 +28,7 @@ namespace Scripts.Structures
         {
             _statCompo = _entity.GetComp<EntityStat>();
             _statCompo.GetStat(durabilityStat).OnValueChange += HandleDurabilityChange;
-            _currentHealth = maxHealth = _statCompo.GetStat(durabilityStat).Value;
+            currentDurability.Value = maxHealth = _statCompo.GetStat(durabilityStat).Value;
             //_entity.OnDamage += ApplyDamage;
         }
 
@@ -37,32 +40,35 @@ namespace Scripts.Structures
 
         #endregion
 
-
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+                ApplyDamage(1, null);
+        }
         private void HandleDurabilityChange(StatSO stat, float current, float previous)
         {
             maxHealth = current;
-            _currentHealth = Mathf.Clamp(_currentHealth + current - previous, 1f, maxHealth);
+            currentDurability.Value = Mathf.Clamp(currentDurability.Value + current - previous, 1f, maxHealth);
             //체력변경으로 인해 사망하는 일은 없도록
         }
 
-        public void ApplyDamage(float damage, Vector2 direction, Vector2 knockBackPower, bool isPowerAttack, Entity dealer)
+        public void ApplyDamage(float damage, Entity dealer)
         {
             //if (_entity.IsDead) return; //이미 죽은 녀석입니다.
 
-            _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
+            currentDurability.Value = Mathf.Clamp(currentDurability.Value - damage, 0, maxHealth);
 
-
-            AfterHitFeedbacks(knockBackPower);
+            AfterHitFeedbacks();
         }
         public void ApplyHeal(float heal)
         {
-
+            currentDurability.Value = Mathf.Clamp(currentDurability.Value + heal, 0, maxHealth);
         }
-        private void AfterHitFeedbacks(Vector2 knockBackPower)
+        private void AfterHitFeedbacks()
         {
             _entity.OnHitEvent?.Invoke();
 
-            if (_currentHealth <= 0)
+            if (currentDurability.Value <= 0)
             {
                 _entity.OnDeadEvent?.Invoke();
             }

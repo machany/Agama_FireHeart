@@ -9,7 +9,7 @@ namespace Scripts.UI.Inven
         public ItemDataSO data;
         public int stackSize;
 
-        public bool isFullStack => stackSize >= data.maxStack;
+        public bool isFullStack => stackSize >= (data == null ? float.NegativeInfinity : data.maxStack);
 
         public InventoryItem(ItemDataSO newItemData, int count = 1)
         {
