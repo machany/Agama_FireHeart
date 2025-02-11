@@ -2,6 +2,7 @@
 using Scripts.Core;
 using Scripts.EventChannel;
 using Scripts.Items;
+using Scripts.UI.Inven.SlotUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +49,6 @@ namespace Scripts.UI.Inven
             }
             for (int i = 0; i < inventory.Count; i++)
             {
-                if (inventory[i] == null) continue;
                 if (inventory[i].data != null)
                     _itemSlots[i].UpdateSlot(inventory[i]);
             }

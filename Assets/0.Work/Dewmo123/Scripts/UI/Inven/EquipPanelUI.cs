@@ -1,6 +1,7 @@
 ﻿using Agama.Scripts.Events;
 using Scripts.EventChannel;
 using Scripts.Items;
+using Scripts.UI.Inven.SlotUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace Scripts.UI.Inven
         public Dictionary<EquipType, InventoryItem> equipments;
         protected Dictionary<EquipType, EquipSlotUI> _equipSlots;
 
-        [SerializeField] protected Transform  _equipSlotParent;
+        [SerializeField] protected Transform _equipSlotParent;
         private void Awake()
         {
             _equipSlots = new Dictionary<EquipType, EquipSlotUI>();
@@ -40,7 +41,8 @@ namespace Scripts.UI.Inven
             {
                 slot.CleanUpSlot();
             }
-
+            //foreach (var equipKVP in equipments)
+                //Debug.Log(equipKVP.Value.data);
             foreach (var equipKVP in equipments)
             {
                 _equipSlots[equipKVP.Key].UpdateSlot(equipKVP.Value);

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5878653707851897386}
   - component: {fileID: 8871580631989501377}
-  - component: {fileID: 4428954901790246986}
+  - component: {fileID: 5975982493155857296}
   m_Layer: 5
-  m_Name: DragUI
+  m_Name: InvenDragUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5297814987517447651}
   m_CullTransparentMesh: 1
---- !u!114 &4428954901790246986
+--- !u!114 &5975982493155857296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,7 +56,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5297814987517447651}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e35402837492bf24890566fe3cf51bf4, type: 3}
+  m_Script: {fileID: 11500000, guid: 583a45967d0de75489e01348fcebd52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemImage: {fileID: 1404000416903230197}

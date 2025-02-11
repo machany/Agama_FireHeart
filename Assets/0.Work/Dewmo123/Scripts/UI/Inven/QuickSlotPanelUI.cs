@@ -1,5 +1,6 @@
 ﻿using Agama.Scripts.Events;
 using Scripts.EventChannel;
+using Scripts.UI.Inven.SlotUI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,7 +38,6 @@ namespace Scripts.UI.Inven
             }
             for (int i = 0; i < quickSlotItems.Count; i++)
             {
-                if (quickSlotItems[i] == null) continue;
                 if (quickSlotItems[i].data != null)
                     _quickSlots[i].UpdateSlot(quickSlotItems[i]);
             }

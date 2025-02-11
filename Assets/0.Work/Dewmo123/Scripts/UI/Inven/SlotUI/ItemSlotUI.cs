@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Scripts.UI.Inven.DragUI;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Scripts.UI.Inven
+namespace Scripts.UI.Inven.SlotUI
 {
     public class ItemSlotUI : ItemUI, IDragHandler,IBeginDragHandler
     {

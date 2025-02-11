@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2254635040842535678}
   - component: {fileID: 5951629331559190115}
   - component: {fileID: 4715475357120006056}
-  - component: {fileID: 1822932383152528516}
+  - component: {fileID: 7198577984246735357}
   m_Layer: 5
   m_Name: EquipSlot
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1822932383152528516
+--- !u!114 &7198577984246735357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,17 +87,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1023431375947333158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19f56e7c0074ad341add554aab607b62, type: 3}
+  m_Script: {fileID: 11500000, guid: 9100085ade6911d43a049701cce10c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotType: 2
   _itemImage: {fileID: 6149933978362649710}
   _itemText: {fileID: 6557377020592144923}
   slotIndex: 0
   item:
     data: {fileID: 0}
     stackSize: 0
-  _dragUI: {fileID: 5297814987517447651, guid: 919c246f181d36c4ebe89ce764316223, type: 3}
+  _dragUI: {fileID: 5297814987517447651, guid: 7e537b7bbf8d70340b0e25cf5e7b4af3, type: 3}
   equipType: 0
 --- !u!1 &6896728871195137095
 GameObject:

@@ -9,10 +9,17 @@ namespace Scripts.EventChannel
     {
         public static readonly InvenSwap SwapEvent = new InvenSwap();
         public static readonly InvenEquip EquipEvent = new InvenEquip();
+
         public static readonly InvenData DataEvent = new InvenData();
+
         public static readonly RequestInvenData RequestDataEvent = new RequestInvenData();
+
         public static readonly SetQuickSlot SetQuickSlotEvent = new SetQuickSlot();
+        public static readonly SetStorageSlot SetStorageSlotEvent = new SetStorageSlot();
+
         public static readonly QuickSlotData QuickSlotDataEvent = new QuickSlotData();
+        public static readonly StorageData StorageDataEvent = new StorageData();
+
         public static readonly CraftItem CraftItemEvent = new CraftItem();
     }
     public class InvenData : GameEvent
@@ -25,6 +32,10 @@ namespace Scripts.EventChannel
     {
         public List<InventoryItem> quickSlotItems;
     }
+    public class StorageData : GameEvent
+    {
+        public List<InventoryItem> storage;
+    }
     public class RequestInvenData : GameEvent
     {
     }
@@ -32,6 +43,11 @@ namespace Scripts.EventChannel
     {
         public bool isSame, isUnSet,isSwap = false;
         public int slotIndex, quickSlotIndex,quickSlotIndex2;
+    }
+    public class SetStorageSlot : GameEvent
+    {
+        public bool isSame, isUnSet, isSwap = false;
+        public int slotIndex, storageSlotIndex, storageSlotIndex2;
     }
     public class InvenSwap : GameEvent
     {

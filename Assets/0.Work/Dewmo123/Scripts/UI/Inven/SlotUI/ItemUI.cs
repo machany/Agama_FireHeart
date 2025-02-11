@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Scripts.UI.Inven
+namespace Scripts.UI.Inven.SlotUI
 {
     public class ItemUI : MonoBehaviour
     {
