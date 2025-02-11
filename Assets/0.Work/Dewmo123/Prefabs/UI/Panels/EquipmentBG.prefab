@@ -112,11 +112,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1638148418814197268}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d9102627ff50d4a888df1c0c1d0989, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d7eb7b748d060442ba8e6ca2b75555a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _slotParent: {fileID: 9160857740494228116}
   _invenChannel: {fileID: 11400000, guid: fc01aa0595809634cbe5bb0be79f96db, type: 2}
-  _equipSlotParent: {fileID: 9160857740494228116}
 --- !u!1001 &4495950717489020029
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -57,7 +57,7 @@ namespace Scripts.Players.Inven
                 quickSlots.Add(new InventoryItem(null, 0));
             for(int i=0;i<_storageCount;i++)
                 storage.Add(new InventoryItem(null, 0));
-            UpdateInventoryUI();
+            UpdateInventoryUI(true);
         }
 
         public void AfterInitialize()
@@ -123,6 +123,7 @@ namespace Scripts.Players.Inven
         }
         private void StorageSlotHandler(SetStorageSlot slot)
         {
+            Debug.Log("SetStorage");
             if (slot.isSwap)
                 SwapStorageSlot(slot);
             else if (slot.isUnSet)
@@ -208,7 +209,7 @@ namespace Scripts.Players.Inven
         {
             var storageSlot = storage[t.storageSlotIndex];
             var slot = inventory[t.slotIndex];
-            if (slot.data is IUsable)
+            if (slot.data)
                 if (t.isSame)
                 {
                     AddQuickSlotItem(storageSlot, slot.stackSize);
@@ -354,14 +355,25 @@ namespace Scripts.Players.Inven
             inventory.FindAll(item => item.data != null && item.stackSize == 0).ForEach(item => item.data = null);
             quickSlots.FindAll(item => item.data != null && item.stackSize == 0).ForEach(item => item.data = null);
 
-            var evt = InvenEvents.DataEvent;
-            evt.items = inventory;
-            evt.slotCount = _maxSlotCount;
-            evt.equipments = _equipSlots;
-            _invenChannel.InvokeEvent(evt);
+            UpdateInvenSlot();
             UpdateQuickSlot();
+            UpdateEquipSlot();
             if (onStorage)
                 UpdateStorage();
+        }
+
+        private void UpdateInvenSlot()
+        {
+            var evt = InvenEvents.DataEvent;
+            evt.items = inventory;
+            _invenChannel.InvokeEvent(evt);
+        }
+
+        private void UpdateEquipSlot()
+        {
+            var evt = InvenEvents.EquipDataEvent;
+            evt.equipments = _equipSlots;
+            _invenChannel.InvokeEvent(evt);
         }
         private void UpdateQuickSlot()
         {

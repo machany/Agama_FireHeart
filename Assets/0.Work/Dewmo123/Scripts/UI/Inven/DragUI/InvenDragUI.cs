@@ -1,5 +1,6 @@
 ﻿using Scripts.EventChannel;
 using Scripts.UI.Inven.SlotUI;
+using System;
 
 namespace Scripts.UI.Inven.DragUI
 {
@@ -17,14 +18,31 @@ namespace Scripts.UI.Inven.DragUI
                 InvokeEquipEvent(slot as EquipSlotUI);
                 return true;
             }
-            else if(slot is InvenSlotUI)
+            else if (slot is InvenSlotUI)
             {
                 InvokeSwapEvent(slot);
+                return true;
+            }
+            else if (slot is StorageSlotUI)
+            {
+                InvokeStoreEvent(slot);
                 return true;
             }
 
             return false;
         }
+
+        private void InvokeStoreEvent(ItemUI slot)
+        {
+            var evt = InvenEvents.SetStorageSlotEvent;
+            evt.isSwap = false;
+            evt.isUnSet = false;
+            evt.slotIndex = origin.slotIndex;
+            evt.storageSlotIndex = slot.slotIndex;
+            evt.isSame = !(slot.item == null || slot.item.data == null);
+            _invenEvent.InvokeEvent(evt);
+        }
+
         private void InvokeSetQuickEvent(QuickSlotUI quickSlotUI)
         {
             var evt = InvenEvents.SetQuickSlotEvent;
@@ -32,10 +50,8 @@ namespace Scripts.UI.Inven.DragUI
             evt.isUnSet = false;
             evt.slotIndex = origin.slotIndex;
             evt.quickSlotIndex = quickSlotUI.slotIndex;
-            if (quickSlotUI.item == null || quickSlotUI.item.data == null)
-                evt.isSame = false;
-            else
-                evt.isSame = quickSlotUI.item.data == item.data;
+            evt.isSame = !(quickSlotUI.item == null || quickSlotUI.item.data == null);
+
             _invenEvent.InvokeEvent(evt);
         }
         private void InvokeEquipEvent(EquipSlotUI slot)

@@ -5,12 +5,14 @@ using System.Collections.Generic;
 
 namespace Scripts.EventChannel
 {
+    public abstract class DataEvent : GameEvent { }
     public static class InvenEvents
     {
         public static readonly InvenSwap SwapEvent = new InvenSwap();
         public static readonly InvenEquip EquipEvent = new InvenEquip();
 
         public static readonly InvenData DataEvent = new InvenData();
+        public static readonly EquipData EquipDataEvent = new EquipData();
 
         public static readonly RequestInvenData RequestDataEvent = new RequestInvenData();
 
@@ -22,17 +24,19 @@ namespace Scripts.EventChannel
 
         public static readonly CraftItem CraftItemEvent = new CraftItem();
     }
-    public class InvenData : GameEvent
+    public class InvenData : DataEvent
     {
-        public int slotCount;
         public List<InventoryItem> items;
+    }
+    public class EquipData : DataEvent
+    {
         public Dictionary<EquipType, InventoryItem> equipments;
     }
-    public class QuickSlotData : GameEvent
+    public class QuickSlotData : DataEvent
     {
         public List<InventoryItem> quickSlotItems;
     }
-    public class StorageData : GameEvent
+    public class StorageData : DataEvent
     {
         public List<InventoryItem> storage;
     }

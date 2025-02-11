@@ -40,6 +40,7 @@ namespace Scripts.UI
         private void CloseUIHandler(CloseUI uI)
         {
             _currentUI.Close();
+            _currentUI.gameObject.SetActive(false);
             _currentUI = null;
         }
 
@@ -52,6 +53,7 @@ namespace Scripts.UI
         {
             _currentUI?.Close();
             _currentUI = _menuPanels[uiType];
+            _currentUI.gameObject.SetActive(true);
             _currentUI.Open();
         }
 

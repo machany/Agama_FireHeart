@@ -8,15 +8,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Scripts.UI.Inven
+namespace Scripts.UI.Inven.ItemPanelUI
 {
     //아마 오픈, 클로즈도 만들어야할
-    public class InvenPanelUI : MonoBehaviour
+    public class InvenPanelUI : PanelUI
     {
         [SerializeField] protected EventChannelSO _invenChannel;
         public List<InventoryItem> inventory;
 
-        [SerializeField] protected Transform _slotParent;
         protected ItemSlotUI[] _itemSlots;
         public void Awake()
         {
@@ -33,15 +32,17 @@ namespace Scripts.UI.Inven
             _invenChannel.RemoveListener<InvenData>(HandleDataRefresh);
         }
 
-        private void HandleDataRefresh(InvenData evt)//얘한테 줄때 현재 슬롯카운트 크기의 리스트로 줌
+        protected override void HandleDataRefresh(DataEvent evt)
         {
-            inventory = evt.items;
-            UpdateSlotUI();
+            var inven = evt as InvenData;
+            inventory = inven.items;
+            UpdateSlotUI();                                                                     
         }
+
         /// <summary>
         /// Inventory is reflected in UI
         /// </summary>
-        public virtual void UpdateSlotUI()
+        protected override void UpdateSlotUI()
         {
             for (int i = 0; i < _itemSlots.Length; i++)
             {

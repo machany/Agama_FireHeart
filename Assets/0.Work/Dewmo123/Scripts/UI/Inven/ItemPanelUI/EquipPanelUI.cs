@@ -7,42 +7,42 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Scripts.UI.Inven
+namespace Scripts.UI.Inven.ItemPanelUI
 {
-    public class EquipPanelUI : MonoBehaviour
+    public class EquipPanelUI : PanelUI
     {
         [SerializeField] protected EventChannelSO _invenChannel;
         public Dictionary<EquipType, InventoryItem> equipments;
         protected Dictionary<EquipType, EquipSlotUI> _equipSlots;
 
-        [SerializeField] protected Transform _equipSlotParent;
         private void Awake()
         {
             _equipSlots = new Dictionary<EquipType, EquipSlotUI>();
-            _invenChannel.AddListener<InvenData>(HandleDataRefresh);
-            _equipSlotParent.GetComponentsInChildren<EquipSlotUI>().ToList().ForEach(slot =>
+            _invenChannel.AddListener<EquipData>(HandleDataRefresh);
+            _slotParent.GetComponentsInChildren<EquipSlotUI>().ToList().ForEach(slot =>
             {
                 _equipSlots.Add(slot.equipType, slot);
             });
         }
         private void OnDestroy()
         {
-            _invenChannel.RemoveListener<InvenData>(HandleDataRefresh);
+            _invenChannel.RemoveListener<EquipData>(HandleDataRefresh);
         }
-        private void HandleDataRefresh(InvenData evt)//얘한테 줄때 현재 슬롯카운트 크기의 리스트로 줌
+        protected override void HandleDataRefresh(DataEvent evt)
         {
-            equipments = evt.equipments;
+            var equip = evt as EquipData;
+            equipments = equip.equipments;
             UpdateSlotUI();
         }
 
-        private void UpdateSlotUI()
+        protected override void UpdateSlotUI()
         {
             foreach (var slot in _equipSlots.Values)
             {
                 slot.CleanUpSlot();
             }
             //foreach (var equipKVP in equipments)
-                //Debug.Log(equipKVP.Value.data);
+            //Debug.Log(equipKVP.Value.data);
             foreach (var equipKVP in equipments)
             {
                 _equipSlots[equipKVP.Key].UpdateSlot(equipKVP.Value);

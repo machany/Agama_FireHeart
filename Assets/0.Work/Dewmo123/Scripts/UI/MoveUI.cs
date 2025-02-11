@@ -1,6 +1,7 @@
 ﻿using Agama.Scripts.Events;
 using DG.Tweening;
 using Scripts.EventChannel;
+using Scripts.UI.Inven.ItemPanelUI;
 using UnityEngine;
 
 namespace Scripts.UI

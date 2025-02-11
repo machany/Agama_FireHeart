@@ -4,33 +4,35 @@ using Scripts.UI.Inven.SlotUI;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Scripts.UI.Inven
+namespace Scripts.UI.Inven.ItemPanelUI
 {
-    public class QuickSlotPanelUI : MonoBehaviour
+    public class QuickSlotPanelUI : PanelUI
     {
         [SerializeField] protected EventChannelSO _invenChannel;
         public List<InventoryItem> quickSlotItems;
         protected QuickSlotUI[] _quickSlots;
-        [SerializeField] private Transform _quickSlotParent;
+
         private void Awake()
         {
-            _quickSlots = _quickSlotParent.GetComponentsInChildren<QuickSlotUI>();
+            _quickSlots = _slotParent.GetComponentsInChildren<QuickSlotUI>();
             _invenChannel.AddListener<QuickSlotData>(HandleDataRefresh);
+
             for (int i = 0; i < _quickSlots.Length; i++)
                 _quickSlots[i].slotIndex = i;
-            UpdateQuickSlot();
+            
+            UpdateSlotUI();
         }
         private void OnDestroy()
         {
             _invenChannel.RemoveListener<QuickSlotData>(HandleDataRefresh);
         }
-        private void HandleDataRefresh(QuickSlotData evt)
+        protected override void HandleDataRefresh(DataEvent evt)
         {
-            quickSlotItems = evt.quickSlotItems;
-            UpdateQuickSlot();
+            var quick = evt as QuickSlotData;
+            UpdateSlotUI();
         }
 
-        private void UpdateQuickSlot()
+        protected override void UpdateSlotUI()
         {
             for (int i = 0; i < quickSlotItems.Count; i++)
             {
