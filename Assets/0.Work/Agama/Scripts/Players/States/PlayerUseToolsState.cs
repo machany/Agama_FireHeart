@@ -2,10 +2,6 @@
 using Agama.Scripts.Entities;
 using Agama.Scripts.Entities.FSM;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Agama.Scripts.Players.States
@@ -16,31 +12,43 @@ namespace Agama.Scripts.Players.States
 
         private EntityMover _mover;
         private EntityAnimatorTrigger _animatorTrigger;
+        private EntityAttackComponent _attackComp;
 
         public PlayerUseToolsState(Entity owner, AnimationParamiterSO animationParamitor) : base(owner, animationParamitor)
         {
-            _mover = owner.GetComp<EntityMover>();
-            _animatorTrigger = owner.GetComp<EntityAnimatorTrigger>();
+            _mover = _owner.GetComp<EntityMover>();
+            _animatorTrigger = _owner.GetComp<EntityAnimatorTrigger>();
+            _attackComp = _owner.GetComp<EntityAttackComponent>(true);
         }
 
         public override void Enter()
         {
             base.Enter();
+
             _animatorTrigger.OnAnimationEndEvent += HaandleAnimationEndEvent;
-            Debug.Log("Add Event");
+            _animatorTrigger.OnAnimationEvent += HaandleOnAnimationEvent;
+
             _mover.CanMove = false;
             _mover.StopImmediately();
         }
 
         private void HaandleAnimationEndEvent()
         {
-            _animatorTrigger.OnAnimationEndEvent -= HaandleAnimationEndEvent;
-            Debug.Log("Remove Event");
             OnEventEndEvent?.Invoke();
+        }
+
+        private void HaandleOnAnimationEvent()
+        {
+            // 테스트 코드
+            Debug.Log("수정 요함.");
+            _attackComp.Attack();
         }
 
         public override void Exit()
         {
+            _animatorTrigger.OnAnimationEndEvent -= HaandleAnimationEndEvent;
+            _animatorTrigger.OnAnimationEvent -= HaandleOnAnimationEvent;
+
             _mover.CanMove = true;
             base.Exit();
         }

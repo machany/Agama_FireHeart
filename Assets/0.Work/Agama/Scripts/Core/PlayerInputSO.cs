@@ -36,11 +36,13 @@ namespace Agama.Scripts.Core
         /// <summary>
         /// true = Next(Right), false = Previous(Left)
         /// </summary>
-        public Action OnQuickSlotChangedEvent;
-        public Action<bool> OnQuickSlotMoveEvent;
-        public Action<byte> OnQuickNumberKeyPressedEvent;
+        public Action<byte> OnQuickSlotChangedEvent;
+
+        [SerializeField] private byte maxQuickSlotCount;
 
         public Vector2 MoveInputVector { get; private set; }
+
+        public byte CurrentQuickSlotIndex { get; private set; } = 1;
 
         public void OnItemUse(InputAction.CallbackContext context)
         {
@@ -64,64 +66,43 @@ namespace Agama.Scripts.Core
         public void OnNext(InputAction.CallbackContext context)
         {
             if (context.performed)
-            {
-                OnQuickSlotChangedEvent?.Invoke();
-                OnQuickSlotMoveEvent?.Invoke(true);
-            }
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = ++CurrentQuickSlotIndex > maxQuickSlotCount ? CurrentQuickSlotIndex : maxQuickSlotCount);
         }
 
         public void OnPrevious(InputAction.CallbackContext context)
         {
             if (context.performed)
-            {
-                OnQuickSlotChangedEvent?.Invoke();
-                OnQuickSlotMoveEvent?.Invoke(false);
-            }
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = (byte)(--CurrentQuickSlotIndex < 1 ? 1 : CurrentQuickSlotIndex));
         }
 
         public void OnQuickSlot1(InputAction.CallbackContext context)
         {
             if (!context.performed)
-            {
-                OnQuickSlotChangedEvent?.Invoke();
-                OnQuickNumberKeyPressedEvent?.Invoke(1);
-            }
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 1);
         }
 
         public void OnQuickSlot2(InputAction.CallbackContext context)
         {
             if (!context.performed)
-            {
-                OnQuickSlotChangedEvent?.Invoke();
-                OnQuickNumberKeyPressedEvent?.Invoke(2);
-            }
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 2);
         }
 
         public void OnQuickSlot3(InputAction.CallbackContext context)
         {
             if (!context.performed)
-            {
-                OnQuickSlotChangedEvent?.Invoke();
-                OnQuickNumberKeyPressedEvent?.Invoke(3);
-            }
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 3);
         }
 
         public void OnQuickSlot4(InputAction.CallbackContext context)
         {
             if (!context.performed)
-            {
-                OnQuickSlotChangedEvent?.Invoke();
-                OnQuickNumberKeyPressedEvent?.Invoke(4);
-            }
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 4);
         }
 
         public void OnQuickSlot5(InputAction.CallbackContext context)
         {
             if (!context.performed)
-            {
-                OnQuickSlotChangedEvent?.Invoke();
-                OnQuickNumberKeyPressedEvent?.Invoke(5);
-            }
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 5);
         }
 
 #endregion

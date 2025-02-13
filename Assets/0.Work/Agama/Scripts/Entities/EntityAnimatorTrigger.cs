@@ -16,9 +16,13 @@ namespace Agama.Scripts.Entities
             _owner = owner;
         }
 
-        public Action OnAnimationEndEvent;
+        public event Action OnAnimationEndEvent;
+        public event Action OnAnimationEvent;
 
         private void OnAnimationEndTrigger()
             => OnAnimationEndEvent?.Invoke();
+
+        private void OnAnimationEventTrigger()
+            => OnAnimationEvent?.Invoke();
     }
 }

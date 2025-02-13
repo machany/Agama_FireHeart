@@ -18,7 +18,9 @@ namespace Agama.Scripts.Players
         [SerializeField] private int maxEventStateStorageCount = 3;
 
         private EntityStateMachine _stateMachine;
+        private EntityRenderer _renderer;
 
+        public int ToolType {  get; private set; }
         public bool StateChangeLock { get; private set; }
 
         protected override void Awake()
@@ -29,13 +31,16 @@ namespace Agama.Scripts.Players
             InputSO.OnItemUseKeyPressedEvent += HandleItemUseKeyPressedEvent;
             InputSO.OnQuickSlotChangedEvent += HandleQuickSlotChangedEvent;
             StateChangeLock = false;
+
+            _renderer = GetComp<EntityRenderer>();
         }
 
         protected override void OnDestroy()
         {
-            base.OnDestroy();
             InputSO.OnItemUseKeyPressedEvent -= HandleItemUseKeyPressedEvent;
             _stateMachine.DestoryObject();
+
+            base.OnDestroy();
         }
 
         private void Update()
@@ -66,9 +71,10 @@ namespace Agama.Scripts.Players
             ChangeState("Player_use_tool_State_event");
         }
 
-        private void HandleQuickSlotChangedEvent()
+        private void HandleQuickSlotChangedEvent(byte value)
         {
-
+            ToolType = value;
+            _renderer.SetParamiter(ToolTypeParam, ToolType);
         }
 
         protected override void HandleHitEvent()
@@ -78,6 +84,7 @@ namespace Agama.Scripts.Players
 
         protected override void HandleDeadEvent()
         {
+            // 즉시 변경
             _stateMachine.ChangeState("Player_dead_State_event");
         }
     }

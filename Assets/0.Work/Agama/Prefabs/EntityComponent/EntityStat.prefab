@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1719552850452957541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2251686556846802294}
+  - component: {fileID: 3018404859730688514}
+  m_Layer: 0
+  m_Name: EntityStat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2251686556846802294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719552850452957541}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3018404859730688514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719552850452957541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7572b99c7873546b05f5f67dd2adc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statOverrides:
+  - stat: {fileID: 11400000, guid: 803de2866a2846b4091f6f4840242c6e, type: 2}
+    isUseOverride: 1
+    overrideValue: 1
+  - stat: {fileID: 11400000, guid: 8bb26d77a9bc3f4438f7741042f303aa, type: 2}
+    isUseOverride: 1
+    overrideValue: 100
+  - stat: {fileID: 11400000, guid: 6b132cd728db5af458d263094648b99d, type: 2}
+    isUseOverride: 1
+    overrideValue: 100
+  - stat: {fileID: 11400000, guid: b6333f6f641d9484dbed5666acffe3f0, type: 2}
+    isUseOverride: 1
+    overrideValue: 100
+  - stat: {fileID: 11400000, guid: 803de2866a2846b4091f6f4840242c6e, type: 2}
+    isUseOverride: 1
+    overrideValue: 1
+  - stat: {fileID: 11400000, guid: 59e19794359795f40aec09fdd93504cd, type: 2}
+    isUseOverride: 1
+    overrideValue: 1
+  - stat: {fileID: 11400000, guid: 5abfc7d81e25d3e429927e6db3da205f, type: 2}
+    isUseOverride: 1
+    overrideValue: 1

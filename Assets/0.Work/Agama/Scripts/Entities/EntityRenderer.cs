@@ -23,13 +23,13 @@ namespace Agama.Scripts.Entities
             Debug.Assert(_animator != null, "could not find animator component");
         }
 
-        public void SetParamitor(AnimationParamiterSO paramitor)
+        public void SetParamiter(AnimationParamiterSO paramitor)
             => _animator.SetTrigger(paramitor.hashCode);
-        public void SetParamitor(AnimationParamiterSO paramitor, bool value)
+        public void SetParamiter(AnimationParamiterSO paramitor, bool value)
             => _animator.SetBool(paramitor.hashCode, value);
-        public void SetParamitor(AnimationParamiterSO paramitor, int value)
+        public void SetParamiter(AnimationParamiterSO paramitor, int value)
             => _animator.SetInteger(paramitor.hashCode, value);
-        public void SetParamitor(AnimationParamiterSO paramitor, float value)
+        public void SetParamiter(AnimationParamiterSO paramitor, float value)
             => _animator.SetFloat(paramitor.hashCode, value);
 
         public void SetColor(Color color)

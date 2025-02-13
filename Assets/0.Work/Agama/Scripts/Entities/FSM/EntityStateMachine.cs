@@ -56,7 +56,6 @@ namespace Agama.Scripts.Entities.FSM
             {
                 newEventState.OnEventEndEvent += HandleEventEndEvent;
             }
-            Debug.Log("ET : " + state.GetType());
         }
 
         private void ExitState(EntityState state)
@@ -68,7 +67,6 @@ namespace Agama.Scripts.Entities.FSM
             {
                 previousEventState.OnEventEndEvent -= HandleEventEndEvent;
             }
-            Debug.Log("EX : " + state.GetType());
         }
 
         public void ChangeState(string stateName)
