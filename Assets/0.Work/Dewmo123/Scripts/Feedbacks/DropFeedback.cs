@@ -1,5 +1,6 @@
 ﻿using Agama.Scripts.Events;
 using Dewmo123.Scripts.Items;
+using GGMPool;
 using Scripts.EventChannel;
 using Scripts.Utiles;
 using UnityEngine;
@@ -10,7 +11,8 @@ namespace Scripts.Feedbacks
     {
         [SerializeField] private ItemDropTableSO _table;
         [SerializeField] private EventChannelSO _invenChannel;
-        [SerializeField] private GameObject _dropTxt;//우리 pool 필요할듯
+        [SerializeField] private PoolTypeSO _dropTxt;//우리 pool 필요할듯
+        [SerializeField] private PoolManagerSO _poolManager;
         [SerializeField] private float _interval;
         public override void CreateFeedback()
         {
@@ -21,9 +23,9 @@ namespace Scripts.Feedbacks
                 evt.item = item.Key;
                 evt.cnt = item.Value;
                 _invenChannel.InvokeEvent(evt);
-                ItemDropText txt = Instantiate(_dropTxt, spawnPos, Quaternion.identity).GetComponent<ItemDropText>();
+                var txt = _poolManager.Pop(_dropTxt) as ItemDropText;
+                txt.Init($"{item.Key.itemName}: {item.Value}개 획득",spawnPos);
                 spawnPos.y += _interval;
-                txt.Init($"{item.Key.itemName}: {item.Value}개 획득");
             }
         }
     }
