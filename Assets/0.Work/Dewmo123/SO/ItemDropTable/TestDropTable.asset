@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c76853df5167ede45adaeb25ef246597, type: 3}
+  m_Name: TestDropTable
+  m_EditorClassIdentifier: 
+  table:
+  - minCnt: 1
+    maxCnt: 10
+    probability: 0.2
+    item: {fileID: 11400000, guid: e3f8c5d88edc65c4c99af2db9f648465, type: 2}
+  - minCnt: 5
+    maxCnt: 8
+    probability: 1
+    item: {fileID: 11400000, guid: aaf48f3353186b04a806d633b0342614, type: 2}
