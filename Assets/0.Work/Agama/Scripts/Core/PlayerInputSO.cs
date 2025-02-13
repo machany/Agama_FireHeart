@@ -64,49 +64,70 @@ namespace Agama.Scripts.Core
         public void OnNext(InputAction.CallbackContext context)
         {
             if (context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickSlotMoveEvent?.Invoke(true);
+            }
         }
 
         public void OnPrevious(InputAction.CallbackContext context)
         {
             if (context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickSlotMoveEvent?.Invoke(false);
+            }
         }
 
         public void OnQuickSlot1(InputAction.CallbackContext context)
         {
             if (!context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickNumberKeyPressedEvent?.Invoke(1);
+            }
         }
 
         public void OnQuickSlot2(InputAction.CallbackContext context)
         {
             if (!context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickNumberKeyPressedEvent?.Invoke(2);
+            }
         }
 
         public void OnQuickSlot3(InputAction.CallbackContext context)
         {
             if (!context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickNumberKeyPressedEvent?.Invoke(3);
+            }
         }
 
         public void OnQuickSlot4(InputAction.CallbackContext context)
         {
             if (!context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickNumberKeyPressedEvent?.Invoke(4);
+            }
         }
 
         public void OnQuickSlot5(InputAction.CallbackContext context)
         {
             if (!context.performed)
+            {
+                OnQuickSlotChangedEvent?.Invoke();
                 OnQuickNumberKeyPressedEvent?.Invoke(5);
+            }
         }
 
-        #endregion
+#endregion
 
         #region UI
-        public event Action<Vector2> OnScrollWheelEvent;
+
         public void OnNavigate(InputAction.CallbackContext context) { }
         public void OnSubmit(InputAction.CallbackContext context) { }
         public void OnCancel(InputAction.CallbackContext context) { }
@@ -114,10 +135,7 @@ namespace Agama.Scripts.Core
         public void OnClick(InputAction.CallbackContext context) { }
         public void OnRightClick(InputAction.CallbackContext context) { }
         public void OnMiddleClick(InputAction.CallbackContext context) { }
-        public void OnScrollWheel(InputAction.CallbackContext context)
-        {
-            OnScrollWheelEvent?.Invoke(context.ReadValue<Vector2>());
-        }
+        public void OnScrollWheel(InputAction.CallbackContext context) { }
         public void OnTrackedDevicePosition(InputAction.CallbackContext context) { }
         public void OnTrackedDeviceOrientation(InputAction.CallbackContext context) { }
 

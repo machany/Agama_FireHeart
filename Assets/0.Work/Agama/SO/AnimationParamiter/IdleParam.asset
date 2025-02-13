@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71a5b7f92d10ca42b76c40182f11d60, type: 3}
-  m_Name: Default
+  m_Script: {fileID: 11500000, guid: 8d180edd5af6d07499a0e27dabd4e7c5, type: 3}
+  m_Name: IdleParam
   m_EditorClassIdentifier: 
-  stateName: TestDefault
-  className: Agama.Scripts.Test.TestDefaultState
-  animParam: {fileID: 11400000, guid: f86d4515b5641024b984fd07200f831d, type: 2}
+  paramiterName: idle
+  hashCode: -601574123

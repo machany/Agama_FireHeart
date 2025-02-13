@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1eb1b1e01ad3ab4d9b6999bbf2251a6, type: 3}
-  m_Name: Paramitor
+  m_Script: {fileID: 11500000, guid: d71a5b7f92d10ca42b76c40182f11d60, type: 3}
+  m_Name: PlayerMove
   m_EditorClassIdentifier: 
-  paramitorName: Test
-  hashCode: 0
+  stateName: Player_move_State
+  className: Agama.Scripts.Players.States.PlayerMoveState
+  animParam: {fileID: 11400000, guid: d9374740db85e91488d45d6d28f94fed, type: 2}

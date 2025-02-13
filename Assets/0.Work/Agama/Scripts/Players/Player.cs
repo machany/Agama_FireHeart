@@ -9,8 +9,8 @@ namespace Agama.Scripts.Players
     public class Player : Entity
     {
         [field: SerializeField] public PlayerInputSO InputSO { get; private set; }
-        [field: SerializeField] public AnimationParamiterSO HoldBuildingParam { get; private set; }
-        [field: SerializeField] public AnimationParamiterSO ToolValueParam {get; private set;}
+        [field: SerializeField] public AnimationParamiterSO CarryParam { get; private set; }
+        [field: SerializeField] public AnimationParamiterSO ToolTypeParam { get; private set; }
 
         [SerializeField] private EntityStateSOList stateList;
 
@@ -26,17 +26,15 @@ namespace Agama.Scripts.Players
             base.Awake();
             _stateMachine = new EntityStateMachine(this, stateList, maxEventStateStorageCount);
 
-            InputSO.OnItemUseKeyPressedEvent += TestEventState;
-            InputSO.OnMoveKeyPressedEvent += TestState;
-
+            InputSO.OnItemUseKeyPressedEvent += HandleItemUseKeyPressedEvent;
+            InputSO.OnQuickSlotChangedEvent += HandleQuickSlotChangedEvent;
             StateChangeLock = false;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            InputSO.OnItemUseKeyPressedEvent -= TestEventState;
-            InputSO.OnMoveKeyPressedEvent -= TestState;
+            InputSO.OnItemUseKeyPressedEvent -= HandleItemUseKeyPressedEvent;
             _stateMachine.DestoryObject();
         }
 
@@ -62,24 +60,25 @@ namespace Agama.Scripts.Players
         public void SetStateChangeLock(bool value)
             => StateChangeLock = value;
 
-        private void TestEventState()
+        private void HandleItemUseKeyPressedEvent()
         {
-            ChangeState("TestEventState");
+            // 아이템 구분 후 도구라면 실행
+            ChangeState("Player_use_tool_State_event");
         }
 
-        private void TestState()
+        private void HandleQuickSlotChangedEvent()
         {
-            ChangeState("TestState");
-        }
 
-        protected override void HandleDeadEvent()
-        {
-            ChangeState("Player_death_State");
         }
 
         protected override void HandleHitEvent()
         {
             ChangeState("Player_hit_State_event");
+        }
+
+        protected override void HandleDeadEvent()
+        {
+            _stateMachine.ChangeState("Player_dead_State_event");
         }
     }
 }

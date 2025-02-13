@@ -23,13 +23,15 @@ namespace Agama.Scripts.Players.States
         {
             base.Enter();
             _mover.StopImmediately();
-            _player.InputSO.OnMoveKeyPressedEvent += HandleMoveKeyPressedEvent;
         }
 
-        private void HandleMoveKeyPressedEvent()
+        public override void Update()
         {
-            _player.InputSO.OnMoveKeyPressedEvent -= HandleMoveKeyPressedEvent;
-            _player.ChangeState("Player_move_State");
+            base.Update();
+            if (_mover.CanMove && _player.InputSO.MoveInputVector.magnitude > Mathf.Epsilon)
+            {
+                _player.ChangeState("Player_move_State");
+            }
         }
     }
 }
