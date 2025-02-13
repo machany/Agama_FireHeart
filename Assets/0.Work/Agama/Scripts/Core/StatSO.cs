@@ -10,48 +10,43 @@ namespace Agama.Scripts.Core
     [CreateAssetMenu(fileName = "StatSO", menuName = "SO/StatSystem/Stat", order = 0)]
     public class StatSO : ScriptableObject, ICloneable
     {
-        public delegate void ValueChangeHandler(StatSO stat, float current, float previous);
+        public delegate void ValueChangeHandler(StatSO stat, int current, int previous);
         public event ValueChangeHandler OnValueChange;
 
         public string statName;
         [TextArea]
         public string description;
 
-        [SerializeField] private Sprite icon;
-        [SerializeField] private string displayName;
-        [SerializeField] private float baseValue, minValue, maxValue;
+        [SerializeField] private int baseValue, minValue, maxValue;
 
-        private Dictionary<object, float> _modifyDictionary = new Dictionary<object, float>();
-
-        [field: SerializeField] public bool IsPercent { get; private set; }
+        private Dictionary<object, int> _modifyDictionary = new Dictionary<object, int>();
 
         private float _modifiedValue = 0;
 
         #region Property section
 
-        public Sprite Icon => icon;
-        public float MaxValue
+        public int MaxValue
         {
             get => maxValue;
             set => maxValue = value;
         }
 
-        public float MinValue
+        public int MinValue
         {
             get => minValue;
             set => minValue = value;
         }
 
-        public float Value => Mathf.Clamp(baseValue + _modifiedValue, MinValue, MaxValue);
+        public int Value => (int)Mathf.Clamp(baseValue + _modifiedValue, MinValue, MaxValue);
         public bool IsMax => Mathf.Approximately(Value, MaxValue);
         public bool IsMin => Mathf.Approximately(Value, MinValue);
 
-        public float BaseValue
+        public int BaseValue
         {
             get => baseValue;
             set
             {
-                float prevValue = Value;
+                int prevValue = Value;
                 baseValue = Mathf.Clamp(value, MinValue, MaxValue);
                 TryInvokeValueChangedEvent(Value, prevValue);
             }
@@ -59,10 +54,10 @@ namespace Agama.Scripts.Core
 
         #endregion
 
-        public void AddModifier(object key, float value)
+        public void AddModifier(object key, int value)
         {
             if (_modifyDictionary.ContainsKey(key)) return;
-            float prevValue = Value;
+            int prevValue = Value;
 
             _modifiedValue += value;
             _modifyDictionary.Add(key, value);
@@ -72,9 +67,9 @@ namespace Agama.Scripts.Core
 
         public void RemoveModifier(object key)
         {
-            if (_modifyDictionary.TryGetValue(key, out float value))
+            if (_modifyDictionary.TryGetValue(key, out int value))
             {
-                float prevValue = Value;
+                int prevValue = Value;
                 _modifiedValue -= value;
                 _modifyDictionary.Remove(key);
 
@@ -84,13 +79,13 @@ namespace Agama.Scripts.Core
 
         public void ClearAllModifier()
         {
-            float prevValue = Value;
+            int prevValue = Value;
             _modifyDictionary.Clear();
             _modifiedValue = 0;
             TryInvokeValueChangedEvent(Value, prevValue);
         }
 
-        private void TryInvokeValueChangedEvent(float current, float prevValue)
+        private void TryInvokeValueChangedEvent(int current, int prevValue)
         {
             if (Mathf.Approximately(current, prevValue) == false)
                 OnValueChange?.Invoke(this, current, prevValue);

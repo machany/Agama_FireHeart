@@ -13,7 +13,7 @@ namespace Agama.Scripts.Core
     {
         [SerializeField] private StatSO stat;
         [SerializeField] private bool isUseOverride;
-        [SerializeField] private float overrideValue;
+        [SerializeField] private int overrideValue;
 
         public StatOverride(StatSO stat) => this.stat = stat;
 
