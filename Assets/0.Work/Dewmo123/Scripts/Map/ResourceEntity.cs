@@ -6,7 +6,6 @@ namespace Dewmo123.Scripts.Map
 {
     public class ResourceEntity : Entity
     {
-        [SerializeField] private ItemDropTableSO _dropTable;
         protected override void HandleDeadEvent()
         {
         }

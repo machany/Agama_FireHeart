@@ -66,7 +66,11 @@ namespace Agama.Scripts.Core
         public void OnNext(InputAction.CallbackContext context)
         {
             if (context.performed)
+<<<<<<< HEAD
+            OnQuickSlotMoveEvent?.Invoke(true);
+=======
                 OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = ++CurrentQuickSlotIndex > maxQuickSlotCount ? CurrentQuickSlotIndex : maxQuickSlotCount);
+>>>>>>> develop
         }
 
         public void OnPrevious(InputAction.CallbackContext context)
@@ -108,7 +112,7 @@ namespace Agama.Scripts.Core
         #endregion
 
         #region UI
-        public Action<Vector2> OnScrollWheelEvent;
+        public event Action<Vector2> OnScrollWheelEvent;
         public void OnNavigate(InputAction.CallbackContext context) { }
         public void OnSubmit(InputAction.CallbackContext context) { }
         public void OnCancel(InputAction.CallbackContext context) { }
@@ -116,7 +120,7 @@ namespace Agama.Scripts.Core
         public void OnClick(InputAction.CallbackContext context) { }
         public void OnRightClick(InputAction.CallbackContext context) { }
         public void OnMiddleClick(InputAction.CallbackContext context) { }
-        public void OnScrollWheel(InputAction.CallbackContext context) 
+        public void OnScrollWheel(InputAction.CallbackContext context)
         {
             OnScrollWheelEvent?.Invoke(context.ReadValue<Vector2>());
         }

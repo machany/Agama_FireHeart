@@ -18,6 +18,8 @@ namespace Agama.Scripts.Combats.DamageCasters
         {
             base.InitCaster(owner);
 
+            _hitResultList = new List<Collider2D>();
+
             _targetingMark.SetComponent<SpriteRenderer>(spriteRenderer =>
                 {
                     spriteRenderer.enabled = true;
