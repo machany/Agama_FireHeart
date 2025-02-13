@@ -1,15 +1,16 @@
 ﻿using Scripts.Items;
 using System;
+using UnityEngine;
 
 namespace Scripts.UI.Inven
 {
     [Serializable]//디버깅용 지워도됨
-    public class InventoryItem
+    public class InventoryItem : ICloneable
     {
         public ItemDataSO data;
         public int stackSize;
 
-        public bool isFullStack => stackSize >= data.maxStack;
+        public bool isFullStack => stackSize >= (data == null ? float.NegativeInfinity : data.maxStack);
 
         public InventoryItem(ItemDataSO newItemData, int count = 1)
         {
@@ -37,6 +38,15 @@ namespace Scripts.UI.Inven
             }
             return 0;
         }
+        public void Clear()
+        {
+            data = null;
+            stackSize = 0;
+        }
 
+        public object Clone()
+        {
+            return new InventoryItem(data, stackSize);
+        }
     }
 }

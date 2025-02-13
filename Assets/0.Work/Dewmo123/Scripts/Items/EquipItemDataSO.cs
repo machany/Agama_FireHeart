@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Agama.Scripts.Core;
+using Agama.Scripts.Entities;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +14,7 @@ namespace Scripts.Items
     [Serializable]
     public struct AddingStat
     {
-        //public StatSO targetStat;
+        public StatSO targetStat;
         public float modifyValue;
     }
 
@@ -26,27 +28,27 @@ namespace Scripts.Items
 
         private int _descriptionLength;
 
-        public void AddModifier(/*EntityStat statCompo*/)
+        public void AddModifier(EntityStat statCompo)
         {
             foreach (AddingStat stat in addingStats)
             {
-                //StatSO targetStat = statCompo.GetStat(stat.targetStat);
-                //if (targetStat != null)
-                //{
-                //    targetStat.AddModifier(itemName, stat.modifyValue);
-                //}
+                StatSO targetStat = statCompo.GetStat(stat.targetStat);
+                if (targetStat != null)
+                {
+                    targetStat.AddModifier(itemName, stat.modifyValue);
+                }
             }
         }
 
-        public void RemoveModifier(/*EntityStat statCompo*/)
+        public void RemoveModifier(EntityStat statCompo)
         {
             foreach (AddingStat stat in addingStats)
             {
-                //StatSO targetStat = statCompo.GetStat(stat.targetStat);
-                //if (targetStat != null)
-                //{
-                //    targetStat.RemoveModifier(itemName);
-                //}
+                StatSO targetStat = statCompo.GetStat(stat.targetStat);
+                if (targetStat != null)
+                {
+                    targetStat.RemoveModifier(itemName);
+                }
             }
         }
 
@@ -56,7 +58,7 @@ namespace Scripts.Items
             _descriptionLength = 0;
             foreach (var statValue in addingStats)
             {
-                //AddItemDescription(statValue.targetStat.statName, statValue.modifyValue);
+                AddItemDescription(statValue.targetStat.statName, statValue.modifyValue);
             }
 
             if (_descriptionLength < 5)

@@ -4,6 +4,6 @@ namespace Scripts.Items
 {
     public interface IUsable
     {
-        public void UseItem<T>(T compo) where T : IEntityComponent;
+        public void UseItem(Entity entity);
     }
 }

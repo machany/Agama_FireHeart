@@ -16,3 +16,4 @@ MonoBehaviour:
   icon: {fileID: 5558420398955925738, guid: df45af628cb8b564cbe3b05f7277eede, type: 3}
   itemID: af9e97b8287e57741aec94b673a33e85
   maxStack: 99
+  result: {fileID: 11400000, guid: aaf48f3353186b04a806d633b0342614, type: 2}

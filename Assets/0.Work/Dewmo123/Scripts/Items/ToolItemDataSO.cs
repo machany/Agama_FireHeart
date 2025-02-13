@@ -8,7 +8,7 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
 
     public class ToolItemDataSO : ItemDataSO, IUsable
     {
-        public void UseItem<T>(T compo) where T : IEntityComponent
+        public void UseItem(Entity entity)
         {
         }
     }
