@@ -23,6 +23,8 @@ namespace Scripts.EventChannel
         public static readonly StorageData StorageDataEvent = new StorageData();
 
         public static readonly CraftItem CraftItemEvent = new CraftItem();
+
+        public static readonly RequestAddItem AddItemEvent = new RequestAddItem();
     }
     public class InvenData : DataEvent
     {
@@ -67,5 +69,10 @@ namespace Scripts.EventChannel
     public class CraftItem : GameEvent
     {
         public CraftingRecipeSO recipe;
+    }
+    public class RequestAddItem : GameEvent
+    {
+        public ItemDataSO item;
+        public int cnt;
     }
 }

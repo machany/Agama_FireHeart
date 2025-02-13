@@ -50,6 +50,7 @@ namespace Scripts.Players.Inven
             _invenChannel.AddListener<SetQuickSlot>(QuickSlotHandler);
             _invenChannel.AddListener<SetStorageSlot>(StorageSlotHandler);
             _invenChannel.AddListener<CraftItem>(CraftItemHandler);
+            _invenChannel.AddListener<RequestAddItem>(AcquireAddItem); 
 
             for (int i = 0; i < _maxSlotCount; i++)
                 inventory.Add(new InventoryItem(null,0));
@@ -59,7 +60,6 @@ namespace Scripts.Players.Inven
                 storage.Add(new InventoryItem(null, 0));
             UpdateInventoryUI(true);
         }
-
         public void AfterInitialize()
         {
             //_statCompo = _player.GetComp<EntityStat>();
@@ -80,10 +80,16 @@ namespace Scripts.Players.Inven
             _invenChannel.RemoveListener<InvenSwap>(InvenSwapHandler);
             _invenChannel.RemoveListener<InvenEquip>(InvenEquipHandler);
             _invenChannel.RemoveListener<CraftItem>(CraftItemHandler);
+            _invenChannel.RemoveListener<RequestAddItem>(AcquireAddItem);
+
         }
         #endregion
 
         #region Handlers
+        private void AcquireAddItem(RequestAddItem item)
+        {
+            AddItem(item.item, item.cnt);
+        }
         private void ScrollWheelHandler(Vector2 vector)
         {
             selectedSlotIndex = (int)Mathf.Clamp(selectedSlotIndex - vector.y, 0, _quickSlotCount - 1);

@@ -17,7 +17,7 @@ namespace Dewmo123.Scripts.Items
     public class ItemDropTableSO : ScriptableObject
     {
         public List<DropInfo> table;
-        public void PullUpItem()
+        public Dictionary<ItemDataSO,int> PullUpItem()
         {
             Dictionary<ItemDataSO, int> info = new Dictionary<ItemDataSO, int>();
             foreach(var item in table)
@@ -28,9 +28,9 @@ namespace Dewmo123.Scripts.Items
                         info[item.item]++;
             }
             foreach (var item in info)
-            {
-                Debug.Log(item.Key.itemName + ": " + item.Value);
-            }
+                if (item.Value <= 0)
+                    info.Remove(item.Key);
+            return info;
         }
     }
 }
