@@ -19,14 +19,14 @@ namespace Agama.Scripts.Entities.FSM
 
         public virtual void Enter()
         {
-            _renderer.SetParamitor(_animParam, true);
+            _renderer.SetParamiter(_animParam, true);
         }
 
         public virtual void Update() { }
 
         public virtual void Exit()
         {
-            _renderer.SetParamitor(_animParam, false);
+            _renderer.SetParamiter(_animParam, false);
         }
     }
 }

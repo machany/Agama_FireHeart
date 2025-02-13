@@ -3,11 +3,11 @@ using System;
 
 namespace Library
 {
-    public class GreaterComparer<T> : IComparer<T>
+    public class SelectorComparer<T> : IComparer<T>
     {
         private readonly Func<T, int> _keySelector; // 비교할 값 저장
         
-        public GreaterComparer(Func<T, int> keySelector) // 매개변수 T인 int가져옴
+        public SelectorComparer(Func<T, int> keySelector) // 매개변수 T인 int가져옴. // 사용법 예 : new SelectorComparer(x => x.int);
         {
             _keySelector = keySelector ?? throw new ArgumentNullException(nameof(keySelector)); // null이면 오류출력, 아니면 저장
         }
@@ -17,7 +17,7 @@ namespace Library
             if (x is null || y is null)
                 throw new ArgumentNullException("입력된 인자중 하나가 null입니다."); // 마찬가지
 
-            return _keySelector(x).CompareTo(_keySelector(y));
+            return _keySelector(x).CompareTo(_keySelector(y)); // x가 y보다 작으면 음수, 같으면 0, 크면 양수
         }
     }
 }

@@ -36,10 +36,10 @@ namespace Agama.Scripts.Entities
             return outStat;
         }
 
-        public void SetBaseValue(StatSO stat, float value) => GetStat(stat).BaseValue = value;
+        public void SetBaseValue(StatSO stat, int value) => GetStat(stat).BaseValue = value;
         public float GetBaseValue(StatSO stat) => GetStat(stat).BaseValue;
-        public void IncreaseBaseValue(StatSO stat, float value) => GetStat(stat).BaseValue += value;
-        public void AddModifier(StatSO stat, object key, float value) => GetStat(stat).AddModifier(key, value);
+        public void IncreaseBaseValue(StatSO stat, int value) => GetStat(stat).BaseValue += value;
+        public void AddModifier(StatSO stat, object key, int value) => GetStat(stat).AddModifier(key, value);
         public void RemoveModifier(StatSO stat, object key) => GetStat(stat).RemoveModifier(key);
 
         public void CleanAllModifier()
@@ -57,7 +57,7 @@ namespace Agama.Scripts.Entities
         public struct StatSaveData
         {
             public string statName;
-            public float baseValue;
+            public int baseValue;
         }
 
         public List<StatSaveData> GetSaveData()

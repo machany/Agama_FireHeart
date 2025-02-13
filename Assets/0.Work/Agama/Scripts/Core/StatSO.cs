@@ -17,41 +17,36 @@ namespace Agama.Scripts.Core
         [TextArea]
         public string description;
 
-        [SerializeField] private Sprite icon;
-        [SerializeField] private string displayName;
-        [SerializeField] private float baseValue, minValue, maxValue;
+        [SerializeField] private int baseValue, minValue, maxValue;
 
         private Dictionary<object, float> _modifyDictionary = new Dictionary<object, float>();
-
-        [field: SerializeField] public bool IsPercent { get; private set; }
 
         private float _modifiedValue = 0;
 
         #region Property section
 
-        public Sprite Icon => icon;
-        public float MaxValue
+        public int MaxValue
         {
             get => maxValue;
             set => maxValue = value;
         }
 
-        public float MinValue
+        public int MinValue
         {
             get => minValue;
             set => minValue = value;
         }
 
-        public float Value => Mathf.Clamp(baseValue + _modifiedValue, MinValue, MaxValue);
+        public int Value => (int)Mathf.Clamp(baseValue + _modifiedValue, MinValue, MaxValue);
         public bool IsMax => Mathf.Approximately(Value, MaxValue);
         public bool IsMin => Mathf.Approximately(Value, MinValue);
 
-        public float BaseValue
+        public int BaseValue
         {
             get => baseValue;
             set
             {
-                float prevValue = Value;
+                int prevValue = Value;
                 baseValue = Mathf.Clamp(value, MinValue, MaxValue);
                 TryInvokeValueChangedEvent(Value, prevValue);
             }
@@ -74,7 +69,7 @@ namespace Agama.Scripts.Core
         {
             if (_modifyDictionary.TryGetValue(key, out float value))
             {
-                float prevValue = Value;
+                int prevValue = Value;
                 _modifiedValue -= value;
                 _modifyDictionary.Remove(key);
 
@@ -84,7 +79,7 @@ namespace Agama.Scripts.Core
 
         public void ClearAllModifier()
         {
-            float prevValue = Value;
+            int prevValue = Value;
             _modifyDictionary.Clear();
             _modifiedValue = 0;
             TryInvokeValueChangedEvent(Value, prevValue);
