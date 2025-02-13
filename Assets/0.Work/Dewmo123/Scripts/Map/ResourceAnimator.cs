@@ -29,8 +29,8 @@ namespace Scripts.Map
         {
             var param = _paramDic[paramName];
             if (_current != null)
-                _renderer.SetParamitor(_current, false);
-            _renderer.SetParamitor(param, true);
+                _renderer.SetParamiter(_current, false);
+            _renderer.SetParamiter(param, true);
             _current = param;
         }
         private void HadleEndTrigger()
