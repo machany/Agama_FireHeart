@@ -1,5 +1,6 @@
 ﻿using Agama.Scripts.Core;
 using Agama.Scripts.Entities;
+using Scripts.Combat;
 using Scripts.Core;
 using System;
 using UnityEngine;
@@ -16,6 +17,7 @@ namespace Scripts.Structures
 
         private Entity _entity;
         private EntityStat _statCompo;
+        private DurabilityBar _bar;
 
         #region Initialize section
 
@@ -26,6 +28,7 @@ namespace Scripts.Structures
 
         public void AfterInitialize()
         {
+            _bar = _entity.GetComp<DurabilityBar>();
             _statCompo = _entity.GetComp<EntityStat>();
             _statCompo.GetStat(durabilityStat).OnValueChange += HandleDurabilityChange;
             currentDurability.Value = maxHealth = _statCompo.GetStat(durabilityStat).Value;
@@ -43,7 +46,7 @@ namespace Scripts.Structures
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.P))
-                ApplyDamage(1, null);
+                ApplyDamage(10, null);
         }
         private void HandleDurabilityChange(StatSO stat, float current, float previous)
         {
@@ -55,7 +58,7 @@ namespace Scripts.Structures
         public void ApplyDamage(float damage, Entity dealer)
         {
             //if (_entity.IsDead) return; //이미 죽은 녀석입니다.
-
+            _bar.gameObject.SetActive(true);
             currentDurability.Value = Mathf.Clamp(currentDurability.Value - damage, 0, maxHealth);
 
             AfterHitFeedbacks();
@@ -63,6 +66,8 @@ namespace Scripts.Structures
         public void ApplyHeal(float heal)
         {
             currentDurability.Value = Mathf.Clamp(currentDurability.Value + heal, 0, maxHealth);
+            if (currentDurability.Value == maxHealth)
+                _bar.gameObject.SetActive(false);
         }
         private void AfterHitFeedbacks()
         {

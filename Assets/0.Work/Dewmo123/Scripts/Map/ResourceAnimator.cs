@@ -18,12 +18,16 @@ namespace Scripts.Map
             _entity = owner;
             _paramDic = new Dictionary<string, AnimationParamiterSO>();
             _params.ForEach(item => _paramDic.Add(item.paramiterName, item));
-            PlayAnimation("Idle");
-            //_entity.GetComp<EntityAnimatorTrigger>().OnAnimationEndEvent++HandleEndTrigger;
+            _entity.GetComp<EntityAnimatorTrigger>().OnAnimationEndEvent += HadleEndTrigger;
+        }
+        private void OnDestroy()
+        {
+            _entity.GetComp<EntityAnimatorTrigger>().OnAnimationEndEvent -= HadleEndTrigger;
         }
         public void AfterInitialize()
         {
             _renderer = _entity.GetComp<EntityRenderer>();
+            PlayAnimation("Idle");
         }
         public void PlayAnimation(string paramName)
         {

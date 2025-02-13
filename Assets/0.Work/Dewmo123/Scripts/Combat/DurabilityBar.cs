@@ -20,11 +20,12 @@ namespace Scripts.Combat
         {
             _durabilityCompo = _entity.GetComp<StructureDurability>();
             _durabilityCompo.currentDurability.OnValueChanged += HandleDurabilityChanged;
+            gameObject.SetActive(false);
         }
-
         private void HandleDurabilityChanged(float prev, float next)
         {
-            DOTween.KillAll();
+            Debug.Log("Handle");
+            DOTween.Kill(_pivotTrm);
             _pivotTrm.DOScaleX(_durabilityCompo.HealthPercent, _duration);
         }
     }

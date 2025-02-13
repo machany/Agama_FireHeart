@@ -8,6 +8,7 @@ namespace Dewmo123.Scripts.Map
     {
         protected override void HandleDeadEvent()
         {
+            Destroy(gameObject);
         }
 
         protected override void HandleHitEvent()
