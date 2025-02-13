@@ -66,11 +66,7 @@ namespace Agama.Scripts.Core
         public void OnNext(InputAction.CallbackContext context)
         {
             if (context.performed)
-<<<<<<< HEAD
-            OnQuickSlotMoveEvent?.Invoke(true);
-=======
                 OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = ++CurrentQuickSlotIndex > maxQuickSlotCount ? CurrentQuickSlotIndex : maxQuickSlotCount);
->>>>>>> develop
         }
 
         public void OnPrevious(InputAction.CallbackContext context)
