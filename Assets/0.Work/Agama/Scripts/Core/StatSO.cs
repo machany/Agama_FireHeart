@@ -10,7 +10,7 @@ namespace Agama.Scripts.Core
     [CreateAssetMenu(fileName = "StatSO", menuName = "SO/StatSystem/Stat", order = 0)]
     public class StatSO : ScriptableObject, ICloneable
     {
-        public delegate void ValueChangeHandler(StatSO stat, int current, int previous);
+        public delegate void ValueChangeHandler(StatSO stat, float current, float previous);
         public event ValueChangeHandler OnValueChange;
 
         public string statName;
@@ -19,7 +19,7 @@ namespace Agama.Scripts.Core
 
         [SerializeField] private int baseValue, minValue, maxValue;
 
-        private Dictionary<object, int> _modifyDictionary = new Dictionary<object, int>();
+        private Dictionary<object, float> _modifyDictionary = new Dictionary<object, float>();
 
         private float _modifiedValue = 0;
 
@@ -54,10 +54,10 @@ namespace Agama.Scripts.Core
 
         #endregion
 
-        public void AddModifier(object key, int value)
+        public void AddModifier(object key, float value)
         {
             if (_modifyDictionary.ContainsKey(key)) return;
-            int prevValue = Value;
+            float prevValue = Value;
 
             _modifiedValue += value;
             _modifyDictionary.Add(key, value);
@@ -67,7 +67,7 @@ namespace Agama.Scripts.Core
 
         public void RemoveModifier(object key)
         {
-            if (_modifyDictionary.TryGetValue(key, out int value))
+            if (_modifyDictionary.TryGetValue(key, out float value))
             {
                 int prevValue = Value;
                 _modifiedValue -= value;
@@ -85,7 +85,7 @@ namespace Agama.Scripts.Core
             TryInvokeValueChangedEvent(Value, prevValue);
         }
 
-        private void TryInvokeValueChangedEvent(int current, int prevValue)
+        private void TryInvokeValueChangedEvent(float current, float prevValue)
         {
             if (Mathf.Approximately(current, prevValue) == false)
                 OnValueChange?.Invoke(this, current, prevValue);
