@@ -12,6 +12,7 @@ namespace Library
 
         public GameObjectBuilder(GameObject obj = null, string presetDefult = "Defult")
         {
+            presets = new Dictionary<string, Action<GameObjectBuilder>>();
             targetGameObject = obj ?? new GameObject();
             presetDefaultKey = presetDefult;
         }

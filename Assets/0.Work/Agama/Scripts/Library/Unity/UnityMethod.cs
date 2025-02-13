@@ -28,6 +28,17 @@ namespace Library
             where S : Component, T
             => transform.TryGetComponent(out T comp) ? comp : transform.AddComponent<S>();
 
+        /// <summary>
+        /// Transform에 지정된 컴포넌트를 추가하거나 가져옵니다.
+        /// </summary>
+        /// <typeparam name="T">추가하거나 가져올 컴포넌트의 타입</typeparam>
+        /// <param name="func">추가된 컴포넌트에 대한 설정을 수행하는 함수</param>
+        public static Transform SetComponent<T>(this Transform transform, Action<T> func) where T : Component
+        {
+            func?.Invoke(transform.TryGetOrAddComponent<T>());
+            return transform;
+        }
+
         public static T SetComponent<T>(this T comp, Action<T> componentSetting)
             where T : Component
         {
