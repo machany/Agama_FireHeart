@@ -17,6 +17,7 @@ namespace Scripts.Players.Inven
         {
             _invenCompo = owner.GetComp<PlayerInvenData>();
             _invenChannel.AddListener<RequestCook>(HandleReqCook);
+
         }
         private void OnDestroy()
         {
