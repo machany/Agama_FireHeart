@@ -24,7 +24,6 @@ namespace Scripts.Combat
         }
         private void HandleDurabilityChanged(float prev, float next)
         {
-            Debug.Log("Handle");
             DOTween.Kill(_pivotTrm);
             _pivotTrm.DOScaleX(_durabilityCompo.HealthPercent, _duration);
         }

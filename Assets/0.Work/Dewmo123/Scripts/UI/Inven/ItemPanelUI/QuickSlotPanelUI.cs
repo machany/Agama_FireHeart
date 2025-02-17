@@ -29,6 +29,7 @@ namespace Scripts.UI.Inven.ItemPanelUI
         protected override void HandleDataRefresh(DataEvent evt)
         {
             var quick = evt as QuickSlotData;
+            quickSlotItems = quick.quickSlotItems;
             UpdateSlotUI();
         }
 
