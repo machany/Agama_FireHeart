@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Scripts.Structures
 {
-    public class Bonfire : Structure, IInteracterable
+    public class Bonfire : Structure, Interactable
     {
         [SerializeField] private EventChannelSO _utileChannel;
         [ContextMenu("Cook")]

@@ -1,6 +1,6 @@
 ﻿namespace Scripts.Structures
 {
-    public  interface IInteracterable
+    public  interface Interactable
     {
         public void Interact();
     }
