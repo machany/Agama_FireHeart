@@ -19,5 +19,17 @@ namespace Agama.Scripts.Combats.DamageCasters
 
         public Transform TargetTrm => _owner.transform;
         public abstract bool CastDamage(int damage, bool isPowerAttack);
+
+        protected IDamageable.DamageMethodType _currentDamageType = IDamageable.DamageMethodType.Entity;
+        public void ChangeDamageType(IDamageable.DamageMethodType newDamageType)
+            => _currentDamageType = newDamageType;
+        public void ChangeDamageType(byte value)
+            => _currentDamageType = value switch
+            {
+                1 => IDamageable.DamageMethodType.Chop,
+                2 => IDamageable.DamageMethodType.Harmmer,
+                3 => IDamageable.DamageMethodType.Pickax,
+                _ => IDamageable.DamageMethodType.Entity
+            };
     }
 }

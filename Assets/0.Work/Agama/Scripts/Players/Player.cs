@@ -2,6 +2,8 @@ using Agama.Scripts.Animators;
 using Agama.Scripts.Core;
 using Agama.Scripts.Entities;
 using Agama.Scripts.Entities.FSM;
+using Scripts.Core;
+using System;
 using UnityEngine;
 
 namespace Agama.Scripts.Players
@@ -17,11 +19,13 @@ namespace Agama.Scripts.Players
         [Tooltip("<color=red>대기 상태</color>로 남아 있을 수 있는 최대 수입니다.\n에를 들어, 값이 3이라면 <color=green>(현재 진행중인 이벤트 스테이트) + (보관중인 이벤트 스테이트){최대 용량 3}</color>으로 4개의 이벤트를 처리하는 것으로 <color=red>보일 수 있습니다.</color>")]
         [SerializeField] private int maxEventStateStorageCount = 3;
 
+        public Action<byte, int> OnToolTypeChanged;
+
+        public byte ToolType { get; private set; }
+        public bool StateChangeLock { get; private set; }
+
         private EntityStateMachine _stateMachine;
         private EntityRenderer _renderer;
-
-        public int ToolType {  get; private set; }
-        public bool StateChangeLock { get; private set; }
 
         protected override void Awake()
         {
@@ -38,6 +42,7 @@ namespace Agama.Scripts.Players
         protected override void OnDestroy()
         {
             InputSO.OnItemUseKeyPressedEvent -= HandleItemUseKeyPressedEvent;
+            InputSO.OnQuickSlotChangedEvent -= HandleQuickSlotChangedEvent;
             _stateMachine.DestoryObject();
 
             base.OnDestroy();
@@ -73,8 +78,13 @@ namespace Agama.Scripts.Players
 
         private void HandleQuickSlotChangedEvent(byte value)
         {
+            // 들고 있는 아이템 구분 후 toolType변경
+
             ToolType = value;
             _renderer.SetParamiter(ToolTypeParam, ToolType);
+
+            // 그 도구의 공격력을 넣으면 됨. 템 상관 없이 실행 추천
+            OnToolTypeChanged?.Invoke(ToolType, 1);
         }
 
         protected override void HandleHitEvent()

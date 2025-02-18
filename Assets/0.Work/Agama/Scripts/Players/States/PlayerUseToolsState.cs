@@ -3,6 +3,7 @@ using Agama.Scripts.Entities;
 using Agama.Scripts.Entities.FSM;
 using System;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Agama.Scripts.Players.States
 {
@@ -12,13 +13,14 @@ namespace Agama.Scripts.Players.States
 
         private EntityMover _mover;
         private EntityAnimatorTrigger _animatorTrigger;
-        private EntityAttackComponent _attackComp;
+        private PlayerAttackComponent _attackComp;
 
         public PlayerUseToolsState(Entity owner, AnimationParamiterSO animationParamitor) : base(owner, animationParamitor)
         {
             _mover = _owner.GetComp<EntityMover>();
             _animatorTrigger = _owner.GetComp<EntityAnimatorTrigger>();
-            _attackComp = _owner.GetComp<EntityAttackComponent>(true);
+            _attackComp = _owner.GetComp<PlayerAttackComponent>();
+            _attackComp = _owner.GetComp<PlayerAttackComponent>();
         }
 
         public override void Enter()
@@ -30,6 +32,8 @@ namespace Agama.Scripts.Players.States
 
             _mover.CanMove = false;
             _mover.StopImmediately();
+
+            _attackComp.UseToolComboChanged();
         }
 
         private void HaandleAnimationEndEvent()

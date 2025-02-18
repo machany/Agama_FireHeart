@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a5a698a12799d045beb2da44e36b3cf, type: 3}
-  m_Name: PickaxingAttackPower
+  m_Script: {fileID: 11500000, guid: 8d180edd5af6d07499a0e27dabd4e7c5, type: 3}
+  m_Name: SwordAttackComboParam
   m_EditorClassIdentifier: 
-  statName: pickaxing_attack_power
-  description: 
-  baseValue: 1
-  minValue: 1
-  maxValue: 11
+  paramiterName: sword_combo
+  hashCode: -2143103260

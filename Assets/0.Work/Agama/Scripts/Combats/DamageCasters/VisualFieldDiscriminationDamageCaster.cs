@@ -36,7 +36,7 @@ namespace Agama.Scripts.Combats.DamageCasters
                     float forTargetAngle = Vector2.Dot(transform.up.normalized, forTargetDirection.normalized); // f^ * v^ 내적 (f = 플래이어 정면 방향벡터, v = 타겟까지의 방향벡터)
 
                     if (forTargetAngle >= _viewAngle && target.TryGetComponent(out IDamageable damageable))
-                        damageable.ApplyDamage(damage, isPowerAttack, _owner);
+                        damageable.ApplyDamage(_currentDamageType, damage, isPowerAttack);
                 }
                 return true;
             }

@@ -1,7 +1,6 @@
 ﻿using Agama.Scripts.Entities;
 using Library;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 namespace Agama.Scripts.Combats.DamageCasters
@@ -62,6 +61,7 @@ namespace Agama.Scripts.Combats.DamageCasters
 
                     _target = damageable;
                     _targetingMark.parent = target;
+                    _targetingMark.rotation = Quaternion.identity;
                     _targetingMark.position = target.position;
                 }
 
@@ -73,7 +73,7 @@ namespace Agama.Scripts.Combats.DamageCasters
 
         public override bool CastDamage(int damage, bool isPowerAttack) // 덮어씀
         {
-            _target?.ApplyDamage(damage, isPowerAttack, _owner);
+            _target?.ApplyDamage(_currentDamageType, damage, isPowerAttack);
 
             return _target != null;
         }

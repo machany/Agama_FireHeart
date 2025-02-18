@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d0aa80d2b7f50f499f365ed8562bf9a
+guid: 5e015d0b024dc8d458711df35e9fa495
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -38,9 +38,6 @@ TextureImporter:
   - first:
       213: 6457951919772298131
     second: Pawn_Blue 1_11
-  - first:
-      213: 4921549307963933003
-    second: Pawn_Blue 1_12
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -73,7 +70,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -87,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -162,7 +159,183 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pawn_Blue_Swording_0
+      name: Pawn_Blue_Sword_Attack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81c7b2dd014d7124395c556bbe016887
+      internalID: -1690692940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pawn_Blue_Sword_Attack_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa682040f7afb254184627ad594b49f6
+      internalID: 117046556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pawn_Blue_Sword_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aaf625a50bc54a47a395552cd5fba06
+      internalID: -1541636392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pawn_Blue_Sword_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1840a9fc302f07a4c8129b4850613bb0
+      internalID: -1618203145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pawn_Blue_Sword_Attack_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf22d4aab79854c40a511c95577d7f6c
+      internalID: 2000089498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pawn_Blue_Sword_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57daf9ebec306fe42a82baf312f4ded6
+      internalID: 2098903804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pawn_Blue_Sword_Attack_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fa5e55339d5e8844881138644c1742c
+      internalID: 670256244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pawn_Blue_Sword_Attack_7
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dda6f2ba2ad06d42933bc9f64a8ee00
+      internalID: 1320298994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pawn_Blue_Sword_Attack_8
       rect:
         serializedVersion: 2
         x: 0
@@ -177,14 +350,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f18a6cd7822980241ae693f9b3f1b866
-      internalID: -850669443
+      spriteID: 546939ca2e669684b9ac1b6ce86737fc
+      internalID: -870690718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pawn_Blue_Swording_1
+      name: Pawn_Blue_Sword_Attack_9
       rect:
         serializedVersion: 2
         x: 192
@@ -199,14 +372,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf542f8ab3c4bdd428e5e3c954c496bb
-      internalID: 1929802875
+      spriteID: 84283870538e9eb4db470ae0bbaa9c39
+      internalID: -1814161073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pawn_Blue_Swording_2
+      name: Pawn_Blue_Sword_Attack_10
       rect:
         serializedVersion: 2
         x: 384
@@ -221,206 +394,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bde868207d3bfee41b8b86145e3b4e63
-      internalID: -128313312
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_Swording_3
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ee403458ea2c6745861944fa38d28f3
-      internalID: 1144170966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_Swording_4
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4fd68d46b2446f4c9a69d35e9fc42ab
-      internalID: 1233826007
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_Swording_5
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1103a775fb6a0874881b085e52e8892b
-      internalID: 1455007855
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_Swording_6
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd79b878ea6f684449bf0bfe494b7c97
-      internalID: -622952895
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_Swording_7
-      rect:
-        serializedVersion: 2
-        x: 1344
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 472e53ede2657ff43ad437e80d5ee32f
-      internalID: -852367299
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_Swording_8
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 83d9657c229f4a14c849cb4ab5090059
-      internalID: -1979965059
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_Swording_9
-      rect:
-        serializedVersion: 2
-        x: 1728
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3fa92a47fe0a60547b2bfab156fffc37
-      internalID: -705605306
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_Swording_10
-      rect:
-        serializedVersion: 2
-        x: 1920
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 247a2260045e8f7458406582c2068fbd
-      internalID: -1487461049
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pawn_Blue_Swording_11
-      rect:
-        serializedVersion: 2
-        x: 2112
-        y: 0
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a42f2a16238b0f48b67eda6904d7795
-      internalID: -164424626
+      spriteID: 9ffedfec24cd8d740b63aad67c28fb74
+      internalID: -1931224632
       vertices: []
       indices: 
       edges: []
@@ -429,7 +404,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 24436add576a36d4b99eac725a7a6e44
+    spriteID: 4a7f5eb402233fc479a3e3a31ce7809d
     internalID: 0
     vertices: []
     indices: 
@@ -439,18 +414,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Pawn_Blue_Swording_0: -850669443
-      Pawn_Blue_Swording_1: 1929802875
-      Pawn_Blue_Swording_10: -1487461049
-      Pawn_Blue_Swording_11: -164424626
-      Pawn_Blue_Swording_2: -128313312
-      Pawn_Blue_Swording_3: 1144170966
-      Pawn_Blue_Swording_4: 1233826007
-      Pawn_Blue_Swording_5: 1455007855
-      Pawn_Blue_Swording_6: -622952895
-      Pawn_Blue_Swording_7: -852367299
-      Pawn_Blue_Swording_8: -1979965059
-      Pawn_Blue_Swording_9: -705605306
+      Pawn_Blue_Sword_Attack_0: -1690692940
+      Pawn_Blue_Sword_Attack_1: 117046556
+      Pawn_Blue_Sword_Attack_10: -1931224632
+      Pawn_Blue_Sword_Attack_2: -1541636392
+      Pawn_Blue_Sword_Attack_3: -1618203145
+      Pawn_Blue_Sword_Attack_4: 2000089498
+      Pawn_Blue_Sword_Attack_5: 2098903804
+      Pawn_Blue_Sword_Attack_6: 670256244
+      Pawn_Blue_Sword_Attack_7: 1320298994
+      Pawn_Blue_Sword_Attack_8: -870690718
+      Pawn_Blue_Sword_Attack_9: -1814161073
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
