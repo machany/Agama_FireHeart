@@ -29,13 +29,7 @@ namespace Scripts.Structures
                 _curTime = 0;
             }
         }
-        protected override void HandleDeadEvent()
-        {
-        }
 
-        protected override void HandleHitEvent()
-        {
-        }
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {

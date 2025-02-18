@@ -6,12 +6,21 @@ using UnityEngine;
 
 namespace Scripts.Structures
 {
-    public abstract class Structure : Entity, IDamageable
+    public class Structure : Entity, IDamageable
     {
         public event Action<int> OnDamage;
         public void ApplyDamage(int damage, bool isPowerAttack, Entity dealer)
         {
             OnDamage?.Invoke(damage);
+        }
+
+        protected override void HandleDeadEvent()
+        {
+            Destroy(gameObject);
+        }
+
+        protected override void HandleHitEvent()
+        {
         }
     }
 }

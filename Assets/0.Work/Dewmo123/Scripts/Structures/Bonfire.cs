@@ -14,12 +14,5 @@ namespace Scripts.Structures
             _utileChannel.InvokeEvent(evt);
         }
 
-        protected override void HandleDeadEvent()
-        {
-        }
-
-        protected override void HandleHitEvent()
-        {
-        }
     }
 }

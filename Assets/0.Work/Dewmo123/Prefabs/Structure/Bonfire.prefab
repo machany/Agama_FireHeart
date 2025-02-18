@@ -239,7 +239,7 @@ MonoBehaviour:
   OnDeadEvent:
     m_PersistentCalls:
       m_Calls: []
-  _invenChannel: {fileID: 11400000, guid: 6e6e90386104f774bb9a43cd0ee7b936, type: 2}
+  _utileChannel: {fileID: 0}
 --- !u!70 &1633747580634682917
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

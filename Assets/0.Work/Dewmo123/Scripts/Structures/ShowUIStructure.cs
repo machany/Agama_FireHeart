@@ -16,12 +16,6 @@ namespace Scripts.Structures
             evt.type = myType;
             _uiChannel.InvokeEvent(evt);
         }
-        protected override void HandleHitEvent()
-        {
-        }
 
-        protected override void HandleDeadEvent()
-        {
-        }
     }
 }
