@@ -10,6 +10,11 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
     public class ToolItemDataSO : ItemDataSO, IUsable
     {
         public IDamageable.DamageMethodType damageType;
+
+        public void ChoiceItem(Entity entity)
+        {
+        }
+
         public void UseItem(Entity entity)
         {
         }
