@@ -17,7 +17,7 @@ namespace Agama.Scripts.Core
         [TextArea]
         public string description;
 
-        [SerializeField] private int baseValue, minValue, maxValue;
+        [SerializeField] private float baseValue, minValue, maxValue;
 
         private Dictionary<object, float> _modifyDictionary = new Dictionary<object, float>();
 
@@ -25,28 +25,28 @@ namespace Agama.Scripts.Core
 
         #region Property section
 
-        public int MaxValue
+        public float MaxValue
         {
             get => maxValue;
             set => maxValue = value;
         }
 
-        public int MinValue
+        public float MinValue
         {
             get => minValue;
             set => minValue = value;
         }
 
-        public int Value => (int)Mathf.Clamp(baseValue + _modifiedValue, MinValue, MaxValue);
+        public float Value => Mathf.Clamp(baseValue + _modifiedValue, MinValue, MaxValue);
         public bool IsMax => Mathf.Approximately(Value, MaxValue);
         public bool IsMin => Mathf.Approximately(Value, MinValue);
 
-        public int BaseValue
+        public float BaseValue
         {
             get => baseValue;
             set
             {
-                int prevValue = Value;
+                float prevValue = Value;
                 baseValue = Mathf.Clamp(value, MinValue, MaxValue);
                 TryInvokeValueChangedEvent(Value, prevValue);
             }
@@ -69,7 +69,7 @@ namespace Agama.Scripts.Core
         {
             if (_modifyDictionary.TryGetValue(key, out float value))
             {
-                int prevValue = Value;
+                float prevValue = Value;
                 _modifiedValue -= value;
                 _modifyDictionary.Remove(key);
 
@@ -79,7 +79,7 @@ namespace Agama.Scripts.Core
 
         public void ClearAllModifier()
         {
-            int prevValue = Value;
+            float prevValue = Value;
             _modifyDictionary.Clear();
             _modifiedValue = 0;
             TryInvokeValueChangedEvent(Value, prevValue);
