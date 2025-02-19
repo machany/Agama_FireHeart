@@ -11,9 +11,9 @@ namespace Agama.Scripts.Test
 {
     public class TargetDamageable : MonoBehaviour, IDamageable
     {
-        [field: SerializeField] public IDamageable.DamageMethodType DamageableType { get; private set; } = IDamageable.DamageMethodType.Entity;
+        [field: SerializeField] public DamageMethodType DamageableType { get; private set; } = DamageMethodType.Entity;
 
-        public void ApplyDamage(IDamageable.DamageMethodType damageType, float damage, bool isPowerAttack)
+        public void ApplyDamage(DamageMethodType damageType, float damage, bool isPowerAttack)
         {
             if (DamageableType == damageType)
             {
