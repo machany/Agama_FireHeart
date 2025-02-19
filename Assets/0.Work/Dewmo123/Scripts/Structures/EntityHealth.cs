@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Scripts.Structures
 {
-    public class EntityHealth : MonoBehaviour, IEntityComponent, IAfterInitialize
+    public class EntityHealth : MonoBehaviour, IEntityComponent
     {
         [SerializeField] private StatSO durabilityStat;
         public float maxHealth;
@@ -24,15 +24,12 @@ namespace Scripts.Structures
         public void Initialize(Entity entity)
         {
             _entity = entity;
-        }
-
-        public void AfterInitialize()
-        {
             _statCompo = _entity.GetComp<EntityStat>();
             _statCompo.GetStat(durabilityStat).OnValueChange += HandleDurabilityChange;
             currentDurability.Value = maxHealth = _statCompo.GetStat(durabilityStat).Value;
             //_entity.OnDamage += ApplyDamage;
         }
+
 
         private void OnDestroy()
         {
