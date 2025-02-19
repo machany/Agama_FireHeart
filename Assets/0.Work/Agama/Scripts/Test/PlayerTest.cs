@@ -32,6 +32,18 @@ namespace Agama.Scripts.Test
             _owner.GetComp<EntityRenderer>().SetParamiter(carryParam, carry);
         }
 
+        [ContextMenu("Invoke Hit Event")]
+        private void InvokeHitEvent()
+        {
+            _owner.OnHitEvent?.Invoke();
+        }
+
+        [ContextMenu("Invoke Dead Event")]
+        private void InvokeDeadEvent()
+        {
+            _owner.OnDeadEvent?.Invoke();
+        }
+
         private Entity _owner;
 
         public void Initialize(Entity owner)

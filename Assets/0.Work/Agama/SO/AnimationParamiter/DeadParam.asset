@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d180edd5af6d07499a0e27dabd4e7c5, type: 3}
   m_Name: DeadParam
   m_EditorClassIdentifier: 
-  paramiterName: hit
-  hashCode: 1523721793
+  paramiterName: dead
+  hashCode: -316323548
