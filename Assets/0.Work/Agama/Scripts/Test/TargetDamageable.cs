@@ -11,11 +11,18 @@ namespace Agama.Scripts.Test
 {
     public class TargetDamageable : MonoBehaviour, IDamageable
     {
-        public void ApplyDamage(int damage, bool isPowerAttack, Entity dealer)
+        [field: SerializeField] public IDamageable.DamageMethodType DamageableType { get; private set; } = IDamageable.DamageMethodType.Entity;
+
+        public void ApplyDamage(IDamageable.DamageMethodType damageType, float damage, bool isPowerAttack)
         {
-            string a = damage > 10 ? "으악!" : "시발!";
-            string n = !isPowerAttack && damage < 10 ? "안" : !isPowerAttack ? "꽤" : "ㅈㄴ";
-            Debug.Log($"{gameObject.name} : {a} {n} 아파");
+            if (DamageableType == damageType)
+            {
+                string a = damage > 10 ? "으악!" : "시발!";
+                string n = !isPowerAttack && damage < 10 ? "안" : !isPowerAttack ? "꽤" : "ㅈㄴ";
+                Debug.Log($"{gameObject.name} : {a} {n} 아파");
+            }
+            else
+                Debug.Log("시원하노");
         }
     }
 }

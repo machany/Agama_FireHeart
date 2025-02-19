@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a5a698a12799d045beb2da44e36b3cf, type: 3}
-  m_Name: ChopAttackPower
+  m_Name: AttackPower
   m_EditorClassIdentifier: 
-  statName: chop_attack_power
+  statName: attack_power
   description: 
   baseValue: 1
   minValue: 1

@@ -37,7 +37,7 @@ namespace Agama.Scripts.Combats.DamageCasters
             for (int i = 0; i < cnt; i++)
             {
                 if (_hitResults[i].TryGetComponent(out IDamageable damageable))
-                    damageable.ApplyDamage(damage, isPowerAttack, _owner);
+                    damageable.ApplyDamage(_currentDamageType, damage, isPowerAttack);
             }
 
             return cnt > 0;
