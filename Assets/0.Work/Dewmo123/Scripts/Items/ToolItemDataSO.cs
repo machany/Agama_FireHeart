@@ -12,23 +12,10 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
     public class ToolItemDataSO : ItemDataSO, IUsable
     {
         public IDamageable.DamageMethodType damageType;
-        public List<AddingStat> addingStats;
-        public void AddModifier(EntityStat statCompo)
-        {
-            foreach (AddingStat stat in addingStats)
-            {
-                StatSO targetStat = statCompo.GetStat(stat.targetStat);
-                if (targetStat != null)
-                {
-                    targetStat.AddModifier(itemName, stat.modifyValue);
-                }
-            }
-        }
-
-
+        public int atkStat;
         public void ChoiceItem(Entity entity)
         {
-            AddModifier(entity.GetComp<EntityStat>());
+
         }
 
         public void UseItem(Entity entity)

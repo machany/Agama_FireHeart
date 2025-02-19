@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace Scripts.Combat
 {
-    public class DurabilityBar : MonoBehaviour, IEntityComponent,IAfterInitialize
+    public class StatBar : MonoBehaviour, IEntityComponent,IAfterInitialize
     {
         private Entity _entity;
-        private StructureDurability _durabilityCompo;
+        private EntityHealth _durabilityCompo;
         [SerializeField] private Transform _pivotTrm;
         [SerializeField] private float _duration;
         public void Initialize(Entity owner)
@@ -18,7 +18,7 @@ namespace Scripts.Combat
         }
         public void AfterInitialize()
         {
-            _durabilityCompo = _entity.GetComp<StructureDurability>();
+            _durabilityCompo = _entity.GetComp<EntityHealth>();
             _durabilityCompo.currentDurability.OnValueChanged += HandleDurabilityChanged;
             gameObject.SetActive(false);
         }
