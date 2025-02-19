@@ -1,4 +1,5 @@
 ﻿using Agama.Scripts.Animators;
+using Agama.Scripts.Combats;
 using Agama.Scripts.Core;
 using Agama.Scripts.Entities;
 using System;
@@ -49,7 +50,7 @@ namespace Agama.Scripts.Players
             _player.OnToolTypeChanged -= HandleToolTypeChanged;
         }
 
-        private void HandleToolTypeChanged(sbyte toolType, int attackpower)
+        private void HandleToolTypeChanged(DamageMethodType toolType, float attackpower)
         {
             damagecaster.ChangeDamageType(toolType);
             _statComp.SetBaseValue(attackPowerStat, attackpower);
