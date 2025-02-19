@@ -32,18 +32,14 @@ namespace Agama.Scripts.Entities
 
         protected virtual void Initialize()
         {
-            transform.GetComponentsInChildren<IEntityComponent>().ToList().ForEach(component =>
-            {
-                _entityComponentDictionary.Add(component.GetType(), component);
-            });
+            transform.GetComponentsInChildren<IEntityComponent>().ToList().ForEach(component => _entityComponentDictionary.Add(component.GetType(), component));
         }
+
         protected virtual void Init()
         {
-            _entityComponentDictionary.ToList().ForEach(component =>
-            {
-                component.Value.Initialize(this);
-            });
+            _entityComponentDictionary.Values.ToList().ForEach(component => component.Initialize(this));
         }
+
         protected virtual void AfterInitialize()
         {
             _entityComponentDictionary.Values.OfType<IAfterInitialize>().ToList().ForEach(component => component.AfterInitialize());
