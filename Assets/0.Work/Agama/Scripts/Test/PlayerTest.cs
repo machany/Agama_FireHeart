@@ -17,7 +17,7 @@ namespace Agama.Scripts.Test
         [SerializeField] private AnimationParamiterSO carryParam;
 
         [Header("Values")]
-        [SerializeField] private byte toolTypeValue;
+        [SerializeField] private sbyte toolTypeValue;
         [SerializeField] private bool carry;
 
         [ContextMenu("Tool Type Change")]

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d2278719afeeb4d8c68cc5a01ecc53, type: 3}
   m_Name: PlayerInputSO
   m_EditorClassIdentifier: 
+  maxQuickSlotCount: 4

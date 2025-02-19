@@ -17,6 +17,7 @@ namespace Agama.Scripts.Entities
         {
             _entityComponentDictionary = new Dictionary<Type, IEntityComponent>();
             Initialize();
+            Init();
             AfterInitialize();
 
             OnHitEvent.AddListener(HandleHitEvent);
@@ -31,12 +32,18 @@ namespace Agama.Scripts.Entities
 
         protected virtual void Initialize()
         {
-            transform.GetComponentsInChildren<IEntityComponent>().ToList().ForEach(component => {
+            transform.GetComponentsInChildren<IEntityComponent>().ToList().ForEach(component =>
+            {
                 _entityComponentDictionary.Add(component.GetType(), component);
-                component.Initialize(this);
             });
         }
-
+        protected virtual void Init()
+        {
+            _entityComponentDictionary.ToList().ForEach(component =>
+            {
+                component.Value.Initialize(this);
+            });
+        }
         protected virtual void AfterInitialize()
         {
             _entityComponentDictionary.Values.OfType<IAfterInitialize>().ToList().ForEach(component => component.AfterInitialize());

@@ -23,7 +23,7 @@ namespace Agama.Scripts.Combats.DamageCasters
         protected IDamageable.DamageMethodType _currentDamageType = IDamageable.DamageMethodType.Entity;
         public void ChangeDamageType(IDamageable.DamageMethodType newDamageType)
             => _currentDamageType = newDamageType;
-        public void ChangeDamageType(byte value)
+        public void ChangeDamageType(sbyte value)
             => _currentDamageType = value switch
             {
                 1 => IDamageable.DamageMethodType.Chop,

@@ -8,8 +8,11 @@ namespace Scripts.Structures
 {
     public class Structure : Entity, IDamageable
     {
-        public event Action<int> OnDamage;
-        public void ApplyDamage(int damage, bool isPowerAttack, Entity dealer)
+        public IDamageable.DamageMethodType DamageableType => throw new NotImplementedException();
+
+        public event Action<float> OnDamage;
+
+        public void ApplyDamage(IDamageable.DamageMethodType damageType, float damage, bool isPowerAttack)
         {
             OnDamage?.Invoke(damage);
         }

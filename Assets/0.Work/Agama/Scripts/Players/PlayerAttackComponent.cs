@@ -49,7 +49,7 @@ namespace Agama.Scripts.Players
             _player.OnToolTypeChanged -= HandleToolTypeChanged;
         }
 
-        private void HandleToolTypeChanged(byte toolType, int attackpower)
+        private void HandleToolTypeChanged(sbyte toolType, int attackpower)
         {
             damagecaster.ChangeDamageType(toolType);
             _statComp.SetBaseValue(attackPowerStat, attackpower);

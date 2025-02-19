@@ -36,13 +36,13 @@ namespace Agama.Scripts.Core
         /// <summary>
         /// true = Next(Right), false = Previous(Left)
         /// </summary>
-        public Action<byte> OnQuickSlotChangedEvent;
+        public Action<sbyte> OnQuickSlotChangedEvent;
 
-        [SerializeField] private byte maxQuickSlotCount;
+        [SerializeField] private sbyte maxQuickSlotCount;
 
         public Vector2 MoveInputVector { get; private set; }
 
-        public byte CurrentQuickSlotIndex { get; private set; } = 1;
+        public sbyte CurrentQuickSlotIndex { get; private set; } = 1;
 
         public void OnItemUse(InputAction.CallbackContext context)
         {
@@ -66,13 +66,13 @@ namespace Agama.Scripts.Core
         public void OnNext(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = ++CurrentQuickSlotIndex > maxQuickSlotCount ? CurrentQuickSlotIndex : maxQuickSlotCount);
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = (sbyte)Mathf.Min(++CurrentQuickSlotIndex, maxQuickSlotCount));
         }
 
         public void OnPrevious(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = (byte)(--CurrentQuickSlotIndex < 1 ? 1 : CurrentQuickSlotIndex));
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = (sbyte)Mathf.Max(--CurrentQuickSlotIndex, 0));
         }
 
         public void OnQuickSlot1(InputAction.CallbackContext context)

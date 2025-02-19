@@ -15,14 +15,14 @@ using static UnityEngine.EventSystems.EventTrigger;
 namespace Scripts.Players.Inven
 {
     //코드가 이꼬라지가 나기전에 고칠 방법이 있지 않았을까..?
-    public class PlayerInvenData : InvenSystem.InvenData, IEntityComponent,IAfterInitialize
+    public class PlayerInvenData : InvenSystem.InvenData, IEntityComponent, IAfterInitialize
     {
         [SerializeField] protected EventChannelSO _invenChannel;
 
         [SerializeField] private int _maxSlotCount;//UI 갯수랑 맞춰야함
         [SerializeField] private int _quickSlotCount;//UI 갯수랑 맞춰야함
         [SerializeField] private int _storageCount;//UI 갯수랑 맞춰야함
-        [SerializeField] private PlayerInputSO _input;//IEntityCompo 넣으면 거서 가꼬옴 지금은 임시
+        private PlayerInputSO _input;//IEntityCompo 넣으면 거서 가꼬옴 지금은 임시
 
         private Dictionary<EquipType, InventoryItem> _equipSlots;
         public List<InventoryItem> quickSlots;
@@ -31,8 +31,10 @@ namespace Scripts.Players.Inven
         public int selectedSlotIndex;
         //선택됨 퀵슬롯 추가해야함
         public InventoryItem selectedItem => quickSlots[selectedSlotIndex];
+
         private Player _player;
         private EntityStat _statCompo;
+
         #region Init Section
         public void Initialize(Entity entity)//Initialize로 변경 완
         {
@@ -41,8 +43,9 @@ namespace Scripts.Players.Inven
             _equipSlots = new Dictionary<EquipType, InventoryItem>();
             quickSlots = new List<InventoryItem>();
             storage = new List<InventoryItem>();
-
-            _input.OnScrollWheelEvent += ScrollWheelHandler;
+            _input = _player.InputSO;
+            
+            _input.OnQuickSlotChangedEvent += ScrollWheelHandler;
 
             _invenChannel.AddListener<InvenSwap>(InvenSwapHandler);
             _invenChannel.AddListener<InvenEquip>(InvenEquipHandler);
@@ -50,13 +53,13 @@ namespace Scripts.Players.Inven
             _invenChannel.AddListener<SetQuickSlot>(QuickSlotHandler);
             _invenChannel.AddListener<SetStorageSlot>(StorageSlotHandler);
             _invenChannel.AddListener<CraftItem>(CraftItemHandler);
-            _invenChannel.AddListener<RequestAddItem>(AcquireAddItem); 
+            _invenChannel.AddListener<RequestAddItem>(AcquireAddItem);
 
             for (int i = 0; i < _maxSlotCount; i++)
-                inventory.Add(new InventoryItem(null,0));
+                inventory.Add(new InventoryItem(null, 0));
             for (int i = 0; i < _quickSlotCount; i++)
                 quickSlots.Add(new InventoryItem(null, 0));
-            for(int i=0;i<_storageCount;i++)
+            for (int i = 0; i < _storageCount; i++)
                 storage.Add(new InventoryItem(null, 0));
             UpdateInventoryUI(true);
         }
@@ -72,7 +75,7 @@ namespace Scripts.Players.Inven
 
         private void OnDestroy()
         {
-            _input.OnScrollWheelEvent += ScrollWheelHandler;
+            _input.OnQuickSlotChangedEvent -= ScrollWheelHandler;
 
             _invenChannel.RemoveListener<SetQuickSlot>(QuickSlotHandler);
             _invenChannel.RemoveListener<RequestInvenData>(HandleRequestInventoryData);
@@ -90,9 +93,9 @@ namespace Scripts.Players.Inven
         {
             AddItem(item.item, item.cnt);
         }
-        private void ScrollWheelHandler(Vector2 vector)
+        private void ScrollWheelHandler(sbyte value)
         {
-            selectedSlotIndex = (int)Mathf.Clamp(selectedSlotIndex - vector.y, 0, _quickSlotCount - 1);
+            selectedSlotIndex = value;
         }
         private void CraftItemHandler(CraftItem item)
         {
@@ -129,7 +132,6 @@ namespace Scripts.Players.Inven
         }
         private void StorageSlotHandler(SetStorageSlot slot)
         {
-            Debug.Log("SetStorage");
             if (slot.isSwap)
                 SwapStorageSlot(slot);
             else if (slot.isUnSet)
