@@ -25,12 +25,12 @@ namespace Scripts.Structures
         {
             _entity = entity;
             _statCompo = _entity.GetComp<EntityStat>();
-            currentDurability.Value = maxHealth = _statCompo.GetStat(durabilityStat).Value;
             //_entity.OnDamage += ApplyDamage;
         }
         public void AfterInitialize()
         {
             _statCompo.GetStat(durabilityStat).OnValueChange += HandleDurabilityChange;
+            currentDurability.Value = maxHealth = _statCompo.GetStat(durabilityStat).Value;
         }
 
         private void OnDestroy()
