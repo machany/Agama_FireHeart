@@ -37,7 +37,7 @@ namespace Agama.Scripts.Entities
 
         protected virtual void Init()
         {
-            _entityComponentDictionary.Values.ToList().ForEach(component => component.Initialize(this););
+            _entityComponentDictionary.Values.ToList().ForEach(component => component.Initialize(this));
         }
 
         protected virtual void AfterInitialize()
