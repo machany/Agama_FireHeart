@@ -25,7 +25,8 @@ namespace Agama.Scripts.Entities
         public StatSO GetStat(StatSO targetStat)
         {
             Debug.Assert(targetStat != null, "Stats::GetStat : target stat is null");
-            return _stats.FirstOrDefault(stat => stat.statName == targetStat.statName);
+            return _stats.FirstOrDefault(stat => { Debug.Log(stat);
+                return stat.statName == targetStat.statName; });
         }
 
         public bool TryGetStat(StatSO targetStat, out StatSO outStat)
