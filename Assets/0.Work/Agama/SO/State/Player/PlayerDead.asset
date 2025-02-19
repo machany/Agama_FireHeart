@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateName: Player_dead_State_event
   className: Agama.Scripts.Players.States.PlayerDeadState
-  animParam: {fileID: 0}
+  animParam: {fileID: 11400000, guid: c46c290505207b54c9e9c94a88ea3681, type: 2}

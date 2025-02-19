@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71a5b7f92d10ca42b76c40182f11d60, type: 3}
-  m_Name: PlayerHit
+  m_Script: {fileID: 11500000, guid: 8d180edd5af6d07499a0e27dabd4e7c5, type: 3}
+  m_Name: HitParam
   m_EditorClassIdentifier: 
-  stateName: Player_hit_State_event
-  className: Agama.Scripts.Players.States.PlayerHitState
-  animParam: {fileID: 11400000, guid: 43f50cec51da78b4792db6f54584284e, type: 2}
+  paramiterName: hit
+  hashCode: 1523721793
