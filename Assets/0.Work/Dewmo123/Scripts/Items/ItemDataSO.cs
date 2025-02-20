@@ -1,5 +1,7 @@
 using System.Text;
 using UnityEngine;
+using Agama.Scripts.Combats;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -11,7 +13,7 @@ namespace Scripts.Items
         public Sprite icon;
         public string itemID;
         public int maxStack;
-
+        public DamageMethodType damageType;
         protected StringBuilder _stringBuilder = new StringBuilder();
 
         public virtual string GetDescription()

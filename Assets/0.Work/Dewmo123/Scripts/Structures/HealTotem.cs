@@ -1,5 +1,4 @@
-﻿using Agama.Scripts.Core;
-using Agama.Scripts.Entities;
+﻿using Scripts.Stats;
 using UnityEngine;
 
 namespace Scripts.Structures
@@ -17,7 +16,7 @@ namespace Scripts.Structures
             var targets = Physics2D.OverlapCircleAll(transform.position, _healRad, _targetLayer);
             foreach (var item in targets)
             {
-                item.GetComponentInChildren<EntityHealth>().ApplyHeal(_healAmount);
+                item.GetComponentInChildren<StructureDurability>().ApplyHeal(_healAmount);
             }
         }
         private void Update()
