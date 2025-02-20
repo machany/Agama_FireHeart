@@ -26,7 +26,7 @@ namespace Scripts.Combat
         private void HandleStatChange(float prev, float next)
         {
             DOTween.Kill(_pivotTrm);
-            _pivotTrm.DOScaleX(_statCompo.HealthPercent, _duration);
+            _pivotTrm.DOScaleX(_statCompo.StatPercent, _duration);
         }
     }
 }

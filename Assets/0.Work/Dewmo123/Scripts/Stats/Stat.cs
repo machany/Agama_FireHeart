@@ -12,7 +12,7 @@ namespace Scripts.Stats
         public float maxStat;
 
         public NotifyValue<float> currentStat = new NotifyValue<float>();
-        public float HealthPercent => currentStat.Value / maxStat;
+        public float StatPercent => currentStat.Value / maxStat;
 
         protected Entity _entity;
         protected EntityStat _statCompo;
