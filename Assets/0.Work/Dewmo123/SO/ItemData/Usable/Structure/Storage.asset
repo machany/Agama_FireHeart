@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643a18af888b9684e8e9d407a9deb1c7, type: 3}
+  m_Name: Storage
+  m_EditorClassIdentifier: 
+  itemName: "\uCC3D\uACE0"
+  icon: {fileID: -5443547844040458350, guid: 9ee5a484eb268c244b4eeba283930cc0, type: 3}
+  itemID: 99acf69c23519694eae17672154dda7f
+  maxStack: 1
+  damageType: 0
+  structure: {fileID: 5631717062468627562, guid: e1db5b522dc55234792a4db3e6ec7cd5, type: 3}

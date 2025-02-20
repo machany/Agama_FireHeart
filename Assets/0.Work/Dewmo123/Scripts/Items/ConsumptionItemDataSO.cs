@@ -1,4 +1,5 @@
 ﻿using Agama.Scripts.Entities;
+using Scripts.Players.Inven;
 using Scripts.Stats;
 using SerializableDictionary.Scripts;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace Scripts.Items
 
         public void UseItem(Entity entity)
         {
+            entity.GetComp<PlayerInvenData>().RemoveItem(this, 1);
             entity.GetComp<EntityHealth>().ApplyHeal(hp);
             entity.GetComp<EntityHealth>().ApplyHeal(thirsty);
             entity.GetComp<EntityHealth>().ApplyHeal(hungry);

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643a18af888b9684e8e9d407a9deb1c7, type: 3}
+  m_Name: CraftTable
+  m_EditorClassIdentifier: 
+  itemName: "\uC791\uC5C5\uB300"
+  icon: {fileID: -3135009239117609470, guid: c3d85b298862b1045ac7298eba56f60a, type: 3}
+  itemID: ad596db8726000c488c3904402c66371
+  maxStack: 1
+  damageType: 0
+  structure: {fileID: 4853167198298796965, guid: 9d1c8915c62afdc48bdea2b9c85c00d1, type: 3}

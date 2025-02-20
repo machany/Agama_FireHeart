@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8125f0fde6d3a749b316390edd41024, type: 3}
-  m_Name: Wood
+  m_Name: Diamond
   m_EditorClassIdentifier: 
-  itemName: "\uB098\uBB34"
-  icon: {fileID: -5603334817709131366, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
-  itemID: e3f8c5d88edc65c4c99af2db9f648465
+  itemName: "\uB2E4\uC774\uC544\uBAAC\uB4DC"
+  icon: {fileID: 7715466788258912613, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
+  itemID: 24add327524b9be4a974599e47d66bb6
   maxStack: 99
   damageType: 0

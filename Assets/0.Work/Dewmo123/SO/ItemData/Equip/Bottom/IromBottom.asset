@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc217bc9d6fc1214a86c709a6195fb6d, type: 3}
+  m_Name: IromBottom
+  m_EditorClassIdentifier: 
+  itemName: "\uCCA0 \uD558\uC758"
+  icon: {fileID: 8294237484128409395, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
+  itemID: 59821593fd37a88438452074f307f11b
+  maxStack: 0
+  damageType: 0
+  equipType: 1
+  addingStats: []
+  itemEffectDescription: 

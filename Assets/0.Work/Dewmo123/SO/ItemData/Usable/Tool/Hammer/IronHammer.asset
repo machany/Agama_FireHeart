@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1996a433bd1cff46b5ad84eaa03c663, type: 3}
+  m_Name: IronHammer
+  m_EditorClassIdentifier: 
+  itemName: "\uCCA0 \uD574\uBA38"
+  icon: {fileID: -6343698962254518667, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
+  itemID: f37002cd8e299eb4584e79188b148aeb
+  maxStack: 1
+  damageType: 2
+  atkStat: 0

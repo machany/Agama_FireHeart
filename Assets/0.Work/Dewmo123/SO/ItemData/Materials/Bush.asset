@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8125f0fde6d3a749b316390edd41024, type: 3}
-  m_Name: Wood
+  m_Name: Bush
   m_EditorClassIdentifier: 
-  itemName: "\uB098\uBB34"
-  icon: {fileID: -5603334817709131366, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
-  itemID: e3f8c5d88edc65c4c99af2db9f648465
+  itemName: "\uD480"
+  icon: {fileID: 2016461056396169917, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
+  itemID: 1428350de92d71a46a9a6959874953e5
   maxStack: 99
   damageType: 0

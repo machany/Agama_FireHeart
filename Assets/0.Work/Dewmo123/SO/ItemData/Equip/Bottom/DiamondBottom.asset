@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc217bc9d6fc1214a86c709a6195fb6d, type: 3}
-  m_Name: Woodtop
+  m_Name: DiamondBottom
   m_EditorClassIdentifier: 
-  itemName: "\uB098\uBB34 \uC0C1\uC758"
-  icon: {fileID: 8378673738535542105, guid: f01304356fe912e4cb92ce3335a96c62, type: 3}
-  itemID: 720c4e9243d4bea46bc80bdff828dc39
-  maxStack: 1
-  equipType: 0
+  itemName: "\uB2E4\uC774\uC544 \uD558\uC758"
+  icon: {fileID: 8568122170271639690, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
+  itemID: e202faac163bc734bbd7a9ecee1558f6
+  maxStack: 0
+  damageType: 0
+  equipType: 1
   addingStats: []
   itemEffectDescription: 

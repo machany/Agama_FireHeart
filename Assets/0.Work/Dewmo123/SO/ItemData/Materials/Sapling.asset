@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8125f0fde6d3a749b316390edd41024, type: 3}
-  m_Name: Wood
+  m_Name: Sapling
   m_EditorClassIdentifier: 
-  itemName: "\uB098\uBB34"
-  icon: {fileID: -5603334817709131366, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
-  itemID: e3f8c5d88edc65c4c99af2db9f648465
+  itemName: "\uBB18\uBAA9"
+  icon: {fileID: 912274142302743689, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
+  itemID: f6288d7854d169345923c1b54ee9923e
   maxStack: 99
   damageType: 0

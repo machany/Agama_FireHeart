@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc217bc9d6fc1214a86c709a6195fb6d, type: 3}
-  m_Name: Irontop
+  m_Name: IronTop
   m_EditorClassIdentifier: 
   itemName: "\uCCA0 \uC0C1\uC758"
-  icon: {fileID: 5709036142325981924, guid: a26a1c02025db304595f9a339ecf5a50, type: 3}
-  itemID: 597edfb24555c004c86f0420607b2ffc
+  icon: {fileID: 4499211136569415834, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
+  itemID: 720c4e9243d4bea46bc80bdff828dc39
   maxStack: 1
-  equipType: 1
+  damageType: 0
+  equipType: 0
   addingStats: []
   itemEffectDescription: 

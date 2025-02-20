@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643a18af888b9684e8e9d407a9deb1c7, type: 3}
+  m_Name: Cannon
+  m_EditorClassIdentifier: 
+  itemName: "\uB300\uD3EC"
+  icon: {fileID: -3680518950676972392, guid: e2068c072ed885345b7d26c3cbb263df, type: 3}
+  itemID: f610f4f2de041db40b0f5e60857c5453
+  maxStack: 1
+  damageType: 0
+  structure: {fileID: 3557641519334228447, guid: 5fdc4e16b3dc7f84ba3d406e7e909c76, type: 3}

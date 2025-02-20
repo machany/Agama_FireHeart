@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8125f0fde6d3a749b316390edd41024, type: 3}
-  m_Name: Wood
+  m_Name: Bone
   m_EditorClassIdentifier: 
-  itemName: "\uB098\uBB34"
-  icon: {fileID: -5603334817709131366, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
-  itemID: e3f8c5d88edc65c4c99af2db9f648465
+  itemName: "\uBF08"
+  icon: {fileID: 230168109, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
+  itemID: f963791cc53f29b49aa172e2cdc87f8d
   maxStack: 99
   damageType: 0

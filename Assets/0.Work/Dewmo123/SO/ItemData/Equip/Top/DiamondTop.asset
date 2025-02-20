@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc217bc9d6fc1214a86c709a6195fb6d, type: 3}
+  m_Name: DiamondTop
+  m_EditorClassIdentifier: 
+  itemName: "\uAE08 \uC0C1\uC758"
+  icon: {fileID: 5709036142325981924, guid: a26a1c02025db304595f9a339ecf5a50, type: 3}
+  itemID: 597edfb24555c004c86f0420607b2ffc
+  maxStack: 1
+  damageType: 0
+  equipType: 1
+  addingStats: []
+  itemEffectDescription: 
