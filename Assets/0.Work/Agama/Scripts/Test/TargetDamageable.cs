@@ -13,16 +13,15 @@ namespace Agama.Scripts.Test
     {
         [field: SerializeField] public DamageMethodType DamageableType { get; private set; } = DamageMethodType.Entity;
 
-        public void ApplyDamage(DamageMethodType damageType, float damage, bool isPowerAttack)
+        public void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer)
         {
             if (DamageableType == damageType)
             {
-                string a = damage > 10 ? "으악!" : "시발!";
-                string n = !isPowerAttack && damage < 10 ? "안" : !isPowerAttack ? "꽤" : "ㅈㄴ";
-                Debug.Log($"{gameObject.name} : {a} {n} 아파");
+                string a = damage > 25 ? "으악! 씨1발2련3이?" : "시발 개1새2끼가?!";
+                Debug.Log($"{gameObject.name} : {a}\n[System] : {gameObject.name} damaged {damage}.");
             }
             else
-                Debug.Log("시원하노");
+                Debug.Log("그걸로 때려서 간에 기별이나 나겠노?");
         }
     }
 }

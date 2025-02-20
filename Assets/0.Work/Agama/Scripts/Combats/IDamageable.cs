@@ -8,13 +8,12 @@ namespace Agama.Scripts.Combats
         Chop = 1,
         Harmmer = 2,
         Pickax = 3,
-        None = 0
     }
 
     public interface IDamageable
     {
         public DamageMethodType DamageableType { get; }
 
-        public void ApplyDamage(DamageMethodType damageType, float damage, bool isPowerAttack);
+        public void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer);
     }
 }

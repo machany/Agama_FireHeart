@@ -3,14 +3,11 @@ using Agama.Scripts.Entities;
 using Agama.Scripts.Events;
 using Agama.Scripts.Players;
 using Scripts.EventChannel;
-using Scripts.InvenSystem;
 using Scripts.Items;
 using Scripts.UI.Inven;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Scripts.Players.Inven
 {
@@ -44,8 +41,9 @@ namespace Scripts.Players.Inven
             quickSlots = new List<InventoryItem>();
             storage = new List<InventoryItem>();
             _input = _player.InputSO;
-            
+
             _input.OnQuickSlotChangedEvent += ScrollWheelHandler;
+            _player.OnUseItem += HandleUseItemSeleted;
 
             _invenChannel.AddListener<InvenSwap>(InvenSwapHandler);
             _invenChannel.AddListener<InvenEquip>(InvenEquipHandler);
@@ -76,6 +74,7 @@ namespace Scripts.Players.Inven
         private void OnDestroy()
         {
             _input.OnQuickSlotChangedEvent -= ScrollWheelHandler;
+            _player.OnUseItem -= HandleUseItemSeleted;
 
             _invenChannel.RemoveListener<SetQuickSlot>(QuickSlotHandler);
             _invenChannel.RemoveListener<RequestInvenData>(HandleRequestInventoryData);
@@ -96,6 +95,12 @@ namespace Scripts.Players.Inven
         private void ScrollWheelHandler(sbyte value)
         {
             selectedSlotIndex = value;
+
+            ItemDataSO itemSO = selectedItem != null ? selectedItem.data : null;
+            if (itemSO == null)
+                _player.ChangeQuickSlotItem(0, ItemDataSO.DEFAULT_DAMAGE);
+            else
+                _player.ChangeQuickSlotItem(itemSO.damageType, itemSO.attackDamage);
         }
         private void CraftItemHandler(CraftItem item)
         {
@@ -108,6 +113,10 @@ namespace Scripts.Players.Inven
         {
             UpdateInventoryUI();
         }
+
+        private void HandleUseItemSeleted()
+            => (selectedItem.data as IUsable)?.UseItem(_player);
+
         private void InvenSwapHandler(InvenSwap t)
         {
             if (t.isSame)
@@ -149,7 +158,7 @@ namespace Scripts.Players.Inven
         }
         #endregion
 
-        #region QuickSlot Region
+        #region Set QuickSlot Region
         private void SwapQuickSlot(SetQuickSlot slot)
         {
             (quickSlots[slot.quickSlotIndex], quickSlots[slot.quickSlotIndex2]) = (quickSlots[slot.quickSlotIndex2], quickSlots[slot.quickSlotIndex]);
@@ -190,6 +199,7 @@ namespace Scripts.Players.Inven
         }
 
         #endregion
+
         #region Storage Region
         private void SwapStorageSlot(SetStorageSlot slot)
         {
@@ -358,6 +368,8 @@ namespace Scripts.Players.Inven
         }
         #endregion
 
+        #region Update
+
         private void UpdateInventoryUI(bool onStorage = false)
         {
             inventory.FindAll(item => item.data != null && item.stackSize == 0).ForEach(item => item.data = null);
@@ -395,6 +407,8 @@ namespace Scripts.Players.Inven
             evt.storage = storage;
             _invenChannel.InvokeEvent(evt);
         }
+
+        #endregion
     }
 }
 

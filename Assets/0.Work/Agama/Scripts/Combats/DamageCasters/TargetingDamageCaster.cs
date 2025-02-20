@@ -71,9 +71,9 @@ namespace Agama.Scripts.Combats.DamageCasters
             return false;
         }
 
-        public override bool CastDamage(int damage, bool isPowerAttack) // 덮어씀
+        public override bool CastDamage(float damage) // 덮어씀
         {
-            _target?.ApplyDamage(_currentDamageType, damage, isPowerAttack);
+            _target?.ApplyDamage(_currentDamageType, damage, _owner);
 
             return _target != null;
         }

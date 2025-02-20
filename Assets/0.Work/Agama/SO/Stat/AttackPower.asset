@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statName: attack_power
   description: 
-  baseValue: 1
-  minValue: 1
-  maxValue: 11
+  baseValue: 10
+  minValue: 10
+  maxValue: 100

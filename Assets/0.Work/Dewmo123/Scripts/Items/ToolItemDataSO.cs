@@ -8,7 +8,7 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
 
     public class ToolItemDataSO : ItemDataSO, IUsable
     {
-        public int atkStat;
+        [SerializeField] private float _attackDamageMultiply;
         public void ChoiceItem(Entity entity)
         {
 
@@ -16,6 +16,13 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
 
         public void UseItem(Entity entity)
         {
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            attackDamage = DEFAULT_DAMAGE * _attackDamageMultiply;
         }
     }
 }

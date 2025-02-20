@@ -24,7 +24,7 @@ namespace Agama.Scripts.Combats.DamageCasters
             _viewAngle = Mathf.Cos(fieldOfViewAngle / 2 * Mathf.Deg2Rad); // 2D라 Mathf.Deg2Rad를 곱함
         }
 
-        public override bool CastDamage(int damage, bool isPowerAttack)
+        public override bool CastDamage(float damage)
         {
             int count = Physics2D.OverlapCircle(transform.transform.position, senceRange, contactFilter, _hitResults);
 
@@ -36,7 +36,7 @@ namespace Agama.Scripts.Combats.DamageCasters
                     float forTargetAngle = Vector2.Dot(transform.up.normalized, forTargetDirection.normalized); // f^ * v^ 내적 (f = 플래이어 정면 방향벡터, v = 타겟까지의 방향벡터)
 
                     if (forTargetAngle >= _viewAngle && target.TryGetComponent(out IDamageable damageable))
-                        damageable.ApplyDamage(_currentDamageType, damage, isPowerAttack);
+                        damageable.ApplyDamage(_currentDamageType, damage, _owner);
                 }
                 return true;
             }
@@ -45,7 +45,7 @@ namespace Agama.Scripts.Combats.DamageCasters
         }
 
 #if UNITY_EDITOR
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Handles.color = Color.red;
             Handles.DrawSolidArc(transform.position, Vector3.back, Quaternion.Euler(0, 0, fieldOfViewAngle / 2) * transform.up, fieldOfViewAngle, senceRange);

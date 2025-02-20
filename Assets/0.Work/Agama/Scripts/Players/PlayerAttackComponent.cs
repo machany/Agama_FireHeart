@@ -42,18 +42,18 @@ namespace Agama.Scripts.Players
             _renderer = _player.GetComp<EntityRenderer>();
             _statComp = _player.GetComp<EntityStat>();
 
-            _player.OnToolTypeChanged += HandleToolTypeChanged;
+            _player.OnQuickSloatItemChange += HandleToolTypeChanged;
         }
 
         private void OnDestroy()
         {
-            _player.OnToolTypeChanged -= HandleToolTypeChanged;
+            _player.OnQuickSloatItemChange -= HandleToolTypeChanged;
         }
 
-        private void HandleToolTypeChanged(DamageMethodType toolType, float attackpower)
+        private void HandleToolTypeChanged(sbyte toolType, float attackPower)
         {
             damagecaster.ChangeDamageType(toolType);
-            _statComp.SetBaseValue(attackPowerStat, attackpower);
+            _statComp.SetBaseValue(attackPowerStat, attackPower);
         }
 
         public void UseToolComboChanged()
@@ -66,7 +66,7 @@ namespace Agama.Scripts.Players
         {
             base.Attack();
 
-            damagecaster.CastDamage(1, true);
+            damagecaster.CastDamage(_statComp.GetStat(attackPowerStat).BaseValue);
         }
 
         private void Update()

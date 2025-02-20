@@ -4065,7 +4065,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 246463011887897059, guid: 12f1d96d29a182a4d8080c18794360e9, type: 3}
       propertyPath: statOverrides.Array.data[0].isUseOverride
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 246463011887897059, guid: 12f1d96d29a182a4d8080c18794360e9, type: 3}
+      propertyPath: statOverrides.Array.data[0].overrideValue
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 246463011887897059, guid: 12f1d96d29a182a4d8080c18794360e9, type: 3}
+      propertyPath: statOverrides.Array.data[4].overrideValue
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5648879977019274956, guid: 12f1d96d29a182a4d8080c18794360e9, type: 3}
       propertyPath: m_Name
