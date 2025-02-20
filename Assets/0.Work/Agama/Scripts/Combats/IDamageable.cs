@@ -7,7 +7,8 @@ namespace Agama.Scripts.Combats
         Entity = 4,
         Chop = 1,
         Harmmer = 2,
-        Pickax = 3
+        Pickax = 3,
+        None = 0
     }
 
     public interface IDamageable
