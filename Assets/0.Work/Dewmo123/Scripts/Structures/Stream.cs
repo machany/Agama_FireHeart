@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Scripts.Structures
 {
-    public class Stream : Entity, Interactable
+    public class Stream : MonoBehaviour, Interactable
     {
         [SerializeField] private EventChannelSO _utileChannel;
         [ContextMenu("Scoop")]
@@ -13,14 +13,6 @@ namespace Scripts.Structures
         {
             var evt = PlayerUtileEvents.ReqScoopEvent;
             _utileChannel.InvokeEvent(evt);
-        }
-
-        protected override void HandleDeadEvent()
-        {
-        }
-
-        protected override void HandleHitEvent()
-        {
         }
     }
 }

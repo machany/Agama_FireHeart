@@ -1,8 +1,5 @@
-﻿using Agama.Scripts.Combats;
-using Agama.Scripts.Core;
-using Agama.Scripts.Entities;
+﻿using Agama.Scripts.Entities;
 using Scripts.Items;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets._0.Work.Dewmo123.Scripts.Items
@@ -11,7 +8,6 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
 
     public class ToolItemDataSO : ItemDataSO, IUsable
     {
-        public DamageMethodType damageType;
         public int atkStat;
         public void ChoiceItem(Entity entity)
         {
