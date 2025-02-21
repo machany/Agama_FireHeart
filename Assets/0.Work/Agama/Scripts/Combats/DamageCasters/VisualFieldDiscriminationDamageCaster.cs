@@ -8,6 +8,7 @@ namespace Agama.Scripts.Combats.DamageCasters
 {
     public class VisualFieldDiscriminationDamageCaster : DamageCaster
     {
+        [Header("Visual Field Discrimination Setting")]
         [SerializeField] protected float senceRange;
         [Range(0f, 360f)]
         [SerializeField] protected float fieldOfViewAngle;
@@ -45,12 +46,15 @@ namespace Agama.Scripts.Combats.DamageCasters
         }
 
 #if UNITY_EDITOR
-        private void OnDrawGizmosSelected()
+        [Header("Draw Color Setting")]
+        [SerializeField] private Color drawColor = Color.red;
+
+        protected virtual void OnDrawGizmosSelected()
         {
-            Handles.color = Color.red;
+            Handles.color = drawColor;
             Handles.DrawSolidArc(transform.position, Vector3.back, Quaternion.Euler(0, 0, fieldOfViewAngle / 2) * transform.up, fieldOfViewAngle, senceRange);
 
-            Gizmos.color = Color.red;
+            Gizmos.color = drawColor;
             Gizmos.DrawWireSphere(transform.position, senceRange);
         }
 #endif

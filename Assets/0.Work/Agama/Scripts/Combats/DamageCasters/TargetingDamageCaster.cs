@@ -5,13 +5,15 @@ using UnityEngine;
 
 namespace Agama.Scripts.Combats.DamageCasters
 {
-    public class TargetingDamageCaster : VisualFieldDiscriminationDamageCaster
+    // 과연 MonoBehaviour에서 제네릭을 SerializedField처럼 가져올 방법이 없었을까..?
+    sealed public class TargetingDamageCaster : VisualFieldDiscriminationDamageCaster
     {
+        [Header("Targeting Mark")]
         [SerializeField] private Transform _targetingMark;
         [SerializeField] private Sprite targetingMarkSprite;
 
-        private IDamageable _target;
         private List<Collider2D> _hitResultList;
+        private IDamageable _target;
 
         public override void InitCaster(Entity owner)
         {
@@ -19,6 +21,7 @@ namespace Agama.Scripts.Combats.DamageCasters
 
             _hitResultList = new List<Collider2D>();
 
+            _targetingMark ??= new GameObject().transform;
             _targetingMark.SetComponent<SpriteRenderer>(spriteRenderer =>
                 {
                     spriteRenderer.enabled = true;
@@ -71,7 +74,7 @@ namespace Agama.Scripts.Combats.DamageCasters
             return false;
         }
 
-        public override bool CastDamage(float damage) // 덮어씀
+        public override bool CastDamage(float damage)
         {
             _target?.ApplyDamage(_currentDamageType, damage, _owner);
 

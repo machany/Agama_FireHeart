@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -41,6 +40,7 @@ namespace Agama.Scripts.Core
         [SerializeField] private sbyte maxQuickSlotCount;
 
         public Vector2 MoveInputVector { get; private set; }
+        public Vector2 PreviousInputVector { get; private set; }
 
         public sbyte CurrentQuickSlotIndex { get; private set; } = 1;
 
@@ -60,7 +60,10 @@ namespace Agama.Scripts.Core
         {
             MoveInputVector = context.ReadValue<Vector2>();
             if (context.performed)
+            {
                 OnMoveKeyPressedEvent?.Invoke();
+                PreviousInputVector = context.ReadValue<Vector2>();
+            }
         }
 
         public void OnNext(InputAction.CallbackContext context)

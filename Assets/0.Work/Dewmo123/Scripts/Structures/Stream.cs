@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Scripts.Structures
 {
-    public class Stream : MonoBehaviour, Interactable
+    public class Stream : MonoBehaviour, IInteractable
     {
         [SerializeField] private EventChannelSO _utileChannel;
         [ContextMenu("Scoop")]

@@ -5,6 +5,7 @@ namespace Agama.Scripts.Combats.DamageCasters
 {
     public abstract class DamageCaster : MonoBehaviour
     {
+        [Header("Damage Caster Set")]
         [SerializeField] protected int maxHitCount = 1;
         [SerializeField] protected ContactFilter2D contactFilter;
 

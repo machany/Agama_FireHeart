@@ -1,8 +1,6 @@
 ﻿using Agama.Scripts.Animators;
-using Agama.Scripts.Combats;
 using Agama.Scripts.Core;
 using Agama.Scripts.Entities;
-using System;
 using UnityEngine;
 
 namespace Agama.Scripts.Players
@@ -29,6 +27,7 @@ namespace Agama.Scripts.Players
         }
 
         private Player _player;
+        private EntityMover _mover;
         private EntityRenderer _renderer;
         private EntityStat _statComp;
 
@@ -40,6 +39,7 @@ namespace Agama.Scripts.Players
             _player = owner as Player;
 
             _renderer = _player.GetComp<EntityRenderer>();
+            _mover = _player.GetComp<EntityMover>();
             _statComp = _player.GetComp<EntityStat>();
 
             _player.OnQuickSloatItemChange += HandleToolTypeChanged;
@@ -72,11 +72,11 @@ namespace Agama.Scripts.Players
         private void Update()
         {
             damagecaster.UpdateCaster();
-
-            if (_player.InputSO.MoveInputVector.magnitude <= Mathf.Epsilon)
-                transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, -90 * _renderer.FacingDirection);
-            else
-                transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Atan2(-_player.InputSO.MoveInputVector.x, _player.InputSO.MoveInputVector.y) * (180 / Mathf.PI));
+            if (_mover.CanMove)
+                if (_player.InputSO.MoveInputVector.magnitude <= Mathf.Epsilon)
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, -90 * _renderer.FacingDirection);
+                else
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Atan2(-_player.InputSO.MoveInputVector.x, _player.InputSO.MoveInputVector.y) * (180 / Mathf.PI));
         }
     }
 }

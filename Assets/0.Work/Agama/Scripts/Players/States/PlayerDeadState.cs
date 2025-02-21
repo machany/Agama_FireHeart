@@ -21,6 +21,7 @@ namespace Agama.Scripts.Players.States
         {
             base.Enter();
             _owner.GetComp<EntityMover>().CanMove = false;
+            (_owner as Player).SetStateChangeLock(true);
         }
     }
 }
