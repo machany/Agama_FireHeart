@@ -28,7 +28,7 @@ namespace Scripts.Items
             StringBuilder message = new StringBuilder();
             foreach (var KVP in neededItem.Dictionary)
             {
-                message.Append($"{KVP.Key.itemName} : {KVP.Value} ");
+                message.Append($"{KVP.Key.itemName} : {KVP.Value}\n");
             }
             return message.ToString();
         }

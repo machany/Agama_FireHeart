@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27cd0843f5d66e4fbf01b016900aeae, type: 3}
+  m_Name: Bandage
+  m_EditorClassIdentifier: 
+  itemName: "\uBD95\uB300"
+  icon: {fileID: 6054713968587489106, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
+  itemID: d292636ef120bb244a395c9278b1b3af
+  maxStack: 99
+  damageType: 0
+  result: {fileID: 0}
+  hp: 20
+  thirsty: 0
+  hungry: 0

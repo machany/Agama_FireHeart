@@ -10,14 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c76853df5167ede45adaeb25ef246597, type: 3}
-  m_Name: TestDropTable
+  m_Name: GoldDropTable
   m_EditorClassIdentifier: 
   table:
-  - minCnt: 1
-    maxCnt: 10
-    probability: 0.2
-    item: {fileID: 11400000, guid: e3f8c5d88edc65c4c99af2db9f648465, type: 2}
-  - minCnt: 5
-    maxCnt: 8
-    probability: 1
-    item: {fileID: 11400000, guid: aaf48f3353186b04a806d633b0342614, type: 2}
+  - minCnt: 2
+    maxCnt: 4
+    probability: 0.5
+    item: {fileID: 11400000, guid: 799be359317b4bd43830f597cd24b5c6, type: 2}

@@ -8,7 +8,8 @@ namespace Scripts.EventChannel
         Inventory,
         CraftingTable,
         Config,
-        Storage
+        Storage,
+        Factory
     }
     public static class UIEvents
     {

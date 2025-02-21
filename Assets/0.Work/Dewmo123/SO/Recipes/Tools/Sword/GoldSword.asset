@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6888a7b200d55854394e3417f63863d1, type: 3}
-  m_Name: Test
+  m_Name: GoldSword
   m_EditorClassIdentifier: 
   neededItem:
     _pairs:
-    - _key: {fileID: 11400000, guid: af9e97b8287e57741aec94b673a33e85, type: 2}
-      _value: 12
-  product: {fileID: 11400000, guid: 597edfb24555c004c86f0420607b2ffc, type: 2}
+    - _key: {fileID: 11400000, guid: 799be359317b4bd43830f597cd24b5c6, type: 2}
+      _value: 5
+    - _key: {fileID: 11400000, guid: 9a5194d2ea2b8194eba35099d3e012ba, type: 2}
+      _value: 1
+  product: {fileID: 11400000, guid: 544ced3156e883b41b27e76cb64997e2, type: 2}

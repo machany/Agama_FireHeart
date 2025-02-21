@@ -348,6 +348,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3422622535239418344}
     m_Modifications:
+    - target: {fileID: 2851507712051461087, guid: 7a3a6409bb13af44d9513d51c480e219, type: 3}
+      propertyPath: _table
+      value: 
+      objectReference: {fileID: 11400000, guid: cd81fbf696a8fbd409691fa1ba99cf8a, type: 2}
     - target: {fileID: 2953224336511099745, guid: 7a3a6409bb13af44d9513d51c480e219, type: 3}
       propertyPath: m_Name
       value: Drop

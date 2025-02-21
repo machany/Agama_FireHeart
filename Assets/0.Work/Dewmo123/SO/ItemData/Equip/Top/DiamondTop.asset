@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc217bc9d6fc1214a86c709a6195fb6d, type: 3}
   m_Name: DiamondTop
   m_EditorClassIdentifier: 
-  itemName: "\uAE08 \uC0C1\uC758"
+  itemName: "\uB2E4\uC774\uC544\uBAAC\uB4DC \uC0C1\uC758"
   icon: {fileID: 5709036142325981924, guid: a26a1c02025db304595f9a339ecf5a50, type: 3}
-  itemID: 597edfb24555c004c86f0420607b2ffc
+  itemID: 4de9c06b4ffe5074da16cbdfa379202c
   maxStack: 1
   damageType: 0
   equipType: 1

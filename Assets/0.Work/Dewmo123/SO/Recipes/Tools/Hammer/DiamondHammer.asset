@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6888a7b200d55854394e3417f63863d1, type: 3}
-  m_Name: WoodTopRecipe
+  m_Name: DiamondHammer
   m_EditorClassIdentifier: 
   neededItem:
     _pairs:
-    - _key: {fileID: 11400000, guid: e3f8c5d88edc65c4c99af2db9f648465, type: 2}
-      _value: 15
-  product: {fileID: 11400000, guid: e3f8c5d88edc65c4c99af2db9f648465, type: 2}
+    - _key: {fileID: 11400000, guid: 24add327524b9be4a974599e47d66bb6, type: 2}
+      _value: 8
+    - _key: {fileID: 11400000, guid: 7021d29283e7eab4c90465676fafe34b, type: 2}
+      _value: 1
+  product: {fileID: 11400000, guid: f9dfe077856f57c4ab207ade8b5dbeb0, type: 2}

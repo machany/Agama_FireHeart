@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643a18af888b9684e8e9d407a9deb1c7, type: 3}
+  m_Name: Torch
+  m_EditorClassIdentifier: 
+  itemName: "\uD1A0\uCE58"
+  icon: {fileID: -4003982261762975687, guid: 641e52b1c1fa4c34093445388dba08b6, type: 3}
+  itemID: a21dfad079f451947be2069257baddc7
+  maxStack: 1
+  damageType: 0
+  structure: {fileID: 5207283567678549943, guid: d86d07ee2c14f934a880af01f8b2bb7d, type: 3}

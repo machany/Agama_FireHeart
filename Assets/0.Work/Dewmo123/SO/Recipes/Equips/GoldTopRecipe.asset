@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6888a7b200d55854394e3417f63863d1, type: 3}
+  m_Name: GoldTopRecipe
+  m_EditorClassIdentifier: 
+  neededItem:
+    _pairs:
+    - _key: {fileID: 11400000, guid: 799be359317b4bd43830f597cd24b5c6, type: 2}
+      _value: 15
+    - _key: {fileID: 11400000, guid: 4730b577b5b681a4392a8f39941e60d0, type: 2}
+      _value: 12
+    - _key: {fileID: 11400000, guid: 720c4e9243d4bea46bc80bdff828dc39, type: 2}
+      _value: 1
+  product: {fileID: 11400000, guid: 597edfb24555c004c86f0420607b2ffc, type: 2}
