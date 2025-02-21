@@ -1,6 +1,7 @@
 ﻿using Scripts.Items;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Dewmo123.Scripts.Items
@@ -17,7 +18,7 @@ namespace Dewmo123.Scripts.Items
     public class ItemDropTableSO : ScriptableObject
     {
         public List<DropInfo> table;
-        public Dictionary<ItemDataSO, int> PullUpItem()
+        public List<KeyValuePair<ItemDataSO, int>> PullUpItem()
         {
             Dictionary<ItemDataSO, int> info = new Dictionary<ItemDataSO, int>();
             foreach (var item in table)
@@ -29,10 +30,9 @@ namespace Dewmo123.Scripts.Items
                     else
                         break;
             }
-            foreach (var item in info)
-                if (item.Value <= 0)
-                    info.Remove(item.Key);
-            return info;
+            var list = info.ToList();
+            list.RemoveAll(item => item.Value <= 0);
+            return list;
         }
     }
 }

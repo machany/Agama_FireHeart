@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statName: Durability
   description: "\uAC74\uBB3C\uB4E4\uC758 \uB0B4\uAD6C\uB3C4\uB97C \uB098\uD0C0\uB0C5\uB2C8\uB2E4"
-  icon: {fileID: -3164809056393425246, guid: 3e3ef422e49ac604bbf6ded765262230, type: 3}
-  displayName: Durability
   baseValue: 100
   minValue: 0
-  maxValue: 100
-  <IsPercent>k__BackingField: 0
+  maxValue: 500

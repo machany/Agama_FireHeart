@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a8c08131f229c4a9776151a6e95523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _table: {fileID: 11400000, guid: eb1eee19daeff324c885693492c5f9df, type: 2}
+  _table: {fileID: 11400000, guid: 31c7e275c8e557541b084f4afb5b990b, type: 2}
   _invenChannel: {fileID: 11400000, guid: fc01aa0595809634cbe5bb0be79f96db, type: 2}
   _dropTxt: {fileID: 11400000, guid: 71c03ecd5b742f540881ea10b4d5b9c5, type: 2}
   _poolManager: {fileID: 11400000, guid: ab208f8de301ea24bbc8869fc257e2fa, type: 2}

@@ -20,4 +20,4 @@ MonoBehaviour:
       _value: 2
     - _key: {fileID: 11400000, guid: e3f8c5d88edc65c4c99af2db9f648465, type: 2}
       _value: 12
-  product: {fileID: 11400000, guid: a21dfad079f451947be2069257baddc7, type: 2}
+  product: {fileID: 11400000, guid: f610f4f2de041db40b0f5e60857c5453, type: 2}

@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statOverrides:
   - stat: {fileID: 11400000, guid: f0884d52d10905347a2a9c1b92d7d9af, type: 2}
-    isUseOverride: 0
-    overrideValue: 0
+    isUseOverride: 1
+    overrideValue: 100
 --- !u!1 &5594688741012690658
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,8 +140,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0000000016588295, y: -0.013915272}
-  m_Size: {x: 0.50000006, y: 0.35686043}
+  m_Offset: {x: 0.000000026716823, y: 0.22411698}
+  m_Size: {x: 0.8329268, y: 0.8329268}
   m_Direction: 1
 --- !u!50 &9142982080215307229
 Rigidbody2D:
@@ -196,7 +196,7 @@ Transform:
   m_GameObject: {fileID: 5632730447218681055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.357, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -246,7 +246,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 141893073332109768, guid: 791f1ddc5c48a134bbfcba4e1b4fd016, type: 3}
+  m_Sprite: {fileID: -5443547844040458350, guid: 9ee5a484eb268c244b4eeba283930cc0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

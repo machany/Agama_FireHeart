@@ -17,4 +17,4 @@ MonoBehaviour:
   itemID: a1dff3621c33d2b4b818e82c9e7469d2
   maxStack: 1
   damageType: 0
-  structure: {fileID: 5207283567678549943, guid: d86d07ee2c14f934a880af01f8b2bb7d, type: 3}
+  structure: {fileID: 5594688741012690658, guid: 53067a24e59a9ac4291413cb571530af, type: 3}

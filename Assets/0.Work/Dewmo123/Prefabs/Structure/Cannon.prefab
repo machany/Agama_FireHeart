@@ -259,8 +259,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statOverrides:
   - stat: {fileID: 11400000, guid: f0884d52d10905347a2a9c1b92d7d9af, type: 2}
-    isUseOverride: 0
-    overrideValue: 0
+    isUseOverride: 1
+    overrideValue: 100
 --- !u!1001 &7465455290296038702
 PrefabInstance:
   m_ObjectHideFlags: 0
