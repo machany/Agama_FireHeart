@@ -18,13 +18,13 @@ namespace Agama.Scripts.Players
             set
             {
                 swordCombo = value;
-                Debug.Log(swordCombo);
                 if (swordCombo > swordMaxCombo)
                     swordCombo = swordMinCombo;
                 else if (swordCombo < swordMinCombo)
                     swordCombo = swordMaxCombo;
             }
         }
+
 
         private Player _player;
         private EntityMover _mover;

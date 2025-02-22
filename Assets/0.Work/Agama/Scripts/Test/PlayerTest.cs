@@ -61,7 +61,6 @@ namespace Agama.Scripts.Test
         {
             if (_start)
             {
-                ToolTypeChangeEventInvoke();
             }
         }
 #endif

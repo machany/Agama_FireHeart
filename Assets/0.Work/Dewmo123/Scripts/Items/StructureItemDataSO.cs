@@ -16,9 +16,6 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
         public void ChoiceItem(Entity entity)
         {
         }
-        private void OnEnable()
-        {
-        }
         public void UseItem(Entity entity)
         {
             var player = entity as Player;
@@ -31,11 +28,11 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
             }
         }
 
-        protected override void Awake()
+        protected override void OnEnable()
         {
-            base.Awake();
+            base.OnEnable();
 
-            damageType *= -1;
+            damageType = -1;
         }
     }
 }

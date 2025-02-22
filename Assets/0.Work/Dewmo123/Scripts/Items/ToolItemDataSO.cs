@@ -17,11 +17,9 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
         public void UseItem(Entity entity)
         {
         }
-
-        protected override void Awake()
+        protected override void OnEnable()
         {
-            base.Awake();
-
+            base.OnEnable();
             attackDamage = DEFAULT_DAMAGE * _attackDamageMultiply;
         }
     }

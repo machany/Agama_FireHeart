@@ -27,8 +27,9 @@ namespace Scripts.Items
             entityHealth.ApplyHeal(hungry);
         }
 
-        protected override void Awake()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             damageType = 0;
         }
     }

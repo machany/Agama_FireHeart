@@ -25,16 +25,9 @@ namespace Scripts.Items
             return string.Empty;
         }
 
-        protected virtual void Awake()
+        protected virtual void OnEnable()
         {
-            damageType = _damageType switch
-            {
-                DamageMethodType.Chop => 1,
-                DamageMethodType.Harmmer => 2,
-                DamageMethodType.Pickax => 3,
-                DamageMethodType.Entity => 4,
-                _ => 0
-            };
+            damageType = (sbyte)_damageType;
         }
 
 #if UNITY_EDITOR
