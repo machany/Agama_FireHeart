@@ -55,6 +55,9 @@ namespace Agama.Scripts.Players
             _stateMachine.UpdateState();
         }
 
+        public void ClearEventState()
+            => _stateMachine.ClearEventState();
+
         /// <summary>
         /// 명명 규칙 : 반드시 스테이트 이름은 영문 소문자로 입력하며, 띄어쓰기의 기준은 다른 단어를 사용할 때를 기준으로 언더바(_)를 사용한다.
         /// </summary>
@@ -72,14 +75,6 @@ namespace Agama.Scripts.Players
         public void SetStateChangeLock(bool value)
             => StateChangeLock = value;
 
-        private void HandleItemUseKeyPressedEvent()
-        {
-            if (!_carring && ToolType >= 0)
-                ChangeState("Player_use_tool_State_event");
-            else
-                OnUseItem?.Invoke();
-        }
-
         public void ChangeQuickSlotItem(sbyte damageType, float power)
         {
             bool isCarryItem = _carring = damageType < 0;
@@ -87,6 +82,14 @@ namespace Agama.Scripts.Players
             _renderer.SetParamiter(ToolTypeParam, ToolType = (sbyte)Mathf.Abs(damageType));
 
             OnQuickSloatItemChange?.Invoke(damageType, power);
+        }
+
+        private void HandleItemUseKeyPressedEvent()
+        {
+            if (!_carring && ToolType >= 0)
+                ChangeState("Player_use_tool_State_event");
+            else
+                OnUseItem?.Invoke();
         }
 
         protected override void HandleHitEvent()
