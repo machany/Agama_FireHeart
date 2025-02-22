@@ -81,31 +81,31 @@ namespace Agama.Scripts.Core
         public void OnQuickSlot1(InputAction.CallbackContext context)
         {
             if (!context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 1);
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 0);
         }
 
         public void OnQuickSlot2(InputAction.CallbackContext context)
         {
             if (!context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 2);
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 1);
         }
 
         public void OnQuickSlot3(InputAction.CallbackContext context)
         {
             if (!context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 3);
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 2);
         }
 
         public void OnQuickSlot4(InputAction.CallbackContext context)
         {
             if (!context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 4);
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 3);
         }
 
         public void OnQuickSlot5(InputAction.CallbackContext context)
         {
             if (!context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 5);
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 4);
         }
 
         #endregion
@@ -122,6 +122,7 @@ namespace Agama.Scripts.Core
         public void OnScrollWheel(InputAction.CallbackContext context)
         {
             OnScrollWheelEvent?.Invoke(context.ReadValue<Vector2>());
+            OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = (sbyte)Mathf.Clamp(CurrentQuickSlotIndex - (sbyte)context.ReadValue<Vector2>().y, 0, maxQuickSlotCount));
         }
         public void OnTrackedDevicePosition(InputAction.CallbackContext context) { }
         public void OnTrackedDeviceOrientation(InputAction.CallbackContext context) { }

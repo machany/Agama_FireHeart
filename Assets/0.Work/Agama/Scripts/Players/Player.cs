@@ -85,7 +85,6 @@ namespace Agama.Scripts.Players
             bool isCarryItem = _carring = damageType < 0;
             _renderer.SetParamiter(CarryParam, isCarryItem); // 양수면 안 드는 물건
             _renderer.SetParamiter(ToolTypeParam, ToolType = (sbyte)Mathf.Abs(damageType));
-
             OnQuickSloatItemChange?.Invoke(damageType, power);
         }
 

@@ -2,6 +2,7 @@
 using Agama.Scripts.Entities;
 using Agama.Scripts.Events;
 using Agama.Scripts.Players;
+using Assets._0.Work.Dewmo123.Scripts.Items;
 using Scripts.EventChannel;
 using Scripts.Items;
 using Scripts.UI.Inven;
@@ -31,6 +32,7 @@ namespace Scripts.Players.Inven
 
         private Player _player;
         private EntityStat _statCompo;
+        private GameObject _carringVisual;
 
         #region Init Section
         public void Initialize(Entity entity)//Initialize로 변경 완
@@ -59,11 +61,14 @@ namespace Scripts.Players.Inven
                 quickSlots.Add(new InventoryItem(null, 0));
             for (int i = 0; i < _storageCount; i++)
                 storage.Add(new InventoryItem(null, 0));
-            UpdateInventoryUI(true);
         }
         public void AfterInitialize()
         {
             //_statCompo = _player.GetComp<EntityStat>();
+        }
+        private void Start()
+        {
+            UpdateInventoryUI(true);
         }
         private void Update()
         {
@@ -96,11 +101,22 @@ namespace Scripts.Players.Inven
         {
             selectedSlotIndex = value;
 
+            ReloadQuickSlot();
+        }
+        public void ReloadQuickSlot()
+        {
+            if (_carringVisual != null)
+                Destroy(_carringVisual);
             ItemDataSO itemSO = selectedItem != null ? selectedItem.data : null;
             if (itemSO == null)
                 _player.ChangeQuickSlotItem(0, ItemDataSO.DEFAULT_DAMAGE);
             else
                 _player.ChangeQuickSlotItem(itemSO.damageType, itemSO.attackDamage);
+            if (itemSO is StructureItemDataSO structure)
+            {
+                _carringVisual = Instantiate(structure.structureIcon, _player.transform);
+                _carringVisual.transform.position = _player.transform.position + Vector3.up;
+            }
         }
         private void CraftItemHandler(CraftItem item)
         {
@@ -374,7 +390,6 @@ namespace Scripts.Players.Inven
         {
             inventory.FindAll(item => item.data != null && item.stackSize == 0).ForEach(item => item.data = null);
             quickSlots.FindAll(item => item.data != null && item.stackSize == 0).ForEach(item => item.data = null);
-
             UpdateInvenSlot();
             UpdateQuickSlot();
             UpdateEquipSlot();
@@ -397,6 +412,7 @@ namespace Scripts.Players.Inven
         }
         private void UpdateQuickSlot()
         {
+            ReloadQuickSlot();
             var evt = InvenEvents.QuickSlotDataEvent;
             evt.quickSlotItems = quickSlots;
             _invenChannel.InvokeEvent(evt);
