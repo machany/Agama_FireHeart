@@ -2,8 +2,6 @@
 using Agama.Scripts.Entities;
 using Agama.Scripts.Entities.FSM;
 using System;
-using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Agama.Scripts.Players.States
 {
@@ -43,8 +41,6 @@ namespace Agama.Scripts.Players.States
 
         private void HaandleOnAnimationEvent()
         {
-            // 테스트 코드
-            Debug.Log("수정 요함.");
             _attackComp.Attack();
         }
 

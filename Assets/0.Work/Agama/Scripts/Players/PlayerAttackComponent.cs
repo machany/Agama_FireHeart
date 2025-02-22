@@ -1,8 +1,6 @@
 ﻿using Agama.Scripts.Animators;
-using Agama.Scripts.Combats;
 using Agama.Scripts.Core;
 using Agama.Scripts.Entities;
-using System;
 using UnityEngine;
 
 namespace Agama.Scripts.Players
@@ -29,6 +27,7 @@ namespace Agama.Scripts.Players
         }
 
         private Player _player;
+        private EntityMover _mover;
         private EntityRenderer _renderer;
         private EntityStat _statComp;
 
@@ -40,20 +39,21 @@ namespace Agama.Scripts.Players
             _player = owner as Player;
 
             _renderer = _player.GetComp<EntityRenderer>();
+            _mover = _player.GetComp<EntityMover>();
             _statComp = _player.GetComp<EntityStat>();
 
-            _player.OnToolTypeChanged += HandleToolTypeChanged;
+            _player.OnQuickSloatItemChange += HandleToolTypeChanged;
         }
 
         private void OnDestroy()
         {
-            _player.OnToolTypeChanged -= HandleToolTypeChanged;
+            _player.OnQuickSloatItemChange -= HandleToolTypeChanged;
         }
 
-        private void HandleToolTypeChanged(DamageMethodType toolType, float attackpower)
+        private void HandleToolTypeChanged(sbyte toolType, float attackPower)
         {
             damagecaster.ChangeDamageType(toolType);
-            _statComp.SetBaseValue(attackPowerStat, attackpower);
+            _statComp.SetBaseValue(attackPowerStat, attackPower);
         }
 
         public void UseToolComboChanged()
@@ -66,17 +66,17 @@ namespace Agama.Scripts.Players
         {
             base.Attack();
 
-            damagecaster.CastDamage(1, true);
+            damagecaster.CastDamage(_statComp.GetStat(attackPowerStat).BaseValue);
         }
 
         private void Update()
         {
             damagecaster.UpdateCaster();
-
-            if (_player.InputSO.MoveInputVector.magnitude <= Mathf.Epsilon)
-                transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, -90 * _renderer.FacingDirection);
-            else
-                transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Atan2(-_player.InputSO.MoveInputVector.x, _player.InputSO.MoveInputVector.y) * (180 / Mathf.PI));
+            if (_mover.CanMove)
+                if (_player.InputSO.MoveInputVector.magnitude <= Mathf.Epsilon)
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, -90 * _renderer.FacingDirection);
+                else
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Atan2(-_player.InputSO.MoveInputVector.x, _player.InputSO.MoveInputVector.y) * (180 / Mathf.PI));
         }
     }
 }

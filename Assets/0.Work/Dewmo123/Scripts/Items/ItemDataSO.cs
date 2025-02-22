@@ -9,16 +9,31 @@ namespace Scripts.Items
 {
     public abstract class ItemDataSO : ScriptableObject
     {
+        public const int DEFAULT_DAMAGE = 10;
+
         public string itemName;
         public Sprite icon;
         public string itemID;
         public int maxStack;
-        public DamageMethodType damageType;
+        [SerializeField] protected DamageMethodType _damageType;
+        [HideInInspector] public sbyte damageType;
+        [HideInInspector] public float attackDamage = DEFAULT_DAMAGE;
         protected StringBuilder _stringBuilder = new StringBuilder();
 
         public virtual string GetDescription()
         {
             return string.Empty;
+        }
+
+        protected virtual void Awake()
+        {
+            damageType = _damageType switch
+            {
+                DamageMethodType.Chop => 1,
+                DamageMethodType.Harmmer => 2,
+                DamageMethodType.Pickax => 3,
+                _ => 4
+            };
         }
 
 #if UNITY_EDITOR

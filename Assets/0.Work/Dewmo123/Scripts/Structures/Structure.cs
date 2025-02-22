@@ -12,7 +12,7 @@ namespace Scripts.Structures
 
         public event Action<float> OnDamage;
 
-        public void ApplyDamage(DamageMethodType damageType, float damage, bool isPowerAttack)
+        public void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer)
         {
             OnDamage?.Invoke(damage);
         }

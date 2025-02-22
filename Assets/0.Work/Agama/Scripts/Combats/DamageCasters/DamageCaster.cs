@@ -5,6 +5,7 @@ namespace Agama.Scripts.Combats.DamageCasters
 {
     public abstract class DamageCaster : MonoBehaviour
     {
+        [Header("Damage Caster Set")]
         [SerializeField] protected int maxHitCount = 1;
         [SerializeField] protected ContactFilter2D contactFilter;
 
@@ -18,9 +19,18 @@ namespace Agama.Scripts.Combats.DamageCasters
         public virtual void UpdateCaster() { }
 
         public Transform TargetTrm => _owner.transform;
-        public abstract bool CastDamage(int damage, bool isPowerAttack);
+        public abstract bool CastDamage(float damage);
 
         protected DamageMethodType _currentDamageType = DamageMethodType.Entity;
+
+        public void ChangeDamageType(sbyte newDamageType)
+            => _currentDamageType = newDamageType switch
+            {
+                1 => DamageMethodType.Chop,
+                2 => DamageMethodType.Harmmer,
+                3 => DamageMethodType.Pickax,
+                _ => DamageMethodType.Entity,
+            };
         public void ChangeDamageType(DamageMethodType newDamageType)
             => _currentDamageType = newDamageType;
     }

@@ -1,11 +1,8 @@
 ﻿using Agama.Scripts.Animators;
+using Agama.Scripts.Combats;
 using Agama.Scripts.Core;
 using Agama.Scripts.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Agama.Scripts.Players;
 using UnityEngine;
 
 namespace Agama.Scripts.Test
@@ -13,23 +10,26 @@ namespace Agama.Scripts.Test
     public class PlayerTest : MonoBehaviour, IEntityComponent
     {
         [Header("Setting")]
-        [SerializeField] private PlayerInputSO playerInputSO;
-        [SerializeField] private AnimationParamiterSO carryParam;
+        [SerializeField] private Player player;
 
         [Header("Values")]
-        [SerializeField] private sbyte toolTypeValue;
+        [SerializeField] private DamageMethodType toolTypeValue;
+        [SerializeField] private float damage = 10;
         [SerializeField] private bool carry;
+
+        private bool _start = false;
 
         [ContextMenu("Tool Type Change")]
         private void ToolTypeChangeEventInvoke()
         {
-            playerInputSO.OnQuickSlotChangedEvent?.Invoke(toolTypeValue);
-        }
-
-        [ContextMenu("Carry ValueChanged")]
-        private void CarryValueChanged()
-        {
-            _owner.GetComp<EntityRenderer>().SetParamiter(carryParam, carry);
+            player.ChangeQuickSlotItem((sbyte)(carry ? -1 : toolTypeValue switch
+            {
+                DamageMethodType.Chop => 1,
+                DamageMethodType.Harmmer => 2,
+                DamageMethodType.Pickax => 3,
+                DamageMethodType.Entity => 4,
+                _ => 0
+            }), damage);
         }
 
         [ContextMenu("Invoke Hit Event")]
@@ -50,5 +50,20 @@ namespace Agama.Scripts.Test
         {
             _owner = owner;
         }
+
+#if UNITY_EDITOR
+        private void Awake()
+        {
+            _start = true;
+        }
+
+        private void OnValidate()
+        {
+            if (_start)
+            {
+                ToolTypeChangeEventInvoke();
+            }
+        }
+#endif
     }
 }

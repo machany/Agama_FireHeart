@@ -16,5 +16,12 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
         public void UseItem(Entity entity)
         {
         }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            damageType *= -1;
+        }
     }
 }

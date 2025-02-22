@@ -194,9 +194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2132a664bf2a994aa062984b08c490c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInputSO: {fileID: 11400000, guid: e7933cf2312c95e41912b465f7e51188, type: 2}
-  carryParam: {fileID: 11400000, guid: 62e4013622aa22946bfdff0c1e269a3d, type: 2}
+  player: {fileID: 0}
   toolTypeValue: 0
+  damage: 10
   carry: 0
 --- !u!1 &7891215143057463611
 GameObject:

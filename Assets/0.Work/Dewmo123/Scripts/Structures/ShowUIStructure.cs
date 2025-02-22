@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Scripts.Structures
 {
-    public class ShowUIStructure : Structure,Interactable
+    public class ShowUIStructure : Structure, IInteractable
     {
         [SerializeField] private EventChannelSO _uiChannel;
         public UIType myType;

@@ -19,13 +19,8 @@ namespace Agama.Scripts.Players
         [Tooltip("<color=red>대기 상태</color>로 남아 있을 수 있는 최대 수입니다.\n에를 들어, 값이 3이라면 <color=green>(현재 진행중인 이벤트 스테이트) + (보관중인 이벤트 스테이트){최대 용량 3}</color>으로 4개의 이벤트를 처리하는 것으로 <color=red>보일 수 있습니다.</color>")]
         [SerializeField] private int maxEventStateStorageCount = 3;
 
-        /// <summary>
-        /// DamageMethodType = 아이템 대미지 방식
-        /// </summary>
-        /// <remarks>
-        /// int => 공격력
-        /// </remarks>
-        public Action<DamageMethodType, float> OnToolTypeChanged;
+        public Action OnUseItem;
+        public Action<sbyte, float> OnQuickSloatItemChange;
 
         public sbyte ToolType { get; private set; }
         public bool StateChangeLock { get; private set; }
@@ -33,13 +28,14 @@ namespace Agama.Scripts.Players
         private EntityStateMachine _stateMachine;
         private EntityRenderer _renderer;
 
+        private bool _carring;
+
         protected override void Awake()
         {
             base.Awake();
             _stateMachine = new EntityStateMachine(this, stateList, maxEventStateStorageCount);
 
             InputSO.OnItemUseKeyPressedEvent += HandleItemUseKeyPressedEvent;
-            OnToolTypeChanged += HandleToolTypeChanged;
 
             StateChangeLock = false;
 
@@ -49,7 +45,6 @@ namespace Agama.Scripts.Players
         protected override void OnDestroy()
         {
             InputSO.OnItemUseKeyPressedEvent -= HandleItemUseKeyPressedEvent;
-            OnToolTypeChanged += HandleToolTypeChanged;
             _stateMachine.DestoryObject();
 
             base.OnDestroy();
@@ -79,20 +74,19 @@ namespace Agama.Scripts.Players
 
         private void HandleItemUseKeyPressedEvent()
         {
-            // 아이템 구분 후 도구라면 실행
-            ChangeState("Player_use_tool_State_event");
+            if (!_carring && ToolType >= 0)
+                ChangeState("Player_use_tool_State_event");
+            else
+                OnUseItem?.Invoke();
         }
 
-        private void HandleToolTypeChanged(DamageMethodType damageType, float value)
+        public void ChangeQuickSlotItem(sbyte damageType, float power)
         {
-            ToolType = damageType switch
-            {
-                DamageMethodType.Chop => 1,
-                DamageMethodType.Harmmer => 2,
-                DamageMethodType.Pickax => 3,
-                _ => 4,
-            };
-            _renderer.SetParamiter(ToolTypeParam, ToolType);
+            bool isCarryItem = _carring = damageType < 0;
+            _renderer.SetParamiter(CarryParam, isCarryItem); // 양수면 안 드는 물건
+            _renderer.SetParamiter(ToolTypeParam, ToolType = (sbyte)Mathf.Abs(damageType));
+
+            OnQuickSloatItemChange?.Invoke(damageType, power);
         }
 
         protected override void HandleHitEvent()

@@ -30,14 +30,14 @@ namespace Agama.Scripts.Combats.DamageCasters
             };
         }
 
-        public override bool CastDamage(int damage, bool isPowerAttack)
+        public override bool CastDamage(float damage)
         {
             int cnt = GetOverlapCountFunc();
 
             for (int i = 0; i < cnt; i++)
             {
                 if (_hitResults[i].TryGetComponent(out IDamageable damageable))
-                    damageable.ApplyDamage(_currentDamageType, damage, isPowerAttack);
+                    damageable.ApplyDamage(_currentDamageType, damage, _owner);
             }
 
             return cnt > 0;

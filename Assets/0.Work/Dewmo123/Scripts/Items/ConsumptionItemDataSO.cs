@@ -21,9 +21,15 @@ namespace Scripts.Items
         public void UseItem(Entity entity)
         {
             entity.GetComp<PlayerInvenData>().RemoveItem(this, 1);
-            entity.GetComp<EntityHealth>().ApplyHeal(hp);
-            entity.GetComp<EntityHealth>().ApplyHeal(thirsty);
-            entity.GetComp<EntityHealth>().ApplyHeal(hungry);
+            EntityHealth entityHealth = entity.GetComp<EntityHealth>();
+            entityHealth.ApplyHeal(hp);
+            entityHealth.ApplyHeal(thirsty);
+            entityHealth.ApplyHeal(hungry);
+        }
+
+        protected override void Awake()
+        {
+            damageType = 0;
         }
     }
 }
