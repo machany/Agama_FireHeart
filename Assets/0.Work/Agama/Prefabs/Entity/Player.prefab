@@ -695,6 +695,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3a5dc08ac2f1e59429bb8000ca68c84a, type: 2}
     - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
+      propertyPath: statOverrides.Array.data[0].overrideValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
       propertyPath: statOverrides.Array.data[1].isUseOverride
       value: 0
       objectReference: {fileID: 0}
@@ -803,7 +807,7 @@ PrefabInstance:
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: targetingMarkSprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+      objectReference: {fileID: -5225540622116197949, guid: 3f6f0ecb6db0ca34e808414660a2fed1, type: 3}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: contactFilter.layerMask.m_Bits
       value: 33554448

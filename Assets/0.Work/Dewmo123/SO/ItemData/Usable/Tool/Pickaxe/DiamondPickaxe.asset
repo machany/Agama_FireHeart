@@ -16,5 +16,7 @@ MonoBehaviour:
   icon: {fileID: -851772944894956937, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
   itemID: d0d1200ddb53a8f40a04584d9d186903
   maxStack: 1
-  damageType: 3
-  atkStat: 0
+  _damageType: 3
+  damageType: 4
+  attackDamage: 0
+  _attackDamageMultiply: 0

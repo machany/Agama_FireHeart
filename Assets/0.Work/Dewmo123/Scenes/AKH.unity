@@ -7389,14 +7389,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 246463011887897059, guid: 12f1d96d29a182a4d8080c18794360e9, type: 3}
-      propertyPath: statOverrides.Array.data[0].overrideValue
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3800193686251756299, guid: 12f1d96d29a182a4d8080c18794360e9, type: 3}
-      propertyPath: targetingMarkSprite
-      value: 
-      objectReference: {fileID: -5225540622116197949, guid: 3f6f0ecb6db0ca34e808414660a2fed1, type: 3}
     - target: {fileID: 5648879977019274956, guid: 12f1d96d29a182a4d8080c18794360e9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -8773,7 +8765,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2102565180}
   m_HandleRect: {fileID: 2102565179}
   m_Direction: 0
-  m_Value: -0.0000002906148
+  m_Value: -0.0000004359222
   m_Size: 0.4399756
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -11779,7 +11771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 840.0838, y: 0}
+  m_AnchoredPosition: {x: 840.084, y: 0}
   m_SizeDelta: {x: 3000.1665, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2080893559
