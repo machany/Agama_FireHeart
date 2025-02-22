@@ -8,11 +8,14 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
     public class StructureItemDataSO : ItemDataSO, IUsable
     {
         public GameObject structure;
+        public GameObject structureIcon => structure.transform.Find("Visual").gameObject;
 
         public void ChoiceItem(Entity entity)
         {
         }
-
+        private void OnEnable()
+        {
+        }
         public void UseItem(Entity entity)
         {
         }

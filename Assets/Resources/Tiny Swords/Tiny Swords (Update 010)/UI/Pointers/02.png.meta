@@ -138,10 +138,10 @@ TextureImporter:
       name: 02_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 35
-        width: 23
-        height: 27
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,77 +156,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: 02_1
-      rect:
-        serializedVersion: 2
-        x: 39
-        y: 35
-        width: 23
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b0306cbc0182184c0800000000000000
-      internalID: -4287101317676662005
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 02_2
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 2
-        width: 23
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c0afdde334a2d3b50800000000000000
-      internalID: 6574457499336702476
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 02_3
-      rect:
-        serializedVersion: 2
-        x: 39
-        y: 2
-        width: 23
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8feeb856ad0aa4b00800000000000000
-      internalID: 813639542560780024
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 54d12b18fd68b2f4c94b87deba846e10
     internalID: 0
     vertices: []
     indices: 

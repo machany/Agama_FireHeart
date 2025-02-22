@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 8340061731060241356}
   - component: {fileID: 7732627178331429951}
   - component: {fileID: 3745285271508990316}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,6 +203,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _damageType: 3
 --- !u!70 &3745285271508990316
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

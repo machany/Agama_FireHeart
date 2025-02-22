@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 3422622535239418344}
   - component: {fileID: 6367924505177901911}
   - component: {fileID: 6234213546083873827}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,6 +246,7 @@ MonoBehaviour:
           m_StringArgument: Dead
           m_BoolArgument: 0
         m_CallState: 2
+  _damageType: 1
 --- !u!61 &6234213546083873827
 BoxCollider2D:
   m_ObjectHideFlags: 0
