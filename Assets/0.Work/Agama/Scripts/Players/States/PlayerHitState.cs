@@ -27,6 +27,7 @@ namespace Agama.Scripts.Players.States
             _animatorTrigger.OnAnimationEndEvent += HandleAnimationEndEvent;
             _mover.CanMove = false;
             _player.SetStateChangeLock(true);
+            _player.ClearEventState();
         }
 
         private void HandleAnimationEndEvent()

@@ -524,13 +524,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8178361023718203220}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8180839452325810190}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!114 &4602213094065178108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,6 +572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntityVisual
       objectReference: {fileID: 0}
+    - target: {fileID: 5465957900343046764, guid: 44b912cabf78b85489fd10400c549ab5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c770ddfd4dfc31048b6609365910095e, type: 2}
     - target: {fileID: 8238577825983631734, guid: 44b912cabf78b85489fd10400c549ab5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -619,6 +623,22 @@ PrefabInstance:
     - target: {fileID: 8238577825983631734, guid: 44b912cabf78b85489fd10400c549ab5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350536192585930008, guid: 44b912cabf78b85489fd10400c549ab5, type: 3}
+      propertyPath: m_Size.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350536192585930008, guid: 44b912cabf78b85489fd10400c549ab5, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8350536192585930008, guid: 44b912cabf78b85489fd10400c549ab5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2526443156231494169, guid: e267c3791c1babe4e82793aa8c211060, type: 3}
+    - target: {fileID: 8350536192585930008, guid: 44b912cabf78b85489fd10400c549ab5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -742,7 +762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1706201453129931926, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1706201453129931926, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -798,11 +818,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: senceRange
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: fieldOfViewAngle
-      value: 90
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: targetingMarkSprite

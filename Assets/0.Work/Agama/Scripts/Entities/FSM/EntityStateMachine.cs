@@ -94,6 +94,9 @@ namespace Agama.Scripts.Entities.FSM
         private void HandleEventEndEvent()
             => StateChange(_eventStates.Count > 0 ? _eventStates.Dequeue() as EntityState : _defaultState);
 
+        public void ClearEventState()
+            => _eventStates.Clear();
+
         public void DestoryObject() // <- 생각좀 해봐야할듯
         {
             IEventState eventState = CurrentState as IEventState;
