@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643a18af888b9684e8e9d407a9deb1c7, type: 3}
+  m_Name: Tent
+  m_EditorClassIdentifier: 
+  itemName: "\uD150\uD2B8"
+  icon: {fileID: -3131899431819038481, guid: ba15f94bc0e76e64eacbb4ba3eef6f6e, type: 3}
+  itemID: 63f3ac524e9aaa94a9dc9450aae03c80
+  maxStack: 1
+  _damageType: 4
+  damageType: -4
+  attackDamage: 10
+  structure: {fileID: 3944547480866516153, guid: 2deac5c7bebcfd842a33d30164f51b8c, type: 3}
