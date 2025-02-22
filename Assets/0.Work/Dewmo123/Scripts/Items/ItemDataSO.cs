@@ -32,7 +32,8 @@ namespace Scripts.Items
                 DamageMethodType.Chop => 1,
                 DamageMethodType.Harmmer => 2,
                 DamageMethodType.Pickax => 3,
-                _ => 4
+                DamageMethodType.Entity => 4,
+                _ => 0
             };
         }
 
