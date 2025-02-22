@@ -86,6 +86,7 @@ Transform:
   - {fileID: 5528039615890408981}
   - {fileID: 3870706482298676887}
   - {fileID: 5491167077490597096}
+  - {fileID: 9025667932841798036}
   - {fileID: 676521800511544915}
   - {fileID: 1079355909292147904}
   m_Father: {fileID: 0}
@@ -194,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2132a664bf2a994aa062984b08c490c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1644736883775652943}
   toolTypeValue: 0
   damage: 10
   carry: 0
@@ -250,6 +251,67 @@ MonoBehaviour:
   quickSlots: []
   storage: []
   selectedSlotIndex: 0
+--- !u!1 &8178361023718203220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9025667932841798036}
+  - component: {fileID: 4602213094065178108}
+  m_Layer: 0
+  m_Name: PlayerInteracterCaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9025667932841798036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8178361023718203220}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8180839452325810190}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4602213094065178108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8178361023718203220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99452e5552bd8ad48b40ae14a93f07bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contactFilter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 33554448
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  senceRange: 1
+  fieldOfViewAngle: 120
+  drawColor: {r: 0, g: 0.47843137, b: 0, a: 1}
 --- !u!1001 &1105172519333805155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -483,8 +545,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
+      propertyPath: senceRange
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: fieldOfViewAngle
-      value: 45
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: targetingMarkSprite
