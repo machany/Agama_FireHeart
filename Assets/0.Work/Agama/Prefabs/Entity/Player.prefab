@@ -738,7 +738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1706201453129931926, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1706201453129931926, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -794,11 +794,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: senceRange
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: fieldOfViewAngle
-      value: 90
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: targetingMarkSprite

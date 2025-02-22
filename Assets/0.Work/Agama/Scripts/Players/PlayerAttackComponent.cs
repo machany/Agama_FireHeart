@@ -73,10 +73,7 @@ namespace Agama.Scripts.Players
         {
             damagecaster.UpdateCaster();
             if (_mover.CanMove)
-                if (_player.InputSO.MoveInputVector.magnitude <= Mathf.Epsilon)
-                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, -90 * _renderer.FacingDirection);
-                else
-                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Atan2(-_player.InputSO.MoveInputVector.x, _player.InputSO.MoveInputVector.y) * (180 / Mathf.PI));
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Mathf.Atan2(-_player.InputSO.PreviousInputVector.x, _player.InputSO.PreviousInputVector.y) * (180 / Mathf.PI));
         }
     }
 }
