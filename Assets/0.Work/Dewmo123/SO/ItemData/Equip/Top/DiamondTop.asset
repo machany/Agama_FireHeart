@@ -20,5 +20,7 @@ MonoBehaviour:
   damageType: 0
   attackDamage: 10
   equipType: 0
-  addingStats: []
+  addingStats:
+  - targetStat: {fileID: 11400000, guid: 6261b28fc177ab042844cf6ac6d54e99, type: 2}
+    modifyValue: 50
   itemEffectDescription: 

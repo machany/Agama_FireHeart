@@ -30,7 +30,7 @@ namespace Scripts.Items
         protected override void OnEnable()
         {
             base.OnEnable();
-            damageType = 0;
+            damageType = -1;
         }
     }
 }
