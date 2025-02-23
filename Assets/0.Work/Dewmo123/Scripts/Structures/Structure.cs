@@ -6,17 +6,8 @@ using UnityEngine;
 
 namespace Scripts.Structures
 {
-    public class Structure : Entity, IDamageable
+    public class Structure : Entity
     {
-        public DamageMethodType DamageableType => throw new NotImplementedException();
-
-        public event Action<float> OnDamage;
-
-        public void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer)
-        {
-            OnDamage?.Invoke(damage);
-        }
-
         protected override void HandleDeadEvent()
         {
             Destroy(gameObject);
@@ -24,6 +15,12 @@ namespace Scripts.Structures
 
         protected override void HandleHitEvent()
         {
+        }
+        public override void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer)
+        {
+            if (damageType != DamageMethodType.Harmmer)
+                damage *= -1;
+            base.ApplyDamage(damageType, damage, dealer);
         }
     }
 }

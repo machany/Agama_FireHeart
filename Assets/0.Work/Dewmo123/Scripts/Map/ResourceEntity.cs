@@ -5,15 +5,8 @@ using UnityEngine;
 
 namespace Dewmo123.Scripts.Map
 {
-    public class ResourceEntity : Entity,IDamageable
+    public class ResourceEntity : Entity
     {
-        [SerializeField] private DamageMethodType _damageType;
-        public DamageMethodType DamageableType => _damageType;
-
-        public void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer)
-        {
-        }
-
         protected override void HandleDeadEvent()
         {
             Destroy(gameObject);
@@ -21,6 +14,11 @@ namespace Dewmo123.Scripts.Map
 
         protected override void HandleHitEvent()
         {
+        }
+        public override void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer)
+        {
+            damage *= -1;
+            base.ApplyDamage(damageType, damage, dealer);
         }
     }
 }

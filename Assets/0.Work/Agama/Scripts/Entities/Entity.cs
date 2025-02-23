@@ -1,3 +1,4 @@
+using Agama.Scripts.Combats;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +7,15 @@ using UnityEngine.Events;
 
 namespace Agama.Scripts.Entities
 {
-    public abstract class Entity : MonoBehaviour
+    public abstract class Entity : MonoBehaviour,IDamageable
     {
         public UnityEvent OnHitEvent;
         public UnityEvent OnDeadEvent;
+        public Action<float> OnDamage;
 
         protected Dictionary<Type, IEntityComponent> _entityComponentDictionary;
+        [SerializeField] private DamageMethodType _damageType;
+        public DamageMethodType DamageableType => _damageType;
 
         protected virtual void Awake()
         {
@@ -60,6 +64,12 @@ namespace Agama.Scripts.Entities
                 return (T)_entityComponentDictionary[findType];
 
             return default(T);
+        }
+
+        public virtual void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer)
+        {
+            //Entity 관련 처리는 그냥 여기서
+            OnDamage?.Invoke(damage);
         }
     }
 }

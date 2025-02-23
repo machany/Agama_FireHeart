@@ -1,7 +1,9 @@
-﻿using Agama.Scripts.Core;
+﻿using Agama.Scripts.Combats;
+using Agama.Scripts.Core;
 using Agama.Scripts.Entities;
 using Scripts.Combat;
 using Scripts.Core;
+using System;
 using UnityEngine;
 
 namespace Scripts.Stats
@@ -25,6 +27,7 @@ namespace Scripts.Stats
             _statCompo = _entity.GetComp<EntityStat>();
             //_entity.OnDamage += ApplyDamage;
         }
+
         public virtual void AfterInitialize()
         {
             _statCompo.GetStat(_stat).OnValueChange += HandleStatChange;
