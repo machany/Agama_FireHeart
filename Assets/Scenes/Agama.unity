@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 238207509}
+  - component: {fileID: 238207511}
   - component: {fileID: 238207508}
   - component: {fileID: 238207510}
   m_Layer: 30
@@ -201,7 +202,45 @@ MonoBehaviour:
   OnDeadEvent:
     m_PersistentCalls:
       m_Calls: []
-  _dropFeedback: {fileID: 0}
+  _damageType: 4
+  _dropFeedback: {fileID: 1298948970}
+--- !u!70 &238207511
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238207507}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.000000038002003, y: -0.31878394}
+  m_Size: {x: 1.0000006, y: 0.333783}
+  m_Direction: 1
 --- !u!1001 &256900990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -709,6 +748,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1298948970 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2851507712051461087, guid: 7a3a6409bb13af44d9513d51c480e219, type: 3}
+  m_PrefabInstance: {fileID: 256900990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a8c08131f229c4a9776151a6e95523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1521233938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -759,7 +809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6526201322104807528, guid: ecc6304faef15214785bebde346c1239, type: 3}
       propertyPath: moveSpeed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8776304916066272376, guid: ecc6304faef15214785bebde346c1239, type: 3}
       propertyPath: m_Name
