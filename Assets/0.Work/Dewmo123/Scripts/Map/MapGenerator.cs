@@ -81,10 +81,17 @@ namespace Scripts.Map
             if (SearchDuplicateTile(list))
             {
                 _map.SetTile(tile, _dummy);
-                var go = Instantiate(structure, _map.CellToWorld(tile)+Vector3.one/2, Quaternion.identity);
+                var go = Instantiate(structure, _map.CellToWorld(tile)+Vector3.one/2, Quaternion.identity,transform);
                 return true;
             }
             return false;
         }
+#if UNITY_EDITOR
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(Vector3.zero, new Vector3(_mapSizeX*2, _mapSizeY*2));
+        }
+#endif
     }
 }

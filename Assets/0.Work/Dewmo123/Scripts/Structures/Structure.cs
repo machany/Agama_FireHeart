@@ -1,6 +1,7 @@
 ﻿using Agama.Scripts.Combats;
 using Agama.Scripts.Entities;
 using Scripts.EventChannel;
+using Scripts.Items;
 using System;
 using UnityEngine;
 
@@ -19,8 +20,12 @@ namespace Scripts.Structures
         public override void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer)
         {
             if (damageType != DamageMethodType.Harmmer)
+            {
+                if (damageType != DamageableType)
+                    damage = ItemDataSO.DEFAULT_DAMAGE;
                 damage *= -1;
-            base.ApplyDamage(damageType, damage, dealer);
+            }
+                base.ApplyDamage(damageType, damage, dealer);
         }
     }
 }

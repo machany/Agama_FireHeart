@@ -16,7 +16,9 @@ MonoBehaviour:
   icon: {fileID: 7467877526984844001, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
   itemID: 597edfb24555c004c86f0420607b2ffc
   maxStack: 1
+  _damageType: 0
   damageType: 0
-  equipType: 1
+  attackDamage: 10
+  equipType: 0
   addingStats: []
   itemEffectDescription: 

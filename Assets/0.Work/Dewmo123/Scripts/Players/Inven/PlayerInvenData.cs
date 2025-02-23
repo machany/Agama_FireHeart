@@ -13,7 +13,7 @@ using UnityEngine;
 namespace Scripts.Players.Inven
 {
     //코드가 이꼬라지가 나기전에 고칠 방법이 있지 않았을까..?
-    public class PlayerInvenData : InvenSystem.InvenData, IEntityComponent, IAfterInitialize
+    public class PlayerInvenData : InvenSystem.InvenData, IEntityComponent
     {
         [SerializeField] protected EventChannelSO _invenChannel;
 
@@ -38,6 +38,7 @@ namespace Scripts.Players.Inven
         public void Initialize(Entity entity)//Initialize로 변경 완
         {
             _player = entity as Player;
+            _statCompo = _player.GetComp<EntityStat>();
             inventory = new List<InventoryItem>();
             _equipSlots = new Dictionary<EquipType, InventoryItem>();
             quickSlots = new List<InventoryItem>();
@@ -61,10 +62,6 @@ namespace Scripts.Players.Inven
                 quickSlots.Add(new InventoryItem(null, 0));
             for (int i = 0; i < _storageCount; i++)
                 storage.Add(new InventoryItem(null, 0));
-        }
-        public void AfterInitialize()
-        {
-            //_statCompo = _player.GetComp<EntityStat>();
         }
         private void Start()
         {

@@ -17,6 +17,6 @@ MonoBehaviour:
   itemID: d776dd417d41c934da2fa0df9b0c7d58
   maxStack: 1
   _damageType: 4
-  damageType: 0
+  damageType: 4
   attackDamage: 0
-  _attackDamageMultiply: 0
+  _attackDamageMultiply: 2

@@ -1,6 +1,7 @@
 ﻿using Agama.Scripts.Combats;
 using Agama.Scripts.Entities;
 using Dewmo123.Scripts.Items;
+using Scripts.Items;
 using UnityEngine;
 
 namespace Dewmo123.Scripts.Map
@@ -17,6 +18,8 @@ namespace Dewmo123.Scripts.Map
         }
         public override void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer)
         {
+            if (damageType != DamageableType)
+                damage = ItemDataSO.DEFAULT_DAMAGE;
             damage *= -1;
             base.ApplyDamage(damageType, damage, dealer);
         }

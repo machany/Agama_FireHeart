@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c76853df5167ede45adaeb25ef246597, type: 3}
-  m_Name: DiamondDropTable
+  m_Name: SandDropTable
   m_EditorClassIdentifier: 
   table:
-  - minCnt: 3
-    maxCnt: 5
+  - minCnt: 1
+    maxCnt: 3
     probability: 0.5
-    item: {fileID: 11400000, guid: 24add327524b9be4a974599e47d66bb6, type: 2}
+    item: {fileID: 11400000, guid: d1de452295653194a97afece6cc42207, type: 2}

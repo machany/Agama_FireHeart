@@ -48,4 +48,4 @@ MonoBehaviour:
   _invenChannel: {fileID: 11400000, guid: fc01aa0595809634cbe5bb0be79f96db, type: 2}
   _dropTxt: {fileID: 11400000, guid: 71c03ecd5b742f540881ea10b4d5b9c5, type: 2}
   _poolManager: {fileID: 11400000, guid: ab208f8de301ea24bbc8869fc257e2fa, type: 2}
-  _interval: 1
+  _interval: 0.5
