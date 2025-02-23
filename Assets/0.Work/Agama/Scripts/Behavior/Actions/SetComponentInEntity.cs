@@ -23,19 +23,19 @@ namespace Agama.Scripts.Behavior.Actions
             if (!typeof(IEntityComponent).IsAssignableFrom(targetType))
                 throw new InvalidCastException();
 
-            Type genericType = typeof(SetIEntityComponentClass<>);
+            Type genericType = typeof(SetComponentClass<>);
             Type specificType = genericType.MakeGenericType(targetType);
 
-            Component.ObjectValue = specificType.GetMethod("SetComponent").Invoke(null, new object[] { Entity.Value, IsDerived.Value }) as MonoBehaviour;
+            Component.ObjectValue = specificType.GetMethod("GetEntityComponent").Invoke(null, new object[] { Entity.Value, IsDerived.Value }) as MonoBehaviour;
             Debug.Assert(Component.ObjectValue != null, $"could ger component");
 
             return Status.Success;
         }
     }
 
-    sealed internal class SetIEntityComponentClass<T> where T : IEntityComponent
+    sealed internal class SetComponentClass<T> where T : IEntityComponent
     {
-        public static T SetComponent(Entity entity, bool isDerived)
+        public static T GetEntityComponent(Entity entity, bool isDerived)
         {
             return entity.GetComp<T>(isDerived);
         }

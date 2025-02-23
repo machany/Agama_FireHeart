@@ -13,24 +13,24 @@ namespace Agama.Scripts.Entities
 
         private Entity _owner;
         private SpriteRenderer _spriteRenderer;
-        private Animator _animator;
+        public Animator AnimatorComp {  get; private set; }
 
         public void Initialize(Entity owner)
         {
             _owner = owner;
             _spriteRenderer = transform.GetOrAddComponent<SpriteRenderer>();
-            _animator = transform.GetComponent<Animator>();
-            Debug.Assert(_animator != null, "could not find animator component");
+            AnimatorComp = transform.GetComponent<Animator>();
+            Debug.Assert(AnimatorComp != null, "could not find animator component");
         }
 
         public void SetParamiter(AnimationParamiterSO paramitor)
-            => _animator.SetTrigger(paramitor.hashCode);
+            => AnimatorComp.SetTrigger(paramitor.hashCode);
         public void SetParamiter(AnimationParamiterSO paramitor, bool value)
-            => _animator.SetBool(paramitor.hashCode, value);
+            => AnimatorComp.SetBool(paramitor.hashCode, value);
         public void SetParamiter(AnimationParamiterSO paramitor, int value)
-            => _animator.SetInteger(paramitor.hashCode, value);
+            => AnimatorComp.SetInteger(paramitor.hashCode, value);
         public void SetParamiter(AnimationParamiterSO paramitor, float value)
-            => _animator.SetFloat(paramitor.hashCode, value);
+            => AnimatorComp.SetFloat(paramitor.hashCode, value);
 
         public void SetColor(Color color)
             => _spriteRenderer.color = color;

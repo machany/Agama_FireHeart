@@ -63,10 +63,10 @@ namespace Agama.Scripts.Combats.DamageCasters
                     _targetingMark.gameObject.SetActive(true);
 
                     _target = damageable;
-                    _targetingMark.parent = target;
                     _targetingMark.rotation = Quaternion.identity;
-                    _targetingMark.position = target.position;
                 }
+
+                _targetingMark.position = target.position;
 
                 return true;
             }

@@ -1,4 +1,5 @@
 ﻿using Unity.Behavior;
+using UnityEngine;
 
 namespace Agama.Scripts.Enemies
 {
