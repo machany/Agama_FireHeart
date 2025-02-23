@@ -22,6 +22,7 @@ namespace Agama.Scripts.Combats.DamageCasters
             _hitResultList = new List<Collider2D>();
 
             GameObject gameObject = new GameObject();
+            gameObject.transform.localScale = Vector2.one * 2;
             gameObject.name = "Targeting Mark";
             _targetingMark = gameObject.transform;
             _targetingMark.SetComponent<SpriteRenderer>(spriteRenderer =>
