@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _utileChannel: {fileID: 11400000, guid: 6e6e90386104f774bb9a43cd0ee7b936, type: 2}
+  _uiChannel: {fileID: 11400000, guid: 574195d2e12842445b298bb78baba4f7, type: 2}
   _bucket: {fileID: 11400000, guid: 30012c5683eabfd4ca28ed664310505e, type: 2}
   _waterBucket: {fileID: 11400000, guid: 103f9cbc8e3977744b36f556a0cc5867, type: 2}
 --- !u!1 &2551023311248359293

@@ -23,6 +23,10 @@ namespace Scripts.Combat
             _statCompo.currentStat.OnValueChanged += HandleStatChange;
             gameObject.SetActive(false);
         }
+        private void OnDestroy()
+        {
+            DOTween.Kill(_pivotTrm);
+        }
         private void HandleStatChange(float prev, float next)
         {
             DOTween.Kill(_pivotTrm);

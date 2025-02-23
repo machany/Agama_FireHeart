@@ -20,18 +20,25 @@ namespace Agama.Scripts.Core
             _controls.Player.Enable();
             _controls.UI.Enable();
         }
-
         private void OnDisable()
         {
             _controls.Player.Disable();
             _controls.UI.Disable();
         }
-
+        public void DisablePCInput()
+        {
+            _controls.Player.Disable();
+        }
+        public void EnablePCInput()
+        {
+            _controls.Player.Enable();
+        }
         #region Player
 
         public Action OnItemUseKeyPressedEvent;
         public Action OnInteractKeyPressedEvent;
         public Action OnMoveKeyPressedEvent;
+        public Action OnInventoryKeyPressed;
         /// <summary>
         /// true = Next(Right), false = Previous(Left)
         /// </summary>
@@ -80,32 +87,37 @@ namespace Agama.Scripts.Core
 
         public void OnQuickSlot1(InputAction.CallbackContext context)
         {
-            if (!context.performed)
+            if (context.performed)
                 OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 0);
         }
 
         public void OnQuickSlot2(InputAction.CallbackContext context)
         {
-            if (!context.performed)
+            if (context.performed)
                 OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 1);
         }
 
         public void OnQuickSlot3(InputAction.CallbackContext context)
         {
-            if (!context.performed)
+            if (context.performed)
                 OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 2);
         }
 
         public void OnQuickSlot4(InputAction.CallbackContext context)
         {
-            if (!context.performed)
+            if (context.performed)
                 OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 3);
         }
 
         public void OnQuickSlot5(InputAction.CallbackContext context)
         {
-            if (!context.performed)
+            if (context.performed)
                 OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 4);
+        }
+        public void OnInventory(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+                OnInventoryKeyPressed?.Invoke();
         }
 
         #endregion
@@ -126,6 +138,7 @@ namespace Agama.Scripts.Core
         }
         public void OnTrackedDevicePosition(InputAction.CallbackContext context) { }
         public void OnTrackedDeviceOrientation(InputAction.CallbackContext context) { }
+
 
         #endregion
     }

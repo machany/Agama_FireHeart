@@ -116,6 +116,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""b282ce57-f95a-4354-9d6e-1d1aae4e28b4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -270,6 +279,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""QuickSlot5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c107a7e0-31d8-4c69-bab1-f856d8d95073"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -867,6 +887,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_QuickSlot3 = m_Player.FindAction("QuickSlot3", throwIfNotFound: true);
         m_Player_QuickSlot4 = m_Player.FindAction("QuickSlot4", throwIfNotFound: true);
         m_Player_QuickSlot5 = m_Player.FindAction("QuickSlot5", throwIfNotFound: true);
+        m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -956,6 +977,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_QuickSlot3;
     private readonly InputAction m_Player_QuickSlot4;
     private readonly InputAction m_Player_QuickSlot5;
+    private readonly InputAction m_Player_Inventory;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -970,6 +992,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @QuickSlot3 => m_Wrapper.m_Player_QuickSlot3;
         public InputAction @QuickSlot4 => m_Wrapper.m_Player_QuickSlot4;
         public InputAction @QuickSlot5 => m_Wrapper.m_Player_QuickSlot5;
+        public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1009,6 +1032,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @QuickSlot5.started += instance.OnQuickSlot5;
             @QuickSlot5.performed += instance.OnQuickSlot5;
             @QuickSlot5.canceled += instance.OnQuickSlot5;
+            @Inventory.started += instance.OnInventory;
+            @Inventory.performed += instance.OnInventory;
+            @Inventory.canceled += instance.OnInventory;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1043,6 +1069,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @QuickSlot5.started -= instance.OnQuickSlot5;
             @QuickSlot5.performed -= instance.OnQuickSlot5;
             @QuickSlot5.canceled -= instance.OnQuickSlot5;
+            @Inventory.started -= instance.OnInventory;
+            @Inventory.performed -= instance.OnInventory;
+            @Inventory.canceled -= instance.OnInventory;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1235,6 +1264,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnQuickSlot3(InputAction.CallbackContext context);
         void OnQuickSlot4(InputAction.CallbackContext context);
         void OnQuickSlot5(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

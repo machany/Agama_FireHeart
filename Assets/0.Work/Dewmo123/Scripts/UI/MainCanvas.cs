@@ -20,7 +20,7 @@ namespace Scripts.UI
         [SerializeField] private EventChannelSO _uiEventChannel;
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private PlayerInputSO _playerInput;
-
+        [SerializeField] private PlayerInputSO _input;
         private UIWindowStatus _uiWindowStatus = UIWindowStatus.Closed;
 
         private Dictionary<UIType, MoveUI> _menuPanels;
@@ -39,12 +39,14 @@ namespace Scripts.UI
 
         private void CloseUIHandler(CloseUI uI)
         {
+            _input.EnablePCInput();
             _currentUI.Close();
             _currentUI = null;
         }
 
         private void OpenUIHandler(OpenUI evt)
         {
+            _input.DisablePCInput();
             OpenPanel(evt.type);
         }
 
