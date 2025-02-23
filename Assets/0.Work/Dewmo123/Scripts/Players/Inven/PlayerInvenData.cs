@@ -289,6 +289,8 @@ namespace Scripts.Players.Inven
             if (item.data == null)
             {
                 inventory[t.index1] = _equipSlots[t.type];
+                var equip = _equipSlots[t.type].data as EquipItemDataSO;
+                equip.RemoveModifier(_statCompo);
                 _equipSlots.Remove(t.type);
             }
             else if (item.data is EquipItemDataSO dataSO)
@@ -298,6 +300,9 @@ namespace Scripts.Players.Inven
                     UpdateInventoryUI();
                     return;
                 }
+                var before = _equipSlots[t.type].data as EquipItemDataSO;
+                before.RemoveModifier(_statCompo);
+                dataSO.AddModifier(_statCompo);
                 inventory[t.index1] = _equipSlots[t.type];
                 _equipSlots[t.type] = item;
             }
