@@ -16,6 +16,7 @@ public partial class WaitDeadEventAction : Action
     protected override Status OnStart()
     {
         Entity.Value.OnHitEvent.AddListener(HandleAnimationEndEvent);
+        _triggerCall = false;
         return Status.Running;
     }
 

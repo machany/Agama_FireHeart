@@ -25,7 +25,7 @@ namespace Scripts.Structures
                     damage = ItemDataSO.DEFAULT_DAMAGE;
                 damage *= -1;
             }
-                base.ApplyDamage(damageType, damage, dealer);
+            OnDamage?.Invoke(damage);
         }
     }
 }

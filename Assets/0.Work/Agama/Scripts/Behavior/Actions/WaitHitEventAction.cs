@@ -17,7 +17,8 @@ namespace Agama.Scripts.Behavior.Actions
 
         protected override Status OnStart()
         {
-            Entity.Value.OnHitEvent.AddListener(HandleAnimationEndEvent);
+            Entity.Value.OnHitEvent.AddListener(HandleHitEvent);
+            _triggerCall = false;
             return Status.Running;
         }
 
@@ -28,12 +29,12 @@ namespace Agama.Scripts.Behavior.Actions
             return Status.Running;
         }
 
-        private void HandleAnimationEndEvent()
+        private void HandleHitEvent()
             => _triggerCall = true;
 
         protected override void OnEnd()
         {
-            Entity.Value.OnHitEvent.RemoveListener(HandleAnimationEndEvent);
+            Entity.Value.OnHitEvent.RemoveListener(HandleHitEvent);
         }
     }
 }
