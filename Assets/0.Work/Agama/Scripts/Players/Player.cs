@@ -77,14 +77,17 @@ namespace Agama.Scripts.Players
 
         public void ChangeQuickSlotItem(sbyte damageType, float power)
         {
-            bool isCarryItem = _carring = damageType < 0;
+            bool isCarryItem = _carring = damageType < -1;
+            ToolType = damageType;
             _renderer.SetParamiter(CarryParam, isCarryItem); // 양수면 안 드는 물건
-            _renderer.SetParamiter(ToolTypeParam, ToolType = (sbyte)Mathf.Abs(damageType));
+            _renderer.SetParamiter(ToolTypeParam,(sbyte)Mathf.Abs(damageType));
             OnQuickSloatItemChange?.Invoke(damageType, power);
         }
 
         private void HandleItemUseKeyPressedEvent()
         {
+            Debug.Log(_carring);
+            Debug.Log(ToolType);
             if (!_carring && ToolType >= 0)
                 ChangeState("Player_use_tool_State_event");
             else

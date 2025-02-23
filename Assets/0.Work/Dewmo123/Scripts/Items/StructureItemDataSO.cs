@@ -32,7 +32,7 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
         {
             base.OnEnable();
 
-            damageType = -1;
+            damageType = -2;
         }
     }
 }
