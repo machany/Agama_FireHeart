@@ -9,9 +9,9 @@ namespace Agama.Scripts.Combats.DamageCasters
     sealed public class TargetingDamageCaster : VisualFieldDiscriminationDamageCaster
     {
         [Header("Targeting Mark")]
-        [SerializeField] private Transform _targetingMark;
         [SerializeField] private Sprite targetingMarkSprite;
 
+        private Transform _targetingMark;
         private List<Collider2D> _hitResultList;
         private IDamageable _target;
 
@@ -21,7 +21,9 @@ namespace Agama.Scripts.Combats.DamageCasters
 
             _hitResultList = new List<Collider2D>();
 
-            _targetingMark ??= new GameObject().transform;
+            GameObject gameObject = new GameObject();
+            gameObject.name = "Targeting Mark";
+            _targetingMark = gameObject.transform;
             _targetingMark.SetComponent<SpriteRenderer>(spriteRenderer =>
                 {
                     spriteRenderer.enabled = true;

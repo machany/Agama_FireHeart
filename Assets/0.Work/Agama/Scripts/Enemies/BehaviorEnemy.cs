@@ -6,7 +6,9 @@ namespace Agama.Scripts.Enemies
 {
     public abstract class BehaviorEnemy : Entity
     {
-        [SerializeField] private DropFeedback _dropFeedback;
+        [SerializeField] protected DropFeedback _dropFeedback;
+
+        public Vector2 StartPosition { get; private set; }
 
         protected override void Awake()
         {
@@ -14,6 +16,8 @@ namespace Agama.Scripts.Enemies
 
             if (_dropFeedback == null)
                 transform.GetComponentInChildren<DropFeedback>();
+
+            StartPosition = transform.position;
         }
 
         protected override void HandleDeadEvent()
