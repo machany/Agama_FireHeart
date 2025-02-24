@@ -1,4 +1,5 @@
 ﻿using Agama.Scripts.Entities;
+using GGMPool;
 using Scripts.Combat;
 using System.Linq;
 using UnityEngine;
@@ -11,20 +12,21 @@ namespace Scripts.Structures
         [SerializeField] private float _attackRad;
         [SerializeField] private LayerMask _targetLayer;
         [SerializeField] private float _attackDelay;
+        [SerializeField] private Transform _firePos;
 
-        [SerializeField] private GameObject _bulletPrefab;
-
+        [SerializeField] private PoolTypeSO _bulletType;
+        [SerializeField] private PoolManagerSO _poolManager;
         private float _curTime;
         private Collider2D _target;
-        private void Attack()
+        private void Attack() 
         {
             _target = Physics2D.OverlapCircle(transform.position, _attackRad, _targetLayer);
 
             if (_target == null) return;
 
             Vector2 dir = _target.transform.position - transform.position;
-            var bullet = Instantiate(_bulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
-            bullet.Init(dir.normalized);
+            var bullet = _poolManager.Pop(_bulletType) as Bullet;
+            bullet.Init(dir.normalized,_firePos.position);
         }
         private void Update()
         {

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 405f6aea3dc1e4a43b6eaf6a5ba60954
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202421
+  packageName: Thread Dispatcher
+  packageVersion: 5.0.0
+  assetPath: Packages/com.baracuda.thread-dispatcher/LICENSE.md
+  uploadId: 538717

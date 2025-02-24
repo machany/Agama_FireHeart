@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ce3e753ff0877c148ba1f54d49500b1d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202421
+  packageName: Thread Dispatcher
+  packageVersion: 5.0.0
+  assetPath: Packages/com.baracuda.thread-dispatcher/Runtime/Utilities/ExecutionCycle.cs
+  uploadId: 538717

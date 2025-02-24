@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643a18af888b9684e8e9d407a9deb1c7, type: 3}
+  m_Name: IronTrap
+  m_EditorClassIdentifier: 
+  itemName: "\uAC15\uCCA0 \uB36B"
+  icon: {fileID: 5563590641408601963, guid: b4152c3c6c2a32246966c17c746c3f4e, type: 3}
+  itemID: 6773819f275956f4682cd3122746a6ea
+  maxStack: 1
+  _damageType: 0
+  damageType: -2
+  attackDamage: 10
+  structure: {fileID: 8446672302343246514, guid: 0a9cb81c4730b114aafc47f98f28cb50, type: 3}

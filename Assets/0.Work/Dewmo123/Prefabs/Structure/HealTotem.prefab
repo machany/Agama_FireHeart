@@ -143,6 +143,7 @@ MonoBehaviour:
   OnDeadEvent:
     m_PersistentCalls:
       m_Calls: []
+  _damageType: 0
   _targetLayer:
     serializedVersion: 2
     m_Bits: 33554432

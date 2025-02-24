@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 9b764e0b4d7d83348bec992f596be43f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202421
+  packageName: Thread Dispatcher
+  packageVersion: 5.0.0
+  assetPath: Packages/com.baracuda.thread-dispatcher/Runtime/Coroutines/BehaviourDisabledException.cs
+  uploadId: 538717

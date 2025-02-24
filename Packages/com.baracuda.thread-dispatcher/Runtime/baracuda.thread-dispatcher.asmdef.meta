@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 08af652e582824643b56d9fe5a5c0ecd
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202421
+  packageName: Thread Dispatcher
+  packageVersion: 5.0.0
+  assetPath: Packages/com.baracuda.thread-dispatcher/Runtime/baracuda.thread-dispatcher.asmdef
+  uploadId: 538717

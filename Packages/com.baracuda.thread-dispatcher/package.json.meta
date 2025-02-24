@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 93db4995296f02049926233d57947494
+PackageManifestImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202421
+  packageName: Thread Dispatcher
+  packageVersion: 5.0.0
+  assetPath: Packages/com.baracuda.thread-dispatcher/package.json
+  uploadId: 538717

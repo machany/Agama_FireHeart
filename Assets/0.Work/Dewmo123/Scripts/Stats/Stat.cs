@@ -67,8 +67,6 @@ namespace Scripts.Stats
         }
         public virtual void AfterHitFeedbacks()
         {
-            _entity.OnHitEvent?.Invoke();
-
             if (currentStat.Value <= 0)
             {
                 _entity.OnDeadEvent?.Invoke();

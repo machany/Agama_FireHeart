@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 43b745f554bc7914987a4e9b210e8eec
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202421
+  packageName: Thread Dispatcher
+  packageVersion: 5.0.0
+  assetPath: Packages/com.baracuda.thread-dispatcher/README.md
+  uploadId: 538717
