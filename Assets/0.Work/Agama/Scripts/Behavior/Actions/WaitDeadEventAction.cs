@@ -15,7 +15,7 @@ public partial class WaitDeadEventAction : Action
 
     protected override Status OnStart()
     {
-        Entity.Value.OnHitEvent.AddListener(HandleAnimationEndEvent);
+        Entity.Value.OnDeadEvent.AddListener(HandleDeadEvent);
         _triggerCall = false;
         return Status.Running;
     }
@@ -27,12 +27,12 @@ public partial class WaitDeadEventAction : Action
         return Status.Running;
     }
 
-    private void HandleAnimationEndEvent()
+    private void HandleDeadEvent()
         => _triggerCall = true;
 
     protected override void OnEnd()
     {
-        Entity.Value.OnHitEvent.RemoveListener(HandleAnimationEndEvent);
+        Entity.Value.OnDeadEvent.RemoveListener(HandleDeadEvent);
     }
 }
 

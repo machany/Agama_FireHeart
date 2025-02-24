@@ -5,10 +5,10 @@ using Unity.Behavior;
 
 namespace Agama.Scripts.Enemies
 {
-    public class Sheep : BehaviorEnemy
+    public class Animal : BehaviorEnemy
     {
         [BlackboardEnum]
-        public enum SheepState
+        public enum AniamlState
         {
             Patroll,
             Run,
