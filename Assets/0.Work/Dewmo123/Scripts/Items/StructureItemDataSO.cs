@@ -2,6 +2,7 @@
 using Agama.Scripts.Players;
 using Scripts.Items;
 using Scripts.Map;
+using Scripts.Players;
 using Scripts.Players.Inven;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
         {
             var player = entity as Player;
             var input = player.InputSO;
+            var enemyDetector = entity.GetComp<PlayerEnemyDetector>();
             if (MapGenerator.Instance.BuildStructure((Vector2)player.transform.position + input.PreviousInputVector,structure))
             {
                 var inven = player.GetComp<PlayerInvenData>();
@@ -27,7 +29,9 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
                 inven.ReloadQuickSlot();
             }
         }
-
+        private void CheckEnemy(Vector2 pos)
+        {
+        }
         protected override void OnEnable()
         {
             base.OnEnable();

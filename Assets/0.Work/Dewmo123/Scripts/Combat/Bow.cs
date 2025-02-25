@@ -1,5 +1,6 @@
 ﻿using Agama.Scripts.Entities;
 using GGMPool;
+using Scripts.Core.Sound;
 using Scripts.Map;
 using Scripts.Structures;
 using System;
@@ -45,7 +46,7 @@ namespace Scripts.Combat
         private void Update()
         {
             _target = _cannon.target;
-            _dir = _target == null ? transform.right : _target.transform.position - transform.position;
+            _dir = (_target == null ? transform.right : _target.transform.position - transform.position).normalized;
             transform.right = _dir;
         }
     }

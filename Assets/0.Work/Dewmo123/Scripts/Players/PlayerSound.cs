@@ -11,7 +11,6 @@ namespace Scripts.Players
     {
         [SerializeField] private SoundSO _attackSound;
         [SerializeField] private SoundSO _walkSound;
-        [SerializeField] private SoundSO _hitSound;
         [SerializeField] private SoundSO _swapSound;
         private Player _player;
         private PlayerInputSO _input;
@@ -24,7 +23,12 @@ namespace Scripts.Players
             _input.OnQuickSlotChangedEvent += HandleQuickSlot;
             _anim.OnWalkEvent += HandleWalk;
             _anim.OnAnimationEvent += HandleAttack;
-            _entity.OnHitEvent.AddListener(HandleHit);
+        }
+        private void OnDestroy()
+        {
+            _input.OnQuickSlotChangedEvent -= HandleQuickSlot;
+            _anim.OnWalkEvent -= HandleWalk;
+            _anim.OnAnimationEvent -= HandleAttack;
         }
 
         private void HandleQuickSlot(sbyte obj)
@@ -34,11 +38,6 @@ namespace Scripts.Players
                 _before = obj;
                 PlaySound(_swapSound);
             }
-        }
-
-        private void HandleHit()
-        {
-            PlaySound(_hitSound);
         }
 
         private void HandleWalk()
