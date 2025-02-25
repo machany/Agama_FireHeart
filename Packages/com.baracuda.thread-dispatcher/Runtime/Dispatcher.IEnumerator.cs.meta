@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2ed3597a8476f5641b0e80b9e0d0987e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202421
+  packageName: Thread Dispatcher
+  packageVersion: 5.0.0
+  assetPath: Packages/com.baracuda.thread-dispatcher/Runtime/Dispatcher.IEnumerator.cs
+  uploadId: 538717
