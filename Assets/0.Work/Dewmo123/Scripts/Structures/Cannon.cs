@@ -18,24 +18,26 @@ namespace Scripts.Structures
         [SerializeField] private PoolManagerSO _poolManager;
         private float _curTime;
         private Collider2D _target;
-        private void Attack() 
+        private void Attack()
         {
-            _target = Physics2D.OverlapCircle(transform.position, _attackRad, _targetLayer);
+            Vector2 dir = _target == null ? transform.right : _target.transform.position - transform.position;
+            transform.right = dir;
+            if (_curTime >= _attackDelay)
+            {
+                _target = Physics2D.OverlapCircle(transform.position, _attackRad, _targetLayer);
+                if (_target == null) return;
 
-            if (_target == null) return;
+                var bullet = _poolManager.Pop(_bulletType) as Bullet;
+                bullet.Init(dir.normalized, _firePos.position);
+                _curTime = 0;
+            }
 
-            Vector2 dir = _target.transform.position - transform.position;
-            var bullet = _poolManager.Pop(_bulletType) as Bullet;
-            bullet.Init(dir.normalized,_firePos.position);
         }
         private void Update()
         {
             _curTime += Time.deltaTime;
-            if (_curTime >= _attackDelay)
-            {
-                Attack();
-                _curTime = 0;
-            }
+
+            Attack();
         }
 
 #if UNITY_EDITOR
