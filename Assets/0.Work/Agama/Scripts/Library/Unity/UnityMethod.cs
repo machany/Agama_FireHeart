@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -61,6 +62,29 @@ namespace Library
                 setting?.Invoke(component = transform.AddComponent<T>());
 
             return component;
+        }
+
+        private static readonly Vector2[] normalizedDirections = new Vector2[8]
+{
+        new Vector2(0, 1), new Vector2(0, -1), // 상하
+        new Vector2(-1, 0), new Vector2(1, 0), // 좌우
+        new Vector2(1, 1), new Vector2(-1, 1), // 북동, 북서
+        new Vector2(1, -1), new Vector2(-1, -1) // 남동, 남서
+};
+        /// <summary>
+        /// 주어진 벡터에서 목표 벡터까지의 방향을 8방향(상하좌우, 대각선) 중 가장 근접한 방향으로 변환
+        /// </summary>
+        /// <returns>8방향(상하좌우, 대각선) 중 가장 근접한 방향 벡터</returns>
+        public static Vector2 GetClosestDirection(this Vector2 owner, Vector2 target)
+        {
+            Vector2 direction = (target - owner).normalized;
+
+            if (direction == Vector2.zero)
+                return Vector2.zero;
+
+            return normalizedDirections
+                .OrderBy(dir => Vector2.Distance(direction, dir.normalized))
+                .First();
         }
     }
 }

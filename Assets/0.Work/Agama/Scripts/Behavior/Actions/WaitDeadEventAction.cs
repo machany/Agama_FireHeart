@@ -5,34 +5,36 @@ using Unity.Properties;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 
-[Serializable, GeneratePropertyBag]
-[NodeDescription(name: "wait dead event", story: "[Entity] wait dead event", category: "Action", id: "337c87ff41090f0fd5c312a649253ff3")]
-public partial class WaitDeadEventAction : Action
+namespace Agama.Scripts.Behavior.Actions
 {
-    [SerializeReference] public BlackboardVariable<Entity> Entity;
-
-    private bool _triggerCall;
-
-    protected override Status OnStart()
+    [Serializable, GeneratePropertyBag]
+    [NodeDescription(name: "wait dead event", story: "[Entity] wait dead event", category: "Action", id: "337c87ff41090f0fd5c312a649253ff3")]
+    public partial class WaitDeadEventAction : Action
     {
-        Entity.Value.OnDeadEvent.AddListener(HandleDeadEvent);
-        _triggerCall = false;
-        return Status.Running;
-    }
+        [SerializeReference] public BlackboardVariable<Entity> Entity;
 
-    protected override Status OnUpdate()
-    {
-        if (_triggerCall)
-            return Status.Success;
-        return Status.Running;
-    }
+        private bool _triggerCall;
 
-    private void HandleDeadEvent()
-        => _triggerCall = true;
+        protected override Status OnStart()
+        {
+            Entity.Value.OnDeadEvent.AddListener(HandleDeadEvent);
+            _triggerCall = false;
+            return Status.Running;
+        }
 
-    protected override void OnEnd()
-    {
-        Entity.Value.OnDeadEvent.RemoveListener(HandleDeadEvent);
+        protected override Status OnUpdate()
+        {
+            if (_triggerCall)
+                return Status.Success;
+            return Status.Running;
+        }
+
+        private void HandleDeadEvent()
+            => _triggerCall = true;
+
+        protected override void OnEnd()
+        {
+            Entity.Value.OnDeadEvent.RemoveListener(HandleDeadEvent);
+        }
     }
 }
-

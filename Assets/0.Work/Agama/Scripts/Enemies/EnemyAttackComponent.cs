@@ -18,6 +18,8 @@ namespace Agama.Scripts.Enemies
             _owner = owner;
             _stat = _owner.GetComp<EntityStat>();
 
+            damagecaster.InitCaster(owner);
+
             _owner.GetComp<EntityAnimatorTrigger>().OnAnimationEvent += HandleAnimationEvent;
         }
 

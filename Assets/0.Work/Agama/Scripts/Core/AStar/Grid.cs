@@ -6,30 +6,34 @@ namespace Agama.Scripts.Core.AStar
 {
     public class Grid : MonoBehaviour
     {
-        [SerializeField] private LayerMask unPassLayer;
-        [SerializeField] private Vector2 gridSize;
-        [SerializeField] private float nodeRadius;
-
         private Node[,] _grid;
+
+        private LayerMask _unPassLayer;
+        private Vector2 _gridSize;
+        private float _nodeRadius;
 
         private float _nodeSize;
         private int _gridSizeX, _gridSizeY;
 
-        private void Awake()
+        public void Initialize(LayerMask unPassLayer, Vector2 gridSize, float nodeRadius)
         {
+            _unPassLayer = unPassLayer;
+            _gridSize = gridSize;
+            _nodeRadius = nodeRadius;
+
             SetNodeAndGrid();
             InitializeGrid();
         }
 
         private void SetNodeAndGrid()
         {
-            if (nodeRadius <= 0)
+            if (_nodeRadius <= 0)
                 throw new ArgumentOutOfRangeException();
 
-            _nodeSize = nodeRadius * 2;
-            _gridSizeX = Mathf.RoundToInt(gridSize.x / _nodeSize);
-            _gridSizeY = Mathf.RoundToInt(gridSize.y / _nodeSize);
-            Debug.Log(_nodeSize + " // " + gridSize + " = " + _gridSizeX + " , " + _gridSizeY);
+            _nodeSize = _nodeRadius * 2;
+            _gridSizeX = Mathf.RoundToInt(_gridSize.x / _nodeSize);
+            _gridSizeY = Mathf.RoundToInt(_gridSize.y / _nodeSize);
+            Debug.Log(_nodeSize + " // " + _gridSize + " = " + _gridSizeX + " , " + _gridSizeY);
 
             if (_gridSizeX <= 0 || _gridSizeY <= 0)
                 throw new ArgumentOutOfRangeException();
@@ -50,16 +54,16 @@ namespace Agama.Scripts.Core.AStar
         }
 
         [ContextMenu("ChangeGrid")]
-        private void ChangeGrid()
+        public void ChangeGrid()
         {
-            Vector2 startPosition = (Vector2)transform.position - Vector2.right * gridSize.x / 2 - Vector2.up * gridSize.y / 2;
+            Vector2 startPosition = (Vector2)transform.position - Vector2.right * _gridSize.x / 2 - Vector2.up * _gridSize.y / 2;
 
             for (int x = 0; x < _gridSizeX; x++)
             {
                 for (int y = 0; y < _gridSizeY; y++)
                 {
-                    Vector2 nodePosition = startPosition + Vector2.right * (x * _nodeSize + nodeRadius) + Vector2.up * (y * _nodeSize + nodeRadius);
-                    bool canPass = !Physics2D.OverlapCircle(nodePosition, nodeRadius, unPassLayer);
+                    Vector2 nodePosition = startPosition + Vector2.right * (x * _nodeSize + _nodeRadius) + Vector2.up * (y * _nodeSize + _nodeRadius);
+                    bool canPass = !Physics2D.OverlapCircle(nodePosition, _nodeRadius, _unPassLayer);
 
                     Node currentNode = _grid[x, y];
 
@@ -77,8 +81,8 @@ namespace Agama.Scripts.Core.AStar
             }
 
             // 비율 계산
-            float percentX = (position.x + gridSize.x / 2) / gridSize.x;
-            float percentY = (position.y + gridSize.y / 2) / gridSize.y;
+            float percentX = (position.x + _gridSize.x / 2) / _gridSize.x;
+            float percentY = (position.y + _gridSize.y / 2) / _gridSize.y;
 
             percentX = Mathf.Clamp01(percentX);
             percentY = Mathf.Clamp01(percentY);
@@ -119,10 +123,12 @@ namespace Agama.Scripts.Core.AStar
             return adjacentNodes;
         }
 
+#if UNITY_EDITOR
+
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.cyan; // 전체 그리드
-            Gizmos.DrawWireCube(transform.position, new Vector2(gridSize.x, gridSize.y));
+            Gizmos.DrawWireCube(transform.position, new Vector2(_gridSize.x, _gridSize.y));
 
             if (_grid != null)
             {
@@ -133,5 +139,7 @@ namespace Agama.Scripts.Core.AStar
                 }
             }
         }
+
+#endif
     }
 }
