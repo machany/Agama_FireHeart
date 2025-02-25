@@ -20,7 +20,9 @@ namespace Agama.Scripts.Players.States
         public override void Enter()
         {
             base.Enter();
-            _owner.GetComp<EntityMover>().CanMove = false;
+            EntityMover mover = _owner.GetComponent<EntityMover>();
+            mover.CanMove = false;
+            mover.StopImmediately();
             (_owner as Player).SetStateChangeLock(true);
         }
     }
