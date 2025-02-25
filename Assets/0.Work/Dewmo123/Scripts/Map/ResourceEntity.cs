@@ -2,6 +2,7 @@
 using Agama.Scripts.Entities;
 using Dewmo123.Scripts.Items;
 using Scripts.Items;
+using Scripts.Map;
 using UnityEngine;
 
 namespace Dewmo123.Scripts.Map
@@ -10,6 +11,7 @@ namespace Dewmo123.Scripts.Map
     {
         protected override void HandleDeadEvent()
         {
+            MapGenerator.Instance.DestoryStructure(transform.position);
             Destroy(gameObject);
         }
 

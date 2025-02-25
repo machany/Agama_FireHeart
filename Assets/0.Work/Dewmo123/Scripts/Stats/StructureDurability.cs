@@ -35,5 +35,10 @@ namespace Scripts.Stats
             if (currentStat.Value == maxStat)
                 _bar.gameObject.SetActive(false);
         }
+        public override void AfterHitFeedbacks()
+        {
+            _entity.OnHitEvent?.Invoke();
+            base.AfterHitFeedbacks();
+        }
     }
 }

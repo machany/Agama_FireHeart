@@ -18,11 +18,13 @@ namespace Agama.Scripts.Entities
 
         public event Action OnAnimationEndEvent;
         public event Action OnAnimationEvent;
+        public event Action OnWalkEvent;
 
         private void OnAnimationEndTrigger()
             => OnAnimationEndEvent?.Invoke();
 
         private void OnAnimationEventTrigger()
             => OnAnimationEvent?.Invoke();
+        private void OnWalkEventTrigger() => OnWalkEvent?.Invoke();
     }
 }

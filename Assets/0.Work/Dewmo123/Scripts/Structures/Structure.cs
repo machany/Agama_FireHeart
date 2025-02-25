@@ -2,6 +2,7 @@
 using Agama.Scripts.Entities;
 using Scripts.EventChannel;
 using Scripts.Items;
+using Scripts.Map;
 using System;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace Scripts.Structures
     {
         protected override void HandleDeadEvent()
         {
+            MapGenerator.Instance.DestoryStructure(transform.position);
             Destroy(gameObject);
         }
 

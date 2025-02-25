@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.baracuda.thread-dispatcher": {
+      "version": "file:com.baracuda.thread-dispatcher",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "10.1.3",
       "depth": 1,
