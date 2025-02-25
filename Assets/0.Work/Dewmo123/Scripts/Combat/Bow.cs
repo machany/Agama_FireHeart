@@ -38,7 +38,7 @@ namespace Scripts.Combat
         private void HandleAttackTrigger()
         {
             var arrow = _poolManager.Pop(_bulletType) as Bullet;
-            arrow.Init(_dir, _firePos.position,_cannon.GetComp<EntityStat>().GetBaseValue(_attackPower));
+            arrow.Init(_dir, _firePos.position,_cannon.GetComp<EntityStat>().GetBaseValue(_attackPower),_cannon);
         }
         private void HandleAttackEvent()
         {

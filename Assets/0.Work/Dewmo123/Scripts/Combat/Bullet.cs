@@ -8,15 +8,6 @@ namespace Scripts.Combat
 {
     public class Bullet : Projectile
     {
-        protected override void Awake()
-        {
-            base.Awake();
 
-        }
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            _damageCaster.CastDamage(_damage);
-            _myPool.Push(this);
-        }
     }
 }

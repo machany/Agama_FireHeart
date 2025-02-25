@@ -345,7 +345,7 @@ MonoBehaviour:
   _attackRad: 5
   _targetLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1073741824
   _attackDelay: 1
 --- !u!50 &8216795847443020002
 Rigidbody2D:
