@@ -20,8 +20,9 @@ namespace Agama.Scripts.Behavior.Actions
         {
             string typePath = string.IsNullOrEmpty(DefaultTypePath.Value) ? IEntityComponentName.Value : DefaultTypePath.Value + "." + IEntityComponentName.Value;
             Type targetType = Type.GetType(typePath);
+
             if (!typeof(IEntityComponent).IsAssignableFrom(targetType))
-                throw new InvalidCastException();
+                throw new InvalidCastException("Type Name : " + typePath);
 
             Type genericType = typeof(SetComponentClass<>);
             Type specificType = genericType.MakeGenericType(targetType);

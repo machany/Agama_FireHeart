@@ -104,5 +104,10 @@ namespace Agama.Scripts.Players
             // 즉시 변경
             _stateMachine.ChangeState("Player_dead_State_event");
         }
+
+        public override void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer)
+        {
+            OnDamage?.Invoke(damage);
+        }
     }
 }

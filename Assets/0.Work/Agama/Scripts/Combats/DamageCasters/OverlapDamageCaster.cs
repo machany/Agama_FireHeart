@@ -53,7 +53,7 @@ namespace Agama.Scripts.Combats.DamageCasters
                     Gizmos.DrawWireSphere(transform.position, damageRadius);
                     break;
                 case OverlapCastType.Box:
-                    Gizmos.DrawCube(transform.position, damageBoxSize);
+                    Gizmos.DrawWireCube(transform.position, damageBoxSize);
                     break;
             }
         }

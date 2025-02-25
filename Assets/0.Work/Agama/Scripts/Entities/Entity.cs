@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 namespace Agama.Scripts.Entities
 {
-    public abstract class Entity : MonoBehaviour,IDamageable
+    public abstract class Entity : MonoBehaviour, IDamageable
     {
         public UnityEvent OnHitEvent;
         public UnityEvent OnDeadEvent;
@@ -66,10 +66,6 @@ namespace Agama.Scripts.Entities
             return default(T);
         }
 
-        public virtual void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer)
-        {
-            //Entity 관련 처리는 그냥 여기서
-            OnDamage?.Invoke(damage);
-        }
+        public abstract void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer);
     }
 }

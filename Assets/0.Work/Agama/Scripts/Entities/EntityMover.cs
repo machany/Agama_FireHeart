@@ -1,4 +1,6 @@
-﻿using Library;
+﻿using DG.Tweening;
+using Library;
+using System;
 using UnityEngine;
 
 namespace Agama.Scripts.Entities
@@ -14,6 +16,7 @@ namespace Agama.Scripts.Entities
         private Vector2 _movementVector;
 
         private Rigidbody2D _ridComp;
+        private Entity _owner;
 
         public void Initialize(Entity owner)
         {
@@ -25,6 +28,7 @@ namespace Agama.Scripts.Entities
             CanMove = true;
             _movementVector = Vector2.zero;
             _moveSpeedMultiplier = 1;
+            _owner = owner;
         }
 
         public void SetMoveSpeedMultiplier(float value)
@@ -45,6 +49,12 @@ namespace Agama.Scripts.Entities
             SetMovementX(movement.x);
             SetMovementY(movement.y);
             _movementVector.Normalize();
+        }
+
+        public void SetMoveFor(Vector2 goal, Action completeAction = null)
+        {
+            StopImmediately();
+            _owner.transform.DOMove(goal, Vector2.Distance(_owner.transform.position, goal) / (moveSpeed * _moveSpeedMultiplier)).OnComplete(() => completeAction?.Invoke());
         }
 
         public void StopImmediately()

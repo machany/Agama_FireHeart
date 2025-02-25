@@ -34,7 +34,7 @@ namespace Scripts.Stats
             currentStat.Value = maxStat = _statCompo.GetStat(_stat).Value;
         }
 
-        public virtual void OnDestroy()
+        protected virtual void OnDestroy()
         {
             _statCompo.GetStat(_stat).OnValueChange -= HandleStatChange;
             //_entity.OnDamage -= ApplyDamage;
@@ -70,6 +70,10 @@ namespace Scripts.Stats
             if (currentStat.Value <= 0)
             {
                 _entity.OnDeadEvent?.Invoke();
+            }
+            else
+            {
+                _entity.OnHitEvent?.Invoke();
             }
         }
 

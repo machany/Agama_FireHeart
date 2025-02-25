@@ -23,7 +23,7 @@ namespace Dewmo123.Scripts.Map
             if (damageType != DamageableType)
                 damage = ItemDataSO.DEFAULT_DAMAGE;
             damage *= -1;
-            base.ApplyDamage(damageType, damage, dealer);
+            OnDamage?.Invoke(damage);
         }
     }
 }
