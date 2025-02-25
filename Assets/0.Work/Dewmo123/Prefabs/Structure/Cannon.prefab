@@ -163,6 +163,7 @@ MonoBehaviour:
   _firePos: {fileID: 1435392519500182308}
   _bulletType: {fileID: 11400000, guid: 655a0a6a8ef9a0349aae6ab92992b8c1, type: 2}
   _poolManager: {fileID: 11400000, guid: ab208f8de301ea24bbc8869fc257e2fa, type: 2}
+  _attackPower: {fileID: 11400000, guid: 3a5dc08ac2f1e59429bb8000ca68c84a, type: 2}
 --- !u!114 &310033069706556675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,6 +675,9 @@ MonoBehaviour:
   - stat: {fileID: 11400000, guid: f0884d52d10905347a2a9c1b92d7d9af, type: 2}
     isUseOverride: 1
     overrideValue: 100
+  - stat: {fileID: 11400000, guid: 3a5dc08ac2f1e59429bb8000ca68c84a, type: 2}
+    isUseOverride: 1
+    overrideValue: 15
 --- !u!1001 &7465455290296038702
 PrefabInstance:
   m_ObjectHideFlags: 0

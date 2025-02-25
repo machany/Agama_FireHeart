@@ -1,4 +1,5 @@
-﻿using Agama.Scripts.Entities;
+﻿using Agama.Scripts.Core;
+using Agama.Scripts.Entities;
 using GGMPool;
 using Scripts.Core.Sound;
 using Scripts.Map;
@@ -18,6 +19,7 @@ namespace Scripts.Combat
 
         [SerializeField] private PoolTypeSO _bulletType;
         [SerializeField] private PoolManagerSO _poolManager;
+        [SerializeField] private StatSO _attackPower;
         private Vector2 _dir;
         public void Initialize(Entity owner)
         {
@@ -36,7 +38,7 @@ namespace Scripts.Combat
         private void HandleAttackTrigger()
         {
             var arrow = _poolManager.Pop(_bulletType) as Bullet;
-            arrow.Init(_dir, _firePos.position);
+            arrow.Init(_dir, _firePos.position,_cannon.GetComp<EntityStat>().GetBaseValue(_attackPower));
         }
         private void HandleAttackEvent()
         {

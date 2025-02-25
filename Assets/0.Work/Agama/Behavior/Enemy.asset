@@ -2237,7 +2237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: Enemy Blackboard
   m_EditorClassIdentifier: 
-  VersionTimestamp: 638761142839196460
+  VersionTimestamp: 638760464001185405
   AssetID:
     m_Value0: 15291809225519405612
     m_Value1: 15940154671328873018
@@ -2259,7 +2259,6 @@ MonoBehaviour:
     - rid: 5218361907539607873
     - rid: 5218361907918143638
     - rid: 5218361909883699225
-    - rid: 5218361927892467735
   m_SharedBlackboardVariableGuids: []
   references:
     version: 2
@@ -2392,14 +2391,6 @@ MonoBehaviour:
           m_Value1: 5825624571389797874
         Name: Attack Distance
         m_Value: 0.5
-    - rid: 5218361927892467735
-      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 12557441964064549006
-          m_Value1: 13572968652161728784
-        Name: Attack Distance Weight
-        m_Value: {x: 1.1, y: 0.25, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
