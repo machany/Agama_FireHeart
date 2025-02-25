@@ -7,15 +7,6 @@ namespace Agama.Scripts.Enemies
 {
     public class Animal : BehaviorEnemy
     {
-        [BlackboardEnum]
-        public enum AniamlState
-        {
-            Patroll,
-            Run,
-            Hit,
-            Dead
-        }
-
         protected override void HandleHitEvent()
         {
         }

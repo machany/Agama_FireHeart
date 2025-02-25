@@ -14,6 +14,7 @@ namespace Agama.Scripts.Core.AStar
 
         private void Awake()
         {
+            _pathOfRequesterDictionary = new Dictionary<Transform, Stack<Node>>();
             grid = transform.GetComponent<Grid>();
         }
 
@@ -49,7 +50,7 @@ namespace Agama.Scripts.Core.AStar
 
                 if (currentNode == targetNode)
                 {
-                    _pathOfRequesterDictionary[requestor] = RetracePath(startNode, targetNode, _pathOfRequesterDictionary[requestor]); // 경로 추적
+                    RetracePath(startNode, targetNode, requestor); // 경로 추적
                     return;
                 }
 
@@ -79,9 +80,12 @@ namespace Agama.Scripts.Core.AStar
             }
         }
 
-        private Stack<Node> RetracePath(Node startNode, Node endNode, Stack<Node> path = null)
+        private Stack<Node> RetracePath(Node startNode, Node endNode, Transform key)
         {
-            path ??= new Stack<Node>();
+            if (!_pathOfRequesterDictionary.ContainsKey(key))
+                _pathOfRequesterDictionary.Add(key, new Stack<Node>());
+
+            Stack<Node> path = _pathOfRequesterDictionary[key];
             path.Clear();
             Node currentNode = endNode;
 
@@ -92,9 +96,6 @@ namespace Agama.Scripts.Core.AStar
 
                 Debug.Assert(currentNode != null, "Parent Node is null while Retracing path");
             }
-
-            // 역순으로 추가해서 스택사용
-            path.Push(currentNode);
 
             if (path.Count == 0)
                 return null;

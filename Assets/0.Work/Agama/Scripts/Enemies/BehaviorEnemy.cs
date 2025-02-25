@@ -1,20 +1,36 @@
-﻿using Agama.Scripts.Entities;
+﻿using Agama.Scripts.Core.AStar;
+using Agama.Scripts.Entities;
 using Scripts.Feedbacks;
+using System.Collections.Generic;
+using Unity.Behavior;
 using UnityEngine;
 
 namespace Agama.Scripts.Enemies
 {
     public abstract class BehaviorEnemy : Entity
     {
-        [SerializeField] protected DropFeedback _dropFeedback;
+        [BlackboardEnum]
+        public enum BehaviorEnemyState
+        {
+            Patroll,
+            Chase,
+            Attack,
+            Hit,
+            Dead
+        }
 
+
+        [SerializeField] protected DropFeedback dropFeedback;
+
+        public RoadFinder roadFinder;
+        public LayerMask targetLayer;
         public Vector2 StartPosition { get; private set; }
 
         protected override void Awake()
         {
             base.Awake();
 
-            if (_dropFeedback == null)
+            if (dropFeedback == null)
                 transform.GetComponentInChildren<DropFeedback>();
 
             StartPosition = transform.position;
@@ -22,7 +38,7 @@ namespace Agama.Scripts.Enemies
 
         protected override void HandleDeadEvent()
         {
-            _dropFeedback.CreateFeedback();
+            dropFeedback.CreateFeedback();
         }
     }
 }
