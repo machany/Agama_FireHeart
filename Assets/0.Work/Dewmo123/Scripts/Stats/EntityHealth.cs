@@ -4,6 +4,11 @@ namespace Scripts.Stats
 {
     public class EntityHealth : Stat
     {
+        public override void AfterHitFeedbacks()
+        {
+            _entity.OnHitEvent?.Invoke();
+            base.AfterHitFeedbacks();
+        }
         public override void Initialize(Entity entity)
         {
             base.Initialize(entity);
