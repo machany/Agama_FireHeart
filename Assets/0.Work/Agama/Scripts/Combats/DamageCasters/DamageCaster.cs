@@ -21,7 +21,7 @@ namespace Agama.Scripts.Combats.DamageCasters
         public Transform TargetTrm => _owner.transform;
         public abstract bool CastDamage(float damage);
 
-        protected DamageMethodType _currentDamageType = DamageMethodType.Entity;
+        [SerializeField] protected DamageMethodType _currentDamageType = DamageMethodType.Entity;
 
         public void ChangeDamageType(sbyte newDamageType)
             => _currentDamageType = newDamageType switch

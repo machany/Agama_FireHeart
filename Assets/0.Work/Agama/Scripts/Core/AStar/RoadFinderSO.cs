@@ -1,29 +1,49 @@
 ﻿using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Agama.Scripts.Core.AStar
 {
-    public class RoadFinder : MonoBehaviour
+    [CreateAssetMenu(fileName = "RoadFinderSO", menuName = "SO/RoadFinder", order = 0)]
+    public class RoadFinderSO : ScriptableObject
     {
-        [SerializeField] private Grid grid;
+        [SerializeField] private LayerMask unPassLayer;
+        [SerializeField] private Vector2 gridSize;
+        [SerializeField] private float nodeRadius;
 
+        private static RoadFinderSO Instance;
+
+        private Grid _grid;
         private Dictionary<Transform, Stack<Node>> _pathOfRequesterDictionary;
 
         public Stack<Node> this[Transform requestor]
             => _pathOfRequesterDictionary[requestor];
 
-        private void Awake()
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void InitializeInRunTime()
         {
-            _pathOfRequesterDictionary = new Dictionary<Transform, Stack<Node>>();
-            grid = transform.GetComponent<Grid>();
+            RoadFinderSO[] instances = Resources.FindObjectsOfTypeAll<RoadFinderSO>();
+            foreach (RoadFinderSO instance in instances)
+            {
+                instance.Initialize();
+            }
         }
 
-        public void FindPath(Transform requestor, Vector3 targetPos)
+        private void Initialize()
+        {
+            _pathOfRequesterDictionary = new Dictionary<Transform, Stack<Node>>();
+
+            GameObject gameObject = new GameObject("Road Finder");
+            _grid = gameObject.transform.AddComponent<Grid>();
+            _grid.Initialize(unPassLayer, gridSize, nodeRadius);
+        }
+
+        public bool FindPath(Transform requestor, Vector3 targetPos)
         {
             Vector3 startPos = requestor.position;
 
-            Node startNode = grid.GetNodeFromPosition(startPos);
-            Node targetNode = grid.GetNodeFromPosition(targetPos);
+            Node startNode = _grid.GetNodeFromPosition(startPos);
+            Node targetNode = _grid.GetNodeFromPosition(targetPos);
 
             Debug.Assert(startNode != null && targetNode != null, "StartNode or TargetNode is null");
 
@@ -49,19 +69,18 @@ namespace Agama.Scripts.Core.AStar
                 closedSet.Add(currentNode);
 
                 if (currentNode == targetNode)
-                {
-                    RetracePath(startNode, targetNode, requestor); // 경로 추적
-                    return;
-                }
+                    return RetracePath(startNode, targetNode, requestor); // 경로 추적
 
                 SeaechAdjacentNodes(currentNode, targetNode, openSet, closedSet);
             }
+
+            return true;
         }
 
         // 인접 노드 탐색
         private void SeaechAdjacentNodes(Node currentNode, Node targetNode, List<Node> openSet, HashSet<Node> closedSet)
         {
-            foreach (Node neighbour in grid.GetAdjacentNodes(currentNode))
+            foreach (Node neighbour in _grid.GetAdjacentNodes(currentNode))
             {
                 if (!neighbour.canPass || closedSet.Contains(neighbour))
                     continue;
@@ -80,7 +99,7 @@ namespace Agama.Scripts.Core.AStar
             }
         }
 
-        private Stack<Node> RetracePath(Node startNode, Node endNode, Transform key)
+        private bool RetracePath(Node startNode, Node endNode, Transform key)
         {
             if (!_pathOfRequesterDictionary.ContainsKey(key))
                 _pathOfRequesterDictionary.Add(key, new Stack<Node>());
@@ -98,9 +117,9 @@ namespace Agama.Scripts.Core.AStar
             }
 
             if (path.Count == 0)
-                return null;
+                return false;
 
-            return path;
+            return true;
         }
 
         private int GetDistance(Node nodeA, Node nodeB)

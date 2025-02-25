@@ -32,12 +32,20 @@ namespace Agama.Scripts.Combats.DamageCasters
 
         public override bool CastDamage(float damage)
         {
-            int cnt = GetOverlapCountFunc();
+            int cnt = overlapCastType switch
+            {
+                OverlapCastType.Circle =>  Physics2D.OverlapCircle(transform.position, damageRadius, contactFilter, _hitResults),
+                OverlapCastType.Box =>  Physics2D.OverlapBox(transform.position, damageBoxSize, 0, contactFilter, _hitResults),
+                _ => throw new ArgumentNullException()
+            };
 
             for (int i = 0; i < cnt; i++)
             {
                 if (_hitResults[i].TryGetComponent(out IDamageable damageable))
+                {
+            Debug.Log("ss");
                     damageable.ApplyDamage(_currentDamageType, damage, _owner);
+                }
             }
 
             return cnt > 0;

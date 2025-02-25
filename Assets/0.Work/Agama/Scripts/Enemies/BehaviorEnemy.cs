@@ -22,7 +22,7 @@ namespace Agama.Scripts.Enemies
 
         [SerializeField] protected DropFeedback dropFeedback;
 
-        public RoadFinder roadFinder;
+        public RoadFinderSO roadFinder;
         public LayerMask targetLayer;
         public Vector2 StartPosition { get; private set; }
 
