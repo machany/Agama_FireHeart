@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DiamondTop
   m_EditorClassIdentifier: 
   itemName: "\uB2E4\uC774\uC544\uBAAC\uB4DC \uC0C1\uC758"
-  icon: {fileID: 5709036142325981924, guid: a26a1c02025db304595f9a339ecf5a50, type: 3}
+  icon: {fileID: 2094056991, guid: d051b4ea499693c4c94d32c6362886fe, type: 3}
   itemID: 4de9c06b4ffe5074da16cbdfa379202c
   maxStack: 1
   _damageType: 0

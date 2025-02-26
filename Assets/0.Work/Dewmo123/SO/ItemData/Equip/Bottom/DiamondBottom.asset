@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: DiamondBottom
   m_EditorClassIdentifier: 
   itemName: "\uB2E4\uC774\uC544 \uD558\uC758"
-  icon: {fileID: 8568122170271639690, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
+  icon: {fileID: -1157500403, guid: d051b4ea499693c4c94d32c6362886fe, type: 3}
   itemID: e202faac163bc734bbd7a9ecee1558f6
   maxStack: 0
+  _damageType: 0
   damageType: 0
+  attackDamage: 10
   equipType: 1
   addingStats: []
   itemEffectDescription: 

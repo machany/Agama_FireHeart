@@ -19,3 +19,4 @@ MonoBehaviour:
   randomPitchModifier: 0.1
   volume: 0.3
   basePitch: 1
+  spatialBlend: 1

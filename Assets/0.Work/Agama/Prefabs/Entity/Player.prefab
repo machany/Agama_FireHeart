@@ -770,12 +770,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
       propertyPath: statOverrides.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
       propertyPath: statOverrides.Array.data[0].stat
       value: 
       objectReference: {fileID: 11400000, guid: 6261b28fc177ab042844cf6ac6d54e99, type: 2}
+    - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
+      propertyPath: statOverrides.Array.data[3].stat
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a5dc08ac2f1e59429bb8000ca68c84a, type: 2}
     - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
       propertyPath: statOverrides.Array.data[4].stat
       value: 
@@ -794,7 +798,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
       propertyPath: statOverrides.Array.data[3].isUseOverride
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
+      propertyPath: statOverrides.Array.data[3].overrideValue
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

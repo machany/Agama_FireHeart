@@ -21,7 +21,6 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
         {
             var player = entity as Player;
             var input = player.InputSO;
-            var enemyDetector = entity.GetComp<PlayerEnemyDetector>();
             if (MapGenerator.Instance.BuildStructure((Vector2)player.transform.position + input.PreviousInputVector,structure))
             {
                 var inven = player.GetComp<PlayerInvenData>();

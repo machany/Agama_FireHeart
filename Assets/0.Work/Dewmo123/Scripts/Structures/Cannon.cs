@@ -30,6 +30,7 @@ namespace Scripts.Structures
             }
         }
 
+
 #if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {

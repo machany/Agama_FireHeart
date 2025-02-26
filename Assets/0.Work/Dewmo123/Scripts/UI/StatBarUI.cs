@@ -23,7 +23,7 @@ namespace Scripts.UI
         {
             _image.DOKill();
             _image.DOFillAmount(_stat.StatPercent, _duration);
-            _text.text = $"{next} / {_stat.maxStat}";
+            _text.text = $"{next.ToString("00.0")} / {_stat.maxStat}";
         }
     }
 }

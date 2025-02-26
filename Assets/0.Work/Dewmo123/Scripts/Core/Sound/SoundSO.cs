@@ -20,6 +20,8 @@ namespace Scripts.Core.Sound
         public float volume = 1;
         [Range(0.1f, 3f)]
         public float basePitch = 1;
+        [Range(0, 1)]
+        public float spatialBlend = 0;
     }
 
 }
