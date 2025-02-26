@@ -1,6 +1,7 @@
 using Agama.Scripts.Entities;
 using GGMPool;
 using Scripts.Combat;
+using Scripts.Core.Sound;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -21,8 +22,11 @@ namespace Agama.Scripts.Combats.Projectiles
         [Header("Animator")]
         [SerializeField] private string explosion;
 
+        [Header("Sound")]
+        [SerializeField] private PoolManagerSO _poolManager;
+        [SerializeField] private SoundSO _explosion;
+        [SerializeField] private PoolTypeSO _soundPlayer;
         private Animator _animator;
-        private Rigidbody2D _rid;
         private Action OnAnimationEventEvent;
 
         private int hash;
@@ -36,8 +40,8 @@ namespace Agama.Scripts.Combats.Projectiles
             _animator = transform.GetComponent<Animator>();
             _damageCaster.InitCaster(null);
 
-            _rid.linearDamping = dragPower;
-            _rid.angularDamping = angularDragPower;
+            _rbCompo.linearDamping = dragPower;
+            _rbCompo.angularDamping = angularDragPower;
         }
 
         public override void Init(Vector2 dir, Vector3 pos, float damage, Entity owner)
@@ -45,9 +49,9 @@ namespace Agama.Scripts.Combats.Projectiles
             transform.right = dir;
             transform.rotation = Quaternion.Euler(0, 0, 180 * (0.5f + (0.5f * Mathf.Sign(dir.x))));
             transform.position = pos;
-
-            _rid.linearVelocity = Vector2.zero;
-            _rid.AddForceAtPosition(dir.normalized * bulletSpeed, forcePosition.position, ForceMode2D.Impulse);
+            _damage = damage;
+            _rbCompo.linearVelocity = Vector2.zero;
+            _rbCompo.AddForceAtPosition(dir.normalized * bulletSpeed, forcePosition.position, ForceMode2D.Impulse);
             _animator.SetBool(hash, false);
 
             _damageCaster.SetOwner(owner);
@@ -64,8 +68,8 @@ namespace Agama.Scripts.Combats.Projectiles
         {
             _animator.SetBool(hash, true);
 
-            _rid.linearVelocity = Vector2.zero;
-            _rid.angularVelocity = 0;
+            _rbCompo.linearVelocity = Vector2.zero;
+            _rbCompo.angularVelocity = 0;
             transform.rotation = Quaternion.identity;
 
             OnAnimationEventEvent += HandleAnimationEventEvent;
@@ -84,12 +88,14 @@ namespace Agama.Scripts.Combats.Projectiles
         private void HandleAnimationEventEvent()
         {
             OnAnimationEventEvent -= HandleAnimationEventEvent;
+            var sp = _poolManager.Pop(_soundPlayer) as SoundPlayer;
+            sp.PlaySound(_explosion,transform.position);
             _damageCaster.CastDamage(_damage);
         }
 
         private void FixedUpdate()
         {
-            _rid.angularVelocity = Mathf.Clamp(_rid.angularVelocity, -maxAnguler, maxAnguler);
+            _rbCompo.angularVelocity = Mathf.Clamp(_rbCompo.angularVelocity, -maxAnguler, maxAnguler);
         }
     }
 }

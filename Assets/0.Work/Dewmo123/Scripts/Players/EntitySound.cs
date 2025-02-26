@@ -30,7 +30,6 @@ namespace Scripts.Players
         }
         private void HandleHitEvent()
         {
-            Debug.Log("asd");
             PlaySound(_hitSound);
         }
         private void HandleDeadEvent()
