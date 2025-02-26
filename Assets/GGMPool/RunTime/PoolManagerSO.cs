@@ -8,13 +8,13 @@ namespace GGMPool
     public class PoolManagerSO : ScriptableObject
     {
         public List<PoolingItemSO> poolingItemList;
-        [SerializeField] private Transform _rootTrm; //풀매니징할 루트
+        [SerializeField] private Transform rootTrm; //풀매니징할 루트
 
         private Dictionary<PoolTypeSO, Pool> _pools;
 
         public void InitializePool(Transform root)
         {
-            _rootTrm = root;
+            rootTrm = root;
             _pools = new Dictionary<PoolTypeSO, Pool>();
 
             foreach(var item in poolingItemList)
@@ -22,7 +22,7 @@ namespace GGMPool
                 IPoolable poolable = item.prefab.GetComponent<IPoolable>();
                 Debug.Assert(poolable != null, $"Poolitem does not have IPoolable {item.prefab.name}");
 
-                Pool pool = new Pool(poolable, _rootTrm, item.initCount);
+                Pool pool = new Pool(poolable, rootTrm, item.initCount);
                 _pools.Add(item.poolType, pool);
             }
         }

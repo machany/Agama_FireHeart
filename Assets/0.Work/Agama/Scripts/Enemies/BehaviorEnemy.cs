@@ -1,7 +1,7 @@
 ﻿using Agama.Scripts.Core.AStar;
 using Agama.Scripts.Entities;
 using Scripts.Feedbacks;
-using System.Collections.Generic;
+using System;
 using Unity.Behavior;
 using UnityEngine;
 
@@ -22,7 +22,9 @@ namespace Agama.Scripts.Enemies
 
         [SerializeField] protected DropFeedback dropFeedback;
 
+        public Action<Transform> OnFindTarget;
         public RoadFinderSO roadFinder;
+
         public LayerMask targetLayer;
         public Vector2 StartPosition { get; private set; }
 
@@ -39,6 +41,10 @@ namespace Agama.Scripts.Enemies
         protected override void HandleDeadEvent()
         {
             dropFeedback.CreateFeedback();
+        }
+
+        protected override void HandleHitEvent()
+        {
         }
     }
 }

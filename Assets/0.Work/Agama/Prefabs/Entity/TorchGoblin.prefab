@@ -108,6 +108,7 @@ MonoBehaviour:
   - rid: 5218361909883699801
   - rid: 5218361909883699977
   - rid: 5218361909883699978
+  - rid: 5218361947253899655
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -153,6 +154,14 @@ MonoBehaviour:
           m_Value1: 15510089801457048652
         Name: Partroll Distance
         m_Value: 6
+    - rid: 5218361947253899655
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 3251861772391497180
+          m_Value1: 781920749334364971
+        Name: Attack Delay
+        m_Value: 1.25
 --- !u!70 &5925717621912618339
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -187,8 +196,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.47008312}
-  m_Size: {x: 0.51297, y: 0.94351363}
+  m_Offset: {x: 0, y: -0.029400706}
+  m_Size: {x: 0.51297, y: 0.8790643}
   m_Direction: 0
 --- !u!50 &2155231371751410733
 Rigidbody2D:

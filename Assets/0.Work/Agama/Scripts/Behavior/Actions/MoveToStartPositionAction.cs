@@ -35,9 +35,6 @@ namespace Agama.Scripts.Behavior.Actions
 
         protected override Status OnUpdate()
         {
-            Debug.Log(Vector2.Distance(_currentNode.worldPosition, BehaviorEnemy.Value.transform.position));
-            float distance = Vector2.Distance(_currentNode.worldPosition, BehaviorEnemy.Value.transform.position);
-
             if (Vector2.Distance(BehaviorEnemy.Value.StartPosition, BehaviorEnemy.Value.transform.position) <= .1f)
             {
                 return Status.Success;

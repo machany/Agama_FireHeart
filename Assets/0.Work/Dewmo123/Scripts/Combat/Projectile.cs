@@ -1,4 +1,5 @@
-﻿using GGMPool;
+﻿using Agama.Scripts.Entities;
+using GGMPool;
 using System.Collections;
 using UnityEngine;
 
@@ -6,30 +7,40 @@ namespace Scripts.Combat
 {
     public abstract class Projectile : MonoBehaviour, IPoolable
     {
-        private Rigidbody2D _rbCompo;
-        [SerializeField] private float _bulletSpeed;
-        [SerializeField] private float _duration;
-        [SerializeField] private PoolTypeSO _myType;
-        private Pool _myPool;
-        public PoolTypeSO PoolType => _myType;
+        [SerializeField] protected float bulletSpeed;
+        [SerializeField] protected float duration;
+        [SerializeField] protected PoolTypeSO myType;
 
+        public PoolTypeSO PoolType => myType;
         public GameObject GameObject => gameObject;
-        private void Awake()
+
+        protected Rigidbody2D _rbCompo;
+        protected Pool _myPool;
+
+        protected float _damage;
+
+        protected virtual void Awake()
         {
             _rbCompo = GetComponent<Rigidbody2D>();
         }
+
         public virtual void Init(Vector2 dir, Vector3 pos)
         {
             transform.position = pos;
+
+            dir.Normalize();
             transform.right = dir;
-            _rbCompo.linearVelocity = dir * _bulletSpeed;
+            _rbCompo.linearVelocity = dir * bulletSpeed;
+
             StartCoroutine(ReturnToPool());
         }
-        public IEnumerator ReturnToPool()
+
+        public virtual IEnumerator ReturnToPool()
         {
-            yield return new WaitForSeconds(_duration);
+            yield return new WaitForSeconds(duration);
             _myPool.Push(this);
         }
+
         public void ResetItem()
         {
             _rbCompo.linearVelocity = Vector2.zero;
@@ -38,6 +49,11 @@ namespace Scripts.Combat
         public void SetUpPool(Pool pool)
         {
             _myPool = pool;
+        }
+
+        public void SetDamage(float damage)
+        {
+            _damage = damage;
         }
     }
 }

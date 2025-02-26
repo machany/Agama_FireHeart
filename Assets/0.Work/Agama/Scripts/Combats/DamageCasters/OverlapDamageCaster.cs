@@ -43,7 +43,6 @@ namespace Agama.Scripts.Combats.DamageCasters
             {
                 if (_hitResults[i].TryGetComponent(out IDamageable damageable))
                 {
-            Debug.Log("ss");
                     damageable.ApplyDamage(_currentDamageType, damage, _owner);
                 }
             }

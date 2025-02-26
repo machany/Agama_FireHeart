@@ -23,12 +23,12 @@ namespace Agama.Scripts.Enemies
             _owner.GetComp<EntityAnimatorTrigger>().OnAnimationEvent += HandleAnimationEvent;
         }
 
-        private void HandleAnimationEvent()
+        protected virtual void HandleAnimationEvent()
         {
             damagecaster.CastDamage(_stat.GetStat(attackPowerStat).BaseValue);
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             _owner.GetComp<EntityAnimatorTrigger>().OnAnimationEvent -= HandleAnimationEvent;
         }

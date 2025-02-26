@@ -20,7 +20,10 @@ namespace Agama.Scripts.Behavior.Actions
             Collider2D overlap = Physics2D.OverlapCircle(BehaviorEnemy.Value.transform.position, Radius.Value, BehaviorEnemy.Value.targetLayer);
 
             if (overlap)
+            {
                 Target.Value = overlap.transform;
+                BehaviorEnemy.Value.OnFindTarget?.Invoke(overlap.transform);
+            }
 
             return Status.Success;
         }

@@ -26,6 +26,7 @@ namespace Agama.Scripts.Players.States
             base.Enter();
             _animatorTrigger.OnAnimationEndEvent += HandleAnimationEndEvent;
             _mover.CanMove = false;
+            _mover.StopImmediately();
             _player.SetStateChangeLock(true);
             _player.ClearEventState();
         }

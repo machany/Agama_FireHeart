@@ -14,11 +14,6 @@ namespace Agama.Scripts.Enemies
                 damage = ItemDataSO.DEFAULT_DAMAGE;
 
             OnDamage?.Invoke(damage);
-            Debug.Log("ssss");
-        }
-
-        protected override void HandleHitEvent()
-        {
         }
     }
 }

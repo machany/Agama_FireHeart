@@ -13,6 +13,9 @@ namespace Agama.Scripts.Combats.DamageCasters
 
         public virtual void InitCaster(Entity owner)
         {
+            if (owner == null)
+                Debug.LogWarning("owner is null");
+
             _owner = owner;
         }
 
