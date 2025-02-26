@@ -33,7 +33,6 @@ namespace Agama.Scripts.Core.AStar
             _nodeSize = _nodeRadius * 2;
             _gridSizeX = Mathf.RoundToInt(_gridSize.x / _nodeSize);
             _gridSizeY = Mathf.RoundToInt(_gridSize.y / _nodeSize);
-            Debug.Log(_nodeSize + " // " + _gridSize + " = " + _gridSizeX + " , " + _gridSizeY);
 
             if (_gridSizeX <= 0 || _gridSizeY <= 0)
                 throw new ArgumentOutOfRangeException();
