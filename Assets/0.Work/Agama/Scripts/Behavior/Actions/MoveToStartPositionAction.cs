@@ -1,6 +1,7 @@
 using Agama.Scripts.Enemies;
 using Agama.Scripts.Entities;
 using System;
+using System.Collections.Generic;
 using Unity.Behavior;
 using Unity.Properties;
 using UnityEngine;
@@ -16,13 +17,19 @@ namespace Agama.Scripts.Behavior.Actions
         [SerializeReference] public BlackboardVariable<BehaviorEnemy> BehaviorEnemy;
         [SerializeReference] public BlackboardVariable<EntityRenderer> Renderer;
 
+        private Stack<Core.AStar.Node> _road;
         private Agama.Scripts.Core.AStar.Node _currentNode;
         private bool _arriveFrag;
 
         protected override Status OnStart()
         {
-            BehaviorEnemy.Value.roadFinder.FindPath(BehaviorEnemy.Value.transform, BehaviorEnemy.Value.StartPosition);
-            _currentNode = BehaviorEnemy.Value.roadFinder[BehaviorEnemy.Value.transform].Pop();
+            if (!BehaviorEnemy.Value.roadFinder.FindPath(BehaviorEnemy.Value.transform, BehaviorEnemy.Value.StartPosition)) // => 길찾는거 여기서함 ㅇㅇ
+            {
+                return Status.Success;
+            }
+            _road = BehaviorEnemy.Value.roadFinder[BehaviorEnemy.Value.transform];
+
+            _currentNode = _road.Pop();
 
             Mover.Value.SetMoveFor(_currentNode.worldPosition, () => _arriveFrag = true);
 
@@ -35,19 +42,20 @@ namespace Agama.Scripts.Behavior.Actions
 
         protected override Status OnUpdate()
         {
-            if (Vector2.Distance(BehaviorEnemy.Value.StartPosition, BehaviorEnemy.Value.transform.position) <= .1f)
-            {
-                return Status.Success;
-            }
-            else if (_arriveFrag)
+            if (_arriveFrag)
             {
                 _arriveFrag = false;
-
-                if (!BehaviorEnemy.Value.roadFinder.FindPath(BehaviorEnemy.Value.transform, BehaviorEnemy.Value.StartPosition)) // 길을 못 찾으면
+                try
                 {
-                    return Status.Failure;
+                    _currentNode = _road.Pop(); // 만약 정보를 빼내는 실패함
                 }
-                _currentNode = BehaviorEnemy.Value.roadFinder[BehaviorEnemy.Value.transform].Pop();
+                catch // 다른 변수로 오류가 생겼을 수 있으니, 대비함.
+                {
+                    if (!BehaviorEnemy.Value.roadFinder.FindPath(BehaviorEnemy.Value.transform, BehaviorEnemy.Value.StartPosition)) // => 길찾는거 여기서함 ㅇㅇ
+                    {
+                        return Status.Success;
+                    }
+                }
 
                 Mover.Value.SetMoveFor(_currentNode.worldPosition, () => _arriveFrag = true);
 

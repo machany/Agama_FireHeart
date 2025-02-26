@@ -16,4 +16,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 33554432
   gridSize: {x: 54, y: 30}
-  nodeRadius: 0.1
+  nodeRadius: 0.25

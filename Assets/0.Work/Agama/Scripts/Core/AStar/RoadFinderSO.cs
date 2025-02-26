@@ -12,10 +12,10 @@ namespace Agama.Scripts.Core.AStar
         [SerializeField] private Vector2 gridSize;
         [SerializeField] private float nodeRadius;
 
-        private static RoadFinderSO Instance;
-
         private Grid _grid;
         private Dictionary<Transform, Stack<Node>> _pathOfRequesterDictionary;
+        private  List<Node> _openSet;
+        private HashSet<Node> _closedSet;
 
         public Stack<Node> this[Transform requestor]
             => _pathOfRequesterDictionary[requestor];
@@ -27,6 +27,9 @@ namespace Agama.Scripts.Core.AStar
             GameObject gameObject = new GameObject("Road Finder");
             _grid = gameObject.transform.AddComponent<Grid>();
             _grid.Initialize(unPassLayer, gridSize, nodeRadius);
+
+            _openSet = new List<Node>();
+            _closedSet = new HashSet<Node>();
         }
 
         public bool FindPath(Transform requestor, Vector3 targetPos)
@@ -41,31 +44,31 @@ namespace Agama.Scripts.Core.AStar
 
             Debug.Assert(startNode != null && targetNode != null, "StartNode or TargetNode is null");
 
-            List<Node> openSet = new List<Node>(); // 탐색할 노드 목록  
-            HashSet<Node> closedSet = new HashSet<Node>(); // 이미 탐색된 노드 목록
+            _openSet.Clear(); // 탐색할 노드 목록  
+            _closedSet.Clear(); // 이미 탐색된 노드 목록
 
-            openSet.Add(startNode); // 시작 노드 추가
+            _openSet.Add(startNode); // 시작 노드 추가
 
-            while (openSet.Count > 0) // 노드가 남아 있으면 반복
+            while (_openSet.Count > 0) // 노드가 남아 있으면 반복
             {
-                Node currentNode = openSet[0];
+                Node currentNode = _openSet[0];
 
-                for (int i = 1; i < openSet.Count; i++)
+                for (int i = 1; i < _openSet.Count; i++)
                 {
-                    if (openSet[i].TotalCost < currentNode.TotalCost || openSet[i].TotalCost == currentNode.TotalCost &&
-                        openSet[i].euclidStreetCost < currentNode.euclidStreetCost)
+                    if (_openSet[i].TotalCost < currentNode.TotalCost || _openSet[i].TotalCost == currentNode.TotalCost &&
+                        _openSet[i].euclidStreetCost < currentNode.euclidStreetCost)
                     {
-                        currentNode = openSet[i];
+                        currentNode = _openSet[i];
                     }
                 }
 
-                openSet.Remove(currentNode);
-                closedSet.Add(currentNode);
+                _openSet.Remove(currentNode);
+                _closedSet.Add(currentNode);
 
                 if (currentNode == targetNode)
                     return RetracePath(startNode, targetNode, requestor); // 경로 추적
 
-                SeaechAdjacentNodes(currentNode, targetNode, openSet, closedSet);
+                SeaechAdjacentNodes(currentNode, targetNode, _openSet, _closedSet);
             }
 
             return true;
