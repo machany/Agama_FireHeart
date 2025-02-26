@@ -193,13 +193,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 13
   duration: 3
-  myType: {fileID: 11400000, guid: e3e95c6eb96f15e4ebaa9cf125bf3e31, type: 2}
-  forcePosition: {fileID: 5235439848316971074}
-  damageCaster: {fileID: 3598766870333412370}
-  poolManager: {fileID: 11400000, guid: ab208f8de301ea24bbc8869fc257e2fa, type: 2}
   targetLayer:
     serializedVersion: 2
     m_Bits: 33554944
+  myType: {fileID: 11400000, guid: e3e95c6eb96f15e4ebaa9cf125bf3e31, type: 2}
+  forcePosition: {fileID: 5235439848316971074}
+  poolManager: {fileID: 11400000, guid: ab208f8de301ea24bbc8869fc257e2fa, type: 2}
   dragPower: 2
   angularDragPower: 2.75
   maxAnguler: 2000
@@ -308,17 +307,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3819e8a15442f9648bf49822ca8e8739, type: 3}
---- !u!114 &3598766870333412370 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5612932530508710959, guid: 3819e8a15442f9648bf49822ca8e8739, type: 3}
-  m_PrefabInstance: {fileID: 8940849238894317629}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4984dcecf23f25f41a04db8d1aadd0b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8856620922418115049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 503645383991763412, guid: 3819e8a15442f9648bf49822ca8e8739, type: 3}

@@ -171,9 +171,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c220f2aaae21cb9438bbb53cc23e4238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletSpeed: 8
-  _duration: 3
-  _myType: {fileID: 11400000, guid: 655a0a6a8ef9a0349aae6ab92992b8c1, type: 2}
+  bulletSpeed: 0
+  duration: 0
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  myType: {fileID: 0}
 --- !u!50 &4784949622644180382
 Rigidbody2D:
   serializedVersion: 5

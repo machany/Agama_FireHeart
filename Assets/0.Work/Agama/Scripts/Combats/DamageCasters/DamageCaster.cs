@@ -19,6 +19,11 @@ namespace Agama.Scripts.Combats.DamageCasters
             _owner = owner;
         }
 
+        public virtual void SetOwner(Entity owner)
+        {
+            _owner = owner;
+        }
+
         public virtual void UpdateCaster() { }
 
         public Transform TargetTrm => _owner.transform;

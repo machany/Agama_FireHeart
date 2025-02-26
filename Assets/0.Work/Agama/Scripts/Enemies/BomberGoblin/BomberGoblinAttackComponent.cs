@@ -40,8 +40,7 @@ namespace Agama.Scripts.Enemies
         protected virtual void HandleAnimationEvent()
         {
             Projectile projectile = poolManager.Pop(dynamate).GameObject.GetComponent<Projectile>();
-            projectile.SetDamage(_stat.GetStat(attackPowerStat).BaseValue);
-            projectile.Init(_target.position - _owner.transform.position, bombSpawnTransform.position);
+            projectile.Init(_target.position - _owner.transform.position, bombSpawnTransform.position, _stat.GetStat(attackPowerStat).BaseValue, _owner);
         }
 
         protected virtual void OnDestroy()

@@ -1,19 +1,17 @@
-using Agama.Scripts.Combats.DamageCasters;
+using Agama.Scripts.Entities;
 using GGMPool;
 using Scripts.Combat;
 using System;
 using System.Collections;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 namespace Agama.Scripts.Combats.Projectiles
 {
     public class Dynamate : Projectile
     {
+        [Header("Dynamate")]
         [SerializeField] private Transform forcePosition;
-        [SerializeField] private DamageCaster damageCaster;
         [SerializeField] private PoolManagerSO poolManager;
-        [SerializeField] private LayerMask targetLayer;
         [SerializeField] private float dragPower;
 
         [Header("Anguler")]
@@ -36,14 +34,13 @@ namespace Agama.Scripts.Combats.Projectiles
             hash = Animator.StringToHash(explosion);
 
             _animator = transform.GetComponent<Animator>();
-            _rid = transform.GetComponent<Rigidbody2D>();
-            damageCaster.InitCaster(null);
+            _damageCaster.InitCaster(null);
 
             _rid.linearDamping = dragPower;
             _rid.angularDamping = angularDragPower;
         }
 
-        public override void Init(Vector2 dir, Vector3 pos)
+        public override void Init(Vector2 dir, Vector3 pos, float damage, Entity owner)
         {
             transform.right = dir;
             transform.rotation = Quaternion.Euler(0, 0, 180 * (0.5f + (0.5f * Mathf.Sign(dir.x))));
@@ -53,12 +50,13 @@ namespace Agama.Scripts.Combats.Projectiles
             _rid.AddForceAtPosition(dir.normalized * bulletSpeed, forcePosition.position, ForceMode2D.Impulse);
             _animator.SetBool(hash, false);
 
+            _damageCaster.SetOwner(owner);
+
             StartCoroutine(ReturnToPool());
         }
 
-        public override IEnumerator ReturnToPool()
+        protected override void DeadProjectile()
         {
-            yield return new WaitForSeconds(duration);
             Explosion();
         }
 
@@ -86,20 +84,12 @@ namespace Agama.Scripts.Combats.Projectiles
         private void HandleAnimationEventEvent()
         {
             OnAnimationEventEvent -= HandleAnimationEventEvent;
-            damageCaster.CastDamage(_damage);
+            _damageCaster.CastDamage(_damage);
         }
 
         private void FixedUpdate()
         {
             _rid.angularVelocity = Mathf.Clamp(_rid.angularVelocity, -maxAnguler, maxAnguler);
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if ((1 << collision.gameObject.layer & targetLayer) != 0)
-            {
-                Explosion();
-            }
         }
     }
 }
