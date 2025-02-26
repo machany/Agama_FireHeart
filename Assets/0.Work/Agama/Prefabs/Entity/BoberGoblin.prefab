@@ -48,6 +48,7 @@ MonoBehaviour:
   bombSpawnTransform: {fileID: 9156728170433151218}
   poolManager: {fileID: 11400000, guid: ab208f8de301ea24bbc8869fc257e2fa, type: 2}
   dynamate: {fileID: 11400000, guid: e3e95c6eb96f15e4ebaa9cf125bf3e31, type: 2}
+  attackPowerStat: {fileID: 11400000, guid: 3a5dc08ac2f1e59429bb8000ca68c84a, type: 2}
 --- !u!1 &3454134308619289962
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +61,7 @@ GameObject:
   - component: {fileID: 1390150094186617971}
   - component: {fileID: 2601538113232144280}
   - component: {fileID: 2389536465656110355}
-  - component: {fileID: 2703823438408470904}
+  - component: {fileID: 3402417093202686719}
   m_Layer: 30
   m_Name: BoberGoblin
   m_TagString: Untagged
@@ -236,7 +237,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2703823438408470904
+--- !u!114 &3402417093202686719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,7 +246,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3454134308619289962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec266943d9c973d46b8790169c4c403f, type: 3}
+  m_Script: {fileID: 11500000, guid: 57cd58ff8b112e544bea0ba209ab615e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnHitEvent:
@@ -507,7 +508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
       propertyPath: statOverrides.Array.data[1].overrideValue
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
       propertyPath: statOverrides.Array.data[2].isUseOverride
@@ -577,7 +578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6526201322104807528, guid: ecc6304faef15214785bebde346c1239, type: 3}
       propertyPath: moveSpeed
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8776304916066272376, guid: ecc6304faef15214785bebde346c1239, type: 3}
       propertyPath: m_Name

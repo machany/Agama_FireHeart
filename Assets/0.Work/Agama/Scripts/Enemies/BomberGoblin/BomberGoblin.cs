@@ -12,9 +12,6 @@ namespace Agama.Scripts.Enemies.Mosters
 {
     public class BomberGoblin : BehaviorEnemy
     {
-        [SerializeField] private GameObject bombPrefabs;
-        [SerializeField] private Transform bombSpawnTransform;
-
         public override void ApplyDamage(DamageMethodType damageType, float damage, Entity dealer)
         {
             if (damageType != DamageableType)

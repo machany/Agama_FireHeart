@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Agama.Scripts.Core.AStar
 {
@@ -19,17 +20,7 @@ namespace Agama.Scripts.Core.AStar
         public Stack<Node> this[Transform requestor]
             => _pathOfRequesterDictionary[requestor];
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static void InitializeInRunTime()
-        {
-            RoadFinderSO[] instances = Resources.FindObjectsOfTypeAll<RoadFinderSO>();
-            foreach (RoadFinderSO instance in instances)
-            {
-                instance.Initialize();
-            }
-        }
-
-        private void Initialize()
+        public void Initialize()
         {
             _pathOfRequesterDictionary = new Dictionary<Transform, Stack<Node>>();
 
@@ -40,6 +31,9 @@ namespace Agama.Scripts.Core.AStar
 
         public bool FindPath(Transform requestor, Vector3 targetPos)
         {
+            if (!_pathOfRequesterDictionary.ContainsKey(requestor))
+                _pathOfRequesterDictionary.Add(requestor, new Stack<Node>());
+
             Vector3 startPos = requestor.position;
 
             Node startNode = _grid.GetNodeFromPosition(startPos);
@@ -101,9 +95,6 @@ namespace Agama.Scripts.Core.AStar
 
         private bool RetracePath(Node startNode, Node endNode, Transform key)
         {
-            if (!_pathOfRequesterDictionary.ContainsKey(key))
-                _pathOfRequesterDictionary.Add(key, new Stack<Node>());
-
             Stack<Node> path = _pathOfRequesterDictionary[key];
             path.Clear();
             Node currentNode = endNode;
@@ -133,6 +124,5 @@ namespace Agama.Scripts.Core.AStar
                 return 14 * dstY + 10 * (dstX - dstY);
             return 14 * dstX + 10 * (dstY - dstX);
         }
-
     }
 }
