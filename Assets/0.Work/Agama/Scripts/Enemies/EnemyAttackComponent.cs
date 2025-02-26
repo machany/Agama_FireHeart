@@ -25,6 +25,7 @@ namespace Agama.Scripts.Enemies
 
         protected virtual void HandleAnimationEvent()
         {
+            Debug.Log("ss");
             damagecaster.CastDamage(_stat.GetStat(attackPowerStat).BaseValue);
         }
 

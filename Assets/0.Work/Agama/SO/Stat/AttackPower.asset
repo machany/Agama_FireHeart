@@ -15,5 +15,5 @@ MonoBehaviour:
   statName: attack_power
   description: 
   baseValue: 10
-  minValue: 10
+  minValue: 1
   maxValue: 100

@@ -249,7 +249,7 @@ MonoBehaviour:
   roadFinder: {fileID: 11400000, guid: 823e81d196d216541b4547bccf8234e2, type: 2}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 33554448
+    m_Bits: 33554944
 --- !u!1001 &3948696282352813715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -493,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691390464996280138, guid: 30b8f844851076642bfe9605ed9a7e9e, type: 3}
       propertyPath: damageBoxSize.x
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1691390464996280138, guid: 30b8f844851076642bfe9605ed9a7e9e, type: 3}
       propertyPath: damageBoxSize.y
@@ -513,11 +513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1691390464996280138, guid: 30b8f844851076642bfe9605ed9a7e9e, type: 3}
       propertyPath: contactFilter.layerMask.m_Bits
-      value: 33554448
+      value: 33554944
       objectReference: {fileID: 0}
     - target: {fileID: 6656720478234403505, guid: 30b8f844851076642bfe9605ed9a7e9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.85
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6656720478234403505, guid: 30b8f844851076642bfe9605ed9a7e9e, type: 3}
       propertyPath: m_LocalPosition.y
