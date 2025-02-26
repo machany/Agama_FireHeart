@@ -256,6 +256,9 @@ MonoBehaviour:
   OnDeadEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnResetEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _damageType: 4
   reflectPercent: 1
 --- !u!1001 &1751317442416354801

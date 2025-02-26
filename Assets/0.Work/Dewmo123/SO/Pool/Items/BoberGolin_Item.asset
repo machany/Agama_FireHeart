@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ece0c623759054d8c394fc5256de3a, type: 3}
-  m_Name: PlayerHit
+  m_Script: {fileID: 11500000, guid: 1486e263e7016b643b78c6fb1c6caafd, type: 3}
+  m_Name: BoberGolin_Item
   m_EditorClassIdentifier: 
-  audioType: 0
-  clip: {fileID: 8300000, guid: 0573c70c2c8444c42b3b14f58edb5895, type: 3}
-  loop: 0
-  randomizePitch: 1
-  randomPitchModifier: 0.1
-  volume: 1
-  basePitch: 1
-  spatialBlend: 0
+  poolType: {fileID: 11400000, guid: 80b622556c129c44d9cf8eb3db0625eb, type: 2}
+  prefab: {fileID: 3454134308619289962, guid: 7e32faca9c9da8c46b5e56854bd5c53b, type: 3}
+  initCount: 10

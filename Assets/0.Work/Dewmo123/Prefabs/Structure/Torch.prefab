@@ -279,6 +279,9 @@ MonoBehaviour:
   OnDeadEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnResetEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _damageType: 0
 --- !u!1 &7127304161168474451
 GameObject:

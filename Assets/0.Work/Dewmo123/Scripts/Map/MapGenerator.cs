@@ -3,10 +3,12 @@ using NUnit.Framework;
 using NUnit.Framework.Internal.Execution;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Debug = UnityEngine.Debug;
 
 namespace Scripts.Map
 {
@@ -34,7 +36,10 @@ namespace Scripts.Map
             else Debug.LogWarning("Instance is already existing");
             _rand = new System.Random();
             _mapArr = new bool[_mapSizeX * 2 + 1, _mapSizeY * 2 + 1];
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             await Task.Run(SetMap);
+            stopwatch.Stop();
         }
         private void SetMap()
         {

@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 6584484845693722583}
   - component: {fileID: 4415668096525922733}
   - component: {fileID: 5665152011231178078}
-  m_Layer: 25
+  m_Layer: 12
   m_Name: Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,6 +204,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnResetEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _damageType: 3
 --- !u!70 &5665152011231178078
 CapsuleCollider2D:

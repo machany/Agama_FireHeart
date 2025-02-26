@@ -1,6 +1,7 @@
 using Agama.Scripts.Entities;
 using GGMPool;
 using Scripts.Combat;
+using Scripts.Core.Sound;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -21,6 +22,10 @@ namespace Agama.Scripts.Combats.Projectiles
         [Header("Animator")]
         [SerializeField] private string explosion;
 
+        [Header("Sound")]
+        [SerializeField] private PoolManagerSO _poolManager;
+        [SerializeField] private SoundSO _explosion;
+        [SerializeField] private PoolTypeSO _soundPlayer;
         private Animator _animator;
         private Action OnAnimationEventEvent;
 
@@ -44,7 +49,7 @@ namespace Agama.Scripts.Combats.Projectiles
             transform.right = dir;
             transform.rotation = Quaternion.Euler(0, 0, 180 * (0.5f + (0.5f * Mathf.Sign(dir.x))));
             transform.position = pos;
-
+            _damage = damage;
             _rbCompo.linearVelocity = Vector2.zero;
             _rbCompo.AddForceAtPosition(dir.normalized * bulletSpeed, forcePosition.position, ForceMode2D.Impulse);
             _animator.SetBool(hash, false);
@@ -83,6 +88,8 @@ namespace Agama.Scripts.Combats.Projectiles
         private void HandleAnimationEventEvent()
         {
             OnAnimationEventEvent -= HandleAnimationEventEvent;
+            var sp = _poolManager.Pop(_soundPlayer) as SoundPlayer;
+            sp.PlaySound(_explosion,transform.position);
             _damageCaster.CastDamage(_damage);
         }
 

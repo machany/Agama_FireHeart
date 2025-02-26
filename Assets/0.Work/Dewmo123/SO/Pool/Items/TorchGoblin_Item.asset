@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ece0c623759054d8c394fc5256de3a, type: 3}
-  m_Name: PlayerHit
+  m_Script: {fileID: 11500000, guid: 1486e263e7016b643b78c6fb1c6caafd, type: 3}
+  m_Name: TorchGoblin_Item
   m_EditorClassIdentifier: 
-  audioType: 0
-  clip: {fileID: 8300000, guid: 0573c70c2c8444c42b3b14f58edb5895, type: 3}
-  loop: 0
-  randomizePitch: 1
-  randomPitchModifier: 0.1
-  volume: 1
-  basePitch: 1
-  spatialBlend: 0
+  poolType: {fileID: 11400000, guid: 7b6c7091d0d318a4fa646dca27a94610, type: 2}
+  prefab: {fileID: 7628580488482672365, guid: 527c4e81503457c44a5e81496be41848, type: 3}
+  initCount: 10

@@ -204,6 +204,9 @@ MonoBehaviour:
   angularDragPower: 2.75
   maxAnguler: 2000
   explosion: explosion
+  _poolManager: {fileID: 11400000, guid: ab208f8de301ea24bbc8869fc257e2fa, type: 2}
+  _explosion: {fileID: 11400000, guid: c9018bfd80a01c1488bcbc9d5aeeb43c, type: 2}
+  _soundPlayer: {fileID: 11400000, guid: 46c6e3a97b6a7914b837d3d4b8ad8757, type: 2}
 --- !u!1 &5449340938254517274
 GameObject:
   m_ObjectHideFlags: 0
