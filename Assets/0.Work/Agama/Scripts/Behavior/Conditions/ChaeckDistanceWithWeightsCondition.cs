@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Agama.Scripts.Behavior.Conditions
 {
     [Serializable, Unity.Properties.GeneratePropertyBag]
-    [Condition(name: "Chaeck distance with weights", story: "distance between [Transform] and [Target] with [Weights] [Operator] [Range]", category: "Conditions", id: "239b7b54ea5d23b4aa23597d10270af2")]
+    [Condition(name: "Check distance with weights", story: "distance between [Transform] and [Target] with [Weights] [Operator] [Range]", category: "Conditions", id: "239b7b54ea5d23b4aa23597d10270af2")]
     public partial class ChaeckDistanceWithWeightsCondition : Condition
     {
         [SerializeReference] public BlackboardVariable<Transform> Transform;

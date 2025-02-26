@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Agama.Scripts.Behavior.Conditions
 {
     [Serializable, Unity.Properties.GeneratePropertyBag]
-    [Condition(name: "Chack Distance Behavior Enemy and StartPositon", story: "distance between [BehaviorEnemy] and startPositon [Operator] [Radius]", category: "Conditions", id: "c4028f43f203a64700ed2b810ccba5ea")]
+    [Condition(name: "Check Distance Behavior Enemy and StartPositon", story: "distance between [BehaviorEnemy] and startPositon [Operator] [Radius]", category: "Conditions", id: "c4028f43f203a64700ed2b810ccba5ea")]
     public partial class DistanceBetweenBehaviorEnemyAndStartPositonCondition : Condition
     {
         [SerializeReference] public BlackboardVariable<BehaviorEnemy> BehaviorEnemy;

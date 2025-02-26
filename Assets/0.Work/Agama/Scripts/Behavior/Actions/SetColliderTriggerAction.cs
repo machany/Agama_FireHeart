@@ -15,16 +15,11 @@ namespace Agama.Scripts.Behavior.Actions
 
         protected override Status OnStart()
         {
-            return Status.Running;
-        }
+            if (Collider.Value == null)
+                return Status.Failure;
 
-        protected override Status OnUpdate()
-        {
+            Collider.Value.isTrigger = Value.Value;
             return Status.Success;
-        }
-
-        protected override void OnEnd()
-        {
         }
     }
 }
