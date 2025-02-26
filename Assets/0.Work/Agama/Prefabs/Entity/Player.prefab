@@ -99,6 +99,57 @@ MonoBehaviour:
   _uiChannel: {fileID: 11400000, guid: 574195d2e12842445b298bb78baba4f7, type: 2}
   _bucket: {fileID: 11400000, guid: 30012c5683eabfd4ca28ed664310505e, type: 2}
   _waterBucket: {fileID: 11400000, guid: 103f9cbc8e3977744b36f556a0cc5867, type: 2}
+--- !u!1 &2398295506231900975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4840314447227184427}
+  - component: {fileID: 6820710044338604060}
+  m_Layer: 0
+  m_Name: Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4840314447227184427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2398295506231900975}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8180839452325810190}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6820710044338604060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2398295506231900975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbf655df7ee97a4fa352220302c9678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dieSound: {fileID: 0}
+  _hitSound: {fileID: 11400000, guid: 3b8ad76227285ef439b42b63644869ca, type: 2}
+  _poolManager: {fileID: 11400000, guid: ab208f8de301ea24bbc8869fc257e2fa, type: 2}
+  _soundPlayer: {fileID: 11400000, guid: 46c6e3a97b6a7914b837d3d4b8ad8757, type: 2}
+  _attackSound: {fileID: 11400000, guid: b923083a9e8822c4dbe14174c0eac48a, type: 2}
+  _walkSound: {fileID: 11400000, guid: 8dde2f99b44c7f94681e5eff8b8c13bd, type: 2}
+  _swapSound: {fileID: 11400000, guid: 8f613476a338479499317bbccd11bafe, type: 2}
 --- !u!1 &2551023311248359293
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,6 +207,7 @@ GameObject:
   - component: {fileID: 8180839452325810190}
   - component: {fileID: 4052878956739333293}
   - component: {fileID: 1644736883775652943}
+  - component: {fileID: 9168182297682232514}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -186,6 +238,7 @@ Transform:
   - {fileID: 8498188239396408097}
   - {fileID: 1789786112204156474}
   - {fileID: 6003111052406864074}
+  - {fileID: 4840314447227184427}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &4052878956739333293
@@ -248,7 +301,18 @@ MonoBehaviour:
   <CarryParam>k__BackingField: {fileID: 11400000, guid: 62e4013622aa22946bfdff0c1e269a3d, type: 2}
   <ToolTypeParam>k__BackingField: {fileID: 11400000, guid: e52d53aad5ef623418a056ddc8bb2879, type: 2}
   stateList: {fileID: 11400000, guid: fd8d8a61b625b4944bf4432e76420634, type: 2}
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1
   maxEventStateStorageCount: 2
+--- !u!81 &9168182297682232514
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5648879977019274956}
+  m_Enabled: 1
 --- !u!1 &6193173880659296651
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,12 +770,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
       propertyPath: statOverrides.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
       propertyPath: statOverrides.Array.data[0].stat
       value: 
       objectReference: {fileID: 11400000, guid: 6261b28fc177ab042844cf6ac6d54e99, type: 2}
+    - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
+      propertyPath: statOverrides.Array.data[3].stat
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a5dc08ac2f1e59429bb8000ca68c84a, type: 2}
     - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
       propertyPath: statOverrides.Array.data[4].stat
       value: 
@@ -730,7 +798,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
       propertyPath: statOverrides.Array.data[3].isUseOverride
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3018404859730688514, guid: e98f1a481685d7248a6bf4e04f6cffcc, type: 3}
+      propertyPath: statOverrides.Array.data[3].overrideValue
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -760,11 +832,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1706201453129931926, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1706201453129931926, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1706201453129931926, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -830,10 +902,6 @@ PrefabInstance:
       propertyPath: targetingMarkSprite
       value: 
       objectReference: {fileID: -5225540622116197949, guid: 3f6f0ecb6db0ca34e808414660a2fed1, type: 3}
-    - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
-      propertyPath: contactFilter.useTriggers
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: contactFilter.layerMask.m_Bits
       value: 1107296256

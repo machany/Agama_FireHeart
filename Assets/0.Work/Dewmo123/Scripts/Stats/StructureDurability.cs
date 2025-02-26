@@ -26,7 +26,6 @@ namespace Scripts.Stats
         {
             //if (_entity.IsDead) return; //이미 죽은 녀석입니다.
             _bar.gameObject.SetActive(true);
-            Debug.Log("Damaged");
             base.ApplyDamage(damage);
         }
         public override void ApplyHeal(float heal)

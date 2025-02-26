@@ -1,11 +1,12 @@
 ﻿using Agama.Scripts.Animators;
 using Agama.Scripts.Entities;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Scripts.Map
 {
-    public class ResourceAnimator : MonoBehaviour, IEntityComponent, IAfterInitialize
+    public class StructureAnimator : MonoBehaviour, IEntityComponent, IAfterInitialize
     {
         [SerializeField] private List<AnimationParamiterSO> _params;
         private AnimationParamiterSO _current;
@@ -20,6 +21,7 @@ namespace Scripts.Map
             _params.ForEach(item => _paramDic.Add(item.paramiterName, item));
             _entity.GetComp<EntityAnimatorTrigger>().OnAnimationEndEvent += HadleEndTrigger;
         }
+
         private void OnDestroy()
         {
             _entity.GetComp<EntityAnimatorTrigger>().OnAnimationEndEvent -= HadleEndTrigger;

@@ -41,7 +41,6 @@ namespace Scripts.Stats
         }
 
         #endregion
-
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.P))
@@ -58,8 +57,7 @@ namespace Scripts.Stats
         {
             //if (_entity.IsDead) return; //이미 죽은 녀석입니다.
             currentStat.Value = Mathf.Clamp(currentStat.Value - damage, 0, maxStat);
-
-            AfterHitFeedbacks();
+                AfterHitFeedbacks();
         }
         public virtual void ApplyHeal(float heal)
         {
@@ -70,10 +68,6 @@ namespace Scripts.Stats
             if (currentStat.Value <= 0)
             {
                 _entity.OnDeadEvent?.Invoke();
-            }
-            else
-            {
-                _entity.OnHitEvent?.Invoke();
             }
         }
 

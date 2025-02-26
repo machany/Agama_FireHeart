@@ -15,6 +15,7 @@ namespace Agama.Scripts.Players
         [field: SerializeField] public AnimationParamiterSO ToolTypeParam { get; private set; }
 
         [SerializeField] private EntityStateSOList stateList;
+        [SerializeField] private LayerMask _enemyLayer;
 
         [Tooltip("<color=red>대기 상태</color>로 남아 있을 수 있는 최대 수입니다.\n에를 들어, 값이 3이라면 <color=green>(현재 진행중인 이벤트 스테이트) + (보관중인 이벤트 스테이트){최대 용량 3}</color>으로 4개의 이벤트를 처리하는 것으로 <color=red>보일 수 있습니다.</color>")]
         [SerializeField] private int maxEventStateStorageCount = 3;
@@ -80,18 +81,22 @@ namespace Agama.Scripts.Players
             bool isCarryItem = _carring = damageType < -1;
             ToolType = damageType;
             _renderer.SetParamiter(CarryParam, isCarryItem); // 양수면 안 드는 물건
-            _renderer.SetParamiter(ToolTypeParam,(sbyte)Mathf.Abs(damageType));
+            _renderer.SetParamiter(ToolTypeParam, (sbyte)Mathf.Abs(damageType));
             OnQuickSloatItemChange?.Invoke(damageType, power);
         }
 
         private void HandleItemUseKeyPressedEvent()
         {
-            Debug.Log(_carring);
-            Debug.Log(ToolType);
             if (!_carring && ToolType >= 0)
                 ChangeState("Player_use_tool_State_event");
             else
+                if (!CheckEnemy())
                 OnUseItem?.Invoke();
+        }
+
+        private bool CheckEnemy()
+        {
+            return Physics2D.OverlapCircle(transform.position + (Vector3)InputSO.PreviousInputVector, 0.5f, _enemyLayer);
         }
 
         protected override void HandleHitEvent()
@@ -109,5 +114,12 @@ namespace Agama.Scripts.Players
         {
             OnDamage?.Invoke(damage);
         }
+#if UNITY_EDITOR
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position + (Vector3)InputSO.PreviousInputVector, 0.5f);
+        }
+#endif
     }
 }

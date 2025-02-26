@@ -2,6 +2,7 @@
 using Agama.Scripts.Players;
 using Scripts.Items;
 using Scripts.Map;
+using Scripts.Players;
 using Scripts.Players.Inven;
 using UnityEngine;
 
@@ -27,7 +28,9 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
                 inven.ReloadQuickSlot();
             }
         }
-
+        private void CheckEnemy(Vector2 pos)
+        {
+        }
         protected override void OnEnable()
         {
             base.OnEnable();

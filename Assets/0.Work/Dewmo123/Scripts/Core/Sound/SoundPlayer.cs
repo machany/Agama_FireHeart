@@ -25,6 +25,7 @@ namespace Scripts.Core.Sound
         public void PlaySound(SoundSO data,Vector3 pos)
         {
             transform.position = pos;
+            _audioSource.spatialBlend = data.spatialBlend;
             if (data.audioType == SoundSO.AudioType.SFX)
             {
                 _audioSource.outputAudioMixerGroup = _sfxGroup;
