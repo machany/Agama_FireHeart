@@ -244,12 +244,16 @@ MonoBehaviour:
   OnDeadEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnResetEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _damageType: 4
   dropFeedback: {fileID: 1251439391303712076}
   roadFinder: {fileID: 11400000, guid: 823e81d196d216541b4547bccf8234e2, type: 2}
   targetLayer:
     serializedVersion: 2
     m_Bits: 33554944
+  _myType: {fileID: 11400000, guid: 7b6c7091d0d318a4fa646dca27a94610, type: 2}
 --- !u!1001 &3948696282352813715
 PrefabInstance:
   m_ObjectHideFlags: 0

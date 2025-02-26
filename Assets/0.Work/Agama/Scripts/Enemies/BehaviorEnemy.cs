@@ -1,5 +1,6 @@
 ﻿using Agama.Scripts.Core.AStar;
 using Agama.Scripts.Entities;
+using GGMPool;
 using Scripts.Feedbacks;
 using System;
 using Unity.Behavior;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace Agama.Scripts.Enemies
 {
-    public abstract class BehaviorEnemy : Entity
+    public abstract class BehaviorEnemy : Entity,IPoolable
     {
         [BlackboardEnum]
         public enum BehaviorEnemyState
@@ -27,6 +28,11 @@ namespace Agama.Scripts.Enemies
 
         public LayerMask targetLayer;
         public Vector2 StartPosition { get; private set; }
+        [SerializeField] private PoolTypeSO _myType;
+        public PoolTypeSO PoolType => _myType;
+
+        public GameObject GameObject => gameObject;
+        private Pool _myPool;
 
         protected override void Awake()
         {
@@ -45,6 +51,16 @@ namespace Agama.Scripts.Enemies
 
         protected override void HandleHitEvent()
         {
+        }
+
+        public void SetUpPool(Pool pool)
+        {
+            _myPool = pool;
+        }
+
+        public void ResetItem()
+        {
+            OnResetEvent?.Invoke();
         }
     }
 }

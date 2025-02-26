@@ -381,6 +381,9 @@ MonoBehaviour:
   OnDeadEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnResetEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _damageType: 4
   <InputSO>k__BackingField: {fileID: 11400000, guid: e7933cf2312c95e41912b465f7e51188, type: 2}
   <CarryParam>k__BackingField: {fileID: 11400000, guid: 62e4013622aa22946bfdff0c1e269a3d, type: 2}

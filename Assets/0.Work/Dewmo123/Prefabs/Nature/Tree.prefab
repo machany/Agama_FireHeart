@@ -247,6 +247,9 @@ MonoBehaviour:
           m_StringArgument: Dead
           m_BoolArgument: 0
         m_CallState: 2
+  OnResetEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _damageType: 1
 --- !u!61 &6234213546083873827
 BoxCollider2D:

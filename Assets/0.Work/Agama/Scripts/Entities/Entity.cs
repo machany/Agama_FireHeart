@@ -11,6 +11,7 @@ namespace Agama.Scripts.Entities
     {
         public UnityEvent OnHitEvent;
         public UnityEvent OnDeadEvent;
+        public UnityEvent OnResetEvent;
         public Action<float> OnDamage;
 
         protected Dictionary<Type, IEntityComponent> _entityComponentDictionary;

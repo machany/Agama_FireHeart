@@ -117,6 +117,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnResetEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _damageType: 3
 --- !u!70 &3679897311116484601
 CapsuleCollider2D:
