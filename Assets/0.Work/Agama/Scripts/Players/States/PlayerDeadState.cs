@@ -2,10 +2,6 @@
 using Agama.Scripts.Entities;
 using Agama.Scripts.Entities.FSM;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Agama.Scripts.Players.States
 {
@@ -13,17 +9,27 @@ namespace Agama.Scripts.Players.States
     {
         public PlayerDeadState(Entity owner, AnimationParamiterSO animationParamitor) : base(owner, animationParamitor)
         {
+            _mover = _owner.GetComponent<EntityMover>();
         }
 
         public Action OnEventEndEvent { get; set; }
 
+        private EntityMover _mover;
+
         public override void Enter()
         {
             base.Enter();
-            EntityMover mover = _owner.GetComponent<EntityMover>();
-            mover.CanMove = false;
-            mover.StopImmediately();
+            _mover.CanMove = false;
+            _mover.StopImmediately();
             (_owner as Player).SetStateChangeLock(true);
+        }
+
+        public override void Exit()
+        {
+            _mover.CanMove = true;
+            (_owner as Player).SetStateChangeLock(false);
+
+            base.Exit();
         }
     }
 }
