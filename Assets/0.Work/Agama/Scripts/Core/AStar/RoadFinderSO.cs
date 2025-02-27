@@ -76,7 +76,7 @@ namespace Agama.Scripts.Core.AStar
                 SeaechAdjacentNodes(currentNode, targetNode, _openSet, _closedSet);
             }
 
-            return true;
+            return false;
         }
 
         // 인접 노드 탐색
