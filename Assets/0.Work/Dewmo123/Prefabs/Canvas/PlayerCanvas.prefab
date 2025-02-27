@@ -477,6 +477,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: HungerBar
       objectReference: {fileID: 0}
+    - target: {fileID: 3527945247785728486, guid: 5d26ca1420c883c4eac2e4f570672ec1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6244701632924150133, guid: bbf42c584a014d747b5ba31748c31a9f, type: 3}
+    - target: {fileID: 3527945247785728486, guid: 5d26ca1420c883c4eac2e4f570672ec1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.55589175
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527945247785728486, guid: 5d26ca1420c883c4eac2e4f570672ec1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.69217324
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527945247785728486, guid: 5d26ca1420c883c4eac2e4f570672ec1, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8490566
+      objectReference: {fileID: 0}
     - target: {fileID: 7444082152543888981, guid: 5d26ca1420c883c4eac2e4f570672ec1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -579,6 +595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThirstBar
       objectReference: {fileID: 0}
+    - target: {fileID: 3527945247785728486, guid: 5d26ca1420c883c4eac2e4f570672ec1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8712880223558408681, guid: f24cee4573178834ab8ae24d8212354a, type: 3}
     - target: {fileID: 7444082152543888981, guid: 5d26ca1420c883c4eac2e4f570672ec1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -680,6 +700,18 @@ PrefabInstance:
     - target: {fileID: 488155158029854353, guid: 5d26ca1420c883c4eac2e4f570672ec1, type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527945247785728486, guid: 5d26ca1420c883c4eac2e4f570672ec1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6244701632924150133, guid: bbf42c584a014d747b5ba31748c31a9f, type: 3}
+    - target: {fileID: 3527945247785728486, guid: 5d26ca1420c883c4eac2e4f570672ec1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527945247785728486, guid: 5d26ca1420c883c4eac2e4f570672ec1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5882353
       objectReference: {fileID: 0}
     - target: {fileID: 7444082152543888981, guid: 5d26ca1420c883c4eac2e4f570672ec1, type: 3}
       propertyPath: m_Pivot.x
