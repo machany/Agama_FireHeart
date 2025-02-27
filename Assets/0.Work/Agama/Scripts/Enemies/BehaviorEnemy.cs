@@ -2,6 +2,7 @@
 using Agama.Scripts.Entities;
 using GGMPool;
 using Scripts.Feedbacks;
+using Scripts.GameSystem;
 using System;
 using Unity.Behavior;
 using UnityEngine;
@@ -43,10 +44,21 @@ namespace Agama.Scripts.Enemies
 
             StartPosition = transform.position;
         }
+        private void Start()
+        {
+            TimeManager.Instance.IsNight.OnValueChanged += HandleIsNight;
+        }
+
+        private void HandleIsNight(bool prev, bool next)
+        {
+            if (prev)
+                _myPool.Push(this);
+        }
 
         protected override void HandleDeadEvent()
         {
             dropFeedback.CreateFeedback();
+            _myPool.Push(this);
         }
 
         protected override void HandleHitEvent()

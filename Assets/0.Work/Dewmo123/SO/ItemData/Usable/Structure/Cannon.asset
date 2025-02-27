@@ -20,3 +20,4 @@ MonoBehaviour:
   damageType: -2
   attackDamage: 10
   structure: {fileID: 3557641519334228447, guid: 5fdc4e16b3dc7f84ba3d406e7e909c76, type: 3}
+  visualPivot: {x: 0, y: 2, z: 0}

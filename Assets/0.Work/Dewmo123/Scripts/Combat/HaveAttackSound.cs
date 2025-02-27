@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Scripts.Combat
 {
-    public class BowSound : EntitySound
+    public class HaveAttackSound : EntitySound
     {
         [SerializeField] private SoundSO _attackSound;
         public override void Initialize(Entity owner)

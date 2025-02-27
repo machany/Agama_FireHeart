@@ -171,12 +171,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c220f2aaae21cb9438bbb53cc23e4238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 0
-  duration: 0
+  bulletSpeed: 10
+  duration: 3
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
-  myType: {fileID: 0}
+    m_Bits: 1073741824
+  myType: {fileID: 11400000, guid: 655a0a6a8ef9a0349aae6ab92992b8c1, type: 2}
 --- !u!50 &4784949622644180382
 Rigidbody2D:
   serializedVersion: 5
@@ -256,9 +256,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: OverlapDamageCaster
       objectReference: {fileID: 0}
+    - target: {fileID: 1997202704371763406, guid: 3819e8a15442f9648bf49822ca8e8739, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5612932530508710959, guid: 3819e8a15442f9648bf49822ca8e8739, type: 3}
       propertyPath: damageRadius
-      value: 0.3
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612932530508710959, guid: 3819e8a15442f9648bf49822ca8e8739, type: 3}
+      propertyPath: contactFilter.useTriggers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5612932530508710959, guid: 3819e8a15442f9648bf49822ca8e8739, type: 3}
+      propertyPath: contactFilter.useLayerMask
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5612932530508710959, guid: 3819e8a15442f9648bf49822ca8e8739, type: 3}
       propertyPath: contactFilter.layerMask.m_Bits

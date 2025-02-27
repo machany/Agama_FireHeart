@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbf655df7ee97a4fa352220302c9678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dieSound: {fileID: 0}
+  _dieSound: {fileID: 11400000, guid: 3b8ad76227285ef439b42b63644869ca, type: 2}
   _hitSound: {fileID: 11400000, guid: 3b8ad76227285ef439b42b63644869ca, type: 2}
   _poolManager: {fileID: 11400000, guid: ab208f8de301ea24bbc8869fc257e2fa, type: 2}
   _soundPlayer: {fileID: 11400000, guid: 46c6e3a97b6a7914b837d3d4b8ad8757, type: 2}
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000090be96e
+  m_ApplyToSortingLayers: 00000000090be96ed3138436c12c9542
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 9168182297682232514}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   stateList: {fileID: 11400000, guid: fd8d8a61b625b4944bf4432e76420634, type: 2}
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1073741824
   maxEventStateStorageCount: 2
 --- !u!81 &9168182297682232514
 AudioListener:
@@ -706,7 +706,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 33554432
+      m_Bits: 33554448
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -984,7 +984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: fieldOfViewAngle
-      value: 140
+      value: 66
       objectReference: {fileID: 0}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: targetingMarkSprite
@@ -996,7 +996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8690025603288765244, guid: 0a8d5517a1f6d8c4ba135982be629ebc, type: 3}
       propertyPath: contactFilter.layerMask.m_Bits
-      value: 1107296256
+      value: 1107300352
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

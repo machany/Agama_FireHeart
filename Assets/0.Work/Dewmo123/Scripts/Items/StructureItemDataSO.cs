@@ -13,6 +13,7 @@ namespace Assets._0.Work.Dewmo123.Scripts.Items
     {
         public GameObject structure;
         public GameObject structureIcon => structure.transform.GetChild(0).gameObject;
+        public Vector3 visualPivot;
 
         public void ChoiceItem(Entity entity)
         {

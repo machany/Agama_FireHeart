@@ -16,5 +16,8 @@ MonoBehaviour:
   icon: {fileID: -5443547844040458350, guid: 9ee5a484eb268c244b4eeba283930cc0, type: 3}
   itemID: a1dff3621c33d2b4b818e82c9e7469d2
   maxStack: 1
-  damageType: 0
+  _damageType: 0
+  damageType: -2
+  attackDamage: 10
   structure: {fileID: 5594688741012690658, guid: 53067a24e59a9ac4291413cb571530af, type: 3}
+  visualPivot: {x: 0, y: 0.5, z: 0}

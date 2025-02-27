@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: Bucket
   m_EditorClassIdentifier: 
   itemName: "\uC591\uB3D9\uC774"
-  icon: {fileID: -137612848341414727, guid: c9df1406619e8274c9afaa963fdd5f3c, type: 3}
+  icon: {fileID: 4450424334861044603, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
   itemID: 30012c5683eabfd4ca28ed664310505e
   maxStack: 99
+  _damageType: 0
+  damageType: -1
+  attackDamage: 10
   result: {fileID: 0}
+  hp: 0
+  thirsty: 0
+  hungry: 0
+  _isException: 1

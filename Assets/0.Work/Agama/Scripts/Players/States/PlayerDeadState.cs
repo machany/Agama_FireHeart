@@ -9,7 +9,7 @@ namespace Agama.Scripts.Players.States
     {
         public PlayerDeadState(Entity owner, AnimationParamiterSO animationParamitor) : base(owner, animationParamitor)
         {
-            _mover = _owner.GetComponent<EntityMover>();
+            _mover = _owner.GetComp<EntityMover>();
         }
 
         public Action OnEventEndEvent { get; set; }
