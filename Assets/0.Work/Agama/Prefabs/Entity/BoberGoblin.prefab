@@ -155,7 +155,7 @@ MonoBehaviour:
           m_Value0: 12557441964064549006
           m_Value1: 13572968652161728784
         Name: Attack Distance Weight
-        m_Value: {x: 1, y: 0.75, z: 0}
+        m_Value: {x: 1, y: 0.75, z: 100}
 --- !u!70 &2601538113232144280
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
