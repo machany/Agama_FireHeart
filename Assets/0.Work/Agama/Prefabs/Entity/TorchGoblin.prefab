@@ -108,6 +108,7 @@ MonoBehaviour:
   - rid: 5218361909883699800
   - rid: 5218361909883699801
   - rid: 5218361947253899655
+  - rid: 5218361979355267296
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -145,6 +146,14 @@ MonoBehaviour:
           m_Value1: 781920749334364971
         Name: Attack Delay
         m_Value: 1.25
+    - rid: 5218361979355267296
+      type: {class: 'BlackboardVariable`1[[UnityEngine.Vector3, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 12557441964064549006
+          m_Value1: 13572968652161728784
+        Name: Attack Distance Weight
+        m_Value: {x: 1.1, y: 0.25, z: 100}
 --- !u!70 &5925717621912618339
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
