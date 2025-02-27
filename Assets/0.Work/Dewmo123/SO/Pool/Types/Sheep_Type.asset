@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8125f0fde6d3a749b316390edd41024, type: 3}
-  m_Name: Sapling
+  m_Script: {fileID: 11500000, guid: 317ebf221effd784cbbcd79a9c8894f7, type: 3}
+  m_Name: Sheep_Type
   m_EditorClassIdentifier: 
-  itemName: "\uBB18\uBAA9"
-  icon: {fileID: 912274142302743689, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
-  itemID: f6288d7854d169345923c1b54ee9923e
-  maxStack: 99
-  damageType: 0
+  typeName: Sheep

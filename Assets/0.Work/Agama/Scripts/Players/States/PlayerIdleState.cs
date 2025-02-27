@@ -1,11 +1,5 @@
 ﻿using Agama.Scripts.Animators;
 using Agama.Scripts.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine;
 
 namespace Agama.Scripts.Players.States

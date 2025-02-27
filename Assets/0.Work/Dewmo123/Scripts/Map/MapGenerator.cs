@@ -1,4 +1,5 @@
 ﻿using Baracuda.Threading;
+using GGMPool;
 using NUnit.Framework;
 using NUnit.Framework.Internal.Execution;
 using System;
@@ -35,11 +36,8 @@ namespace Scripts.Map
             if (_instance == null) _instance = this;
             else Debug.LogWarning("Instance is already existing");
             _rand = new System.Random();
-            _mapArr = new bool[_mapSizeX * 2 + 1, _mapSizeY * 2 + 1];
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
+            _mapArr = new bool[_mapSizeX * 2 + 2, _mapSizeY * 2 + 2];
             await Task.Run(SetMap);
-            stopwatch.Stop();
         }
         private void SetMap()
         {
@@ -57,8 +55,8 @@ namespace Scripts.Map
                     while (!SearchDuplicateTile(tiles))
                     {
                         tiles = GetObjectSize(_infos[i].size, x, y);
-                        x = _rand.Next(-_mapSizeX + 1, _mapSizeX);
-                        y = _rand.Next(-_mapSizeY + 1, _mapSizeY);
+                        x = _rand.Next(-_mapSizeX, _mapSizeX);
+                        y = _rand.Next(-_mapSizeY, _mapSizeY);
                     }
                     Dispatcher.Invoke(() =>
                     {
@@ -75,8 +73,16 @@ namespace Scripts.Map
         {
             foreach (var tile in tiles)
             {
-                if (_mapArr[tile.x + _mapSizeX, tile.y + _mapSizeY])
+                try
+                {
+                    if (_mapArr[tile.x + _mapSizeX, tile.y + _mapSizeY])
+                        return false;
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    Debug.Log(ex.ToString());
                     return false;
+                }
             }
             return true;
         }
@@ -96,7 +102,7 @@ namespace Scripts.Map
             list.Add(tile);
             if (SearchDuplicateTile(list))
             {
-                _mapArr[tile.x+_mapSizeX, tile.y+_mapSizeY] = true;
+                _mapArr[tile.x + _mapSizeX, tile.y + _mapSizeY] = true;
                 var go = Instantiate(structure, _map.CellToWorld(tile) + Vector3.one / 2, Quaternion.identity, transform);
                 return true;
             }

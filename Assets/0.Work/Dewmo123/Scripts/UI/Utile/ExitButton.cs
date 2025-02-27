@@ -1,6 +1,5 @@
 ﻿using Agama.Scripts.Events;
 using Scripts.EventChannel;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 namespace Scripts.UI.Utile

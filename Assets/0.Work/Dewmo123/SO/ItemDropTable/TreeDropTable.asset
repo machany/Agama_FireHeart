@@ -17,7 +17,3 @@ MonoBehaviour:
     maxCnt: 6
     probability: 0.5
     item: {fileID: 11400000, guid: e3f8c5d88edc65c4c99af2db9f648465, type: 2}
-  - minCnt: 0
-    maxCnt: 2
-    probability: 0.5
-    item: {fileID: 11400000, guid: f6288d7854d169345923c1b54ee9923e, type: 2}
