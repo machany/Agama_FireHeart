@@ -142,8 +142,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 7515621534131588247, guid: 1bdb8cf1ce419a44f89db1b539d8c5c8, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -164,6 +164,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 486918a2890d2eb4f92744a492a0781a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipe: {fileID: 0}
-  _craftChannel: {fileID: 11400000, guid: d5b3de7d10ef24447a49309c06336f97, type: 2}
   _image: {fileID: 6704727239672004368}

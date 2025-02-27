@@ -32,6 +32,11 @@ namespace Agama.Scripts.Core.AStar
             _closedSet = new HashSet<Node>();
         }
 
+        public void ChangeGrid()
+        {
+            _grid.ChangeGrid();
+        }
+
         public bool FindPath(Transform requestor, Vector3 targetPos)
         {
             if (!_pathOfRequesterDictionary.ContainsKey(requestor))
