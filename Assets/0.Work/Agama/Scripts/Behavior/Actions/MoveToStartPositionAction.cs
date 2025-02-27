@@ -23,10 +23,6 @@ namespace Agama.Scripts.Behavior.Actions
 
         protected override Status OnStart()
         {
-            if (!BehaviorEnemy.Value.roadFinder.FindPath(BehaviorEnemy.Value.transform, BehaviorEnemy.Value.StartPosition)) // => 길찾는거 여기서함 ㅇㅇ
-            {
-                return Status.Success;
-            }
             _road = BehaviorEnemy.Value.roadFinder[BehaviorEnemy.Value.transform];
 
             _currentNode = _road.Pop();
@@ -51,10 +47,6 @@ namespace Agama.Scripts.Behavior.Actions
                 }
                 catch // 다른 변수로 오류가 생겼을 수 있으니, 대비함.
                 {
-                    if (!BehaviorEnemy.Value.roadFinder.FindPath(BehaviorEnemy.Value.transform, BehaviorEnemy.Value.StartPosition)) // => 길찾는거 여기서함 ㅇㅇ
-                    {
-                        return Status.Success;
-                    }
                 }
 
                 Mover.Value.SetMoveFor(_currentNode.worldPosition, () => _arriveFrag = true);
