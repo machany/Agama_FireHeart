@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IronTrap
   m_EditorClassIdentifier: 
   itemName: "\uAC15\uCCA0 \uB36B"
-  icon: {fileID: 5563590641408601963, guid: b4152c3c6c2a32246966c17c746c3f4e, type: 3}
+  icon: {fileID: -8481438492415668728, guid: 0975dafc78dbaf7499efdaa7a5bafe7c, type: 3}
   itemID: 6773819f275956f4682cd3122746a6ea
   maxStack: 1
   _damageType: 0

@@ -62,6 +62,9 @@ namespace Scripts.Map
                     {
                         Vector2 pos = _map.CellToWorld(tiles[(int)Mathf.Ceil(tiles.Count / 2)]) + Vector3.one / 2;
                         Instantiate(info.prefab, pos, Quaternion.identity);
+
+                        foreach (var item in tiles)
+                            _map.SetTile(item, _dummy);
                     });
 
                     foreach (var item in tiles)
@@ -86,13 +89,14 @@ namespace Scripts.Map
             }
             return true;
         }
-
+        [SerializeField] private List<Vector3Int> _sasd;
         private List<Vector3Int> GetObjectSize(Vector2 size, int x, int y)
         {
             List<Vector3Int> sizes = new List<Vector3Int>();
             for (int i = 0; i < size.x; i++)
                 for (int j = 0; j < size.y; j++)
                     sizes.Add(new Vector3Int(i + x, j + y));
+            _sasd = sizes;
             return sizes;
         }
         public bool BuildStructure(Vector2 pos, GameObject structure)
