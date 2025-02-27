@@ -16,4 +16,10 @@ MonoBehaviour:
   icon: {fileID: 6045454254259307398, guid: 0845a43b92336a64b8152cafe66b5327, type: 3}
   itemID: 103f9cbc8e3977744b36f556a0cc5867
   maxStack: 99
+  _damageType: 0
+  damageType: -1
+  attackDamage: 10
   result: {fileID: 0}
+  hp: 0
+  thirsty: 20
+  hungry: 0

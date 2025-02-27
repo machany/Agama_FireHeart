@@ -112,7 +112,7 @@ namespace Scripts.Players.Inven
             if (itemSO is StructureItemDataSO structure)
             {
                 _carringVisual = Instantiate(structure.structureIcon, _player.transform);
-                _carringVisual.transform.position = _player.transform.position + Vector3.up;
+                _carringVisual.transform.position = _player.transform.position + structure.visualPivot;
             }
         }
         private void CraftItemHandler(CraftItem item)

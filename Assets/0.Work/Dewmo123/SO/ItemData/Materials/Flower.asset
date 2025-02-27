@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8125f0fde6d3a749b316390edd41024, type: 3}
   m_Name: Flower
   m_EditorClassIdentifier: 
-  itemName: "\uC11D\uD0C4"
+  itemName: "\uAF43"
   icon: {fileID: -777968373, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
   itemID: b407a11d828055e4fafc019042ccb8c3
   maxStack: 99
+  _damageType: 0
   damageType: 0
+  attackDamage: 10

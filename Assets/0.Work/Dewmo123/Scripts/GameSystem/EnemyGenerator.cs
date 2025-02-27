@@ -1,6 +1,7 @@
 ﻿using Agama.Scripts.Enemies;
 using Agama.Scripts.Entities;
 using GGMPool;
+using Scripts.Core;
 using System;
 using System.Collections.Generic;
 using Unity.AppUI.UI;
@@ -18,7 +19,7 @@ namespace Scripts.GameSystem
     }
     public class EnemyGenerator : MonoBehaviour
     {
-        private Transform _center;
+        [SerializeField]private Transform _center;
         [SerializeField] private Vector2 _ignoreRegion;
         [SerializeField] private Vector2 _spawnRegion;
         [SerializeField] private List<SpawnRatio> _enemyTypes;
@@ -26,15 +27,29 @@ namespace Scripts.GameSystem
 
         [SerializeField] private int _phaseEnemyCount;
         [SerializeField] private float _enemyIncrementPerDay;
-        private void Awake()
-        {
-            _center = GameObject.FindGameObjectWithTag("Player").transform;
-        }
+        [SerializeField] private float _enemySpawnDelay;
+
+        private NotifyValue<bool> _isNight;
+        private float _currentTime;
         private void Start()
         {
-            TimeManager.Instance.IsNight.OnValueChanged += HandleNightEvent;
+            _isNight = TimeManager.Instance.IsNight;
+            _isNight.OnValueChanged += HandleNightEvent;
         }
-
+        private void OnDestroy()
+        {
+            _isNight.OnValueChanged -= HandleNightEvent;
+        }
+        private void Update()
+        {
+            if (!_isNight.Value) return;
+            _currentTime += Time.deltaTime;
+            if (_currentTime > _enemySpawnDelay)
+            {
+                GenerateEnemy();
+                _currentTime = 0;
+            }
+        }
         private void HandleNightEvent(bool prev, bool next)
         {
             if (next)
