@@ -12,7 +12,6 @@ namespace Scripts.GameSystem
         private float _currentTime;
         [SerializeField] private int _morningMinutes;
         [SerializeField] private int _eveningMinutes;
-        [SerializeField] private EventChannelSO _timeChannel;
         public NotifyValue<bool> IsNight { get; private set; }
         private void Awake()
         {

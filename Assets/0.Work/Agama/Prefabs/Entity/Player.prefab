@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 9168182297682232514}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   stateList: {fileID: 11400000, guid: fd8d8a61b625b4944bf4432e76420634, type: 2}
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1073741824
   maxEventStateStorageCount: 2
 --- !u!81 &9168182297682232514
 AudioListener:

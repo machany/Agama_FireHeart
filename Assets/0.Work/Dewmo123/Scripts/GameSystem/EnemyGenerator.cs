@@ -18,7 +18,7 @@ namespace Scripts.GameSystem
     }
     public class EnemyGenerator : MonoBehaviour
     {
-        [SerializeField] private Transform _center;
+        private Transform _center;
         [SerializeField] private Vector2 _ignoreRegion;
         [SerializeField] private Vector2 _spawnRegion;
         [SerializeField] private List<SpawnRatio> _enemyTypes;
@@ -26,6 +26,10 @@ namespace Scripts.GameSystem
 
         [SerializeField] private int _phaseEnemyCount;
         [SerializeField] private float _enemyIncrementPerDay;
+        private void Awake()
+        {
+            _center = GameObject.FindGameObjectWithTag("Player").transform;
+        }
         private void Start()
         {
             TimeManager.Instance.IsNight.OnValueChanged += HandleNightEvent;
