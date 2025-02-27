@@ -145,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1815113294125401663}
   - component: {fileID: 8424455550651499631}
-  - component: {fileID: 6274870136547670791}
+  - component: {fileID: 5248989633093521534}
   m_Layer: 12
   m_Name: Bush
   m_TagString: Untagged
@@ -208,7 +208,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _damageType: 4
---- !u!61 &6274870136547670791
+--- !u!61 &5248989633093521534
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,7 +238,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -252,7 +252,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1001 &1339916271708338106
 PrefabInstance:

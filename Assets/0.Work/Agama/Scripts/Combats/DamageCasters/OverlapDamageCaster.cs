@@ -38,7 +38,6 @@ namespace Agama.Scripts.Combats.DamageCasters
                 OverlapCastType.Box =>  Physics2D.OverlapBox(transform.position, damageBoxSize, 0, contactFilter, _hitResults),
                 _ => throw new ArgumentNullException()
             };
-
             for (int i = 0; i < cnt; i++)
             {
                 if (_hitResults[i].TryGetComponent(out IDamageable damageable))

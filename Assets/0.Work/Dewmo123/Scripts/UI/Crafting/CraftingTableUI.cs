@@ -12,6 +12,7 @@ namespace Scripts.UI.Crafting
         private CraftInfoTxt _infoTxt;
         [SerializeField] private Transform _recipeParent;
         [SerializeField] private EventChannelSO _invenChannel;
+        [SerializeField] private Transform _selectedImage;
         private RecipeUI _selectedRecipe;
 
         public void Awake()
@@ -26,6 +27,7 @@ namespace Scripts.UI.Crafting
         {
             _selectedRecipe = recipeUI;
             _infoTxt.Select(recipeUI.recipe);
+            _selectedImage.transform.position = recipeUI.transform.position;
         }
         public void CraftItem()
         {

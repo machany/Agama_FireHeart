@@ -222,3 +222,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 1134042414206859390}
+  myType: {fileID: 11400000, guid: 71c03ecd5b742f540881ea10b4d5b9c5, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaterBucket
   m_EditorClassIdentifier: 
   itemName: "\uBB3C\uC591\uB3D9\uC774"
-  icon: {fileID: 6045454254259307398, guid: 0845a43b92336a64b8152cafe66b5327, type: 3}
+  icon: {fileID: 1626372745399575930, guid: 5e711933ca346a24f9a7839eb0ef12ba, type: 3}
   itemID: 103f9cbc8e3977744b36f556a0cc5867
   maxStack: 99
   _damageType: 0
@@ -23,3 +23,4 @@ MonoBehaviour:
   hp: 0
   thirsty: 20
   hungry: 0
+  _isException: 0
