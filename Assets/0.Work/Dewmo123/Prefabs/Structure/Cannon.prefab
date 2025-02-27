@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 310033069706556675}
   - component: {fileID: 5618074785831180612}
   - component: {fileID: 7677836870425777963}
+  - component: {fileID: 8549925403657987250}
   m_Layer: 0
   m_Name: Bow
   m_TagString: Untagged
@@ -203,6 +204,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <FacingDirection>k__BackingField: 3
+--- !u!114 &8549925403657987250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204275274334768158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd3e76f783123644b1b45271b2b47e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offset: 1
 --- !u!1 &1441782207560569193
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8649144009970318513}
   - component: {fileID: 3996777628437245756}
+  - component: {fileID: 442622923662386080}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -494,6 +509,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &442622923662386080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6548523969086539519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd3e76f783123644b1b45271b2b47e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offset: -1
 --- !u!1 &6598864305716445625
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,6 +532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7103044897916291307}
   - component: {fileID: 4585804145245758678}
+  - component: {fileID: 6947136012687419955}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -581,6 +610,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6947136012687419955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6598864305716445625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd3e76f783123644b1b45271b2b47e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offset: 0
 --- !u!1 &8533967232375626120
 GameObject:
   m_ObjectHideFlags: 0

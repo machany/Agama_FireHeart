@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5551138422486311269}
   - component: {fileID: 4061788243746209966}
   - component: {fileID: 6832046063739169159}
+  - component: {fileID: 7751576665726129565}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -110,6 +111,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7751576665726129565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480388529148191693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd3e76f783123644b1b45271b2b47e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offset: 1
 --- !u!1 &3582884188063744510
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7595700723466801465}
   - component: {fileID: 3235032400599361958}
+  - component: {fileID: 6089181957734304514}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -362,6 +377,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6089181957734304514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4864936853134696887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd3e76f783123644b1b45271b2b47e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offset: 0
 --- !u!1 &8425545060216365640
 GameObject:
   m_ObjectHideFlags: 0
