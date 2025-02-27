@@ -22,10 +22,9 @@ namespace Scripts.Items
         {
             if (_isException) return;
             entity.GetComp<PlayerInvenData>().RemoveItem(this, 1);
-            EntityHealth entityHealth = entity.GetComp<EntityHealth>();
-            entityHealth.ApplyHeal(hp);
-            entityHealth.ApplyHeal(thirsty);
-            entityHealth.ApplyHeal(hungry);
+            entity.GetComp<EntityHealth>().ApplyHeal(hp);
+            entity.GetComp<EntityThirst>().ApplyHeal(thirsty);
+            entity.GetComp<EntityHungry>().ApplyHeal(hungry);
         }
 
         protected override void OnEnable()

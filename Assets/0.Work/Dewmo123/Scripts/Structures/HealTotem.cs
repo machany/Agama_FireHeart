@@ -1,4 +1,5 @@
-﻿using Scripts.Stats;
+﻿using Scripts.GameSystem;
+using Scripts.Stats;
 using UnityEngine;
 
 namespace Scripts.Structures
@@ -21,6 +22,7 @@ namespace Scripts.Structures
         }
         private void Update()
         {
+            if (!TimeManager.Instance.IsNight.Value) return;
             _curTime += Time.deltaTime;
             if (_curTime >= _healDelay)
             {

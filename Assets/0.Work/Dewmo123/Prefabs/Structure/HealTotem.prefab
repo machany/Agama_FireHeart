@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5388948584068612877}
   - component: {fileID: 6226988604394426006}
+  - component: {fileID: 1792977088793983623}
   m_Layer: 0
   m_Name: VIsual
   m_TagString: Untagged
@@ -87,6 +88,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1792977088793983623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627556527911842110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd3e76f783123644b1b45271b2b47e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offset: 0
 --- !u!1 &3259072757795891186
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +167,7 @@ MonoBehaviour:
     m_Bits: 33554432
   _healRad: 5
   _healAmount: 3
-  _healDelay: 1
+  _healDelay: 3
 --- !u!50 &3828015740184804418
 Rigidbody2D:
   serializedVersion: 5
