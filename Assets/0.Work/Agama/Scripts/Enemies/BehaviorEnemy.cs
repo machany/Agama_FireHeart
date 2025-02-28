@@ -73,6 +73,7 @@ namespace Agama.Scripts.Enemies
         public void ResetItem()
         {
             OnResetEvent?.Invoke();
+            IsDead = false;
         }
     }
 }
