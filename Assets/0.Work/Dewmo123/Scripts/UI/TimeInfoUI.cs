@@ -3,18 +3,20 @@ using Scripts.GameSystem;
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Scripts.UI
 {
     public class TimeInfoUI : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _dayCntTxt;
-        [SerializeField] private TextMeshProUGUI _remainTimeTxt;
+        [SerializeField] private TextMeshProUGUI dayCntTxt;
+        [SerializeField] private RectTransform remainTimeMark;
         private NotifyValue<bool> _isNight;
         private void Start()
         {
             TimeManager.Instance.DayCount.OnValueChanged += HandleDayChanged;
-            _dayCntTxt.text = "Day : 0";
+            dayCntTxt.text = "0";
+            remainTimeMark.rotation = Quaternion.identity;
         }
         private void OnDestroy()
         {
@@ -22,14 +24,15 @@ namespace Scripts.UI
         }
         private void Update()
         {
-            int remain = TimeManager.Instance.RemainTime;
-            int sec = remain % 60;
-            int min = remain / 60;
-            _remainTimeTxt.text = $"{min} : {sec}";
+            float maxTime = TimeManager.Instance.DayTime;
+            float current = TimeManager.Instance.PastTime;
+
+            float rotation = Mathf.Lerp(0, 180, current / maxTime);
+            remainTimeMark.rotation = Quaternion.Euler(0, 0, rotation);
         }
         private void HandleDayChanged(int prev, int next)
         {
-            _dayCntTxt.text = $"Day : {next}";
+            dayCntTxt.text = $"{next}";
         }
     }
 }

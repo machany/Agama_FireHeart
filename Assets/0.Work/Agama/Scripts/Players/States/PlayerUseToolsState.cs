@@ -9,12 +9,15 @@ namespace Agama.Scripts.Players.States
     {
         public Action OnEventEndEvent { get; set; }
 
+        private Player _player;
         private EntityMover _mover;
         private EntityAnimatorTrigger _animatorTrigger;
         private PlayerAttackComponent _attackComp;
 
         public PlayerUseToolsState(Entity owner, AnimationParamiterSO animationParamitor) : base(owner, animationParamitor)
         {
+            _player = _owner as Player;
+
             _mover = _owner.GetComp<EntityMover>();
             _animatorTrigger = _owner.GetComp<EntityAnimatorTrigger>();
             _attackComp = _owner.GetComp<PlayerAttackComponent>();
@@ -24,6 +27,8 @@ namespace Agama.Scripts.Players.States
         public override void Enter()
         {
             base.Enter();
+
+            _player.InputSO.canChangeQuickSlot = false;
 
             _animatorTrigger.OnAnimationEndEvent += HaandleAnimationEndEvent;
             _animatorTrigger.OnAnimationEvent += HaandleOnAnimationEvent;
@@ -46,6 +51,8 @@ namespace Agama.Scripts.Players.States
 
         public override void Exit()
         {
+            _player.InputSO.canChangeQuickSlot = true;
+
             _animatorTrigger.OnAnimationEndEvent -= HaandleAnimationEndEvent;
             _animatorTrigger.OnAnimationEvent -= HaandleOnAnimationEvent;
 

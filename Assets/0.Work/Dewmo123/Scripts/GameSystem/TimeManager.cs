@@ -14,7 +14,8 @@ namespace Scripts.GameSystem
         [SerializeField] private int _morningMinutes;
         [SerializeField] private int _eveningMinutes;
         public float currentSec => IsNight.Value ? _eveningMinutes * 60 : _morningMinutes * 60;
-        public int RemainTime => (int)(currentSec - _currentTime);
+        public float PastTime => (IsNight.Value ? _morningMinutes * 60 : 0) + _currentTime;
+        public float DayTime => _eveningMinutes * 60 + _morningMinutes* 60;
         public NotifyValue<bool> IsNight { get; private set; }
         public NotifyValue<int> DayCount { get; private set; }
         private void Awake()

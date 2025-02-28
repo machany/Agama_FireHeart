@@ -49,6 +49,7 @@ namespace Agama.Scripts.Core
         public Vector2 MoveInputVector { get; private set; }
         public Vector2 PreviousInputVector { get; private set; }
 
+        public bool canChangeQuickSlot = true;
         public sbyte CurrentQuickSlotIndex { get; private set; } = 1;
 
         public void OnItemUse(InputAction.CallbackContext context)
@@ -76,37 +77,43 @@ namespace Agama.Scripts.Core
         public void OnNext(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = (sbyte)Mathf.Min(++CurrentQuickSlotIndex, maxQuickSlotCount));
+                if (canChangeQuickSlot)
+                    OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = (sbyte)Mathf.Min(++CurrentQuickSlotIndex, maxQuickSlotCount));
         }
 
         public void OnPrevious(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = (sbyte)Mathf.Max(--CurrentQuickSlotIndex, 0));
+                if (canChangeQuickSlot)
+                    OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = (sbyte)Mathf.Max(--CurrentQuickSlotIndex, 0));
         }
 
         public void OnQuickSlot1(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 0);
+                if (canChangeQuickSlot)
+                    OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 0);
         }
 
         public void OnQuickSlot2(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 1);
+                if (canChangeQuickSlot)
+                    OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 1);
         }
 
         public void OnQuickSlot3(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 2);
+                if (canChangeQuickSlot)
+                    OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 2);
         }
 
         public void OnQuickSlot4(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 3);
+                if (canChangeQuickSlot)
+                    OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = 3);
         }
 
         public void OnQuickSlot5(InputAction.CallbackContext context)
@@ -134,7 +141,8 @@ namespace Agama.Scripts.Core
         public void OnScrollWheel(InputAction.CallbackContext context)
         {
             OnScrollWheelEvent?.Invoke(context.ReadValue<Vector2>());
-            OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = (sbyte)Mathf.Clamp(CurrentQuickSlotIndex - (sbyte)context.ReadValue<Vector2>().y, 0, maxQuickSlotCount));
+            if (canChangeQuickSlot)
+                OnQuickSlotChangedEvent?.Invoke(CurrentQuickSlotIndex = (sbyte)Mathf.Clamp(CurrentQuickSlotIndex - (sbyte)context.ReadValue<Vector2>().y, 0, maxQuickSlotCount));
         }
         public void OnTrackedDevicePosition(InputAction.CallbackContext context) { }
         public void OnTrackedDeviceOrientation(InputAction.CallbackContext context) { }
