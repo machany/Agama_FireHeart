@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/0.Work/Dewmo123/Scenes/StartScene.unity
+    guid: d84952402f703ec4287fc60fc12be2e6
+  - enabled: 1
     path: Assets/0.Work/Dewmo123/Scenes/AKH.unity
     guid: 59cb53a5e3bdc3f4f91c97b0e64bc711
   m_configObjects:

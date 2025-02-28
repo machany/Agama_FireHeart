@@ -13,11 +13,19 @@ MonoBehaviour:
   m_Name: EnemyDropTable
   m_EditorClassIdentifier: 
   table:
-  - minCnt: 2
-    maxCnt: 6
-    probability: 0.5
+  - minCnt: 0
+    maxCnt: 3
+    probability: 0.3
     item: {fileID: 11400000, guid: 4730b577b5b681a4392a8f39941e60d0, type: 2}
-  - minCnt: 1
+  - minCnt: 2
     maxCnt: 4
     probability: 0.5
     item: {fileID: 11400000, guid: f963791cc53f29b49aa172e2cdc87f8d, type: 2}
+  - minCnt: 0
+    maxCnt: 4
+    probability: 0.5
+    item: {fileID: 11400000, guid: b407a11d828055e4fafc019042ccb8c3, type: 2}
+  - minCnt: 0
+    maxCnt: 4
+    probability: 0.5
+    item: {fileID: 11400000, guid: d1de452295653194a97afece6cc42207, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CraftTable
   m_EditorClassIdentifier: 
   itemName: "\uC791\uC5C5\uB300"
-  icon: {fileID: -3135009239117609470, guid: c3d85b298862b1045ac7298eba56f60a, type: 3}
+  icon: {fileID: -5643105228771564274, guid: 21c0202206c911a46a43450133d77d9c, type: 3}
   itemID: ad596db8726000c488c3904402c66371
   maxStack: 1
   _damageType: 0

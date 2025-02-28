@@ -41,11 +41,6 @@ namespace Scripts.Stats
         }
 
         #endregion
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.P))
-                ApplyDamage(10);
-        }
         public virtual void HandleStatChange(StatSO stat, float current, float previous)
         {
             maxStat = current;
@@ -65,7 +60,7 @@ namespace Scripts.Stats
         }
         public virtual void AfterHitFeedbacks()
         {
-            if (currentStat.Value <= 0)
+            if (currentStat.Value <= 0.01)
             {
                 _entity.OnDeadEvent?.Invoke();
             }
