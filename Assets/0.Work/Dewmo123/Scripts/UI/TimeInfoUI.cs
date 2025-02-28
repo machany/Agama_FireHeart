@@ -14,7 +14,7 @@ namespace Scripts.UI
         private void Start()
         {
             TimeManager.Instance.DayCount.OnValueChanged += HandleDayChanged;
-            _dayCntTxt.text = "Day : 0";
+            _dayCntTxt.text = "0";
         }
         private void OnDestroy()
         {
@@ -29,7 +29,7 @@ namespace Scripts.UI
         }
         private void HandleDayChanged(int prev, int next)
         {
-            _dayCntTxt.text = $"Day : {next}";
+            _dayCntTxt.text = $"{next}";
         }
     }
 }

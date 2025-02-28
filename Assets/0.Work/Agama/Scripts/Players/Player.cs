@@ -88,7 +88,9 @@ namespace Agama.Scripts.Players
         private void HandleItemUseKeyPressedEvent()
         {
             if (!_carring && ToolType >= 0)
+            {
                 ChangeState("Player_use_tool_State_event");
+            }
             else
                 if (!CheckEnemy())
                 OnUseItem?.Invoke();
