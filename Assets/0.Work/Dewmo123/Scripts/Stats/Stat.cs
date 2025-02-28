@@ -50,7 +50,7 @@ namespace Scripts.Stats
 
         public virtual void ApplyDamage(float damage)
         {
-            //if (_entity.IsDead) return; //이미 죽은 녀석입니다.
+            if (_entity.IsDead) return; //이미 죽은 녀석입니다.
             currentStat.Value = Mathf.Clamp(currentStat.Value - damage, 0, maxStat);
                 AfterHitFeedbacks();
         }

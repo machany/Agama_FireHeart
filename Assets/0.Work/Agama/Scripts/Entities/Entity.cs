@@ -9,6 +9,7 @@ namespace Agama.Scripts.Entities
 {
     public abstract class Entity : MonoBehaviour, IDamageable
     {
+        public bool IsDead { get; protected set; }
         public UnityEvent OnHitEvent;
         public UnityEvent OnDeadEvent;
         public UnityEvent OnResetEvent;
