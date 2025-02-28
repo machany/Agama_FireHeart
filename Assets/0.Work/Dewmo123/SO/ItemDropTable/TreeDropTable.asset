@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TreeDropTable
   m_EditorClassIdentifier: 
   table:
-  - minCnt: 2
+  - minCnt: 3
     maxCnt: 6
-    probability: 0.5
+    probability: 0.55
     item: {fileID: 11400000, guid: e3f8c5d88edc65c4c99af2db9f648465, type: 2}

@@ -10,12 +10,12 @@ using Random = UnityEngine.Random;
 
 namespace Scripts.GameSystem
 {
-
     public class EnemyGenerator : EntityGenerator
     {
         [SerializeField] private int _phaseEnemyCount;
         [SerializeField] private float _enemyIncrementPerDay;
         [SerializeField] private float _enemySpawnDelay;
+        [SerializeField] private float _enemyDelayIncPerDay;
 
         private NotifyValue<bool> _isNight;
         private float _currentTime;
@@ -44,7 +44,10 @@ namespace Scripts.GameSystem
                 for (int i = 0; i < _phaseEnemyCount; i++)
                     GenerateEnemy();
             else
+            {
                 _phaseEnemyCount = (int)(_phaseEnemyCount * _enemyIncrementPerDay);
+                _enemyIncrementPerDay *= _enemyDelayIncPerDay;
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SandDropTable
   m_EditorClassIdentifier: 
   table:
-  - minCnt: 1
-    maxCnt: 3
+  - minCnt: 3
+    maxCnt: 5
     probability: 0.5
     item: {fileID: 11400000, guid: d1de452295653194a97afece6cc42207, type: 2}
