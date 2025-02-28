@@ -30,6 +30,7 @@ namespace Agama.Scripts.Combats.DamageCasters
                     spriteRenderer.enabled = true;
                     spriteRenderer.sprite = targetingMarkSprite;
                     spriteRenderer.color = Color.white;
+                    spriteRenderer.sortingLayerName = "UI";
                 });
             _targetingMark.gameObject.SetActive(false);
         }

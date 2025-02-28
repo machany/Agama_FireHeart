@@ -19,6 +19,7 @@ namespace Scripts.GameSystem
         public NotifyValue<int> DayCount { get; private set; }
         private void Awake()
         {
+            Cursor.lockState = CursorLockMode.Confined;
             DayCount = new NotifyValue<int>();
             IsNight = new NotifyValue<bool>();
             IsNight.OnValueChanged += HandleTimeChanged;

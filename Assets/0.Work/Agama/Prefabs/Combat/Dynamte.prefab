@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1316778771961972029}
   - component: {fileID: 6978902835034362415}
   - component: {fileID: 3985517804605256938}
+  - component: {fileID: 9070044710081008904}
   m_Layer: 15
   m_Name: Dynamte
   m_TagString: Untagged
@@ -144,8 +145,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1117072577
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -4003982261762975687, guid: 641e52b1c1fa4c34093445388dba08b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -207,6 +208,19 @@ MonoBehaviour:
   _poolManager: {fileID: 11400000, guid: ab208f8de301ea24bbc8869fc257e2fa, type: 2}
   _explosion: {fileID: 11400000, guid: c9018bfd80a01c1488bcbc9d5aeeb43c, type: 2}
   _soundPlayer: {fileID: 11400000, guid: 46c6e3a97b6a7914b837d3d4b8ad8757, type: 2}
+--- !u!114 &9070044710081008904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5034450186382554923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf49bac994fb55245be94f0e8ea4d8c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offset: 0
 --- !u!1 &5449340938254517274
 GameObject:
   m_ObjectHideFlags: 0

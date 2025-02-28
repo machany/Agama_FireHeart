@@ -1,6 +1,6 @@
 ﻿using Scripts.EventChannel;
 using Scripts.UI.Inven.SlotUI;
-using System;
+using UnityEngine;
 
 namespace Scripts.UI.Inven.DragUI
 {
@@ -39,7 +39,7 @@ namespace Scripts.UI.Inven.DragUI
             evt.isUnSet = false;
             evt.slotIndex = origin.slotIndex;
             evt.storageSlotIndex = slot.slotIndex;
-            evt.isSame = !(slot.item == null || slot.item.data == null);
+            evt.isSame = slot.item != null && slot.item.data == item.data;
             _invenEvent.InvokeEvent(evt);
         }
 
@@ -50,7 +50,7 @@ namespace Scripts.UI.Inven.DragUI
             evt.isUnSet = false;
             evt.slotIndex = origin.slotIndex;
             evt.quickSlotIndex = quickSlotUI.slotIndex;
-            evt.isSame = !(quickSlotUI.item == null || quickSlotUI.item.data == null);
+            evt.isSame = quickSlotUI.item != null && quickSlotUI.item.data == item.data;
 
             _invenEvent.InvokeEvent(evt);
         }

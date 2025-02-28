@@ -1,4 +1,5 @@
-﻿using Baracuda.Threading;
+﻿using Agama.Scripts.Core.AStar;
+using Baracuda.Threading;
 using GGMPool;
 using NUnit.Framework;
 using NUnit.Framework.Internal.Execution;
@@ -29,6 +30,7 @@ namespace Scripts.Map
         [SerializeField] private Tilemap _map;
         [SerializeField] private TileBase _dummy;
         [SerializeField] private int _mapSizeX, _mapSizeY;
+        [SerializeField] private RoadFinderSO _roadFinder;
         private bool[,] _mapArr;
         private System.Random _rand;
         private async void Awake()
@@ -38,6 +40,7 @@ namespace Scripts.Map
             _rand = new System.Random();
             _mapArr = new bool[_mapSizeX * 2 + 2, _mapSizeY * 2 + 2];
             await Task.Run(SetMap);
+            _roadFinder.ChangeGrid();
         }
         private void SetMap()
         {

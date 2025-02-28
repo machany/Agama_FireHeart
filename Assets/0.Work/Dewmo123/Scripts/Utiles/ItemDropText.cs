@@ -16,6 +16,7 @@ namespace Scripts.Utiles
 
         public void Init(string txt,Vector2 pos)
         {
+            _text.sortingLayerID = SortingLayer.NameToID("UI");
             transform.position = pos;
             _text.text = txt;
             transform.DOMoveY(transform.position.y+1, 3).OnComplete(() => _myPool.Push(this));

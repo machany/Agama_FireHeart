@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unPassLayer:
     serializedVersion: 2
-    m_Bits: 4096
-  gridSize: {x: 54, y: 30}
+    m_Bits: 4112
+  gridSize: {x: 90, y: 90}
   nodeRadius: 0.1
