@@ -954,6 +954,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 957449923ea9bb74a9ab431112bdb922, type: 2}
   _recipeParent: {fileID: 8337648331656648014}
   _invenChannel: {fileID: 11400000, guid: fc01aa0595809634cbe5bb0be79f96db, type: 2}
+  _selectedImage: {fileID: 0}
 --- !u!1 &8744110430670088956
 GameObject:
   m_ObjectHideFlags: 0
@@ -3438,10 +3439,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8940425751358954871}
     m_Modifications:
-    - target: {fileID: 35942957245395522, guid: e8f62dceaf7fa84438de0fd44cdc0ab5, type: 3}
-      propertyPath: m_StartAxis
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 69258037683319691, guid: e8f62dceaf7fa84438de0fd44cdc0ab5, type: 3}
       propertyPath: m_Type
       value: 1

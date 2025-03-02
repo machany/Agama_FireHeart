@@ -22,7 +22,7 @@ namespace Scripts.UI.Crafting
             Debug.Assert(recipeUIs.Length == _recipes.Count, "UICount does not equal RecipeCount");
             for (int i = 0; i < recipeUIs.Length; i++)
                 recipeUIs[i].Init(_recipes[i], this);
-            SelectRecipe(recipeUIs[0]);
+            SelectRecipe(recipeUIs[1]);
         }
         public void SelectRecipe(RecipeUI recipeUI)
         {
